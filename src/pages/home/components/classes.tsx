@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import { ArrowCircleUpRight } from "phosphor-react";
 
-export function Classes() {
+export default function Classes() {
     return (
         <Box>
             <Flex px={48} alignItems='center' justifyContent='center' gap={8}>

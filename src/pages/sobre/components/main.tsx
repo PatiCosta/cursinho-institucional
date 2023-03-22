@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import { ArrowCircleUpRight } from "phosphor-react";
 
-export function Main() {
+export default function Main() {
     return (
         <Box h='86vh' bgImage='static/img/us.png' bgPosition='bottom' bgSize='cover'>
             <Box h={4}>

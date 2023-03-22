@@ -4,7 +4,7 @@ import { ArrowCircleUpRight } from "phosphor-react";
 
 import studyAnimation from "../../../animations/study_gif.json";
 
-export function DontMissBox() {
+export default function DontMissBox() {
     return (
         <Flex bgColor='yellow.400' borderRadius='24px' w='60vw' position='absolute' top='-25%' left='20%' p={12} gap={8}>
             <Lottie animationData={studyAnimation}/>

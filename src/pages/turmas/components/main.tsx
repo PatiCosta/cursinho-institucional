@@ -120,7 +120,7 @@ const Class = ({imgSrc, title, bgColor, iconColor, color, status, target, schedu
     )
 }
 
-export function Main() {
+export default function Main() {
     return (
         <Flex px={12} direction='column' alignItems='center' justifyContent='center'>
             <Image 

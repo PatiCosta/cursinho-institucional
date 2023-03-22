@@ -3,7 +3,7 @@ import { ArrowCircleDown, ArrowCircleUpRight, Envelope, FacebookLogo, InstagramL
 import Lottie from "lottie-react";
 import donateAnimation from "../../../animations/donate.json";
 
-export function Footer() {
+export default function Footer() {
     return (
         <Box bgImage={'static/img/footer-background.png'} h='100vh' mt={60} position='relative' px={24}>
             <Flex bgColor='yellow.400' borderRadius='24px' w='60vw' position='absolute' top='-25%' left='20%' p={12}>

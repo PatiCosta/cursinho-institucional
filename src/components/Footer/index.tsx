@@ -7,7 +7,7 @@ interface footerProps {
     marginTop: string;
 }
 
-export function Footer({children, marginTop}: footerProps) {
+export default function Footer({children, marginTop}: footerProps) {
     return (
         <Box bgImage={'static/img/footer-background.png'} h='100vh' mt={marginTop} position='relative' px={24}>
             {children}

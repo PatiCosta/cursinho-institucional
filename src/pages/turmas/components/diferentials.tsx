@@ -3,7 +3,7 @@ import { Box, Button, Flex, Grid, Highlight, Link, Text } from "@chakra-ui/react
 import { Books, Calendar, ChalkboardTeacher, Laptop, Notebook, Users } from "phosphor-react";
 import { useState } from "react";
 
-export function Diferentials() {
+export default function Diferentials() {
 
     return (
         <Box mt={16}>

@@ -51,7 +51,7 @@ const MenuButton = ({title, link}: menuButtonProps) => {
     )
 }
 
-export function Header() {
+export default function Header() {
 
     return (
         <Flex
