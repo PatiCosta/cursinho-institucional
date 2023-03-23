@@ -2,9 +2,9 @@ import { Box, Button, Flex, Highlight, Text } from "@chakra-ui/react";
 import Lottie from "lottie-react";
 import { ArrowCircleUpRight } from "phosphor-react";
 
-import studyAnimation from "../../../animations/study_gif.json";
+import studyAnimation from "../../animations/study_gif.json";
 
-export default function DontMissBox() {
+export function DontMissBox() {
     return (
         <Flex bgColor='yellow.400' borderRadius='24px' w='60vw' position='absolute' top='-25%' left='20%' p={12} gap={8}>
             <Lottie animationData={studyAnimation}/>
@@ -30,6 +30,7 @@ export default function DontMissBox() {
                     _hover={{
                         opacity: 0.9
                     }}
+                    onClick={() => window.scrollTo({top: 60, behavior: 'smooth'})}
                 >
                     <Text>Garanta sua vaga</Text>
                     <ArrowCircleUpRight size={28} color="#023047" weight="fill" />

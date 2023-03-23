@@ -2,7 +2,7 @@ import { Box, Button, Grid, Highlight, Text } from "@chakra-ui/react";
 import { ArrowCircleUpRight, Books, Laptop, Notebook } from "phosphor-react";
 import { useState } from "react";
 
-export default function Diferentials() {
+export function Diferentials() {
     const [isButtonHovered, setIsButtonHovered] = useState(false)
 
     return (

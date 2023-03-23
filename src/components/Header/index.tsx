@@ -68,7 +68,6 @@ export default function Header() {
                 <MenuButton title='Início' link='' />
                 <MenuButton title='Sobre' link='sobre' />
                 <MenuButton title='Turmas' link='turmas' />
-                <MenuButton title='Professores' link='professores' />
                 <MenuButton title='Inspirações' link='inspiracoes' />
                 <MenuButton title='Doações' link='doacoes' />
             </Flex>

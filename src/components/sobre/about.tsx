@@ -1,6 +1,6 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 
-export default function About() {
+export function About() {
     return (
         <Flex py={12} alignItems='center' gap={24}>
             <Box flex='1.5'>

@@ -1,6 +1,6 @@
 import { Box, Divider, Flex, Grid, Highlight, Text } from "@chakra-ui/react";
 
-export default function ApprovedChart() {
+export function ApprovedChart() {
     return (
         <Box bgColor='blue.800' borderRadius='24px' w='70vw' position='absolute' top='-35%' left='15%' px={12} py={8} textAlign='center'>
             <Text fontSize={40} color='gray.50' fontWeight='bold'>

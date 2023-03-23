@@ -1,6 +1,6 @@
 import { Box, Flex, Highlight, Image, Text } from "@chakra-ui/react";
 
-export default function Approvals() {
+export function Approvals() {
     return (
         <Flex bgColor='blue.800' w='100vw' p={12} mt={12} alignItems='center' justifyContent='center' gap={12}>
             <Box textAlign='center' mr={12}>

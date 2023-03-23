@@ -2,7 +2,7 @@ import { Box, Flex, Text } from "@chakra-ui/react";
 import { ArrowCircleRight, ArrowCircleUpRight } from "phosphor-react";
 import { useState } from "react";
 
-export default function InfoBar() {
+export function InfoBar() {
   const [isButtonHovered, setIsButtonHovered] = useState(false)
 
     return (

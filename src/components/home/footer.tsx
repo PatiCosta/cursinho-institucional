@@ -1,12 +1,12 @@
 import { Box, Button, Flex, Highlight, Text } from "@chakra-ui/react";
 import { ArrowCircleDown, ArrowCircleUpRight, Envelope, FacebookLogo, InstagramLogo, LinkedinLogo, YoutubeLogo } from "phosphor-react";
 import Lottie from "lottie-react";
-import donateAnimation from "../../../animations/donate.json";
+import donateAnimation from "../../animations/donate.json";
 
-export default function Footer() {
+export function Footer() {
     return (
-        <Box bgImage={'static/img/footer-background.png'} h='100vh' mt={60} position='relative' px={24}>
-            <Flex bgColor='yellow.400' borderRadius='24px' w='60vw' position='absolute' top='-25%' left='20%' p={12}>
+        <Box bgImage={'static/img/footer-background.png'} mt={60} position='relative' px={24}>
+            <Flex bgColor='yellow.400' borderRadius='24px' w='60vw' position='absolute' left='20%' top='-25%' p={12}>
                 <Lottie animationData={donateAnimation} />
                 <Box textAlign='start'>
                     <Text fontSize="40px" color='gray.800' fontWeight='light'>
@@ -37,7 +37,7 @@ export default function Footer() {
                 </Box>
             </Flex>
             <Flex justifyContent='space-between' alignItems='start'>
-                <Flex mt={56} alignItems='center' direction='column'>
+                <Flex mt='20%' alignItems='center' direction='column'>
                     <Flex gap={4} alignItems='center' mb={4}>
                         <Text fontSize="40px" color='gray.800' fontWeight='light' textAlign='center'>
                             <Highlight query='encontre' styles={{bg: 'transparent', fontWeight: 'bold' }}>
@@ -51,7 +51,7 @@ export default function Footer() {
                         Av. Prof. Luciano Gualberto, 908 - Butantã, São Paulo - SP, 05508-010, Brasil
                     </Text>
                 </Flex>
-                <Flex mt={56} alignItems='center' direction='column'>
+                <Flex mt='20%' alignItems='center' direction='column'>
                     <Text fontSize="40px" color='gray.800' fontWeight='light' textAlign='center' mb={6}>
                         <Highlight query='Fale' styles={{bg: 'transparent', fontWeight: 'bold' }}>
                             Fale conosco!
