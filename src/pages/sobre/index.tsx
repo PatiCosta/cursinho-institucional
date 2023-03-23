@@ -12,7 +12,7 @@ export default function Sobre() {
             <Main />
             <About />
             <Teachers />
-            <Footer marginTop='36vh'>
+            <Footer marginTop={72}>
                 <ApprovedChart />
             </Footer>
         </>

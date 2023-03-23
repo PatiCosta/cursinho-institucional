@@ -4,15 +4,15 @@ import React from "react";
 
 interface footerProps {
     children: React.ReactNode;
-    marginTop: string;
+    marginTop: number;
 }
 
 export default function Footer({children, marginTop}: footerProps) {
     return (
-        <Box bgImage={'static/img/footer-background.png'} h='100vh' mt={marginTop} position='relative' px={24}>
+        <Box bgImage={'static/img/footer-background.png'} mt={marginTop} position='relative' px={24}>
             {children}
             <Flex justifyContent='space-between' alignItems='start'>
-                <Flex mt={56} alignItems='center' direction='column'>
+                <Flex mt='20%' alignItems='center' direction='column'>
                     <Flex gap={4} alignItems='center' mb={4}>
                         <Text fontSize="40px" color='gray.800' fontWeight='light' textAlign='center'>
                             <Highlight query='encontre' styles={{bg: 'transparent', fontWeight: 'bold' }}>
@@ -26,7 +26,7 @@ export default function Footer({children, marginTop}: footerProps) {
                         Av. Prof. Luciano Gualberto, 908 - Butantã, São Paulo - SP, 05508-010, Brasil
                     </Text>
                 </Flex>
-                <Flex mt={56} alignItems='center' direction='column'>
+                <Flex mt='20%' alignItems='center' direction='column'>
                     <Text fontSize="40px" color='gray.800' fontWeight='light' textAlign='center' mb={6}>
                         <Highlight query='Fale' styles={{bg: 'transparent', fontWeight: 'bold' }}>
                             Fale conosco!
