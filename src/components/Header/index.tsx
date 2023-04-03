@@ -1,6 +1,7 @@
-import {Box, Button, Flex, Image, Text} from '@chakra-ui/react'
+import {Box, Button, Collapse, Flex, IconButton, Image, Text, useDisclosure} from '@chakra-ui/react'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { List } from 'phosphor-react';
 import { useState } from 'react';
 
 interface menuButtonProps {
@@ -15,8 +16,9 @@ const MenuButton = ({title, link}: menuButtonProps) => {
 
     return (
         <Flex
-            direction='column'
+            direction={{base: 'row', sm: 'row', lg: 'column'}}
             alignItems='center'
+            justifyContent='center'
             py={2}
             px={4}
             cursor='pointer'
@@ -45,38 +47,62 @@ const MenuButton = ({title, link}: menuButtonProps) => {
             >
                 {title}
             </Text>
-            {isActive && <Box bgColor='yellow.500' w='4px' h='4px' borderRadius='100%' />}
+            {isActive && <Box bgColor='yellow.500' w='4px' h='4px' borderRadius='100%' ml={{base: 2, sm: 2, lg: 0}} />}
         </Flex>
     )
 }
 
 export default function Header() {
+    const { isOpen, onToggle } = useDisclosure()
 
     return (
-        <Flex
-            alignItems='center'
-            justifyContent='space-between'
-            px={12}
-            py={6}
-        >
-            <Image 
-                src={'static/img/logo.png'} 
-                maxH={16}
-            />
-            <Flex gap={2}>
-                <MenuButton title='Início' link='' />
-                <MenuButton title='Sobre' link='sobre' />
-                <MenuButton title='Turmas' link='turmas' />
-                <MenuButton title='Inspirações' link='inspiracoes' />
-                <MenuButton title='Eventos' link='eventos' />
-                <MenuButton title='Doações' link='doacoes' />
+        <>        
+            <Flex
+                alignItems='center'
+                justifyContent='space-between'
+                px={12}
+                py={6}
+                w='100vw'
+            >
+                <Image 
+                    src={'static/img/logo.png'} 
+                    maxH={{base: 8, sm: 8, lg: 16}}
+                />
+                <Flex gap={2} display={{base: 'none', sm: 'none', lg: 'flex'}}>
+                    <MenuButton title='Início' link='' />
+                    <MenuButton title='Sobre' link='sobre' />
+                    <MenuButton title='Turmas' link='turmas' />
+                    <MenuButton title='Inspirações' link='inspiracoes' />
+                    <MenuButton title='Eventos' link='eventos' />
+                    <MenuButton title='Doações' link='doacoes' />
+                </Flex>
+                <Button bgColor='blue.800' color='yellow.500' borderRadius='3xl' transition='all .3s ease' _hover={{
+                    bgColor: 'yellow.500',
+                    color: 'blue.800'
+                }} size={{base: 'sm', sm: 'sm', lg: 'lg'}} display={{base: 'none', sm: 'none', lg: 'block'}}>
+                    <Text>Inscrever-se</Text>
+                </Button>
+                <IconButton
+                    display={{base: 'block', sm: 'block', lg: 'none'}}
+                    aria-label='Abrir menu'
+                    bgColor='gray.50'
+                    icon={<List size={28} color="#023047" />}
+                    onClick={onToggle}
+                    _hover={{
+                        bgColor: 'transparent'
+                    }}
+                />
             </Flex>
-            <Button bgColor='blue.800' color='yellow.500' borderRadius='3xl' transition='all .3s ease' _hover={{
-                bgColor: 'yellow.500',
-                color: 'blue.800'
-            }}>
-                <Text>Inscrever-se</Text>
-            </Button>
-        </Flex>
+            <Collapse in={isOpen} animateOpacity>
+                <Box>
+                    <MenuButton title='Início' link='' />
+                    <MenuButton title='Sobre' link='sobre' />
+                    <MenuButton title='Turmas' link='turmas' />
+                    <MenuButton title='Inspirações' link='inspiracoes' />
+                    <MenuButton title='Eventos' link='eventos' />
+                    <MenuButton title='Doações' link='doacoes' />
+                </Box>
+            </Collapse>
+        </>
     )
 }
