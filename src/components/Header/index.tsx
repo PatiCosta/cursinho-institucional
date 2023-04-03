@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 interface menuButtonProps {
-    // isActive?: boolean;
     title: string;
     link: string;
 }
@@ -69,6 +68,7 @@ export default function Header() {
                 <MenuButton title='Sobre' link='sobre' />
                 <MenuButton title='Turmas' link='turmas' />
                 <MenuButton title='Inspirações' link='inspiracoes' />
+                <MenuButton title='Eventos' link='eventos' />
                 <MenuButton title='Doações' link='doacoes' />
             </Flex>
             <Button bgColor='blue.800' color='yellow.500' borderRadius='3xl' transition='all .3s ease' _hover={{
