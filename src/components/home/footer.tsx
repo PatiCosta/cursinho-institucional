@@ -50,7 +50,7 @@ export function Footer() {
                 </Box>
             </Flex>
             <Flex justifyContent='space-between' alignItems='start' direction={{base: 'column', lg: 'row'}}>
-                <Flex mt={{base: '50%', lg: '20%'}} alignItems='center' direction='column'>
+                <Flex mt={{base: '50%', lg: '20%'}} alignItems='center' direction='column' w='100%' justifyContent='center'>
                     <Flex gap={4} alignItems='center' mb={4}>
                         <Text fontSize={{base: 28, lg: 40}} color='gray.800' fontWeight='light' textAlign='center'>
                             <Highlight query='encontre' styles={{bg: 'transparent', fontWeight: 'bold' }}>

@@ -23,6 +23,7 @@ const MenuButton = ({title, link}: menuButtonProps) => {
             px={4}
             cursor='pointer'
         >
+            {isActive && <Box bgColor='yellow.500' w='4px' h='4px' borderRadius='100%' mr={{base: 2, sm: 2, lg: 0}} display={{base: 'block', lg: 'none'}} />}
             <Text
                 as={Link}
                 href={`/${link}`} 
@@ -56,17 +57,19 @@ export default function Header() {
     const { isOpen, onToggle } = useDisclosure()
 
     return (
-        <>        
+        <Box px={{base: 8, lg: 12}} w='100vw'>  
+        <Box
+            borderBottom={{base: '1px solid', lg: 'none'}}
+            borderColor='gray.400'
+        >
             <Flex
                 alignItems='center'
                 justifyContent='space-between'
-                px={12}
                 py={6}
-                w='100vw'
             >
                 <Image 
                     src={'static/img/logo.png'} 
-                    maxH={{base: 8, sm: 8, lg: 16}}
+                    maxH={{base: 12, sm: 12, lg: 16}}
                 />
                 <Flex gap={2} display={{base: 'none', sm: 'none', lg: 'flex'}}>
                     <MenuButton title='Início' link='' />
@@ -79,7 +82,7 @@ export default function Header() {
                 <Button bgColor='blue.800' color='yellow.500' borderRadius='3xl' transition='all .3s ease' _hover={{
                     bgColor: 'yellow.500',
                     color: 'blue.800'
-                }} size={{base: 'sm', sm: 'sm', lg: 'lg'}} display={{base: 'none', sm: 'none', lg: 'block'}}>
+                }} size={{base: 'sm', sm: 'sm', lg: 'lg'}} display={{base: 'none', sm: 'none', md: 'block'}}>
                     <Text>Inscrever-se</Text>
                 </Button>
                 <IconButton
@@ -103,6 +106,7 @@ export default function Header() {
                     <MenuButton title='Doações' link='doacoes' />
                 </Box>
             </Collapse>
-        </>
+        </Box>     
+        </Box>
     )
 }
