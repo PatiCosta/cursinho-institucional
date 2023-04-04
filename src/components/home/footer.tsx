@@ -30,7 +30,7 @@ export function Footer() {
                         Algum texto motivacional sobre ajudar os estudos dos alunos necessitados Lorem Ipsum is simply dummy text ofLorem Ipsum is simply dummy text of the printing and typesetting industry. 
                     </Text>
                     <Button 
-                        mt={12} 
+                        mt={{base: 8, lg: 12}} 
                         bgColor='gray.50' 
                         borderRadius='2xl' 
                         size={{base: 'sm', lg: 'lg'}} 
@@ -80,7 +80,7 @@ export function Footer() {
                             Av. Prof. Luciano Gualberto, 908 - Butantã, São Paulo - SP, 05508-010, Brasil
                         </Text>
                 </Flex>
-                <Flex mt='20%' alignItems='center' direction='column'>
+                <Flex mt={{base: 12, lg: '20%'}} alignItems='center' direction='column'>
                     <Text fontSize={{base: 28, lg: 40}} color='gray.800' fontWeight='light' textAlign='center' mb={6}>
                         <Highlight query='Fale' styles={{bg: 'transparent', fontWeight: 'bold' }}>
                             Fale conosco!
@@ -90,18 +90,18 @@ export function Footer() {
                         <Box>
                             <Text fontWeight='bold' fontSize='20px'>Divulgação e comunicação</Text>
                             <Flex alignItems='center' justifyContent='start' gap={2} mt={1}>
-                                <Envelope size={32} color="#023047" weight="duotone" />
-                                <Text fontWeight='light' fontSize='16px'>cursinhofeausp.marketing@gmail.com</Text>
+                                <Envelope size={isLg ? 32 : 24} color="#023047" weight="duotone" />
+                                <Text fontWeight='light' fontSize={{base: 14, lg: 16}}>cursinhofeausp.marketing@gmail.com</Text>
                             </Flex>
                             <Text fontWeight='bold' fontSize='20px' mt={8}>Parcerias</Text>
                             <Flex alignItems='center' justifyContent='start' gap={2} mt={1}>
-                                <Envelope size={32} color="#023047" weight="duotone" />
-                                <Text fontWeight='light' fontSize='16px'>captacao.cursinho@gmail.com</Text>
+                                <Envelope size={isLg ? 32 : 24} color="#023047" weight="duotone" />
+                                <Text fontWeight='light' fontSize={{base: 14, lg: 16}}>captacao.cursinho@gmail.com</Text>
                             </Flex>
                             <Text fontWeight='bold' fontSize='20px' mt={8}>Processos Seletivos</Text>
                             <Flex alignItems='center' justifyContent='start' gap={2} mt={1}>
-                                <Envelope size={32} color="#023047" weight="duotone" />
-                                <Text fontWeight='light' fontSize='16px'>ps.cfeausp@gmail.com</Text>
+                                <Envelope size={isLg ? 32 : 24} color="#023047" weight="duotone" />
+                                <Text fontWeight='light' fontSize={{base: 14, lg: 16}}>ps.cfeausp@gmail.com</Text>
                             </Flex>
                         </Box>
                         <Flex 
@@ -124,10 +124,10 @@ export function Footer() {
                             mt={8}
                             display={{base: 'flex', lg: 'none'}}
                         >
-                            <FacebookLogo size={48} color="#023047" weight="duotone" />
-                            <InstagramLogo size={48} color="#023047" weight="duotone" />
-                            <LinkedinLogo size={48} color="#023047" weight="duotone" />
-                            <YoutubeLogo size={48} color="#023047" weight="duotone" />
+                            <FacebookLogo size={40} color="#023047" weight="duotone" />
+                            <InstagramLogo size={40} color="#023047" weight="duotone" />
+                            <LinkedinLogo size={40} color="#023047" weight="duotone" />
+                            <YoutubeLogo size={40} color="#023047" weight="duotone" />
                         </Flex>
                     <Text 
                         fontWeight='light' 

@@ -64,10 +64,11 @@ export function Main() {
 
                 <Image 
                     src={'static/img/up-arrow.png'} 
-                    transform={'rotate(-160.4deg)'}
+                    transform={{base: 'rotate(-170deg)', lg: 'rotate(-160.4deg)'}}
                     maxW={{base: '40px', sm: '40px', lg: '80px'}}
                     mt={8}
-                    ml={{base: 32, sm: 32, lg: 12}}
+                    ml={{base: 'auto', sm: 'auto', lg: 12}}
+                    mr={{base: 'auto', lg: 0}}
                 />
 
                 <Flex gap={4} direction={{base: 'column', sm: 'column', lg: 'row'}}>
@@ -107,7 +108,8 @@ export function Main() {
                     src={'static/img/todos_podem_voar.png'} 
                     maxH={'40px'}
                     mt={8}
-                    ml={{base: 8, sm: 8, lg: 0}}
+                    ml={{base: 'auto', sm: 'auto', lg: 0}}
+                    mr={{base: 'auto', lg: 0}}
                 />
 
             </Box>
