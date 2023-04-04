@@ -6,7 +6,7 @@ export function Main() {
     const [isButtonHovered, setIsButtonHovered] = useState(false)
 
     return (
-        <Flex px={12} py={4}>
+        <Flex px={{base: 8, lg: 12}} py={4}>
             <Box>
                 <Text fontWeight='bold' fontSize={{base: 20, sm: 20, lg: 48}} textAlign={{base: 'center', sm: 'center', lg: 'start'}}>
                     <Highlight query={['impactante', 'atenção']} styles={{bg: 'transparent', color: 'yellow.500' }}>
@@ -14,44 +14,45 @@ export function Main() {
                     </Highlight>
                 </Text>
 
-                <Flex w='100%' justifyContent='center' flex='1' mt={4} gap={4} display={{base: 'flex', sm: 'flex', lg: 'none'}}>
+                <Flex 
+                    w='100%' justifyContent='center' flex='1' mt={4} gap={4} display={{base: 'flex', sm: 'flex', lg: 'none'}}>
                     <Flex direction='column' gap={4}>
                         <Box
-                        w='24vw'
+                        w={{base: '40vw', lg: '24vw'}}
                         borderRadius='md'
                         >
                         <Image 
                             src={'static/img/teste-img-1.png'} 
-                            maxW={'24vw'}
+                            maxW={{base: '40vw', lg: '24vw'}}
                         />
                         </Box>
                         <Box
-                        w='24vw'
+                        w={{base: '40vw', lg: '24vw'}}
                         borderRadius='md'
                         >
                         <Image 
                             src={'static/img/teste-img-2.png'} 
-                            maxW={'24vw'}
+                            maxW={{base: '40vw', lg: '24vw'}}
                         />
                         </Box>
                     </Flex>
                     <Flex direction='column' gap={4}>
                     <Box
-                        w='24vw'
+                        w={{base: '40vw', lg: '24vw'}}
                         borderRadius='md'
                         >
                         <Image 
                             src={'static/img/teste-img-2.png'} 
-                            maxW={'24vw'}
+                            maxW={{base: '40vw', lg: '24vw'}}
                         />
                         </Box>
                         <Box
-                        w='24vw'
+                        w={{base: '40vw', lg: '24vw'}}
                         borderRadius='md'
                         >
                         <Image 
                             src={'static/img/teste-img-1.png'} 
-                            maxW={'24vw'}
+                            maxW={{base: '40vw', lg: '24vw'}}
                         />
                         </Box>
                     </Flex>
