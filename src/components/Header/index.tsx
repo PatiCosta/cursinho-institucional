@@ -83,7 +83,7 @@ export default function Header() {
                     <Text>Inscrever-se</Text>
                 </Button>
                 <IconButton
-                    display={{base: 'block', sm: 'block', lg: 'none'}}
+                    display={{base: 'flex', sm: 'flex', lg: 'none'}}
                     aria-label='Abrir menu'
                     bgColor='gray.50'
                     icon={<List size={28} color="#023047" />}

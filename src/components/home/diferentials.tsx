@@ -6,28 +6,28 @@ export function Diferentials() {
     const [isButtonHovered, setIsButtonHovered] = useState(false)
 
     return (
-        <Box p={12}>
+        <Box py={12} px={{base: 8, lg: 12}}>
             <Grid
-                templateColumns='1.1fr .9fr'
+                templateColumns={{base: '1fr', lg: '1.1fr .9fr'}}
                 gap={4}
             >
                 <Box bgColor='blue.800' color='gray.50' p={8} borderRadius='lg' boxShadow='md'>
-                    <Text fontSize="32px" fontWeight="bold">
+                    <Text fontSize={{base: 24, lg: 32}} fontWeight="bold">
                         <Highlight query='diferenciais' styles={{bg: 'transparent', color: 'yellow.500' }}>
                             Nossos diferenciais
                         </Highlight>
                     </Text>
-                    <Text fontWeight='regular' fontSize='24px' w='70%'>
+                    <Text fontWeight='regular' fontSize={{base: 14, lg: 24}} w='70%'>
                         <Highlight query='você' styles={{bg: 'transparent', color: 'yellow.500' }}>
                             Para garantir o melhor ensino para você
                         </Highlight>
                     </Text>
                     <Button 
-                        mt={12} 
+                        mt={{base: 8, lg: 12}} 
                         bgColor='gray.50' 
                         color='blue.800' 
                         borderRadius='xl' 
-                        size='lg' 
+                        size={{base: 'sm', lg: 'lg'}} 
                         display='flex' 
                         alignItems='center' 
                         justifyContent='center' 
@@ -57,13 +57,13 @@ export function Diferentials() {
                             Material Anglo
                         </Highlight>
                     </Text>
-                    <Text fontWeight='light' fontSize='16px' mt={4}>
+                    <Text fontWeight='light' fontSize={{base: 14, lg: 16}} mt={4}>
                         Apostilas didáticas gratuitas fornecidas pelo Anglo dão uma excelente base para o aluno que vai prestar Enem, Unesp, Unicamp, Fuvest ou qualquer outro vestibular.
                     </Text>
                 </Box>
             </Grid>
             <Grid
-                templateColumns='1fr 1fr'
+                templateColumns={{base: '1fr', lg: '1fr 1fr'}}
                 gap={4}
                 mt={4}
             >
@@ -74,7 +74,7 @@ export function Diferentials() {
                             Revistas Le Monde
                         </Highlight>
                     </Text>
-                    <Text fontWeight='light' fontSize='16px' mt={4}>
+                    <Text fontWeight='light' fontSize={{base: 14, lg: 16}} mt={4}>
                     Revistas mensais da Le Monde são disponibilizadas para que os alunos nunca fiquem por fora das atualidades!
                     </Text>
                 </Box>
@@ -85,7 +85,7 @@ export function Diferentials() {
                             Sala do Saber & Plurall
                         </Highlight>
                     </Text>
-                    <Text fontWeight='light' fontSize='16px' mt={4}>
+                    <Text fontWeight='light' fontSize={{base: 14, lg: 16}} mt={4}>
                     Acesso ilimitado às plataformas on-line Sala do Saber e Plurall, para o aluno ir além da sala de aula com exercícios, videoaulas e muito mais.
                     </Text>
                 </Box>

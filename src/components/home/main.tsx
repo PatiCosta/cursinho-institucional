@@ -8,25 +8,68 @@ export function Main() {
     return (
         <Flex px={12} py={4}>
             <Box>
-                <Text fontWeight='bold' fontSize={48}>
+                <Text fontWeight='bold' fontSize={{base: 20, sm: 20, lg: 48}} textAlign={{base: 'center', sm: 'center', lg: 'start'}}>
                     <Highlight query={['impactante', 'atenção']} styles={{bg: 'transparent', color: 'yellow.500' }}>
                     Alguma frase bem impactante aqui para chamar muita atenção dos futuros alunos
                     </Highlight>
                 </Text>
 
-                <Text fontWeight='light' fontSize={20} mt={8}>
+                <Flex w='100%' justifyContent='center' flex='1' mt={4} gap={4} display={{base: 'flex', sm: 'flex', lg: 'none'}}>
+                    <Flex direction='column' gap={4}>
+                        <Box
+                        w='24vw'
+                        borderRadius='md'
+                        >
+                        <Image 
+                            src={'static/img/teste-img-1.png'} 
+                            maxW={'24vw'}
+                        />
+                        </Box>
+                        <Box
+                        w='24vw'
+                        borderRadius='md'
+                        >
+                        <Image 
+                            src={'static/img/teste-img-2.png'} 
+                            maxW={'24vw'}
+                        />
+                        </Box>
+                    </Flex>
+                    <Flex direction='column' gap={4}>
+                    <Box
+                        w='24vw'
+                        borderRadius='md'
+                        >
+                        <Image 
+                            src={'static/img/teste-img-2.png'} 
+                            maxW={'24vw'}
+                        />
+                        </Box>
+                        <Box
+                        w='24vw'
+                        borderRadius='md'
+                        >
+                        <Image 
+                            src={'static/img/teste-img-1.png'} 
+                            maxW={'24vw'}
+                        />
+                        </Box>
+                    </Flex>
+                </Flex>
+
+                <Text fontWeight='light' fontSize={{base: 14, sm: 14, lg: 20}} mt={{base: 4, sm: 4, lg: 8}} textAlign={{base: 'center', sm: 'center', lg: 'start'}}>
                     Algum textinho explicativo aqui. Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                 </Text>
 
                 <Image 
                     src={'static/img/up-arrow.png'} 
                     transform={'rotate(-160.4deg)'}
-                    maxW={'80px'}
+                    maxW={{base: '40px', sm: '40px', lg: '80px'}}
                     mt={8}
-                    ml={12}
+                    ml={{base: 32, sm: 32, lg: 12}}
                 />
 
-                <Flex gap={4}>
+                <Flex gap={4} direction={{base: 'column', sm: 'column', lg: 'row'}}>
                     <Button bgColor='blue.800' color='gray.50' borderRadius='xl' size='lg' transition='all .3s ease' _hover={{
                         color: 'yellow.500'
                     }}>
@@ -63,50 +106,51 @@ export function Main() {
                     src={'static/img/todos_podem_voar.png'} 
                     maxH={'40px'}
                     mt={8}
+                    ml={{base: 8, sm: 8, lg: 0}}
                 />
 
             </Box>
-            <Flex flex='1' h='100%' gap={4}>
-            <Flex direction='column' gap={4}>
+            <Flex flex='1' h='100%' gap={4} display={{base: 'none', sm: 'none', lg: 'flex'}}>
+                <Flex direction='column' gap={4}>
+                    <Box
+                    w='24vw'
+                    borderRadius='md'
+                    >
+                    <Image 
+                        src={'static/img/teste-img-1.png'} 
+                        maxW={'24vw'}
+                    />
+                    </Box>
+                    <Box
+                    w='24vw'
+                    borderRadius='md'
+                    >
+                    <Image 
+                        src={'static/img/teste-img-2.png'} 
+                        maxW={'24vw'}
+                    />
+                    </Box>
+                </Flex>
+                <Flex direction='column' gap={4}>
                 <Box
-                w='24vw'
-                borderRadius='md'
-                >
-                <Image 
-                    src={'static/img/teste-img-1.png'} 
-                    maxW={'24vw'}
-                />
-                </Box>
-                <Box
-                w='24vw'
-                borderRadius='md'
-                >
-                <Image 
-                    src={'static/img/teste-img-2.png'} 
-                    maxW={'24vw'}
-                />
-                </Box>
-            </Flex>
-            <Flex direction='column' gap={4}>
-            <Box
-                w='24vw'
-                borderRadius='md'
-                >
-                <Image 
-                    src={'static/img/teste-img-2.png'} 
-                    maxW={'24vw'}
-                />
-                </Box>
-                <Box
-                w='24vw'
-                borderRadius='md'
-                >
-                <Image 
-                    src={'static/img/teste-img-1.png'} 
-                    maxW={'24vw'}
-                />
-                </Box>
-            </Flex>
+                    w='24vw'
+                    borderRadius='md'
+                    >
+                    <Image 
+                        src={'static/img/teste-img-2.png'} 
+                        maxW={'24vw'}
+                    />
+                    </Box>
+                    <Box
+                    w='24vw'
+                    borderRadius='md'
+                    >
+                    <Image 
+                        src={'static/img/teste-img-1.png'} 
+                        maxW={'24vw'}
+                    />
+                    </Box>
+                </Flex>
             </Flex>
         </Flex>
     )
