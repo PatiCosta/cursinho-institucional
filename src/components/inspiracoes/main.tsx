@@ -46,7 +46,8 @@ function Review({
                 w={{base: '100%', lg: '60%'}} 
                 bgColor='yellow.400' 
                 borderRadius='64px' 
-                borderBottomLeftRadius='0' 
+                borderBottomLeftRadius={{base: '64px', lg: 0}}
+                borderTopLeftRadius={{base: 0, lg: '64px'}} 
                 p={{base: 8, lg: 12}} 
                 textAlign='start'
             >
