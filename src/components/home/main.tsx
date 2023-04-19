@@ -1,5 +1,6 @@
 import { Box, Button, Flex, Highlight, Image, Text, Icon } from "@chakra-ui/react";
 import { ArrowCircleUpRight } from "phosphor-react";
+import Link from 'next/link';
 import { useState } from "react";
 
 export function Main() {
@@ -78,6 +79,8 @@ export function Main() {
                         <Text>Inscrever-se</Text>
                     </Button>
                     <Button 
+                        as={Link}
+                        href={`/turmas`} 
                         bgColor='gray.50' 
                         border='1px solid' 
                         borderColor='yellow.500' 
@@ -90,6 +93,7 @@ export function Main() {
                         _hover={{
                             bgColor: 'gray.50'
                         }}
+
                     >
                         <Text>Saiba mais</Text>
                         <ArrowCircleUpRight 

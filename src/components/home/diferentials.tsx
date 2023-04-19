@@ -1,4 +1,5 @@
 import { Box, Button, Grid, Highlight, Text } from "@chakra-ui/react";
+import Link from "next/link";
 import { ArrowCircleUpRight, Books, Laptop, Notebook } from "phosphor-react";
 import { useState } from "react";
 
@@ -37,6 +38,9 @@ export function Diferentials() {
                         }}
                         onMouseEnter={() => setIsButtonHovered(true)}
                         onMouseLeave={() => setIsButtonHovered(false)}
+                        w='fit-content'
+                        as={Link}
+                        href={`/turmas`} 
                     >
                         <Text>Veja todos</Text>
                         <ArrowCircleUpRight 

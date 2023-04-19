@@ -117,18 +117,18 @@ export function Footer() {
                             <YoutubeLogo size={48} color="#023047" weight="duotone" />
                         </Flex>
                     </Flex>
-                        <Flex 
-                            alignItems='center' 
-                            justifyContent='center' 
-                            gap={4}
-                            mt={8}
-                            display={{base: 'flex', lg: 'none'}}
-                        >
-                            <FacebookLogo size={40} color="#023047" weight="duotone" />
-                            <InstagramLogo size={40} color="#023047" weight="duotone" />
-                            <LinkedinLogo size={40} color="#023047" weight="duotone" />
-                            <YoutubeLogo size={40} color="#023047" weight="duotone" />
-                        </Flex>
+                    <Flex 
+                        alignItems='center' 
+                        justifyContent='center' 
+                        gap={4}
+                        mt={8}
+                        display={{base: 'flex', lg: 'none'}}
+                    >
+                        <FacebookLogo size={40} color="#023047" weight="duotone" />
+                        <InstagramLogo size={40} color="#023047" weight="duotone" />
+                        <LinkedinLogo size={40} color="#023047" weight="duotone" />
+                        <YoutubeLogo size={40} color="#023047" weight="duotone" />
+                    </Flex>
                     <Text 
                         fontWeight='light' 
                         fontSize={{base: 12, lg: 14}}

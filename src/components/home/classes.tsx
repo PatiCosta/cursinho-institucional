@@ -1,4 +1,5 @@
 import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
+import Link from "next/link";
 import { ArrowCircleUpRight } from "phosphor-react";
 
 export function Classes() {
@@ -28,6 +29,8 @@ export function Classes() {
                     _hover={{
                         opacity: 0.9
                     }}
+                    as={Link}
+                    href={`/turmas`} 
                 >
                     <Text>Saiba mais</Text>
                     <ArrowCircleUpRight size={18} color="#F7FAFC" weight="fill" />

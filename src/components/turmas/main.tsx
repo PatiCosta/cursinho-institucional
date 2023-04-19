@@ -122,21 +122,21 @@ const Class = ({imgSrc, title, bgColor, iconColor, color, status, target, schedu
 
 export function Main() {
     return (
-        <Flex px={12} direction='column' alignItems='center' justifyContent='center'>
+        <Flex px={{base: 4, lg: 12}} py={{base: 4, lg: 0}} direction='column' alignItems='center' justifyContent='center'>
             <Image 
                 src={'static/img/logos_turmas.png'} 
-                maxH={16}
+                maxH={{base: 12, lg: 16}}
             />
-            <Text fontSize={48} fontWeight="bold" textAlign="center">
+            <Text fontSize={{base: 32, lg: 48}} fontWeight="bold" textAlign="center">
                 <Highlight query='turmas' styles={{bg: 'transparent', color: 'yellow.500' }}>
                     Nossas turmas
                 </Highlight>
             </Text>
-            <Box bgColor='blue.800' h='2px' w='600px'></Box>
-            <Text fontSize={16} w='800px' textAlign='center' mt={4}>
+            <Box bgColor='blue.800' h='2px' w={{base: '300px', lg: '600px'}}></Box>
+            <Text fontSize={{base: 14, lg: 16}} w={{base: '300px', lg: '800px'}} textAlign='center' mt={4}>
                 As aulas são ministradas na Faculdade de Economia, Administração, Contabilidade e Atuária da USP (FEA USP), onde também se encontra a nossa coordenação. Nosso ensino, porém, não é direcionado apenas para estes cursos. Preparamos nossos alunos para prestar os principais vestibulares paulistas e o ENEM, para qualquer curso que ele deseje.
             </Text>
-            <Grid alignItems='center' templateColumns='1fr 1fr 1fr 1fr' gap={4} pt={8}>
+            <Grid alignItems='center' templateColumns={{base: '1fr', lg: '1fr 1fr 1fr 1fr'}} gap={4} pt={8}>
                 <Class 
                     imgSrc='static/img/tse.png' 
                     title='Turma de semana' 
@@ -146,7 +146,7 @@ export function Main() {
                     status='closed' 
                     target="Pré-vestibular"
                     scheduleDates="De segunda à sexta"
-                    scheduleHours="Das 12h50 às 18h30"
+                    scheduleHours="Das 12h40 às 18h30"
                 />
                 <Class 
                     imgSrc='static/img/tsa.png' 
@@ -157,7 +157,7 @@ export function Main() {
                     status='closed' 
                     target="Pré-vestibular"
                     scheduleDates="Aos sábados"
-                    scheduleHours="Das 12h50 às 18h30"
+                    scheduleHours="Das 8h00 às 18h30"
                 />
                 <Class 
                     imgSrc='static/img/tsm.png' 
@@ -168,7 +168,7 @@ export function Main() {
                     status='open' 
                     target="Pré-vestibular"
                     scheduleDates="Aos sábados"
-                    scheduleHours="Das 12h50 às 18h30"
+                    scheduleHours="Das 8h00 às 18h30"
                 />
                 <Class 
                     imgSrc='static/img/tsi.png' 
@@ -179,7 +179,7 @@ export function Main() {
                     status='soon' 
                     target="Pré-vestibular"
                     scheduleDates="De segunda à sexta"
-                    scheduleHours="Das 12h50 às 18h30"
+                    scheduleHours="Das 12h40 às 18h30"
                 />
             </Grid>
         </Flex>

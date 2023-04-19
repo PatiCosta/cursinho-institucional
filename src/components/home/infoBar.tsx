@@ -1,5 +1,6 @@
 import { Box, Flex, Grid, Text, useBreakpointValue } from "@chakra-ui/react";
 import { ArrowCircleRight, ArrowCircleUpRight } from "phosphor-react";
+import Link from 'next/link';
 import { useState } from "react";
 
 export function InfoBar() {
@@ -18,12 +19,12 @@ export function InfoBar() {
         bgColor='yellow.300'
       >
         <Box textAlign='center'>
-          <Text fontWeight='bold' fontSize='40px'>32</Text>
+          <Text fontWeight='bold' fontSize='40px'>46</Text>
           <Text fontSize='18px'>professores</Text>
         </Box>
         <Box bgColor='blue.800' w='12px' h='12px' borderRadius='100%' />
         <Box textAlign='center'>
-          <Text fontWeight='bold' fontSize='40px'>12</Text>
+          <Text fontWeight='bold' fontSize='40px'>8</Text>
           <Text fontSize='18px'>plantonistas</Text>
         </Box>
         <Box bgColor='blue.800' w='12px' h='12px' borderRadius='100%' />
@@ -44,6 +45,8 @@ export function InfoBar() {
           cursor='pointer'
           onMouseEnter={() => setIsButtonHovered(true)}
           onMouseLeave={() => setIsButtonHovered(false)}
+          as={Link}
+          href={`/sobre`} 
         >
           {
             isButtonHovered
@@ -106,6 +109,8 @@ export function InfoBar() {
         </Box>
       </Grid>
       <Flex 
+        as={Link}
+        href={`/sobre`} 
         alignItems='center' 
         direction='column' 
         cursor='pointer'

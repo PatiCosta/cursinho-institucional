@@ -1,27 +1,40 @@
-import { Box, Button, Flex, Highlight, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Highlight, Text, useBreakpointValue } from "@chakra-ui/react";
 import Lottie from "lottie-react";
 import { ArrowCircleUpRight } from "phosphor-react";
 
 import studyAnimation from "../../animations/study_gif.json";
 
 export function DontMissBox() {
+  const isLg = useBreakpointValue({base: false, sm: false, lg: true})
+
     return (
-        <Flex bgColor='yellow.400' borderRadius='24px' w='60vw' position='absolute' top='-25%' left='20%' p={12} gap={8}>
-            <Lottie animationData={studyAnimation}/>
-            <Box textAlign='start'>
-                <Text fontSize="40px" color='gray.800' fontWeight='light'>
+        <Flex 
+            bgColor='yellow.400' 
+            borderRadius='24px' 
+            w={{base: '90vw', lg: '60vw'}}  
+            position='absolute' 
+            top={{base: '-20%', lg: '-25%'}} 
+            mx={{base: '5vw', lg: '20vw'}}  
+            py={{base: 8, lg: 12}}
+            px={{base: 4, lg: 12}} 
+            gap={8}
+        >
+            {isLg && <Lottie animationData={studyAnimation}/>}
+            <Box textAlign={{base: 'center', lg: 'start'}}>
+                <Text fontSize={{base: 32, lg: 40}} color='gray.800' fontWeight='light'>
                     <Highlight query='Não perca' styles={{bg: 'transparent', color: 'gray.50', fontWeight: 'bold' }}>
                         Não perca essa chance!
                     </Highlight>
                 </Text>
-                <Text fontSize='16px' mt={4}>
+                <Text fontSize={{base: 14, lg: 16}} mt={4}>
                     Algum texto motivacional sobre alavancar os estudos com o cursinho e que a pessoa consegue etc etc xxxxxxxxx Lorem Ipsum is simply dummy text of the printing and typesetting industry.  
                 </Text>
                 <Button 
-                    mt={12} 
+                    mt={12}
+                    mx={{base: 'auto', lg: 0}}
                     bgColor='gray.50' 
                     borderRadius='2xl' 
-                    size='lg' 
+                    size={{base: 'md', lg: 'lg'}} 
                     display='flex' 
                     alignItems='center' 
                     gap={2} 
@@ -30,7 +43,7 @@ export function DontMissBox() {
                     _hover={{
                         opacity: 0.9
                     }}
-                    onClick={() => window.scrollTo({top: 60, behavior: 'smooth'})}
+                    onClick={() => window.location.pathname === '/turmas' ? window.scrollTo({top: 60, behavior: 'smooth'}) : window.location.pathname = '/turmas'}
                 >
                     <Text>Garanta sua vaga</Text>
                     <ArrowCircleUpRight size={28} color="#023047" weight="fill" />

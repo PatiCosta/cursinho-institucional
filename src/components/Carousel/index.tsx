@@ -70,8 +70,8 @@ export const Carousel = (
         borderRadius='2xl' 
         overflow='hidden' 
         position='relative' 
-        h='400px' 
-        flex='1' 
+        h={{base: '200px', lg: '400px'}}
+        w={{base: '90vw', lg: '100%'}}
         boxShadow='2xl'
       >
         <AnimatePresence initial={false} custom={direction}>
@@ -79,8 +79,6 @@ export const Carousel = (
             style={{
                 borderRadius: '1rem', 
                 position: 'absolute', 
-                maxWidth: '100%', 
-                height: 'auto',
             }}
             key={page}
             src={images[imageIndex]}
@@ -127,11 +125,11 @@ export const Carousel = (
               0 === imageIndex ? 'gray.500' : 'gray.300'
           }/>
           {images.map((image, index) => {
-            if(index === 0) return <></>
+            if(index === 0) return null
 
             if (index > 0) {
               return (
-                <Box h='8px' w='8px' borderRadius='full' bgColor={
+                <Box key={index} h='8px' w='8px' borderRadius='full' bgColor={
                   images.length - index === imageIndex ? 'gray.500' : 'gray.300'
                 }/>
               )
