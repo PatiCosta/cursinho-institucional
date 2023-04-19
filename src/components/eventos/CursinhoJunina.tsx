@@ -17,7 +17,7 @@ export function CursinhoJunina() {
         <Box pb={8} w='100vw'>
             <Flex alignItems='center' w='100%' px={12} justifyContent='center' gap={4}>
                 <Box h='2px' bgColor='blue.800' flex='1' />
-                <Text fontSize={{base: 32, lg: 40}}  fontWeight='semibold'>
+                <Text fontSize={{base: 32, lg: 40}}  fontWeight='semibold' textAlign='center'>
                     <Highlight query='Junina' styles={{bg: 'transparent', color: 'yellow.500', fontWeight: 'bold' }}>
                         Cursinho Junina
                     </Highlight>
