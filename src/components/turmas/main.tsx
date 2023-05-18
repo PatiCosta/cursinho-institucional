@@ -134,7 +134,7 @@ export function Main() {
             </Text>
             <Box bgColor='blue.800' h='2px' w={{base: '300px', lg: '600px'}}></Box>
             <Text fontSize={{base: 14, lg: 16}} w={{base: '300px', lg: '800px'}} textAlign='center' mt={4}>
-                As aulas são ministradas na Faculdade de Economia, Administração, Contabilidade e Atuária da USP (FEA USP), onde também se encontra a nossa coordenação. Nosso ensino, porém, não é direcionado apenas para estes cursos. Preparamos nossos alunos para prestar os principais vestibulares paulistas e o ENEM, para qualquer curso que ele deseje.
+                As aulas são ministradas na Faculdade de Economia, Administração, Contabilidade e Atuária da USP (FEA USP), onde também se encontra a nossa coordenação. Nosso ensino, porém, não é direcionado apenas para estes cursos. Preparamos nossos alunos para prestar os principais vestibulares paulistas e o ENEM, para qualquer curso que ele desejar.
             </Text>
             <Grid alignItems='center' templateColumns={{base: '1fr', lg: '1fr 1fr 1fr 1fr'}} gap={4} pt={8}>
                 <Class 

@@ -56,7 +56,7 @@ export function ApprovedChart() {
                     <Grid templateRows='1.3fr .7fr' templateColumns={{base: '40px', lg: '120px'}} h={20} borderRadius='16px 16px 0 0' position='relative'>
                         <Box bgColor='gray.50' borderRadius='16px 16px 0 0'></Box>
                         <Box bgColor='yellow.400'></Box>
-                        <Text color='gray.50' fontWeight='light' fontSize={{base: 12, lg: 16}} position='absolute' bottom='-25px' left={{base: '16%', lg: '35%'}}>2020</Text>
+                        <Text color='gray.50' fontWeight='light' fontSize={{base: 12, lg: 16}} position='absolute' bottom='-25px' left={{base: '16%', lg: '35%'}}>2021</Text>
                     </Grid>
                     <Grid templateRows='1.52fr .48fr' templateColumns={{base: '40px', lg: '120px'}} h={32} borderRadius='16px 16px 0 0' position='relative'>
                         <Box bgColor='gray.50' borderRadius='16px 16px 0 0'></Box>
