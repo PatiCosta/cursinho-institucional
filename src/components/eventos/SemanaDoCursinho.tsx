@@ -27,11 +27,17 @@ export function SemanaDoCursinho() {
                 <Box flex='.95'>
                     <RowInfoLabel 
                         title='SOBRE O EVENTO' 
-                        info='Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. ' 
+                        info={
+                            <>
+                                <Text>A Semana do Cursinho ocorre ao longo de uma Semana de Setembro e nosso intuito com essa semana é criar eventos em dias diferentes com o intuito de arrecadar dinheiro para pagar as taxas de inscrição dos vestibulares dos alunos.</Text>
+                                <Text>Vendemos comidas, organizamos bingos com prêmios e nosso público alvo são os alunos da graduação e quem quiser contribuir para nosso propósito.</Text>
+                                <Text>Ano passado a Semana se encerrou com uma palestra com o cantor Rincon Sapiência e, com todo dinheiro arrecadado, fomos capazes de abarcar todos os pedidos de ajuda com as taxas.</Text>
+                            </>
+                        }
                         alignItems='flex-start'
                         bgColor='yellow.400'
                     />
-                    <Grid flex='1' templateColumns='1fr 1fr 1fr' gap={{base: 2, lg: 8}} px={{base: 4, lg: 12}} mt={{base: 6, lg: 12}}>
+                    <Grid flex='1' templateColumns='1fr 1fr' gap={{base: 2, lg: 8}} px={{base: 4, lg: 12}} mt={{base: 6, lg: 12}}>
                         <Flex direction='column' alignItems='center' bgColor='gray.100' borderRadius='xl' p={4}>
                             <CalendarBlank 
                                 size={isLg ? 40 : 28} 
@@ -39,16 +45,7 @@ export function SemanaDoCursinho() {
                                 weight="duotone" 
                             />
                             <Text fontWeight='bold' fontSize={{base: 14, lg: 16}}>QUANDO?</Text>
-                            <Text fontWeight='light' fontSize={14} mt={{base: 2, lg: 4}}>Julho</Text>
-                        </Flex>
-                        <Flex direction='column' alignItems='center' bgColor='gray.100' borderRadius='xl' p={4}>
-                            <MapPin 
-                                size={isLg ? 40 : 28} 
-                                color="#2a255a" 
-                                weight="duotone" 
-                            />
-                            <Text fontWeight='bold' fontSize={{base: 14, lg: 16}}>ONDE?</Text>
-                            <Text fontWeight='light' fontSize={14} mt={{base: 2, lg: 4}}>CRUSP</Text>
+                            <Text fontWeight='light' fontSize={14} mt={{base: 2, lg: 4}}>Setembro</Text>
                         </Flex>
                         <Flex direction='column' alignItems='center' bgColor='gray.100' borderRadius='xl' p={4}>
                             <Money 

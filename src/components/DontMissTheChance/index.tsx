@@ -27,7 +27,9 @@ export function DontMissBox() {
                     </Highlight>
                 </Text>
                 <Text fontSize={{base: 14, lg: 16}} mt={4}>
-                    Algum texto motivacional sobre alavancar os estudos com o cursinho e que a pessoa consegue etc etc xxxxxxxxx Lorem Ipsum is simply dummy text of the printing and typesetting industry.  
+                <Highlight query='#todospodemvoar' styles={{fontWeight: 'bold', color: 'gray.50' }}>
+                Você está se preparando para os vestibulares? Realize sua inscrição no Processo Seletivo daquela(s) turma(s) do Cursinho FEAUSP que melhor atender(em) às suas necessidades. Anualmente, o Cursinho FEAUSP ajuda 480 vidas a alçarem voos cada vez maiores para conquistarem seu sonho de ingressar no ensino superior.  #todospodemvoar 
+                    </Highlight>
                 </Text>
                 <Button 
                     mt={12}

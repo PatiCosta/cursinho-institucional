@@ -39,11 +39,17 @@ export function CursinhoJunina() {
                 <Box flex='.95'>
                     <ReverseRowInfoLabel 
                         title='SOBRE O EVENTO' 
-                        info='Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. ' 
+                        info={
+                            <>
+                                <Text>Arraial do Cursinho!</Text>
+                                <Text>Todo ano, nós da área de eventos, organizamos a nossa festa junina para os alunos, coordenadores e professores para que todos consigam descontrair e se sentir à vontade em um dos feriados mais marcantes do ano! </Text>
+                                <Text>Realizamos jogos para descontrair, fazemos comida e fazemos uma quadrilha para que todos possam se divertir e fazer parte dessa festa conosco fazendo de forma totalmente gratuita.</Text>
+                            </>
+                        }
                         alignItems='flex-start'
                         bgColor='blue.800'
                     />
-                    <Grid flex='1' templateColumns='1fr 1fr 1fr' gap={{base: 2, lg: 8}} px={{base: 4, lg: 12}} mt={{base: 6, lg: 12}}>
+                    <Grid flex='1' templateColumns='1fr 1fr' gap={{base: 2, lg: 8}} px={{base: 4, lg: 12}} mt={{base: 6, lg: 12}}>
                         <Flex direction='column' alignItems='center' bgColor='gray.100' borderRadius='xl' p={4}>
                             <CalendarBlank 
                                 size={isLg ? 40 : 28} 
@@ -51,16 +57,7 @@ export function CursinhoJunina() {
                                 weight="duotone" 
                             />
                             <Text fontWeight='bold' fontSize={{base: 14, lg: 16}}>QUANDO?</Text>
-                            <Text fontWeight='light' fontSize={14} mt={{base: 2, lg: 4}}>Julho</Text>
-                        </Flex>
-                        <Flex direction='column' alignItems='center' bgColor='gray.100' borderRadius='xl' p={4}>
-                            <MapPin 
-                                size={isLg ? 40 : 28} 
-                                color="#2a255a" 
-                                weight="duotone" 
-                            />
-                            <Text fontWeight='bold' fontSize={{base: 14, lg: 16}}>ONDE?</Text>
-                            <Text fontWeight='light' fontSize={14} mt={{base: 2, lg: 4}}>CRUSP</Text>
+                            <Text fontWeight='light' fontSize={14} mt={{base: 2, lg: 4}}>Junho</Text>
                         </Flex>
                         <Flex direction='column' alignItems='center' bgColor='gray.100' borderRadius='xl' p={4}>
                             <Money 

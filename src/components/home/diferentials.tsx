@@ -15,12 +15,12 @@ export function Diferentials() {
                 <Box bgColor='blue.800' color='gray.50' p={8} borderRadius='lg' boxShadow='md'>
                     <Text fontSize={{base: 24, lg: 32}} fontWeight="bold">
                         <Highlight query='diferenciais' styles={{bg: 'transparent', color: 'yellow.500' }}>
-                            Nossos diferenciais
+                        Nossos Diferenciais
                         </Highlight>
                     </Text>
                     <Text fontWeight='regular' fontSize={{base: 14, lg: 24}} w='70%'>
                         <Highlight query='você' styles={{bg: 'transparent', color: 'yellow.500' }}>
-                            Para garantir o melhor ensino para você
+                        Para garantir o melhor ensino e experiência para você
                         </Highlight>
                     </Text>
                     <Button 
@@ -75,11 +75,11 @@ export function Diferentials() {
                     <Notebook size={64} color="#ffb703" weight="duotone" />
                     <Text fontSize="24px" fontWeight="bold">
                         <Highlight query='Le Monde' styles={{bg: 'transparent', color: 'yellow.500' }}>
-                            Revistas Le Monde
+                            Letrus
                         </Highlight>
                     </Text>
                     <Text fontWeight='light' fontSize={{base: 14, lg: 16}} mt={4}>
-                    Revistas mensais da Le Monde são disponibilizadas para que os alunos nunca fiquem por fora das atualidades!
+                    Plataforma online de envio de redações e correção realizada em parte por Inteligência Artificial.
                     </Text>
                 </Box>
                 <Box bgColor='gray.100' p={8} borderRadius='lg' h='100%' boxShadow='md'>

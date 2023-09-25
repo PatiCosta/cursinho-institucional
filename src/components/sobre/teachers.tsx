@@ -31,12 +31,16 @@ export function Teachers() {
                     <GraduationCap size={64} color="#023047" weight="thin" />
                 </Flex>
                 <Text fontWeight='light' fontSize={16} mt={4} pl={8}>
-                    Seja parte da nossa equipe etc etc bla bla bla
+                Venha fazer parte da nossa equipe como professor, plantonista e/ou corretor
                 </Text>
                 <Text fontSize={16} mt={8} pl={8}>
                     Entre em contato pelo nosso{' '}
                     <Link href='https://www.facebook.com/profcursinhofeausp' isExternal fontWeight='bold'>
                         facebook <ExternalLinkIcon mx='2px' />
+                    </Link>
+                    {' '}ou{' '}
+                    <Link href='https://www.instagram.com/psnpcursinhofeausp/' isExternal fontWeight='bold'>
+                        instagram <ExternalLinkIcon mx='2px' />
                     </Link>
                 </Text>
             </Box>
@@ -70,12 +74,16 @@ export function Teachers() {
                     <GraduationCap size={64} color="#023047" weight="thin" />
                 </Flex>
                 <Text fontWeight='light' fontSize={16} mt={4} pl={8}>
-                    Seja parte da nossa equipe etc etc bla bla bla
+                    Venha fazer parte da nossa equipe como professor, plantonista e/ou corretor
                 </Text>
                 <Text fontSize={16} mt={8} pl={8}>
                     Entre em contato pelo nosso{' '}
                     <Link href='https://www.facebook.com/profcursinhofeausp' isExternal fontWeight='bold'>
                         facebook <ExternalLinkIcon mx='2px' />
+                    </Link>
+                    {' '}ou{' '}
+                    <Link href='https://www.instagram.com/psnpcursinhofeausp/' isExternal fontWeight='bold'>
+                        instagram <ExternalLinkIcon mx='2px' />
                     </Link>
                 </Text>
             </Box>

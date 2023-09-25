@@ -9,9 +9,9 @@ export function Main() {
     return (
         <Flex px={{base: 8, lg: 12}} py={4}>
             <Box>
-                <Text fontWeight='bold' fontSize={{base: 20, sm: 20, lg: 48}} textAlign={{base: 'center', sm: 'center', lg: 'start'}}>
-                    <Highlight query={['impactante', 'atenção']} styles={{bg: 'transparent', color: 'yellow.500' }}>
-                    Alguma frase bem impactante aqui para chamar muita atenção dos futuros alunos
+                <Text fontWeight='bold' fontSize={{base: 20, sm: 20, lg: 40}} textAlign={{base: 'center', sm: 'center', lg: 'start'}}>
+                    <Highlight query={['duas décadas', 'democratização']} styles={{bg: 'transparent', color: 'yellow.500' }}>
+                        Há mais de duas décadas trabalhando em prol da democratização do acesso ao ensino superior no Brasil
                     </Highlight>
                 </Text>
 
@@ -59,8 +59,8 @@ export function Main() {
                     </Flex>
                 </Flex>
 
-                <Text fontWeight='light' fontSize={{base: 14, sm: 14, lg: 20}} mt={{base: 4, sm: 4, lg: 8}} textAlign={{base: 'center', sm: 'center', lg: 'start'}}>
-                    Algum textinho explicativo aqui. Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                <Text fontWeight='light' fontSize={{base: 14, sm: 14, lg: 20}} mt={{base: 4, sm: 4, lg: 10}} textAlign={{base: 'center', sm: 'center', lg: 'start'}}>
+                Cursinho FEAUSP está em constante aperfeiçoamento para proporcionar o melhor ensino e também a melhor experiência a todos os envolvidos no projeto. 
                 </Text>
 
                 <Image 

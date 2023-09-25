@@ -28,11 +28,16 @@ export function FeiraDeProfissoes() {
                 <Box flex='.95'>
                     <RowInfoLabel 
                         title='SOBRE O EVENTO' 
-                        info='Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. ' 
+                        info={
+                            <>
+                                <Text>A Feira de profissões é um evento que organizamos anualmente para que todos os alunos, tanto do nosso quanto de outros Cursinhos, sejam capazes de ter contato com diversas áreas e cursos diferentes para que todos consigam formar suas decisões tranquilos e confiantes.</Text>
+                                <Text>Realizamos ela em um domingo em algum instituto da USP e contamos com diversas parcerias e alunos para nos ajudar com todo esse trabalho.</Text>
+                            </>
+                        }
                         alignItems='flex-start'
                         bgColor='yellow.400'
                     />
-                    <Grid flex='1' templateColumns='1fr 1fr 1fr' gap={{base: 2, lg: 8}} px={{base: 4, lg: 12}} mt={{base: 6, lg: 12}}>
+                    <Grid flex='1' templateColumns='1fr 1fr' gap={{base: 2, lg: 8}} px={{base: 4, lg: 12}} mt={{base: 6, lg: 12}}>
                         <Flex direction='column' alignItems='center' bgColor='gray.100' borderRadius='xl' p={4}>
                             <CalendarBlank 
                                 size={isLg ? 40 : 28}
@@ -40,16 +45,7 @@ export function FeiraDeProfissoes() {
                                 weight="duotone" 
                             />
                             <Text fontWeight='bold' fontSize={{base: 14, lg: 16}}>QUANDO?</Text>
-                            <Text fontWeight='light' fontSize={14} mt={{base: 2, lg: 4}}>Julho</Text>
-                        </Flex>
-                        <Flex direction='column' alignItems='center' bgColor='gray.100' borderRadius='xl' p={4}>
-                            <MapPin 
-                                size={isLg ? 40 : 28}
-                                color="#2a255a" 
-                                weight="duotone" 
-                            />
-                            <Text fontWeight='bold' fontSize={{base: 14, lg: 16}}>ONDE?</Text>
-                            <Text fontWeight='light' fontSize={14} mt={{base: 2, lg: 4}}>CRUSP</Text>
+                            <Text fontWeight='light' fontSize={14} mt={{base: 2, lg: 4}}>Agosto</Text>
                         </Flex>
                         <Flex direction='column' alignItems='center' bgColor='gray.100' borderRadius='xl' p={4}>
                             <Money 

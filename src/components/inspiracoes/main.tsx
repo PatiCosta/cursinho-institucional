@@ -136,7 +136,7 @@ export function Main() {
             </Text>
             <Review img='static/img/avatar-mauricio.png' name='Maurício Durães' tag='Estudante de Medicina na FMUSP' review='Prestei farmácia porque achava que medicina não era pra mim. Ninguém que eu conhecia tinha passado. Quando eu vi que minhas notas na Fuvest eram o suficiente pra passar em medicina, eu vi que eu era capaz.' />
             <Divider />
-            <InvertedReview img='static/img/avatar-murilo.png' name='Murilo Lechuga' tag='Estudante do IAG USP' review='Hoje eu não me imagino fazendo outra coisa a não ser ensinar. E a minha vontade de ensinar surgiu aqui.'  />
+            <InvertedReview img='static/img/avatar-murilo.png' name='Murilo Lechuga' tag='Atual professor do Cursinho FEAUSP' review='Hoje eu não me imagino fazendo outra coisa a não ser ensinar. E a minha vontade de ensinar surgiu aqui.'  />
             <Divider />
             <Review img='static/img/avatar-beatriz.png' name='Beatriz Gomes' tag='Estudante de Jornalismo da ECA USP' review='... O importante é não desistir no primeiro obstáculo. Se a gente desistir nessa fase mais fácil que é o vestibular, imagina na vida' />
             <Divider />

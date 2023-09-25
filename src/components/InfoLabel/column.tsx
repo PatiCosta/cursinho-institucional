@@ -10,9 +10,9 @@ export function ColumnInfoLabel({title, info, bgColor, ...rest}: InfoLabelProps)
                     {title}
                 </Text>
             </Flex>
-            <Text fontSize={{base: 14, lg: 16}} fontWeight='light' pl={{base: 8, lg: 12}} pr={{base: 4, lg: 8}}  textAlign={{base: 'center', lg: 'end'}}>
+            <Flex fontSize={{base: 14, lg: 16}} fontWeight='light' pl={{base: 8, lg: 12}} pr={{base: 4, lg: 8}}  textAlign={{base: 'center', lg: 'end'}}>
                 {info}
-            </Text>
+            </Flex>
         </Flex>
     )
 }
@@ -26,9 +26,9 @@ export function ReverseColumnInfoLabel({title, info, bgColor, ...rest}: InfoLabe
                 </Text>
                 <Box flex='1' h='2px' bgColor='gray.50'></Box>
             </Flex>
-            <Text fontSize={{base: 14, lg: 16}} fontWeight='light' pl={{base: 8, lg: 12}} pr={{base: 4, lg: 8}} textAlign={{base: 'center', lg: 'start'}}>
+            <Flex fontSize={{base: 14, lg: 16}} fontWeight='light' pl={{base: 8, lg: 12}} pr={{base: 4, lg: 8}} textAlign={{base: 'center', lg: 'start'}}>
                 {info}
-            </Text>
+            </Flex>
         </Flex>
     )
 }

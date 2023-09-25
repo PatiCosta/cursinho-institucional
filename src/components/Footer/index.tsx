@@ -1,5 +1,5 @@
-import { Box, Flex, Highlight, Text, useBreakpointValue } from "@chakra-ui/react";
-import { ArrowCircleDown, Envelope, FacebookLogo, InstagramLogo, LinkedinLogo, YoutubeLogo } from "phosphor-react";
+import { Box, Flex, Highlight, Link, Text, useBreakpointValue } from "@chakra-ui/react";
+import { ArrowCircleDown, Envelope, FacebookLogo, InstagramLogo, LinkedinLogo, TiktokLogo, TwitterLogo, YoutubeLogo } from "phosphor-react";
 import React from "react";
 
 interface footerProps {
@@ -57,17 +57,24 @@ export default function Footer({children, marginTop}: footerProps) {
                                 <Envelope size={isLg ? 32 : 24} color="#023047" weight="duotone" />
                                 <Text fontWeight='light' fontSize={{base: 14, lg: 16}}>captacao.cursinho@gmail.com</Text>
                             </Flex>
-                            <Text fontWeight='bold' fontSize='20px' mt={8}>Processos Seletivos</Text>
+                            <Text fontWeight='bold' fontSize='20px' mt={8}>Processos Seletivos de Novos Alunos</Text>
                             <Flex alignItems='center' justifyContent='start' gap={2} mt={1}>
                                 <Envelope size={isLg ? 32 : 24} color="#023047" weight="duotone" />
                                 <Text fontWeight='light' fontSize={{base: 14, lg: 16}}>ps.cfeausp@gmail.com</Text>
                             </Flex>
+                            <Text fontWeight='bold' fontSize='20px' mt={8}>Financeiro</Text>
+                            <Flex alignItems='center' justifyContent='start' gap={2} mt={1}>
+                                <Envelope size={isLg ? 32 : 24} color="#023047" weight="duotone" />
+                                <Text fontWeight='light' fontSize={{base: 14, lg: 16}}>fin.cursinhofeausp@gmail.com</Text>
+                            </Flex>
                         </Box>
                         <Flex direction='column' alignItems='center' justifyContent='center' gap={4} display={{base: 'none', lg: 'flex'}}>
-                            <FacebookLogo size={48} color="#023047" weight="duotone" />
-                            <InstagramLogo size={48} color="#023047" weight="duotone" />
-                            <LinkedinLogo size={48} color="#023047" weight="duotone" />
-                            <YoutubeLogo size={48} color="#023047" weight="duotone" />
+                            <Link href='https://www.facebook.com/cursinhofeauspsp/?locale=pt_BR' isExternal><FacebookLogo size={36} color="#023047" weight="duotone" /></Link>
+                            <Link href='https://www.instagram.com/cursinhofeausp/' isExternal><InstagramLogo size={36} color="#023047" weight="duotone" /></Link>
+                            <Link href='https://br.linkedin.com/company/cursinho-fea-usp' isExternal><LinkedinLogo size={36} color="#023047" weight="duotone" /></Link>
+                            <Link href='https://www.youtube.com/user/cursinhofeausp' isExternal><YoutubeLogo size={36} color="#023047" weight="duotone" /></Link>
+                            <Link href='https://www.tiktok.com/@cursinhofeausp' isExternal><TiktokLogo size={36} color="#023047" weight="duotone" /></Link>
+                            <Link href='https://twitter.com/cursinhofeausp' isExternal><TwitterLogo size={36} color="#023047" weight="duotone" /></Link>
                         </Flex>
                     </Flex>
                     <Flex 
@@ -77,15 +84,17 @@ export default function Footer({children, marginTop}: footerProps) {
                         mt={8}
                         display={{base: 'flex', lg: 'none'}}
                     >
-                        <FacebookLogo size={40} color="#023047" weight="duotone" />
-                        <InstagramLogo size={40} color="#023047" weight="duotone" />
-                        <LinkedinLogo size={40} color="#023047" weight="duotone" />
-                        <YoutubeLogo size={40} color="#023047" weight="duotone" />
+                        <Link href='https://www.facebook.com/cursinhofeauspsp/?locale=pt_BR' isExternal><FacebookLogo size={32} color="#023047" weight="duotone" /></Link>
+                        <Link href='https://www.instagram.com/cursinhofeausp/' isExternal><InstagramLogo size={32} color="#023047" weight="duotone" /></Link>
+                        <Link href='https://br.linkedin.com/company/cursinho-fea-usp' isExternal><LinkedinLogo size={32} color="#023047" weight="duotone" /></Link>
+                        <Link href='https://www.youtube.com/user/cursinhofeausp' isExternal><YoutubeLogo size={32} color="#023047" weight="duotone" /></Link>
+                        <Link href='https://www.tiktok.com/@cursinhofeausp' isExternal><TiktokLogo size={32} color="#023047" weight="duotone" /></Link>
+                        <Link href='https://twitter.com/cursinhofeausp' isExternal><TwitterLogo size={32} color="#023047" weight="duotone" /></Link>
                     </Flex>
                     <Text 
                         fontWeight='light' 
                         fontSize={{base: 12, lg: 14}}
-                        mt={{base: 8, lg: 32}} 
+                        mt={{base: 8, lg: 4}} 
                         w={{base: '90vw', lg: '500px'}}
                     >
                         O Cursinho FEAUSP não possui nenhuma relação institucional com a Universidade de São Paulo (USP).

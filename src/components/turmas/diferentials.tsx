@@ -41,23 +41,24 @@ export function Diferentials() {
             </Flex>
             <Flex gap={4} mt={4} px={{base: 4, lg: 12}} direction={{base: 'column', lg: 'row'}}>
                 <Box bgColor='transparent' pl={8} py={8} boxShadow='md' flex='1.05' position='relative'>
-                    <Box borderBottomLeftRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' top='0' right='0' zIndex='-1'>
+                    <Box borderBottomRightRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' top='0' left='0' zIndex='-1'>
                     </Box>
-                    <Box borderTopRightRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' bottom='0' left='0' zIndex='-1'>
+                    <Box borderTopLeftRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' bottom='0' right='0' zIndex='-1'>
                     </Box>
                     <Flex alignItems='center' gap={4}>
-                        <ChalkboardTeacher size={64} color="#023047" weight="thin" />
+                        <Notebook size={64} color="#023047" weight="thin" />
                         <Text fontSize={{base: 20, lg: 24}} fontWeight="bold" w='180px'>
-                            <Highlight query='Professores' styles={{bg: 'transparent', color: 'yellow.500' }}>
-                                Professores Contratados
+                            <Highlight query='Letrus' styles={{bg: 'transparent', color: 'yellow.500' }}>
+                            Letrus
                             </Highlight>
                         </Text>
                         <Box flex='1' h='2px' bgColor='blue.800'></Box>
                     </Flex>
                     <Text fontWeight='light' fontSize={{base: 14, lg: 16}} mt={4} pr={8}>
-                    Professores especializados em sua área de ensino e selecionados pela nossa coordenação fornecem aulas e materiais para construir a base teórica da qual o aluno tanto precisará.
+                    Plataforma online de envio de redações e correção realizada em parte por Inteligência Artificial.
                     </Text>
                 </Box>
+
                 <Box bgColor='transparent' pl={8} py={8} boxShadow='md' flex='1.05' position='relative'>
                     <Box borderBottomRightRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' top='0' left='0' zIndex='-1'>
                     </Box>
@@ -93,30 +94,43 @@ export function Diferentials() {
                     <Text fontWeight='light' fontSize={{base: 14, lg: 16}} mt={4} pr={8}>
                     Palestras para debates de temas relevantes, assim como dinâmicas de integração das turmas, formam uma importante parte para a experiência do aluno no nosso Cursinho.
                     </Text>
+                    <Text fontSize={14} mt={4}>
+                        <Link href='/eventos' fontWeight='bold'>
+                        Saiba mais sobre os eventos que promovemos{' '}
+                            <ExternalLinkIcon mx='2px' />
+                        </Link>
+                    </Text>
                 </Box>
             </Flex>
             <Flex gap={4} mt={4} px={{base: 4, lg: 12}} direction={{base: 'column', lg: 'row'}}>
                 <Box bgColor='transparent' pl={8} py={8} boxShadow='md' flex='1.05' position='relative'>
-                    <Box borderBottomRightRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' top='0' left='0' zIndex='-1'>
+                    <Box borderBottomLeftRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' top='0' right='0' zIndex='-1'>
                     </Box>
-                    <Box borderTopLeftRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' bottom='0' right='0' zIndex='-1'>
+                    <Box borderTopRightRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' bottom='0' left='0' zIndex='-1'>
                     </Box>
                     <Flex alignItems='center' gap={4}>
-                        <Notebook size={64} color="#023047" weight="thin" />
+                        <ChalkboardTeacher size={64} color="#023047" weight="thin" />
                         <Text fontSize={{base: 20, lg: 24}} fontWeight="bold" w='180px'>
-                            <Highlight query='Le Monde' styles={{bg: 'transparent', color: 'yellow.500' }}>
-                            Revistas Le Monde
+                            <Highlight query='Professores' styles={{bg: 'transparent', color: 'yellow.500' }}>
+                                Professores Contratados
                             </Highlight>
                         </Text>
                         <Box flex='1' h='2px' bgColor='blue.800'></Box>
                     </Flex>
                     <Text fontWeight='light' fontSize={{base: 14, lg: 16}} mt={4} pr={8}>
-                    Revistas mensais da Le Monde são disponibilizadas para que os alunos nunca fiquem por fora das atualidades!
+                    Professores especializados em sua área de ensino e selecionados pela nossa coordenação fornecem aulas e materiais para construir a base teórica da qual o aluno tanto precisará.
                     </Text>
-                    <Text fontSize={{base: 14, lg: 16}} mt={8}>
-                        Acessar{' '}
-                        <Link href='https://diplomatique.org.br/' isExternal fontWeight='bold'>
-                            diplomatique.org.br <ExternalLinkIcon mx='2px' />
+                    <Text fontWeight='light' fontSize={16} mt={2}>
+                    Venha fazer parte da nossa equipe como professor, plantonista e/ou corretor:
+                    </Text>
+                    <Text fontSize={14} mt={4}>
+                        Entre em contato pelo nosso{' '}
+                        <Link href='https://www.facebook.com/profcursinhofeausp' isExternal fontWeight='bold'>
+                            facebook <ExternalLinkIcon mx='2px' />
+                        </Link>
+                        {' '}ou{' '}
+                        <Link href='https://www.instagram.com/psnpcursinhofeausp/' isExternal fontWeight='bold'>
+                            instagram <ExternalLinkIcon mx='2px' />
                         </Link>
                     </Text>
                 </Box>

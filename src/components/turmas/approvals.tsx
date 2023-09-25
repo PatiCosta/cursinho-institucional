@@ -29,7 +29,7 @@ export function Approvals() {
                 gap={{base: 4, lg: 12}}
             >
                 <Box textAlign='center' color='gray.50'>
-                    <Text fontWeight='bold' fontSize={{base: 28, lg: 40}}>29</Text>
+                    <Text fontWeight='bold' fontSize={{base: 28, lg: 40}}>40</Text>
                     <Text fontSize={{base: 16, lg: 20}}>USP</Text>
                 </Box>
                 <Box bgColor='gray.50' w='8px' h='8px' borderRadius='100%' />

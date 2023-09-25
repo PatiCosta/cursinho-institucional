@@ -47,7 +47,7 @@ export function About() {
                 <Flex alignItems='center' justifyContent='start' ml='6px' gap={8} flex='1'>
                     <Box bgColor='yellow.400' w='36px' h='36px' borderRadius='100%'></Box>
                     <Box fontSize={{base: 40, lg: 48}} fontWeight='semibold' position='relative'>
-                        4 cursos
+                        4 turmas
                         <Text fontSize={{base: 14, lg: 16}} fontWeight='regular' position='absolute' bottom='-12px'>com vagas abertas</Text>
                     </Box>
                 </Flex>

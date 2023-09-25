@@ -13,7 +13,7 @@ export default function Turmas() {
             <Main />
             <Diferentials />
             <Approvals />
-            <Footer marginTop={60}>
+            <Footer marginTop={64}>
                 <DontMissBox />
             </Footer>
         </>

@@ -1,5 +1,5 @@
-import { Box, Button, Flex, Highlight, Text, useBreakpointValue } from "@chakra-ui/react";
-import { ArrowCircleDown, ArrowCircleUpRight, Envelope, FacebookLogo, InstagramLogo, LinkedinLogo, YoutubeLogo } from "phosphor-react";
+import { Box, Button, Flex, Highlight, Link, Text, useBreakpointValue } from "@chakra-ui/react";
+import { ArrowCircleDown, ArrowCircleUpRight, Envelope, FacebookLogo, InstagramLogo, LinkedinLogo, TiktokLogo, TwitterLogo, YoutubeLogo } from "phosphor-react";
 import Lottie from "lottie-react";
 import donateAnimation from "../../animations/donate.json";
 
@@ -16,18 +16,19 @@ export function Footer() {
                 right='0'
                 mx={{base: '5vw', lg: '20vw'}} 
                 top={{base: '-20%', lg: '-25%'}} 
-                py={{base: 8, lg: 12}}
+                py={{base: 4, lg: 12}}
                 px={12}
             >
                 {isLg && <Lottie animationData={donateAnimation} />}
                 <Box textAlign={{base: 'center', lg: 'start'}}>
-                    <Text fontSize={{base: 28, lg: 40}} color='gray.800' fontWeight='light'>
-                        <Highlight query='doar' styles={{bg: 'transparent', color: 'gray.50', fontWeight: 'bold' }}>
-                            Gostaria de doar etc?
+                    <Text fontSize={{base: 28, lg: 32}} color='gray.800' fontWeight='light'>
+                        <Highlight query='voarem!' styles={{bg: 'transparent', color: 'gray.50', fontWeight: 'bold' }}>
+                        Ajude os nossos alunos a voarem!
                         </Highlight>
                     </Text>
                     <Text fontSize={{base: 14, lg: 16}} mt={4}>
-                        Algum texto motivacional sobre ajudar os estudos dos alunos necessitados Lorem Ipsum is simply dummy text ofLorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                    Você sabia que a sua doação fará a diferença na vida de nossos alunos diretamente? Toda a renda advinda desta aba constituirá um Fundo para financiar o Auxílio Transporte dos nossos alunos. Atualmente, beneficiamos um número pequeno de estudantes, porém, a demanda chega a ser 5x maior. E aí, bora ajudar quem sonha em entrar em uma universidade?
+
                     </Text>
                     <Button 
                         mt={{base: 8, lg: 12}} 
@@ -98,10 +99,15 @@ export function Footer() {
                                 <Envelope size={isLg ? 32 : 24} color="#023047" weight="duotone" />
                                 <Text fontWeight='light' fontSize={{base: 14, lg: 16}}>captacao.cursinho@gmail.com</Text>
                             </Flex>
-                            <Text fontWeight='bold' fontSize='20px' mt={8}>Processos Seletivos</Text>
+                            <Text fontWeight='bold' fontSize='20px' mt={8}>Processos Seletivos de Novos Alunos</Text>
                             <Flex alignItems='center' justifyContent='start' gap={2} mt={1}>
                                 <Envelope size={isLg ? 32 : 24} color="#023047" weight="duotone" />
                                 <Text fontWeight='light' fontSize={{base: 14, lg: 16}}>ps.cfeausp@gmail.com</Text>
+                            </Flex>
+                            <Text fontWeight='bold' fontSize='20px' mt={8}>Financeiro</Text>
+                            <Flex alignItems='center' justifyContent='start' gap={2} mt={1}>
+                                <Envelope size={isLg ? 32 : 24} color="#023047" weight="duotone" />
+                                <Text fontWeight='light' fontSize={{base: 14, lg: 16}}>fin.cursinhofeausp@gmail.com</Text>
                             </Flex>
                         </Box>
                         <Flex 
@@ -111,10 +117,12 @@ export function Footer() {
                             gap={4}
                             display={{base: 'none', lg: 'flex'}}
                         >
-                            <FacebookLogo size={48} color="#023047" weight="duotone" />
-                            <InstagramLogo size={48} color="#023047" weight="duotone" />
-                            <LinkedinLogo size={48} color="#023047" weight="duotone" />
-                            <YoutubeLogo size={48} color="#023047" weight="duotone" />
+                            <Link href='https://www.facebook.com/cursinhofeauspsp/?locale=pt_BR' isExternal><FacebookLogo size={36} color="#023047" weight="duotone" /></Link>
+                            <Link href='https://www.instagram.com/cursinhofeausp/' isExternal><InstagramLogo size={36} color="#023047" weight="duotone" /></Link>
+                            <Link href='https://br.linkedin.com/company/cursinho-fea-usp' isExternal><LinkedinLogo size={36} color="#023047" weight="duotone" /></Link>
+                            <Link href='https://www.youtube.com/user/cursinhofeausp' isExternal><YoutubeLogo size={36} color="#023047" weight="duotone" /></Link>
+                            <Link href='https://www.tiktok.com/@cursinhofeausp' isExternal><TiktokLogo size={36} color="#023047" weight="duotone" /></Link>
+                            <Link href='https://twitter.com/cursinhofeausp' isExternal><TwitterLogo size={36} color="#023047" weight="duotone" /></Link>
                         </Flex>
                     </Flex>
                     <Flex 
@@ -124,15 +132,17 @@ export function Footer() {
                         mt={8}
                         display={{base: 'flex', lg: 'none'}}
                     >
-                        <FacebookLogo size={40} color="#023047" weight="duotone" />
-                        <InstagramLogo size={40} color="#023047" weight="duotone" />
-                        <LinkedinLogo size={40} color="#023047" weight="duotone" />
-                        <YoutubeLogo size={40} color="#023047" weight="duotone" />
+                        <Link href='https://www.facebook.com/cursinhofeauspsp/?locale=pt_BR' isExternal><FacebookLogo size={32} color="#023047" weight="duotone" /></Link>
+                        <Link href='https://www.instagram.com/cursinhofeausp/' isExternal><InstagramLogo size={32} color="#023047" weight="duotone" /></Link>
+                        <Link href='https://br.linkedin.com/company/cursinho-fea-usp' isExternal><LinkedinLogo size={32} color="#023047" weight="duotone" /></Link>
+                        <Link href='https://www.youtube.com/user/cursinhofeausp' isExternal><YoutubeLogo size={32} color="#023047" weight="duotone" /></Link>
+                        <Link href='https://www.tiktok.com/@cursinhofeausp' isExternal><TiktokLogo size={32} color="#023047" weight="duotone" /></Link>
+                        <Link href='https://twitter.com/cursinhofeausp' isExternal><TwitterLogo size={32} color="#023047" weight="duotone" /></Link>
                     </Flex>
                     <Text 
                         fontWeight='light' 
                         fontSize={{base: 12, lg: 14}}
-                        mt={{base: 8, lg: 32}} 
+                        mt={{base: 8, lg: 4}} 
                         w={{base: '90vw', lg: '500px'}}
                     >
                         O Cursinho FEAUSP não possui nenhuma relação institucional com a Universidade de São Paulo (USP).

@@ -39,7 +39,12 @@ export function Estudantada() {
                 <Box flex='.95'>
                     <ReverseRowInfoLabel 
                         title='SOBRE O EVENTO' 
-                        info='Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. Texto explicativo sobre o evento. ' 
+                        info={
+                            <>
+                                <Text>No fim do ano, após passar um ano inteiro de intensos estudos e cansaço, sabemos como os alunos estão desgastados e ansiosos pré-vestibular e para isso, nós de Eventos organizamos um momento de desestressar e relaxar com os alunos antes de realizar o tão esperado vestibular.</Text>
+                                <Text>Iniciamos no auditório com vídeos e depoimentos dos professores / coordenadores para motivar todos os alunos nessa reta final e depois nos encaminhamos para a vivência para realizar uma parte mais descontraída e de relaxamento com música, comida e alguns prêmios!</Text>
+                            </>
+                        }
                         alignItems='flex-start'
                         bgColor='blue.800'
                     />
@@ -51,16 +56,7 @@ export function Estudantada() {
                                 weight="duotone" 
                             />
                             <Text fontWeight='bold' fontSize={{base: 14, lg: 16}}>QUANDO?</Text>
-                            <Text fontWeight='light' fontSize={14} mt={{base: 2, lg: 4}}>Julho</Text>
-                        </Flex>
-                        <Flex direction='column' alignItems='center' bgColor='gray.100' borderRadius='xl' p={4}>
-                            <MapPin 
-                                size={isLg ? 40 : 28} 
-                                color="#2a255a" 
-                                weight="duotone" 
-                            />
-                            <Text fontWeight='bold' fontSize={{base: 14, lg: 16}}>ONDE?</Text>
-                            <Text fontWeight='light' fontSize={14} mt={{base: 2, lg: 4}}>CRUSP</Text>
+                            <Text fontWeight='light' fontSize={14} mt={{base: 2, lg: 4}}>Novembro</Text>
                         </Flex>
                         <Flex direction='column' alignItems='center' bgColor='gray.100' borderRadius='xl' p={4}>
                             <Money 
