@@ -4,6 +4,7 @@ import { Main } from "@/components/turmas/main";
 import { Approvals } from "@/components/turmas/approvals";
 import Footer from "@/components/Footer";
 import { DontMissBox } from "@/components/DontMissTheChance";
+import { Tutoring } from "@/components/turmas/tutoring";
 
 
 export default function Turmas() {
@@ -13,7 +14,8 @@ export default function Turmas() {
             <Main />
             <Diferentials />
             <Approvals />
-            <Footer marginTop={64}>
+            <Tutoring />
+            <Footer marginTop={48}>
                 <DontMissBox />
             </Footer>
         </>

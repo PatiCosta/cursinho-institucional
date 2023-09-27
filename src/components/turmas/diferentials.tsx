@@ -60,9 +60,9 @@ export function Diferentials() {
                 </Box>
 
                 <Box bgColor='transparent' pl={8} py={8} boxShadow='md' flex='1.05' position='relative'>
-                    <Box borderBottomRightRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' top='0' left='0' zIndex='-1'>
+                <Box borderBottomLeftRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' top='0' right='0' zIndex='-1'>
                     </Box>
-                    <Box borderTopLeftRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' bottom='0' right='0' zIndex='-1'>
+                    <Box borderTopRightRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' bottom='0' left='0' zIndex='-1'>
                     </Box>
                     <Flex alignItems='center' gap={4}>
                         <Users size={64} color="#023047" weight="thin" />
@@ -78,9 +78,9 @@ export function Diferentials() {
                     </Text>
                 </Box>
                 <Box bgColor='transparent' pl={8} py={8} boxShadow='md' flex='1.05' position='relative'>
-                    <Box borderBottomLeftRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' top='0' right='0' zIndex='-1'>
+                    <Box borderBottomRightRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' top='0' left='0' zIndex='-1'>
                     </Box>
-                    <Box borderTopRightRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' bottom='0' left='0' zIndex='-1'>
+                    <Box borderTopLeftRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' bottom='0' right='0' zIndex='-1'>
                     </Box>
                     <Flex alignItems='center' gap={4}>
                         <Calendar size={64} color="#023047" weight="thin" />
@@ -135,9 +135,9 @@ export function Diferentials() {
                     </Text>
                 </Box>
                 <Box bgColor='transparent' pl={8} py={8} boxShadow='md' flex='1.05' position='relative'>
-                    <Box borderBottomLeftRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' top='0' right='0' zIndex='-1'>
+                    <Box borderBottomRightRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' top='0' left='0' zIndex='-1'>
                     </Box>
-                    <Box borderTopRightRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' bottom='0' left='0' zIndex='-1'>
+                    <Box borderTopLeftRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' bottom='0' right='0' zIndex='-1'>
                     </Box>
                     <Flex alignItems='center' gap={4}>
                         <Laptop size={64} color="#023047" weight="thin" />
