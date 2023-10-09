@@ -1,6 +1,7 @@
 import { Box, Flex, Grid, Highlight, Text, useBreakpointValue } from "@chakra-ui/react";
 import { Money, CalendarBlank, MapPin } from "phosphor-react";
 import { Carousel } from "../Carousel";
+import { ColumnInfoLabel } from "../InfoLabel/column";
 import { RowInfoLabel } from "../InfoLabel/row";
 
 const img1 = 'static/img/feira_de_profissoes_1.png'
@@ -26,7 +27,7 @@ export function FeiraDeProfissoes() {
             </Flex>
             <Flex py={8} alignItems='start' gap={8} direction={{base: 'column', lg: 'row'}}>
                 <Box flex='.95'>
-                    <RowInfoLabel 
+                    {isLg ? <RowInfoLabel 
                         title='SOBRE O EVENTO' 
                         info={
                             <>
@@ -36,7 +37,16 @@ export function FeiraDeProfissoes() {
                         }
                         alignItems='flex-start'
                         bgColor='yellow.400'
-                    />
+                    /> : <ColumnInfoLabel 
+                        title='Sobre o evento'
+                        info={
+                            <>
+                                <Text>A Feira de profissões é um evento que organizamos anualmente para que todos os alunos, tanto do nosso quanto de outros Cursinhos, sejam capazes de ter contato com diversas áreas e cursos diferentes para que todos consigam formar suas decisões tranquilos e confiantes.</Text>
+                                <Text>Realizamos ela em um domingo em algum instituto da USP e contamos com diversas parcerias e alunos para nos ajudar com todo esse trabalho.</Text>
+                            </>
+                        }
+                        bgColor='yellow.400'
+                    />}
                     <Grid flex='1' templateColumns='1fr 1fr' gap={{base: 2, lg: 8}} px={{base: 4, lg: 12}} mt={{base: 6, lg: 12}}>
                         <Flex direction='column' alignItems='center' bgColor='gray.100' borderRadius='xl' p={4}>
                             <CalendarBlank 

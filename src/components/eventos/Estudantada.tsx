@@ -1,6 +1,7 @@
 import { Box, Flex, Grid, Highlight, Text, useBreakpointValue } from "@chakra-ui/react";
 import { Money, CalendarBlank, MapPin } from "phosphor-react";
 import { Carousel } from "../Carousel";
+import { ColumnInfoLabel } from "../InfoLabel/column";
 import { ReverseRowInfoLabel } from "../InfoLabel/row";
 
 const img1 = 'static/img/estudantada_1.png'
@@ -37,7 +38,7 @@ export function Estudantada() {
                     />
                 </Box>
                 <Box flex='.95'>
-                    <ReverseRowInfoLabel 
+                    {isLg ? <ReverseRowInfoLabel 
                         title='SOBRE O EVENTO' 
                         info={
                             <>
@@ -47,8 +48,17 @@ export function Estudantada() {
                         }
                         alignItems='flex-start'
                         bgColor='blue.800'
-                    />
-                    <Grid flex='1' templateColumns='1fr 1fr 1fr' gap={{base: 2, lg: 8}} px={{base: 4, lg: 12}} mt={{base: 6, lg: 12}}>
+                    /> : <ColumnInfoLabel 
+                        title='Sobre o evento'
+                        info={
+                            <>
+                                <Text>No fim do ano, após passar um ano inteiro de intensos estudos e cansaço, sabemos como os alunos estão desgastados e ansiosos pré-vestibular e para isso, nós de Eventos organizamos um momento de desestressar e relaxar com os alunos antes de realizar o tão esperado vestibular.</Text>
+                                <Text>Iniciamos no auditório com vídeos e depoimentos dos professores / coordenadores para motivar todos os alunos nessa reta final e depois nos encaminhamos para a vivência para realizar uma parte mais descontraída e de relaxamento com música, comida e alguns prêmios!</Text>
+                            </>
+                        }
+                        bgColor='blue.800'
+                    />}
+                    <Grid flex='1' templateColumns='1fr 1fr' gap={{base: 2, lg: 8}} px={{base: 4, lg: 12}} mt={{base: 6, lg: 12}}>
                         <Flex direction='column' alignItems='center' bgColor='gray.100' borderRadius='xl' p={4}>
                             <CalendarBlank 
                                 size={isLg ? 40 : 28} 

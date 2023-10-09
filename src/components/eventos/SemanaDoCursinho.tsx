@@ -1,6 +1,7 @@
 import { Box, Flex, Grid, Highlight, Text, useBreakpointValue } from "@chakra-ui/react";
 import { Money, CalendarBlank, MapPin } from "phosphor-react";
 import { Carousel } from "../Carousel";
+import { ColumnInfoLabel } from "../InfoLabel/column";
 import { RowInfoLabel } from "../InfoLabel/row";
 
 const img1 = 'static/img/semana_do_cursinho_1.png'
@@ -25,7 +26,7 @@ export function SemanaDoCursinho() {
             </Flex>
             <Flex py={8} alignItems='start' gap={8} direction={{base: 'column', lg: 'row'}}>
                 <Box flex='.95'>
-                    <RowInfoLabel 
+                    {isLg ? <RowInfoLabel 
                         title='SOBRE O EVENTO' 
                         info={
                             <>
@@ -36,7 +37,17 @@ export function SemanaDoCursinho() {
                         }
                         alignItems='flex-start'
                         bgColor='yellow.400'
-                    />
+                    /> : <ColumnInfoLabel 
+                        title='Sobre o evento'
+                        info={
+                            <>
+                                <Text>A Semana do Cursinho ocorre ao longo de uma Semana de Setembro e nosso intuito com essa semana é criar eventos em dias diferentes com o intuito de arrecadar dinheiro para pagar as taxas de inscrição dos vestibulares dos alunos.</Text>
+                                <Text>Vendemos comidas, organizamos bingos com prêmios e nosso público alvo são os alunos da graduação e quem quiser contribuir para nosso propósito.</Text>
+                                <Text>Ano passado a Semana se encerrou com uma palestra com o cantor Rincon Sapiência e, com todo dinheiro arrecadado, fomos capazes de abarcar todos os pedidos de ajuda com as taxas.</Text>
+                            </>
+                        }
+                        bgColor='yellow.400'
+                    />}
                     <Grid flex='1' templateColumns='1fr 1fr' gap={{base: 2, lg: 8}} px={{base: 4, lg: 12}} mt={{base: 6, lg: 12}}>
                         <Flex direction='column' alignItems='center' bgColor='gray.100' borderRadius='xl' p={4}>
                             <CalendarBlank 
