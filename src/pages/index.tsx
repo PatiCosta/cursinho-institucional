@@ -19,7 +19,7 @@ export default function Home() {
       {/* <Classes /> */}
       <Campaign />
       <Comments />
-      <Footer marginTop={40}>
+      <Footer mt={{base: 56, lg: 48}}>
         <DonationFooter />
       </Footer>
     </>

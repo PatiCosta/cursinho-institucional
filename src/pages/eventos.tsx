@@ -14,7 +14,7 @@ export default function Eventos() {
             <CursinhoJunina />
             <FeiraDeProfissoes />
             <Estudantada />
-            <Footer marginTop={40}>
+            <Footer mt={{base: 56, lg: 40}}>
                 <SubscribeFooter />
             </Footer>
         </>

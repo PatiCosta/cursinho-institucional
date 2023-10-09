@@ -15,7 +15,7 @@ export default function Turmas() {
             <Diferentials />
             <Approvals />
             <Tutoring />
-            <Footer marginTop={72}>
+            <Footer  mt={{base: 40, lg: 72}}>
                 <StudentsVideoFooter />
             </Footer>
         </>

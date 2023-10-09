@@ -1,17 +1,16 @@
-import { Box, Flex, Highlight, Link, Text, useBreakpointValue } from "@chakra-ui/react";
+import { Box, BoxProps, Flex, Highlight, Link, Text, useBreakpointValue } from "@chakra-ui/react";
 import { ArrowCircleDown, Envelope, FacebookLogo, InstagramLogo, LinkedinLogo, TiktokLogo, TwitterLogo, YoutubeLogo } from "phosphor-react";
 import React from "react";
 
-interface footerProps {
+interface footerProps extends BoxProps {
     children: React.ReactNode;
-    marginTop: number;
 }
 
-export default function Footer({children, marginTop}: footerProps) {
+export default function Footer({children, ...rest}: footerProps) {
   const isLg = useBreakpointValue({base: false, sm: false, lg: true})
 
     return (
-        <Box bgImage={'static/img/footer-background.png'} mt={marginTop} position='relative' px={{base: 0, lg: 0}}>
+        <Box bgImage={'static/img/footer-background.png'} position='relative' px={{base: 0, lg: 0}} {...rest}>
             {children}
             <Flex justifyContent='space-between' alignItems='start' direction={{base: 'column', lg: 'row'}} px={{base: 4, lg: 24}}>
                 <Flex mt={{base: '50%', lg: '20%'}} alignItems={{base: 'center', lg: 'start'}} direction='column' w='100%' justifyContent='center'>

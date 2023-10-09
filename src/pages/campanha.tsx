@@ -13,7 +13,7 @@ export default function Turmas() {
             <Main />
             <CampaignChart />
             <Comments />
-            <Footer marginTop={56}>
+            <Footer mt={{base: 56, lg: 48}}>
                 <DonationFooter />
             </Footer>
         </>
