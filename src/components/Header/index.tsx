@@ -75,7 +75,7 @@ export default function Header() {
                     <MenuButton title='Início' link='' />
                     <MenuButton title='Sobre' link='sobre' />
                     <MenuButton title='Turmas' link='turmas' />
-                    <MenuButton title='Inspirações' link='inspiracoes' />
+                    <MenuButton title='Campanha' link='campanha' />
                     <MenuButton title='Eventos' link='eventos' />
                     <MenuButton title='Doações' link='doacoes' />
                 </Flex>
@@ -101,7 +101,7 @@ export default function Header() {
                     <MenuButton title='Início' link='' />
                     <MenuButton title='Sobre' link='sobre' />
                     <MenuButton title='Turmas' link='turmas' />
-                    <MenuButton title='Inspirações' link='inspiracoes' />
+                    <MenuButton title='Campanha' link='campanha' />
                     <MenuButton title='Eventos' link='eventos' />
                     <MenuButton title='Doações' link='doacoes' />
                 </Box>

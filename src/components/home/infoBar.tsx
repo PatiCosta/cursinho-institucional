@@ -12,7 +12,7 @@ export function InfoBar() {
       <Flex 
         mt={12} 
         gap={12} 
-        py={12} 
+        py={24} 
         px={12} 
         alignItems='center' 
         justifyContent='center' 

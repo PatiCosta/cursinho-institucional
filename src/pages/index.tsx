@@ -1,7 +1,10 @@
+import Footer from "@/components/Footer";
+import { DonationFooter } from "@/components/Footer/donation";
 import Header from "@/components/Header";
+import { Campaign } from "@/components/home/campaign";
 import { Classes } from "@/components/home/classes";
+import { Comments } from "@/components/home/comments";
 import { Diferentials } from "@/components/home/diferentials";
-import { Footer } from "@/components/home/footer";
 import { InfoBar } from "@/components/home/infoBar";
 import { Main } from "@/components/home/main";
 
@@ -13,8 +16,12 @@ export default function Home() {
       <Main />
       <InfoBar />
       <Diferentials />
-      <Classes />
-      <Footer />
+      {/* <Classes /> */}
+      <Campaign />
+      <Comments />
+      <Footer marginTop={40}>
+        <DonationFooter />
+      </Footer>
     </>
   )
 }

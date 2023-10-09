@@ -3,8 +3,8 @@ import { Diferentials } from "@/components/turmas/diferentials";
 import { Main } from "@/components/turmas/main";
 import { Approvals } from "@/components/turmas/approvals";
 import Footer from "@/components/Footer";
-import { DontMissBox } from "@/components/DontMissTheChance";
 import { Tutoring } from "@/components/turmas/tutoring";
+import { StudentsVideoFooter } from "@/components/Footer/studentsVideo";
 
 
 export default function Turmas() {
@@ -15,8 +15,8 @@ export default function Turmas() {
             <Diferentials />
             <Approvals />
             <Tutoring />
-            <Footer marginTop={48}>
-                <DontMissBox />
+            <Footer marginTop={72}>
+                <StudentsVideoFooter />
             </Footer>
         </>
     )

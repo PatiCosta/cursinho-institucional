@@ -1,9 +1,9 @@
-import { DontMissBox } from "@/components/DontMissTheChance";
 import { CursinhoJunina } from "@/components/eventos/CursinhoJunina";
 import { Estudantada } from "@/components/eventos/Estudantada";
 import { FeiraDeProfissoes } from "@/components/eventos/FeiraDeProfissoes";
 import { SemanaDoCursinho } from "@/components/eventos/SemanaDoCursinho";
 import Footer from "@/components/Footer";
+import { SubscribeFooter } from "@/components/Footer/subscribe";
 import Header from "@/components/Header";
 
 export default function Eventos() {
@@ -14,8 +14,8 @@ export default function Eventos() {
             <CursinhoJunina />
             <FeiraDeProfissoes />
             <Estudantada />
-            <Footer marginTop={52}>
-                <DontMissBox />
+            <Footer marginTop={40}>
+                <SubscribeFooter />
             </Footer>
         </>
     )

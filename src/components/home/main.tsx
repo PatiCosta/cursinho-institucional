@@ -95,7 +95,7 @@ export function Main() {
                         }}
 
                     >
-                        <Text>Saiba mais</Text>
+                        <Text>Veja nossas turmas</Text>
                         <ArrowCircleUpRight 
                             size={isButtonHovered ? 24 : 0} 
                             color="#023047" 

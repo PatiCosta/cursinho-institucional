@@ -5,7 +5,8 @@ export function Approvals() {
         <Flex 
             bgColor='blue.800' 
             w='100vw' 
-            p={{base: 8, lg: 12}} 
+            px={{base: 8, lg: 12}} 
+            py={{base: 24, lg: 24}}
             mt={12} 
             alignItems='center' 
             justifyContent='center' 

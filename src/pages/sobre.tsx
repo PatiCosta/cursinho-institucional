@@ -1,7 +1,7 @@
 import Footer from "@/components/Footer";
+import { ApprovedStudentsFooter } from "@/components/Footer/approvedStudents";
 import Header from "@/components/Header";
 import { About } from "@/components/sobre/about";
-import { ApprovedChart } from "@/components/sobre/approvedChart";
 import { Main } from "@/components/sobre/main";
 import { Teachers } from "@/components/sobre/teachers";
 
@@ -13,7 +13,7 @@ export default function Sobre() {
             <About />
             <Teachers />
             <Footer marginTop={72}>
-                <ApprovedChart />
+                <ApprovedStudentsFooter />
             </Footer>
         </>
     )

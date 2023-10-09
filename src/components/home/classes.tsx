@@ -33,7 +33,7 @@ export function Classes() {
                     href={`/turmas`} 
                 >
                     <Text>Saiba mais</Text>
-                    <ArrowCircleUpRight size={18} color="#F7FAFC" weight="fill" />
+                    <ArrowCircleUpRight size={18} color="#F7FAFC" weight="fill" style={{flexShrink: '0'}} />
                 </Button>
             </Flex>
             <Image 

@@ -4,50 +4,56 @@ import { ArrowCircleUpRight } from "phosphor-react";
 
 export function Main() {
     return (
-        <Box h='86vh' bgImage='static/img/us.png' bgPosition='bottom' bgSize='cover'>
-            <Box h={4}>
+        <Box h='86vh' bgImage='static/img/us-1.png' bgPosition='top' bgSize='cover'>
+            <Box h={{base: 0, lg: 4}}>
 
             </Box>
             <Flex 
                 w='100%' 
                 h={{base: 32, lg: 24}} 
-                bgColor='#2a255aa5'
                 alignItems='center' 
                 justifyContent={{base: 'center', lg: 'space-between' }}
-                px={12}
+                px={{base: 12, lg: 24}}
                 direction={{base: 'column', lg: 'row'}}
-                gap={{base: 4, lg: 0}}
+                gap={{base: 2, lg: 0}}
             >
                 <Image 
                     src={'static/img/changing_lifes.png'} 
-                    maxH={{base: 12, lg: 20}}
+                    maxH={20}
                 />
-                <Button 
-                    bgColor='gray.50' 
-                    color='blue.800' 
-                    borderRadius='2xl' 
-                    transition='all .3s ease' 
-                    _hover={{
-                        bgColor: 'yellow.500',
-                        color: 'blue.800'
-                    }} 
-                    display='flex' 
-                    alignItems='center' 
-                    gap={2}
-                    as={Link}
-                    href={`/turmas`} 
-                >
-                    <Text>Faça parte também!</Text>
-                    <ArrowCircleUpRight 
-                        size={24} 
-                        color="#023047" 
-                        weight="fill" 
-                        style={{
-                            transition: 'all 0.2s ease'
-                            
+                <Box>
+                    <Text fontSize={12} w={{base: '80vw', lg: '25vw'}} fontWeight='light' display={{base: 'none', lg: 'inline-block'}}>
+                        Anualmente, o Cursinho FEAUSP ajuda 480 vidas a conquistarem seu sonho de ingressar no ensino superior.
+                    </Text>
+                    <Button 
+                        bgColor='yellow.400' 
+                        color='gray.50' 
+                        mt={2}
+                        transition='all .3s ease' 
+                        _hover={{
+                            bgColor: 'yellow.400',
+                            color: 'gray.50'
                         }} 
-                    />
-                </Button>
+                        display='flex' 
+                        alignItems='center' 
+                        w='fit-content'
+                        gap={2}
+                        as={Link}
+                        href={`/turmas`} 
+                        size='sm'
+                    >
+                        <Text>Faça parte também!</Text>
+                        <ArrowCircleUpRight 
+                            size={18} 
+                            color="#F7FAFC" 
+                            weight="fill" 
+                            style={{
+                                transition: 'all 0.2s ease'
+                                
+                            }} 
+                        />
+                    </Button>
+                </Box>
             </Flex>
         </Box>
     )
