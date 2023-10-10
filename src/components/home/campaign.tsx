@@ -16,7 +16,7 @@ export function Campaign() {
             gap={{base: 12, lg: 32}} 
             direction={{base: 'column', lg: 'row'}}
         >
-            <Image src='static/img/climb.png' maxH={96} flex='1' />
+            <Image src='static/img/climb.png' maxH={96} />
             <Flex direction='column' gap={4} alignItems={{base: 'center', lg: 'start'}}>
                 <Text fontWeight='bold' color='gray.50' fontSize={{base: 20, sm: 20, lg: 40}} textAlign={{base: 'center', sm: 'center', lg: 'start'}}>
                     <Highlight query={['ajudamos', 'alunos' , 'lá!']} styles={{bg: 'transparent', color: 'yellow.500' }}>
