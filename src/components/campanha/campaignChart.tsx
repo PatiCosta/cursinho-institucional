@@ -123,7 +123,7 @@ export function CampaignChart() {
                 w={{base: '100%', lg: 'fit-content'}}
                 gap={{base: 4, lg: 8}}
             >
-                <Box textAlign='center' bgColor='gray.50' px={{base: 8, lg: 12}} py={{base: 2, lg: 8}} minH='100%'>
+                <Box textAlign='center' bgColor='gray.50' px={{base: 8, lg: 12}} py={{base: 2, lg: 8}}>
                     <Box>
                         <Text fontWeight='bold' fontSize={{base: 28, lg: 28}} color='blue.800'>2019</Text>
                     </Box>
@@ -133,7 +133,7 @@ export function CampaignChart() {
                     </Stat>
                 </Box>
                 <Box bgColor='gray.50' w='8px' h='8px' borderRadius='100%' />
-                <Box textAlign='center' bgColor='gray.50' px={{base: 8, lg: 12}} py={{base: 2, lg: 8}} minH='100%'>
+                <Box textAlign='center' bgColor='gray.50' px={{base: 8, lg: 12}} py={{base: 2, lg: 8}}>
                     <Box>
                         <Text fontWeight='bold' fontSize={{base: 28, lg: 28}} color='blue.800'>2020</Text>
                     </Box>
