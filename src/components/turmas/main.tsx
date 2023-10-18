@@ -1,8 +1,7 @@
 import { Box, Button, Collapse, Flex, Grid, Highlight, Image, SlideFade, Tag, Text, useDisclosure } from "@chakra-ui/react";
-import { ArrowCircleUpRight, Book, CalendarBlank, Clock, Target } from "phosphor-react";
+import { ArrowCircleUpRight, Book, CalendarBlank, ChalkboardTeacher, Clock, Target } from "phosphor-react";
 
 interface classProps {
-    imgSrc: string;
     title: string;
     bgColor: string;
     iconColor: string;
@@ -13,7 +12,7 @@ interface classProps {
     scheduleHours: string;
 }
 
-const Class = ({imgSrc, title, bgColor, iconColor, color, status, target, scheduleDates, scheduleHours}: classProps) => {
+const Class = ({title, bgColor, iconColor, color, status, target, scheduleDates, scheduleHours}: classProps) => {
     const { isOpen, onToggle } = useDisclosure()
 
     return (
@@ -21,19 +20,22 @@ const Class = ({imgSrc, title, bgColor, iconColor, color, status, target, schedu
             <Flex 
                 borderTopRadius='2xl' 
                 alignItems='center' 
-                justifyContent='space-between' 
-                gap={2} 
-                p={4} 
+                justifyContent='center' 
+                gap={8} 
+                px={4}
+                py={8} 
                 bgColor={bgColor}
+                h='100px'
             >
-                <Flex alignItems='center' justifyContent='center' bgColor='gray.50' maxH='88px' maxW='88px' minH='88px' minW='88px' borderRadius='100%'>
+                {/* <Flex alignItems='center' justifyContent='center' bgColor='gray.50' maxH='88px' maxW='88px' minH='88px' minW='88px' borderRadius='100%'>
                     <Image 
                         src={imgSrc} 
                         minH={20}
                         maxH={20}
                     />
-                </Flex>
-                <Text color='gray.50' fontSize={20} fontWeight='bold' textAlign='center'>
+                </Flex> */}
+                <ChalkboardTeacher size={36} color='#F7FAFC' weight="duotone" style={{flexShrink: '0'}} />
+                <Text color='gray.50' fontSize={20} fontWeight='bold' textAlign='start'>
                     {title}
                 </Text>
             </Flex> 
@@ -138,7 +140,6 @@ export function Main() {
             </Text>
             <Grid alignItems='center' templateColumns={{base: '1fr', lg: '1fr 1fr 1fr 1fr'}} gap={4} pt={8}>
                 <Class 
-                    imgSrc='static/img/tse.png' 
                     title='Turma de semana' 
                     bgColor='classes.tse' 
                     iconColor='#023047' 
@@ -149,7 +150,6 @@ export function Main() {
                     scheduleHours="Das 12h40 às 18h30"
                 />
                 <Class 
-                    imgSrc='static/img/tsa.png' 
                     title='Turma de sábado' 
                     bgColor='classes.tsa' 
                     iconColor='#FFB703' 
@@ -160,7 +160,6 @@ export function Main() {
                     scheduleHours="Das 8h00 às 18h30"
                 />
                 <Class 
-                    imgSrc='static/img/tsm.png' 
                     title='Turma de sábado de maio' 
                     bgColor='classes.tsm' 
                     iconColor='#E76F51' 
@@ -171,7 +170,6 @@ export function Main() {
                     scheduleHours="Das 8h00 às 18h30"
                 />
                 <Class 
-                    imgSrc='static/img/tsi.png' 
                     title='Turma de semana intensiva' 
                     bgColor='classes.tsi' 
                     iconColor='#702459' 
