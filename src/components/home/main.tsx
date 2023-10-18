@@ -73,14 +73,24 @@ export function Main() {
                 />
 
                 <Flex gap={4} direction={{base: 'column', sm: 'column', lg: 'row'}}>
-                    <Button bgColor='blue.800' color='gray.50' borderRadius='xl' size='lg' transition='all .3s ease' _hover={{
-                        color: 'yellow.500'
-                    }}>
+                    <Button 
+                        bgColor='blue.800' 
+                        color='gray.50' 
+                        borderRadius='xl' 
+                        size='lg' 
+                        transition='all .3s ease' 
+                        _hover={{
+                            color: 'yellow.500'
+                        }}
+                        as={Link}
+                        href={`/turmas`}
+                        display='flex' 
+                    >
                         <Text>Inscrever-se</Text>
                     </Button>
                     <Button 
                         as={Link}
-                        href={`/turmas`} 
+                        href={`/doacoes`} 
                         bgColor='gray.50' 
                         border='1px solid' 
                         borderColor='yellow.500' 
@@ -95,7 +105,7 @@ export function Main() {
                         }}
 
                     >
-                        <Text>Veja nossas turmas</Text>
+                        <Text>Nos ajude a voar 🚀</Text>
                         <ArrowCircleUpRight 
                             size={isButtonHovered ? 24 : 0} 
                             color="#023047" 

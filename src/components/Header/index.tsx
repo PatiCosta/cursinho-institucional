@@ -1,4 +1,4 @@
-import {Box, Button, Collapse, Flex, IconButton, Image, Text, useDisclosure} from '@chakra-ui/react'
+import {Box, Collapse, Flex, IconButton, Image, Text, useDisclosure} from '@chakra-ui/react'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { List } from 'phosphor-react';
@@ -79,12 +79,24 @@ export default function Header() {
                     <MenuButton title='Eventos' link='eventos' />
                     <MenuButton title='Doações' link='doacoes' />
                 </Flex>
-                <Button bgColor='blue.800' color='yellow.500' borderRadius='3xl' transition='all .3s ease' _hover={{
-                    bgColor: 'yellow.500',
-                    color: 'blue.800'
-                }} size={{base: 'sm', sm: 'sm', lg: 'lg'}} display={{base: 'none', sm: 'none', md: 'block'}}>
+                <Flex 
+                    as={Link}
+                    href={`/turmas`}
+                    bgColor='blue.800' 
+                    color='yellow.500' 
+                    borderRadius='3xl' 
+                    transition='all .3s ease' 
+                    _hover={{
+                        bgColor: 'yellow.500',
+                        color: 'blue.800'
+                    }} 
+                    px={4}
+                    py={2}
+                    display={{base: 'none', sm: 'none', md: 'block'}}
+                    fontWeight='semibold'
+                >
                     <Text>Inscrever-se</Text>
-                </Button>
+                </Flex>
                 <IconButton
                     display={{base: 'flex', sm: 'flex', lg: 'none'}}
                     aria-label='Abrir menu'

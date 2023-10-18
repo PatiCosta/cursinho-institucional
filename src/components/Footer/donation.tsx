@@ -1,5 +1,6 @@
-import { Box, Button, Flex, Highlight, Image, Link, Text, useBreakpointValue } from "@chakra-ui/react";
-import { ArrowCircleDown, ArrowCircleUpRight, Envelope, FacebookLogo, InstagramLogo, LinkedinLogo, TiktokLogo, TwitterLogo, YoutubeLogo } from "phosphor-react";
+import { Box, Button, Flex, Highlight, Image, Text, useBreakpointValue } from "@chakra-ui/react";
+import { ArrowCircleUpRight } from "phosphor-react";
+import Link from 'next/link';
 
 export function DonationFooter() {
   const isLg = useBreakpointValue({base: false, sm: false, lg: true})
@@ -28,6 +29,9 @@ export function DonationFooter() {
 
                 </Text>
                 <Button 
+                    as={Link}
+                    href={`/doacoes`}
+                    w='fit-content'
                     mt={8} 
                     bgColor='gray.50' 
                     borderRadius='2xl' 

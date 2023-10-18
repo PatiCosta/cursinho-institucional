@@ -1,4 +1,5 @@
 import { Box, Button, Flex, Highlight, Image, Text, useBreakpointValue } from "@chakra-ui/react";
+import Link from "next/link";
 import { ArrowCircleUpRight } from "phosphor-react";
 
 
@@ -30,6 +31,9 @@ export function SubscribeFooter() {
                     </Highlight>
                 </Text>
                 <Button 
+                    as={Link}
+                    href={`/turmas`}
+                    w='fit-content'
                     mt={8}
                     mx={{base: 'auto', lg: 0}}
                     bgColor='gray.50' 
