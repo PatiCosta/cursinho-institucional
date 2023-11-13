@@ -18,7 +18,7 @@ export function SubscribeFooter() {
             px={{base: 4, lg: 12}} 
             gap={4}
         >
-            {isLg && <Image src='static/img/study.png' maxH={52} my='auto' />}
+            {isLg && <Image src='img/study.png' maxH={52} my='auto' />}
             <Box textAlign={{base: 'center', lg: 'start'}}>
                 <Text fontSize={{base: 32, lg: 40}} color='gray.800' fontWeight='light'>
                     <Highlight query='Não perca' styles={{bg: 'transparent', color: 'gray.50', fontWeight: 'bold' }}>

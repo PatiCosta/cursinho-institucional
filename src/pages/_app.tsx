@@ -1,3 +1,4 @@
+import { SchoolClassProvider } from '@/context/turmas'
 import { ChakraProvider } from '@chakra-ui/react'
 import type { AppProps } from 'next/app'
 
@@ -10,7 +11,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <div className={montserrat.className}>
       <ChakraProvider theme={theme}>
-        <Component {...pageProps} />
+        <SchoolClassProvider>
+          <Component {...pageProps} />
+        </SchoolClassProvider>
       </ChakraProvider>
     </div>
   )

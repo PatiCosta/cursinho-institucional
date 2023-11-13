@@ -23,7 +23,7 @@ export function Main() {
                         borderRadius='md'
                         >
                         <Image 
-                            src={'static/img/teste-img-1.png'} 
+                            src={'img/teste-img-1.png'} 
                             maxW={{base: '40vw', lg: '24vw'}}
                         />
                         </Box>
@@ -32,7 +32,7 @@ export function Main() {
                         borderRadius='md'
                         >
                         <Image 
-                            src={'static/img/teste-img-2.png'} 
+                            src={'img/teste-img-2.png'} 
                             maxW={{base: '40vw', lg: '24vw'}}
                         />
                         </Box>
@@ -43,7 +43,7 @@ export function Main() {
                         borderRadius='md'
                         >
                         <Image 
-                            src={'static/img/teste-img-2.png'} 
+                            src={'img/teste-img-2.png'} 
                             maxW={{base: '40vw', lg: '24vw'}}
                         />
                         </Box>
@@ -52,7 +52,7 @@ export function Main() {
                         borderRadius='md'
                         >
                         <Image 
-                            src={'static/img/teste-img-1.png'} 
+                            src={'img/teste-img-1.png'} 
                             maxW={{base: '40vw', lg: '24vw'}}
                         />
                         </Box>
@@ -64,7 +64,7 @@ export function Main() {
                 </Text>
 
                 <Image 
-                    src={'static/img/up-arrow.png'} 
+                    src={'img/up-arrow.png'} 
                     transform={{base: 'rotate(-170deg)', lg: 'rotate(-160.4deg)'}}
                     maxW={{base: '40px', sm: '40px', lg: '80px'}}
                     mt={8}
@@ -119,7 +119,7 @@ export function Main() {
                 </Flex>
 
                 <Image 
-                    src={'static/img/todos_podem_voar.png'} 
+                    src={'img/todos_podem_voar.png'} 
                     maxH={'40px'}
                     mt={8}
                     ml={{base: 'auto', sm: 'auto', lg: 0}}
@@ -134,7 +134,7 @@ export function Main() {
                     borderRadius='md'
                     >
                     <Image 
-                        src={'static/img/teste-img-1.png'} 
+                        src={'img/teste-img-1.png'} 
                         maxW={'24vw'}
                     />
                     </Box>
@@ -143,7 +143,7 @@ export function Main() {
                     borderRadius='md'
                     >
                     <Image 
-                        src={'static/img/teste-img-2.png'} 
+                        src={'img/teste-img-2.png'} 
                         maxW={'24vw'}
                     />
                     </Box>
@@ -154,7 +154,7 @@ export function Main() {
                     borderRadius='md'
                     >
                     <Image 
-                        src={'static/img/teste-img-2.png'} 
+                        src={'img/teste-img-2.png'} 
                         maxW={'24vw'}
                     />
                     </Box>
@@ -163,7 +163,7 @@ export function Main() {
                     borderRadius='md'
                     >
                     <Image 
-                        src={'static/img/teste-img-1.png'} 
+                        src={'img/teste-img-1.png'} 
                         maxW={'24vw'}
                     />
                     </Box>

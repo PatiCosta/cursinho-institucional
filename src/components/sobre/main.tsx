@@ -4,7 +4,7 @@ import { ArrowCircleUpRight } from "phosphor-react";
 
 export function Main() {
     return (
-        <Box h='86vh' bgImage='static/img/us-1.png' bgPosition='top' bgSize='cover'>
+        <Box h='86vh' bgImage='img/us-1.png' bgPosition='top' bgSize='cover'>
             <Box h={{base: 0, lg: 4}}>
 
             </Box>
@@ -18,7 +18,7 @@ export function Main() {
                 gap={{base: 2, lg: 0}}
             >
                 <Image 
-                    src={'static/img/changing_lifes.png'} 
+                    src={'img/changing_lifes.png'} 
                     maxH={20}
                 />
                 <Box>

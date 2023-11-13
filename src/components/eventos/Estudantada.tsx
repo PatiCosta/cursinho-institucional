@@ -1,14 +1,14 @@
 import { Box, Flex, Grid, Highlight, Text, useBreakpointValue } from "@chakra-ui/react";
-import { Money, CalendarBlank, MapPin } from "phosphor-react";
+import { Money, CalendarBlank } from "phosphor-react";
 import { Carousel } from "../Carousel";
 import { ColumnInfoLabel } from "../InfoLabel/column";
 import { ReverseRowInfoLabel } from "../InfoLabel/row";
 
-const img1 = 'static/img/estudantada_1.png'
-const img2 = 'static/img/estudantada_2.png'
-const img3 = 'static/img/estudantada_3.png'
-const img4 = 'static/img/estudantada_4.png'
-const img5 = 'static/img/estudantada_5.png'
+const img1 = 'img/estudantada_1.png'
+const img2 = 'img/estudantada_2.png'
+const img3 = 'img/estudantada_3.png'
+const img4 = 'img/estudantada_4.png'
+const img5 = 'img/estudantada_5.png'
 
 
 export function Estudantada() {

@@ -24,7 +24,7 @@ export function Comments() {
             <Tabs variant='unstyled' mt={12} index={tabIndex} onChange={handleTabsChange}>
                 <TabList gap={{base: 2, lg: 6}} minH={32}>
                     <Tab 
-                        bgImage='static/img/avatar-mauricio.png' 
+                        bgImage='img/avatar-mauricio.png' 
                         _selected={{w: 32, h: 32, filter: 'brightness(1)', display: 'block'}} 
                         bgSize='cover'
                         filter='brightness(0.4)' 
@@ -34,7 +34,7 @@ export function Comments() {
                         display={{base: 'none', lg: 'block'}} 
                     />
                     <Tab 
-                        bgImage='static/img/avatar-murilo.png' 
+                        bgImage='img/avatar-murilo.png' 
                         _selected={{w: 32, h: 32, filter: 'brightness(1)', display: 'block'}} 
                         bgSize='cover'
                         filter='brightness(0.4)' 
@@ -44,7 +44,7 @@ export function Comments() {
                         display={{base: 'none', lg: 'block'}} 
                     />
                     <Tab 
-                        bgImage='static/img/avatar-beatriz.png' 
+                        bgImage='img/avatar-beatriz.png' 
                         _selected={{w: 32, h: 32, filter: 'brightness(1)', display: 'block'}} 
                         bgSize='cover'
                         filter='brightness(0.4)' 
@@ -54,7 +54,7 @@ export function Comments() {
                         display={{base: 'none', lg: 'block'}}  
                     />
                     <Tab 
-                        bgImage='static/img/avatar-ariane.png' 
+                        bgImage='img/avatar-ariane.png' 
                         _selected={{w: 32, h: 32, filter: 'brightness(1)', display: 'block'}} 
                         bgSize='cover'
                         filter='brightness(0.4)' 
@@ -64,7 +64,7 @@ export function Comments() {
                         display={{base: 'none', lg: 'block'}} 
                     />
                     <Tab 
-                        bgImage='static/img/avatar-mizael.png' 
+                        bgImage='img/avatar-mizael.png' 
                         _selected={{w: 32, h: 32, filter: 'brightness(1)', display: 'block'}} 
                         bgSize='cover'
                         filter='brightness(0.4)' 
@@ -74,7 +74,7 @@ export function Comments() {
                         display={{base: 'none', lg: 'block'}} 
                     />
                     <Tab 
-                        bgImage='static/img/avatar-angelica.png' 
+                        bgImage='img/avatar-angelica.png' 
                         _selected={{w: 32, h: 32, filter: 'brightness(1)', display: 'block'}} 
                         bgSize='cover'
                         filter='brightness(0.4)' 
@@ -138,7 +138,7 @@ export function Comments() {
                 </Flex>
             </Flex>
             <Image 
-                src='static/img/quote.png'
+                src='img/quote.png'
                 h={{base: 40, lg: 80}}
                 position='absolute'
                 top={{base: '60%', lg: '40%'}}

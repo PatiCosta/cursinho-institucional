@@ -37,7 +37,7 @@ export function Classes() {
                 </Button>
             </Flex>
             <Image 
-                src={'static/img/turmas_fundo.png'} 
+                src={'img/turmas_fundo.png'} 
                 maxW='100vw'
                 mt={{base: 4, lg: 0}}
             />

@@ -1,0 +1,279 @@
+import { Box, Button, Flex, Grid, Highlight, Tag, Text, useBreakpointValue } from "@chakra-ui/react";
+import { Calendar, Clock, PencilSimpleLine, Target, UsersThree } from "phosphor-react";
+
+interface MainProps {
+    title: string
+    color: string
+    description: string
+    dateSchedule: string
+    hourSchedule: string
+    classContent: string
+    whoCanParticipate: string
+    subscriptionSchedule: string
+    price: number
+}
+
+export function Main({title, color, description, dateSchedule, hourSchedule, classContent, whoCanParticipate, subscriptionSchedule, price}: MainProps) {
+    const isLg = useBreakpointValue({ base: false, sm: false, lg: true })
+    
+    return (
+        <Box 
+            pb={{base: 0, lg: 4}}
+            pt={4}
+            minH='72vh' 
+            position='relative' 
+        >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style={{position: 'absolute', bottom: '0', transform: 'scaleX(-1)', zIndex: '-100'}}>
+            <path fill={color} fill-opacity="1" d="M0,96L34.3,117.3C68.6,139,137,181,206,202.7C274.3,224,343,224,411,224C480,224,549,224,617,197.3C685.7,171,754,117,823,101.3C891.4,85,960,107,1029,101.3C1097.1,96,1166,64,1234,64C1302.9,64,1371,96,1406,112L1440,128L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
+        </svg>
+        <Flex px={{base: 4, lg: 12}} w='100vw' justifyContent='space-between' pb={4} direction={{base: 'column', lg: 'row'}}>
+            <Box h='inherit' position='relative'>
+                <Text 
+                    fontWeight='bold' 
+                    fontSize={{base: 32, sm: 32, lg: 48}} 
+                    textAlign={{base: 'center', sm: 'center', lg: 'start'}}
+                    letterSpacing={1}
+                >
+                    {title}
+                </Text>
+                <Text 
+                    fontSize={{base: 14, sm: 14, lg: 16}} 
+                    textAlign={{base: 'center', sm: 'center', lg: 'start'}} 
+                    w={{base: '90vw', lg: '40vw'}}
+                    mt={{base: 4, lg: 8}}
+                >
+                    {description}
+                </Text>
+                <Button 
+                    position='absolute' 
+                    bottom='0px'
+                    py={10}
+                    px={16} 
+                    size='lg' 
+                    bgColor='gray.50' 
+                    display={{base: 'none', lg: 'flex' }}
+                    gap={4}
+                    fontSize={20}
+                    borderRadius='2xl'
+                    _hover={{bgColor: 'gray.100'}}
+                >
+                    <Text fontWeight='bolder' letterSpacing={.5}>Quero me inscrever!</Text>
+                    <Text>→</Text>
+                </Button>
+            </Box>
+            <Box mt={{base: 6, lg: 0}}>
+                <Box 
+                    bgColor='transparent' 
+                    pl={8} 
+                    py={8} 
+                    boxShadow='md' 
+                    flex='1.05' 
+                    position='relative'
+                    w={{base: '90vw', lg: '50vw'}}
+                    borderRadius='xl'
+                    mx={{base: 'auto', lg: 0}}
+                >
+                    <Box borderBottomLeftRadius='100%' borderTopRightRadius='xl' bgColor={color} opacity={0.3} h='96px' w='96px' position='absolute' top='0' right='0' zIndex='-1'>
+                    </Box>
+                    <Box borderTopRightRadius='100%' borderBottomLeftRadius='xl' bgColor={color} opacity={0.3} h='96px' w='96px' position='absolute' bottom='0' left='0' zIndex='-1'>
+                    </Box>
+                    <Flex alignItems='center' gap={4}>
+                        <PencilSimpleLine size={48} color="#023047" weight="duotone" />
+                        <Text fontSize={{base: 20, lg: 24}} fontWeight="bold">
+                            <Highlight query='abertas!' styles={{bg: 'transparent', color: color }}>
+                                Inscrições abertas! 
+                            </Highlight>
+                        </Text>
+                        <Box flex='1' h='2px' bgColor='blue.800'></Box>
+                    </Flex>
+                    <Text fontWeight='light' fontSize={{base: 14, lg: 16}} mt={4} pr={8}>
+                        Se interessou pela turma? Não deixe essa chance passar. Junte-se a nós na busca constante pelo conhecimento e crescimento pessoal. Mal podemos esperar para recebê-lo em nossa turma! 🌟📚
+                    </Text>
+                    <Flex 
+                        alignItems='center' 
+                        justifyContent='space-between' 
+                        gap={4} 
+                        mt={8} 
+                        direction={{base: 'column', lg: 'row'}}
+                        pr={{base: 8, lg: 0}}
+                    >
+                        <Text fontSize={{base: 14, lg: 16}}>
+                            <Highlight query='Período das inscrições:' styles={{bg: 'transparent', fontWeight: 'semibold', letterSpacing: '0.2px', color: 'gray.700' }}>
+                            {`Período das inscrições: ${subscriptionSchedule}`}
+                            </Highlight>
+                        </Text>
+                        <Tag size='lg' variant='subtle' colorScheme='green' mr={{base: 0, lg: 8}}>
+                        valor da inscrição: R${price}
+                        </Tag>
+                    </Flex>
+                </Box>
+                <Grid 
+                    templateColumns={{base: '1fr 1fr', lg: '1fr 1fr 1fr 1fr' }}
+                    gap={{base: 2, lg: 4}} 
+                    mt={{base: 4, lg: 12}}
+                    w={{base: '90vw', lg: '50vw'}}
+                    textAlign='center'
+                    mx={{base: 'auto', lg: 0}}
+                >
+                    <Flex 
+                        direction='column' 
+                        alignItems='center' 
+                        justifyContent='space-between' 
+                        bgColor='gray.50' 
+                        borderRadius='xl' 
+                        p={4} 
+                        boxShadow='md'
+                        position='relative'
+                    >
+                        <Box 
+                            borderBottomLeftRadius='100%' 
+                            borderTopRightRadius='xl' 
+                            bgColor='gray.500' 
+                            opacity={0.3} 
+                            h='64px' 
+                            w='64px' 
+                            position='absolute' 
+                            top='0' 
+                            right='0' 
+                        >
+                        </Box>
+                        <Box borderTopRightRadius='100%' borderBottomLeftRadius='xl' bgColor='gray.500' opacity={0.3} h='64px' w='64px' position='absolute' bottom='0' left='0'>
+                        </Box>
+                        <Flex direction='column' gap={2} alignItems='center'>
+                            <Calendar 
+                                size={isLg ? 40 : 26} 
+                                color="#2a255a" 
+                                weight="duotone" 
+                            />
+                            <Text fontWeight='bold' fontSize={{base: 14, lg: 16}}>Dias de aula</Text>
+                        </Flex>
+                        <Text fontWeight='medium' fontSize={14}>{dateSchedule}</Text>
+                    </Flex>
+                    <Flex 
+                        direction='column' 
+                        alignItems='center' 
+                        justifyContent='space-between' 
+                        bgColor='gray.50' 
+                        borderRadius='xl' 
+                        p={4} 
+                        boxShadow='md'
+                        position='relative'
+                    >
+                        <Box 
+                            borderBottomRightRadius='100%' 
+                            borderTopLeftRadius='xl' 
+                            bgColor='gray.500' 
+                            opacity={0.3} 
+                            h='64px' 
+                            w='64px' 
+                            position='absolute' 
+                            top='0' 
+                            left='0' 
+                        >
+                        </Box>
+                        <Box borderTopLeftRadius='100%' borderBottomRightRadius='xl' bgColor='gray.500' opacity={0.3} h='64px' w='64px' position='absolute' bottom='0' right='0'>
+                        </Box>
+                        <Flex direction='column' gap={2} alignItems='center'>
+                            <Clock 
+                                size={isLg ? 40 : 28} 
+                                color="#2a255a" 
+                                weight="duotone" 
+                            />
+                            <Text fontWeight='bold' fontSize={{base: 14, lg: 16}}>Horário das aulas</Text>
+                        </Flex>
+                        <Text fontWeight='medium' fontSize={14}>{hourSchedule}</Text>
+                    </Flex>
+                    <Flex 
+                        direction='column' 
+                        alignItems='center' 
+                        justifyContent='space-between' 
+                        bgColor='gray.50' 
+                        borderRadius='xl' 
+                        p={4} 
+                        boxShadow='md'
+                        position='relative'
+                    >
+                        <Box 
+                            borderBottomLeftRadius='100%' 
+                            borderTopRightRadius='xl' 
+                            bgColor='gray.500' 
+                            opacity={0.3} 
+                            h='64px' 
+                            w='64px' 
+                            position='absolute' 
+                            top='0' 
+                            right='0' 
+                        >
+                        </Box>
+                        <Box borderTopRightRadius='100%' borderBottomLeftRadius='xl' bgColor='gray.500' opacity={0.3} h='64px' w='64px' position='absolute' bottom='0' left='0'>
+                        </Box>
+                        <Flex direction='column' gap={2} alignItems='center'>
+                        <Target 
+                            size={isLg ? 40 : 28} 
+                            color="#2a255a" 
+                            weight="duotone" 
+                        />
+                            <Text fontWeight='bold' fontSize={{base: 14, lg: 16}}>Conteúdo</Text>
+                        </Flex>
+                        <Text fontWeight='medium' fontSize={14}>{classContent}</Text>
+                    </Flex>
+                    <Flex 
+                        direction='column' 
+                        alignItems='center' 
+                        justifyContent='space-between' 
+                        bgColor='gray.50' 
+                        borderRadius='xl' 
+                        p={4} 
+                        boxShadow='md'
+                        position='relative'
+                    >
+                        <Box 
+                            borderBottomRightRadius='100%' 
+                            borderTopLeftRadius='xl' 
+                            bgColor='gray.500' 
+                            opacity={0.3} 
+                            h='64px' 
+                            w='64px' 
+                            position='absolute' 
+                            top='0' 
+                            left='0' 
+                        >
+                        </Box>
+                        <Box borderTopLeftRadius='100%' borderBottomRightRadius='xl' bgColor='gray.500' opacity={0.3} h='64px' w='64px' position='absolute' bottom='0' right='0'>
+                        </Box>
+                        <Flex direction='column' gap={2} alignItems='center'>
+                        <UsersThree 
+                            size={isLg ? 40 : 28} 
+                            color="#2a255a" 
+                            weight="duotone" 
+                        />
+                            <Text fontWeight='bold' fontSize={{base: 14, lg: 16}}>Quem pode participar?</Text>
+                        </Flex>
+                        <Text fontWeight='medium' fontSize={14}>{whoCanParticipate}</Text>
+                    </Flex>
+                </Grid>
+            </Box>
+            <Button 
+                // position='absolute' 
+                // bottom='0px'
+                // py={10}
+                // px={16} 
+                size='lg' 
+                bgColor='gray.50' 
+                display={{base: 'flex', lg: 'none' }}
+                gap={4}
+                fontSize={20}
+                borderRadius='2xl'
+                _hover={{bgColor: 'gray.100'}}
+                mt={8}
+                boxShadow='dark-lg'
+            >
+                <Text fontWeight='bolder' letterSpacing={.5}>Quero me inscrever!</Text>
+                <Text>→</Text>
+            </Button>
+        </Flex>
+
+        
+        </Box>
+    )
+}

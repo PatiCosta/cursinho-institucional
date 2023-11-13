@@ -16,15 +16,15 @@ export function Campaign() {
             gap={{base: 12, lg: 32}} 
             direction={{base: 'column', lg: 'row'}}
         >
-            <Image src='static/img/climb.png' maxH={96} />
+            <Image src='img/climb.png' maxH={96} />
             <Flex direction='column' gap={4} alignItems={{base: 'center', lg: 'start'}}>
                 <Text fontWeight='bold' color='gray.50' fontSize={{base: 20, sm: 20, lg: 40}} textAlign={{base: 'center', sm: 'center', lg: 'start'}}>
-                    <Highlight query={['ajudamos', 'alunos' , 'lá!']} styles={{bg: 'transparent', color: 'yellow.500' }}>
-                        Nós ajudamos nossos alunos a chegar lá! (chamar atenção)
+                    <Highlight query={['sua', 'vidas' , '480!']} styles={{bg: 'transparent', color: 'yellow.500' }}>
+                        Sua doação muda vidas! Juntos mudamos 480!
                     </Highlight>
                 </Text>
                 <Text fontWeight='light' color='gray.50' fontSize='sm' textAlign={{base: 'center', sm: 'center', lg: 'start'}}>
-                    Desde 2019, o Cursinho FEAUSP oferece para os seus alunos auxílio para o pagamento de taxas de inscrição dos vestibulares. (resumo pequeno chamando atenção)
+                Somos um cursinho pré-vestibular sem mensalidades e lutamos pela democratização da educação! Desde 2009, realizamos uma campanha com o intuito de arrecadar fundos para pagar as taxas dos vestibulares dos nossos alunes que não conseguiram a isenção. Já pensou em mudar a vida de uma pessoa? Contamos com sua doação, todo valor é bem-vindo.
                 </Text>
                 <Button 
                     mt={{base: 8, lg: 12}} 

@@ -12,7 +12,7 @@ interface menuButtonProps {
 const MenuButton = ({title, link}: menuButtonProps) => {
     const router = useRouter();
     const [isHovering, setIsHovering] = useState(false);
-    const isActive = router.pathname === `/${link}`
+    const isActive = router.pathname.includes(`/${link}`)
 
     return (
         <Flex
@@ -58,67 +58,67 @@ export default function Header() {
 
     return (
         <Box px={{base: 8, lg: 12}} w='100vw'>  
-        <Box
-            borderBottom={{base: '1px solid', lg: 'none'}}
-            borderColor='gray.400'
-        >
-            <Flex
-                alignItems='center'
-                justifyContent='space-between'
-                py={6}
+            <Box
+                borderBottom={{base: '1px solid', lg: 'none'}}
+                borderColor='gray.400'
             >
-                <Image 
-                    src={'static/img/logo.png'} 
-                    maxH={{base: 12, sm: 12, lg: 16}}
-                />
-                <Flex gap={2} display={{base: 'none', sm: 'none', lg: 'flex'}}>
-                    <MenuButton title='Início' link='' />
-                    <MenuButton title='Sobre' link='sobre' />
-                    <MenuButton title='Turmas' link='turmas' />
-                    <MenuButton title='Campanha' link='campanha' />
-                    <MenuButton title='Eventos' link='eventos' />
-                    <MenuButton title='Doações' link='doacoes' />
-                </Flex>
-                <Flex 
-                    as={Link}
-                    href={`/turmas`}
-                    bgColor='blue.800' 
-                    color='yellow.500' 
-                    borderRadius='3xl' 
-                    transition='all .3s ease' 
-                    _hover={{
-                        bgColor: 'yellow.500',
-                        color: 'blue.800'
-                    }} 
-                    px={4}
-                    py={2}
-                    display={{base: 'none', sm: 'none', md: 'block'}}
-                    fontWeight='semibold'
+                <Flex
+                    alignItems='center'
+                    justifyContent='space-between'
+                    py={6}
                 >
-                    <Text>Inscrever-se</Text>
+                    <Image 
+                        src={'../../img/logo.png'} 
+                        maxH={{base: 12, sm: 12, lg: 16}}
+                    />
+                    <Flex gap={2} display={{base: 'none', sm: 'none', lg: 'flex'}}>
+                        <MenuButton title='Início' link='home' />
+                        <MenuButton title='Sobre' link='sobre' />
+                        <MenuButton title='Turmas' link='turmas' />
+                        <MenuButton title='Campanha' link='campanha' />
+                        <MenuButton title='Eventos' link='eventos' />
+                        <MenuButton title='Doações' link='doacoes' />
+                    </Flex>
+                    <Flex 
+                        as={Link}
+                        href={`/turmas`}
+                        bgColor='blue.800' 
+                        color='yellow.500' 
+                        borderRadius='3xl' 
+                        transition='all .3s ease' 
+                        _hover={{
+                            bgColor: 'yellow.500',
+                            color: 'blue.800'
+                        }} 
+                        px={4}
+                        py={2}
+                        display={{base: 'none', sm: 'none', md: 'block'}}
+                        fontWeight='semibold'
+                    >
+                        <Text>Ver nossas turmas</Text>
+                    </Flex>
+                    <IconButton
+                        display={{base: 'flex', sm: 'flex', lg: 'none'}}
+                        aria-label='Abrir menu'
+                        bgColor='gray.50'
+                        icon={<List size={28} color="#023047" />}
+                        onClick={onToggle}
+                        _hover={{
+                            bgColor: 'transparent'
+                        }}
+                    />
                 </Flex>
-                <IconButton
-                    display={{base: 'flex', sm: 'flex', lg: 'none'}}
-                    aria-label='Abrir menu'
-                    bgColor='gray.50'
-                    icon={<List size={28} color="#023047" />}
-                    onClick={onToggle}
-                    _hover={{
-                        bgColor: 'transparent'
-                    }}
-                />
-            </Flex>
-            <Collapse in={isOpen} animateOpacity>
-                <Box>
-                    <MenuButton title='Início' link='' />
-                    <MenuButton title='Sobre' link='sobre' />
-                    <MenuButton title='Turmas' link='turmas' />
-                    <MenuButton title='Campanha' link='campanha' />
-                    <MenuButton title='Eventos' link='eventos' />
-                    <MenuButton title='Doações' link='doacoes' />
-                </Box>
-            </Collapse>
-        </Box>     
+                <Collapse in={isOpen} animateOpacity>
+                    <Box>
+                        <MenuButton title='Início' link='' />
+                        <MenuButton title='Sobre' link='sobre' />
+                        <MenuButton title='Turmas' link='turmas' />
+                        <MenuButton title='Campanha' link='campanha' />
+                        <MenuButton title='Eventos' link='eventos' />
+                        <MenuButton title='Doações' link='doacoes' />
+                    </Box>
+                </Collapse>
+            </Box>     
         </Box>
     )
 }

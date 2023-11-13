@@ -4,11 +4,11 @@ import { Carousel } from "../Carousel";
 import { ColumnInfoLabel } from "../InfoLabel/column";
 import { ReverseRowInfoLabel } from "../InfoLabel/row";
 
-const img1 = 'static/img/cursinho_junina_1.jpeg'
-const img2 = 'static/img/cursinho_junina_2.jpeg'
-const img3 = 'static/img/cursinho_junina_3.jpeg'
-const img4 = 'static/img/cursinho_junina_4.png'
-const img5 = 'static/img/cursinho_junina_5.png'
+const img1 = 'img/cursinho_junina_1.jpeg'
+const img2 = 'img/cursinho_junina_2.jpeg'
+const img3 = 'img/cursinho_junina_3.jpeg'
+const img4 = 'img/cursinho_junina_4.png'
+const img5 = 'img/cursinho_junina_5.png'
 
 
 export function CursinhoJunina() {

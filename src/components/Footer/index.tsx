@@ -10,7 +10,7 @@ export default function Footer({children, ...rest}: footerProps) {
   const isLg = useBreakpointValue({base: false, sm: false, lg: true})
 
     return (
-        <Box bgImage={'static/img/footer-background.png'} position='relative' px={{base: 0, lg: 0}} {...rest}>
+        <Box bgImage={'img/footer-background.png'} position='relative' px={{base: 0, lg: 0}} {...rest}>
             {children}
             <Flex justifyContent='space-between' alignItems='start' direction={{base: 'column', lg: 'row'}} px={{base: 4, lg: 24}}>
                 <Flex mt={{base: '50%', lg: '20%'}} alignItems={{base: 'center', lg: 'start'}} direction='column' w='100%' justifyContent='center'>

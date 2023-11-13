@@ -35,7 +35,7 @@ export function Tutoring() {
                     display={{base: 'block', lg: 'none'}}
                 >
                     <Image 
-                        src={'static/img/tutoria.png'} 
+                        src={'img/tutoria.png'} 
                         w='100vw'
                         h='40vh'
                         objectFit='cover'
@@ -85,7 +85,7 @@ export function Tutoring() {
                     display={{base: 'none', lg: 'block'}}
                 >
                     <Image 
-                        src={'static/img/tutoria.png'} 
+                        src={'img/tutoria.png'} 
                         w='40vw'
                         h='60vh'
                         objectFit='cover'

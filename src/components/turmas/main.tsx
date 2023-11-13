@@ -1,18 +1,25 @@
-import { Box, Button, Collapse, Flex, Grid, Highlight, Image, SlideFade, Tag, Text, useDisclosure } from "@chakra-ui/react";
+import { Course, CourseDocument } from "@/interfaces/Course.interface";
+import { Box, Button, Collapse, Flex, Grid, Highlight, Image, Skeleton, Tag, Text, useDisclosure } from "@chakra-ui/react";
+import Link from "next/link";
 import { ArrowCircleUpRight, Book, CalendarBlank, ChalkboardTeacher, Clock, Target } from "phosphor-react";
 
 interface classProps {
     title: string;
     bgColor: string;
     iconColor: string;
-    color: string;
-    status: 'closed' | 'open' | 'soon'
+    status: 'Fechado' | 'Aberto' | 'Em breve'
     target: string;
     scheduleDates: string;
     scheduleHours: string;
+    documents?: CourseDocument[]
+    id?: string
 }
 
-const Class = ({title, bgColor, iconColor, color, status, target, scheduleDates, scheduleHours}: classProps) => {
+interface MainProps {
+    schoolClassList?: Course[]
+}
+
+const Class = ({title, bgColor, iconColor, status, target, scheduleDates, scheduleHours, documents, id}: classProps) => {
     const { isOpen, onToggle } = useDisclosure()
 
     return (
@@ -42,9 +49,9 @@ const Class = ({title, bgColor, iconColor, color, status, target, scheduleDates,
             <Box py={4} px={8} position='relative'>
                 <Flex w='100%' justifyContent='center' mb={4}>
                     <Tag size='lg' variant='outline' colorScheme={
-                        status === 'open' ? 'green' : status === 'closed' ? 'red' : 'gray'
+                        status === 'Aberto' ? 'green' : status === 'Fechado' ? 'red' : 'gray'
                     }>
-                        Inscrições {status === 'open' ? 'abertas!' : status === 'closed' ? 'encerradas!' : 'em breve!'}
+                        Inscrições {status === 'Aberto' ? 'abertas!' : status === 'Fechado' ? 'encerradas!' : 'em breve!'}
                     </Tag>
                 </Flex>
                 <Flex alignItems='center' justifyContent='start' gap={2} py={1}>
@@ -59,17 +66,19 @@ const Class = ({title, bgColor, iconColor, color, status, target, scheduleDates,
                     <Clock size={28} color={iconColor} weight="duotone" />
                     <Text fontSize='14px'>{scheduleHours}</Text>
                 </Flex>
-                <Flex alignItems='center' justifyContent='start' gap={2} py={1} cursor='pointer' onClick={onToggle}>
+                {documents && <Flex alignItems='center' justifyContent='start' gap={2} py={1} cursor='pointer' onClick={onToggle}>
                     <Book size={36} color={iconColor} weight="duotone" />
                     <Text fontWeight='semibold' fontSize='14px' textDecoration='underline'>Informações do processo seletivo →</Text>
-                </Flex>
+                </Flex>}
                 <Button 
+                    as={Link}
+                    href={`turmas/${id}`}
                     mt={8} 
                     w='100%' 
-                    bgColor={color} 
+                    bgColor={bgColor} 
                     color='gray.50' 
                     borderRadius='2xl' 
-                    size='lg' 
+                    size='lg'
                     display='flex' 
                     alignItems='center' 
                     justifyContent='space-between'
@@ -78,55 +87,52 @@ const Class = ({title, bgColor, iconColor, color, status, target, scheduleDates,
                     _hover={{
                         opacity: 0.9
                     }}
-                    isDisabled={status !== 'open'}
+                    isDisabled={status !== 'Aberto'}
                 >
                     <Text>Inscreva-se</Text>
                     <ArrowCircleUpRight size={28} color="#F7FAFC" weight="fill" />
                 </Button>
-                <Collapse in={isOpen} animateOpacity>
-                    <Box
-                        py={4} px={8}
-                        bg='gray.50'
-                        h='72%'
-                        w='100%'
-                        borderBottomRadius='2xl'
-                        position='absolute' 
-                        top='0' 
-                        left='0'
-                    >
-                        <Button size='sm' onClick={onToggle} marginLeft='88%'>x</Button>
-                        <Flex alignItems='center' justifyContent='start' gap={2} py={2} cursor='pointer' onClick={onToggle}>
-                            <Book size={20} color={iconColor} weight="duotone" />
-                            <Text fontWeight='semibold' fontSize='14px' textDecoration='underline'>Manual do candidato 2023 →</Text>
-                        </Flex>
-                        <Flex alignItems='center' justifyContent='start' gap={2} py={2} cursor='pointer' onClick={onToggle}>
-                            <Book size={20} color={iconColor} weight="duotone" />
-                            <Text fontWeight='semibold' fontSize='14px' textDecoration='underline'>Termo de inscrição 2023 →</Text>
-                        </Flex>
-                        <Flex alignItems='center' justifyContent='start' gap={2} py={2} cursor='pointer' onClick={onToggle}>
-                            <Book size={20} color={iconColor} weight="duotone" />
-                            <Text fontWeight='semibold' fontSize='14px' textDecoration='underline'>Resultado 1º fase 2023 →</Text>
-                        </Flex>
-                        <Flex alignItems='center' justifyContent='start' gap={2} py={2} cursor='pointer' onClick={onToggle}>
-                            <Book size={20} color={iconColor} weight="duotone" />
-                            <Text fontWeight='semibold' fontSize='14px' textDecoration='underline'>Resultado 2º fase 2023 →</Text>
-                        </Flex>
-                        <Flex alignItems='center' justifyContent='start' gap={2} py={2} cursor='pointer' onClick={onToggle}>
-                            <Book size={20} color={iconColor} weight="duotone" />
-                            <Text fontWeight='semibold' fontSize='14px' textDecoration='underline'>Lista de espera 2023 →</Text>
-                        </Flex>
-                    </Box>
-                </Collapse>
+                {documents && 
+                    <Collapse in={isOpen} animateOpacity>
+                        <Box
+                            py={4} px={8}
+                            bg='gray.50'
+                            h='72%'
+                            w='100%'
+                            borderBottomRadius='2xl'
+                            position='absolute' 
+                            top='0' 
+                            left='0'
+                        >
+                            <Button size='sm' onClick={onToggle} marginLeft='88%'>x</Button>
+                            {documents.map(document => 
+                                <Flex 
+                                    as={Link} 
+                                    href={document.downloadLink} 
+                                    alignItems='center' 
+                                    justifyContent='start' 
+                                    gap={2} 
+                                    py={2} 
+                                    cursor='pointer'
+                                    key={document.docsID}
+                                >
+                                    <Book size={20} color={iconColor} weight="duotone" />
+                                    <Text fontWeight='semibold' fontSize='14px' textDecoration='underline'>{document.title}</Text>
+                                </Flex>
+                            )}
+                        </Box>
+                    </Collapse>
+                }
             </Box>
         </Box>
     )
 }
 
-export function Main() {
+export function Main({schoolClassList}: MainProps) {
     return (
         <Flex px={{base: 4, lg: 12}} py={{base: 4, lg: 0}} direction='column' alignItems='center' justifyContent='center'>
             <Image 
-                src={'static/img/logos_turmas.png'} 
+                src={'img/logos_turmas.png'} 
                 maxH={{base: 12, lg: 16}}
             />
             <Text fontSize={{base: 32, lg: 48}} fontWeight="bold" textAlign="center">
@@ -139,46 +145,29 @@ export function Main() {
                 As aulas são ministradas na Faculdade de Economia, Administração, Contabilidade e Atuária da USP (FEA USP), onde também se encontra a nossa coordenação. Nosso ensino, porém, não é direcionado apenas para estes cursos. Preparamos nossos alunos para prestar os principais vestibulares paulistas e o ENEM, para qualquer curso que ele desejar.
             </Text>
             <Grid alignItems='center' templateColumns={{base: '1fr', lg: '1fr 1fr 1fr 1fr'}} gap={4} pt={8}>
-                <Class 
-                    title='Turma de semana' 
-                    bgColor='classes.tse' 
-                    iconColor='#023047' 
-                    color='classes.tse' 
-                    status='closed' 
-                    target="Pré-vestibular"
-                    scheduleDates="De segunda à sexta"
-                    scheduleHours="Das 12h40 às 18h30"
-                />
-                <Class 
-                    title='Turma de sábado' 
-                    bgColor='classes.tsa' 
-                    iconColor='#FFB703' 
-                    color='classes.tsa' 
-                    status='closed' 
-                    target="Pré-vestibular"
-                    scheduleDates="Aos sábados"
-                    scheduleHours="Das 8h00 às 18h30"
-                />
-                <Class 
-                    title='Turma de sábado de maio' 
-                    bgColor='classes.tsm' 
-                    iconColor='#E76F51' 
-                    color='classes.tsm' 
-                    status='open' 
-                    target="Pré-vestibular"
-                    scheduleDates="Aos sábados"
-                    scheduleHours="Das 8h00 às 18h30"
-                />
-                <Class 
-                    title='Turma de semana intensiva' 
-                    bgColor='classes.tsi' 
-                    iconColor='#702459' 
-                    color='classes.tsi' 
-                    status='soon' 
-                    target="Pré-vestibular"
-                    scheduleDates="De segunda à sexta"
-                    scheduleHours="Das 12h40 às 18h30"
-                />
+                {schoolClassList && schoolClassList.length >= 1 ? schoolClassList.map(schoolClass => {
+                    return (
+                        <Class 
+                            key={schoolClass.id ?? schoolClass.title}
+                            title={schoolClass.title} 
+                            bgColor={schoolClass.informations.color} 
+                            iconColor={schoolClass.informations.color} 
+                            status={schoolClass.subscriptions.status}
+                            target={schoolClass.informations.classContent}
+                            scheduleDates={schoolClass.informations.dateSchedule}
+                            scheduleHours={schoolClass.informations.hourSchedule}
+                            documents={schoolClass.documents}
+                            id={schoolClass.id}
+                        />
+                    )
+                }) : 
+                <>
+                    <Skeleton w='300px' borderRadius='2xl' boxShadow='xl' height='420px' />
+                    <Skeleton w='300px' borderRadius='2xl' boxShadow='xl' height='420px' />
+                    <Skeleton w='300px' borderRadius='2xl' boxShadow='xl' height='420px' />
+                    <Skeleton w='300px' borderRadius='2xl' boxShadow='xl' height='420px' />
+                </>
+                }
             </Grid>
         </Flex>
     )

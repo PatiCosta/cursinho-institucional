@@ -8,7 +8,7 @@ export function Main() {
             pr={{base: 4, lg: 0}}
             minH='86vh' 
             position='relative' 
-            bgImage={{base: 'none', lg: 'static/img/climb4.png' }}
+            bgImage={{base: 'none', lg: 'img/climb4.png' }}
             bgPosition='right' 
             bgSize='contain' 
             bgRepeat='no-repeat'
@@ -24,7 +24,7 @@ export function Main() {
             </Text>
 
             <Image 
-                src={'static/img/climb4.png'} 
+                src={'img/climb4.png'} 
                 ml={{base: 'auto', sm: 'auto', lg: 0}}
                 mr={{base: 'auto', lg: 0}}
                 display={{base: 'block', lg: 'none'}}
@@ -32,7 +32,7 @@ export function Main() {
             />
 
             <Text 
-                fontSize={{base: 14, sm: 14, lg: 18}} 
+                fontSize={{base: 14, sm: 14, lg: 16}} 
                 mt={{base: 4, sm: 4, lg: 10}} 
                 textAlign={{base: 'center', sm: 'center', lg: 'start'}} 
                 w={{base: '90vw', lg: '30vw'}}
@@ -52,7 +52,7 @@ export function Main() {
             </Text>
 
             <Image 
-                src={'static/img/todos_podem_voar.png'} 
+                src={'img/todos_podem_voar.png'} 
                 maxH={'40px'}
                 position={{base: 'relative', lg: 'absolute'}}
                 bottom={{base: 0, lg: 8}}

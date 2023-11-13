@@ -17,7 +17,7 @@ export function DonationFooter() {
             px={{base: 4, lg: 12}} 
             gap={4}
         >
-            {isLg && <Image src='static/img/donate.png' maxH={60} my='auto' />}
+            {isLg && <Image src='img/donate.png' maxH={60} my='auto' />}
             <Box textAlign={{base: 'center', lg: 'start'}}>
                 <Text fontSize={{base: 28, lg: 32}} color='gray.800' fontWeight='light'>
                     <Highlight query='voarem!' styles={{bg: 'transparent', color: 'gray.50', fontWeight: 'bold' }}>

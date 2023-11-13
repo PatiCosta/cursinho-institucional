@@ -121,7 +121,7 @@ export function Main() {
     return (
         <Flex direction='column' alignItems='center' justifyContent='center'>
             <Image 
-                src={'static/img/five-stars.png'} 
+                src={'img/five-stars.png'} 
                 maxH={{base: 6, lg: 10}}
                 mt={{base: 8, lg: 0}}
             />
@@ -134,17 +134,17 @@ export function Main() {
             <Text fontSize={{base: 14, lg: 16}} w={{base: '300px', lg:'800px'}} textAlign='center' mt={4}>
                 Veja o que nossso ex-alunos tem a dizer sobre o cursinho!
             </Text>
-            <Review img='static/img/avatar-mauricio.png' name='Maurício Durães' tag='Estudante de Medicina na FMUSP' review='Prestei farmácia porque achava que medicina não era pra mim. Ninguém que eu conhecia tinha passado. Quando eu vi que minhas notas na Fuvest eram o suficiente pra passar em medicina, eu vi que eu era capaz.' />
+            <Review img='img/avatar-mauricio.png' name='Maurício Durães' tag='Estudante de Medicina na FMUSP' review='Prestei farmácia porque achava que medicina não era pra mim. Ninguém que eu conhecia tinha passado. Quando eu vi que minhas notas na Fuvest eram o suficiente pra passar em medicina, eu vi que eu era capaz.' />
             <Divider />
-            <InvertedReview img='static/img/avatar-murilo.png' name='Murilo Lechuga' tag='Atual professor do Cursinho FEAUSP' review='Hoje eu não me imagino fazendo outra coisa a não ser ensinar. E a minha vontade de ensinar surgiu aqui.'  />
+            <InvertedReview img='img/avatar-murilo.png' name='Murilo Lechuga' tag='Atual professor do Cursinho FEAUSP' review='Hoje eu não me imagino fazendo outra coisa a não ser ensinar. E a minha vontade de ensinar surgiu aqui.'  />
             <Divider />
-            <Review img='static/img/avatar-beatriz.png' name='Beatriz Gomes' tag='Estudante de Jornalismo da ECA USP' review='... O importante é não desistir no primeiro obstáculo. Se a gente desistir nessa fase mais fácil que é o vestibular, imagina na vida' />
+            <Review img='img/avatar-beatriz.png' name='Beatriz Gomes' tag='Estudante de Jornalismo da ECA USP' review='... O importante é não desistir no primeiro obstáculo. Se a gente desistir nessa fase mais fácil que é o vestibular, imagina na vida' />
             <Divider />
-            <InvertedReview img='static/img/avatar-ariane.png' name='Ariane Jesus' tag='Estudante de Engenharia Elétrica na Poli-USP' review='Prestei Fuvest, mas não cheguei nem perto da nota de corte de engenharia. Passei um ano sem estudar, só trabalhando para ajudar em casa. Em 2013, procurei novamente o Cursinho FEAUSP. Hoje eu curso engenharia elétrica na Escola Politécnica da USP e gosto muito do meu curso'  />
+            <InvertedReview img='img/avatar-ariane.png' name='Ariane Jesus' tag='Estudante de Engenharia Elétrica na Poli-USP' review='Prestei Fuvest, mas não cheguei nem perto da nota de corte de engenharia. Passei um ano sem estudar, só trabalhando para ajudar em casa. Em 2013, procurei novamente o Cursinho FEAUSP. Hoje eu curso engenharia elétrica na Escola Politécnica da USP e gosto muito do meu curso'  />
             <Divider />
-            <Review img='static/img/avatar-mizael.png' name='Mizael Alves' tag='Estudante de Economia na FEAUSP' review='Aqui você vê todo mundo com muita vontade. Acho que esse é um dos pontos fortes do cursinho: não só a parte do ensino, mas o ambiente também' />
+            <Review img='img/avatar-mizael.png' name='Mizael Alves' tag='Estudante de Economia na FEAUSP' review='Aqui você vê todo mundo com muita vontade. Acho que esse é um dos pontos fortes do cursinho: não só a parte do ensino, mas o ambiente também' />
             <Divider />
-            <InvertedReview img='static/img/avatar-angelica.png' name='Angélica Santos' tag='Estudante de Geografia na UFMT' review='O Cursinho FEAUSP representa a esperança de realizar meus sonhos. Pelo apoio que as pessoas me dão, como se fossem a minha segunda família'  />
+            <InvertedReview img='img/avatar-angelica.png' name='Angélica Santos' tag='Estudante de Geografia na UFMT' review='O Cursinho FEAUSP representa a esperança de realizar meus sonhos. Pelo apoio que as pessoas me dão, como se fossem a minha segunda família'  />
         </Flex>
     )
 }

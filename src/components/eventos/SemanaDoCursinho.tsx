@@ -4,11 +4,11 @@ import { Carousel } from "../Carousel";
 import { ColumnInfoLabel } from "../InfoLabel/column";
 import { RowInfoLabel } from "../InfoLabel/row";
 
-const img1 = 'static/img/semana_do_cursinho_1.png'
-const img2 = 'static/img/semana_do_cursinho_2.png'
-const img3 = 'static/img/semana_do_cursinho_3.png'
-const img4 = 'static/img/semana_do_cursinho_4.png'
-const img5 = 'static/img/semana_do_cursinho_5.png'
+const img1 = 'img/semana_do_cursinho_1.png'
+const img2 = 'img/semana_do_cursinho_2.png'
+const img3 = 'img/semana_do_cursinho_3.png'
+const img4 = 'img/semana_do_cursinho_4.png'
+const img5 = 'img/semana_do_cursinho_5.png'
 
 
 export function SemanaDoCursinho() {
