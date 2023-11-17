@@ -21,7 +21,7 @@ import api from '@/services/api'
     const list = useCallback(
       async () => {
         await api
-          .get(`http://localhost:3333/schoolClass`, {params: {status: 'active'}})
+          .get(`https://cursinho-fea-usp-2bib7.ondigitalocean.app/schoolClass`, {params: {status: 'active'}})
           .then((response) => {
             setSchoolClassList(response.data.schoolClassResponse.schoolClassList)
           })

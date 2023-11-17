@@ -13,6 +13,7 @@ import api from "@/services/api";
 import { formatCep } from "@/utils/cepUtils";
 import { formatCnpj } from "@/utils/cnpjUtils";
 import { formatCPF } from "@/utils/cpfUtils";
+import { Success } from "./success";
 
 interface Product {
     product_id: string
@@ -34,6 +35,8 @@ export function DonationForm({cycles, product}: DonationFormProps) {
     })
     const activeStepText = steps[activeStep]
     const [stripe, setStripe] = useState<Stripe | null>(null);
+    const [donateSuccess, setDonateSuccess] = useState(false)
+    const [isDonating, setIsDonating] = useState(false)
 
     const stripeKey = 'sk_test_51MtUqqHkzIzO4aMOHl5HftcEqP130gAuJvaJnH52pq3Znj1LWwjkx6WZwJPoQo7y8VvMxbgPqm6DMjdlhgl3aK1q00UQQ5q4r5'
 
@@ -78,6 +81,7 @@ export function DonationForm({cycles, product}: DonationFormProps) {
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
+        setIsDonating(true)
     
         if (!stripe) {
           console.error("Stripe is not initialized");
@@ -102,7 +106,7 @@ export function DonationForm({cycles, product}: DonationFormProps) {
           const data = {
             name: name,
             email: email,
-            rg: rg,
+            rg: rg.length < 9   ? 'Não informado' : rg,
             ufrg: ufrg,
             phoneNumber: phoneNumber,
             gender: gender,
@@ -123,18 +127,15 @@ export function DonationForm({cycles, product}: DonationFormProps) {
             token: encryptedPaymentMethod,
           };
 
-          console.log(data)
-
-          const response = await api.post("http://localhost:3333/donates/create",
+          await api.post("https://cursinho-fea-usp-2bib7.ondigitalocean.app/donates/create",
             data);
-    
-          console.log(response)
+            setIsDonating(false)
+            setDonateSuccess(true)
     
         } catch (error) {
           console.log(error);
+          setIsDonating(false)
         }
-    
-        // Handle the response from the backend
     }
 
     return (
@@ -159,136 +160,140 @@ export function DonationForm({cycles, product}: DonationFormProps) {
             </Button>
             <Modal isOpen={isOpen} onClose={onClose} size='3xl' isCentered>
                 <ModalOverlay />
-                <ModalContent minH='750px' as='form' onSubmit={handleSubmit}>
-                <DonationFormHeader price={product.price} cycles={cycles} />
-                <ModalCloseButton color='gray.50' />
-                <ModalBody px={16} pb={4}>
-                    <Stepper size='sm' index={activeStep} gap='0' mt={6} colorScheme='yellow'>
-                        {steps.map((step, index) => (
-                            <Step key={index} gap={0}>
-                                <StepIndicator>
-                                <StepStatus complete={<StepIcon />} />
-                                </StepIndicator>
-                                <StepSeparator _horizontal={{ ml: '0' }} />
-                            </Step>
-                        ))}
-                    </Stepper>
-                    <Text
-                        fontWeight='bold' 
-                        fontSize={{base: 10, lg: 16}} 
-                        letterSpacing='1.2' 
-                        color='gray.600'
-                        mt={2}
-                        mb={8}
-                    >
-                        Passo {activeStep + 1}: {activeStepText}
-                    </Text>
-                    {activeStep === 0 &&                    
-                        <PersonalDataForm 
-                            name={name}
-                            setName={setName}
-                            birth={birth}
-                            setBirth={setBirth}
-                            documentNumber={documentNumber}
-                            setDocumentNumber={setDocumentNumber}
-                            documentType={documentType}
-                            setDocumentType={setDocumentType}
-                            gender={gender}
-                            setGender={setGender}
-                            rg={rg}
-                            setRg={setRg}
-                            ufrg={ufrg}
-                            setUfrg={setUfrg}
-                        />
-                    }
-                    {activeStep === 1 &&                    
-                        <ContactForm 
-                            email={email}
-                            setEmail={setEmail}
-                            phoneNumber={phoneNumber}
-                            setPhoneNumber={setPhoneNumber}
-                            isPhoneWhatsapp={isPhoneWhatsapp}
-                            setIsPhoneWhatsapp={setIsPhoneWhatsapp}
-                        />
-                    }
-                    {activeStep === 2 &&                    
-                        <AddressForm 
-                            city={city}
-                            complement={complement}
-                            district={district}
-                            homeNumber={homeNumber}
-                            state={state}
-                            street={street}
-                            zipCode={zipCode}
-                            setHomeNumber={setHomeNumber}
-                            setComplement={setComplement}
-                            setZipCode={setZipCode}
-                            setCity={setCity}
-                            setDistrict={setDistrict}
-                            setState={setState}
-                            setStreet={setStreet}
-                        />
-                    }
-                    {activeStep === 3 &&                     
-                        <PaymentForm 
-                            card={card}
-                            setCard={setCard}
-                            cvv={cvv}
-                            setCvv={setCvv}
-                            monthExpire={monthExpire}
-                            setMonthExpire={setMonthExpire}
-                            yearExpire={yearExpire}
-                            setYearExpire={setYearExpire}
-                        />
-                    }
-                </ModalBody>
-
-                <ModalFooter>
-                    {activeStep !== 0 && (
-                        <Button
-                            colorScheme='gray'
-                            onClick={() => setActiveStep(activeStep - 1)}
-                            mr={4}
-                            mt={8}
-                        >
-                            ← Anterior
-                        </Button>
-                    )}
-                    {activeStep !== steps.length - 1 && (
-                        <Button
-                            bgColor='yellow.400'
-                            _hover={{
-                                bgColor: 'yellow.500'
-                            }}
-                            onClick={() => setActiveStep(activeStep + 1)}
-                            mt={8}
-                            isDisabled={activeStep === 0 ? isDisabledPersonalData : activeStep === 1 ? isDisabledContact : isDisabledAddress}
-                        >
-                            Próximo →
-                        </Button>
-                    )}
-                    {activeStep === steps.length - 1 && (
-                        <>                        
-                            <Button 
-                                bgColor='yellow.400' 
-                                display='flex' 
-                                alignItems='center' 
-                                gap={2} 
-                                fontWeight='semibold'
-                                _hover={{
-                                    bgColor: 'yellow.500'
-                                }}
-                                mt={8}
-                                isDisabled={isDisabledCheckout}
-                                type='submit'
+                {
+                    !donateSuccess
+                    ? <Success onClose={onClose} />
+                    : <ModalContent minH='750px' as='form' onSubmit={handleSubmit}>
+                        <DonationFormHeader price={product.price} cycles={cycles} />
+                        <ModalCloseButton color='gray.50' />
+                        <ModalBody px={16} pb={4}>
+                            <Stepper size='sm' index={activeStep} gap='0' mt={6} colorScheme='yellow'>
+                                {steps.map((step, index) => (
+                                    <Step key={index} gap={0}>
+                                        <StepIndicator>
+                                        <StepStatus complete={<StepIcon />} />
+                                        </StepIndicator>
+                                        <StepSeparator _horizontal={{ ml: '0' }} />
+                                    </Step>
+                                ))}
+                            </Stepper>
+                            <Text
+                                fontWeight='bold' 
+                                fontSize={{base: 10, lg: 16}} 
+                                letterSpacing='1.2' 
+                                color='gray.600'
+                                mt={2}
+                                mb={8}
                             >
-                                <Text>Doar</Text>
-                                <HandHeart size={28} color="#023047" weight="duotone" />
-                            </Button>
-                        </>
-                    )}
-                </ModalFooter>
-                </ModalContent>
+                                Passo {activeStep + 1}: {activeStepText}
+                            </Text>
+                            {activeStep === 0 &&                    
+                                <PersonalDataForm 
+                                    name={name}
+                                    setName={setName}
+                                    birth={birth}
+                                    setBirth={setBirth}
+                                    documentNumber={documentNumber}
+                                    setDocumentNumber={setDocumentNumber}
+                                    documentType={documentType}
+                                    setDocumentType={setDocumentType}
+                                    gender={gender}
+                                    setGender={setGender}
+                                    rg={rg}
+                                    setRg={setRg}
+                                    ufrg={ufrg}
+                                    setUfrg={setUfrg}
+                                />
+                            }
+                            {activeStep === 1 &&                    
+                                <ContactForm 
+                                    email={email}
+                                    setEmail={setEmail}
+                                    phoneNumber={phoneNumber}
+                                    setPhoneNumber={setPhoneNumber}
+                                    isPhoneWhatsapp={isPhoneWhatsapp}
+                                    setIsPhoneWhatsapp={setIsPhoneWhatsapp}
+                                />
+                            }
+                            {activeStep === 2 &&                    
+                                <AddressForm 
+                                    city={city}
+                                    complement={complement}
+                                    district={district}
+                                    homeNumber={homeNumber}
+                                    state={state}
+                                    street={street}
+                                    zipCode={zipCode}
+                                    setHomeNumber={setHomeNumber}
+                                    setComplement={setComplement}
+                                    setZipCode={setZipCode}
+                                    setCity={setCity}
+                                    setDistrict={setDistrict}
+                                    setState={setState}
+                                    setStreet={setStreet}
+                                />
+                            }
+                            {activeStep === 3 &&                     
+                                <PaymentForm 
+                                    card={card}
+                                    setCard={setCard}
+                                    cvv={cvv}
+                                    setCvv={setCvv}
+                                    monthExpire={monthExpire}
+                                    setMonthExpire={setMonthExpire}
+                                    yearExpire={yearExpire}
+                                    setYearExpire={setYearExpire}
+                                />
+                            }
+                        </ModalBody>
+                        <ModalFooter>
+                            {activeStep !== 0 && (
+                                <Button
+                                    colorScheme='gray'
+                                    onClick={() => setActiveStep(activeStep - 1)}
+                                    mr={4}
+                                    mt={8}
+                                >
+                                    ← Anterior
+                                </Button>
+                            )}
+                            {activeStep !== steps.length - 1 && (
+                                <Button
+                                    bgColor='yellow.400'
+                                    _hover={{
+                                        bgColor: 'yellow.500'
+                                    }}
+                                    onClick={() => setActiveStep(activeStep + 1)}
+                                    mt={8}
+                                    isDisabled={activeStep === 0 ? isDisabledPersonalData : activeStep === 1 ? isDisabledContact : isDisabledAddress}
+                                >
+                                    Próximo →
+                                </Button>
+                            )}
+                            {activeStep === steps.length - 1 && (
+                                <>                        
+                                    <Button 
+                                        bgColor='yellow.400' 
+                                        display='flex' 
+                                        alignItems='center' 
+                                        gap={2} 
+                                        fontWeight='semibold'
+                                        _hover={{
+                                            bgColor: 'yellow.500'
+                                        }}
+                                        mt={8}
+                                        isDisabled={isDisabledCheckout}
+                                        type='submit'
+                                        isLoading={isDonating}
+                                    >
+                                        <Text>Doar</Text>
+                                        <HandHeart size={28} color="#023047" weight="duotone" />
+                                    </Button>
+                                </>
+                            )}
+                        </ModalFooter>
+                    </ModalContent>
+                }
             </Modal>
         </>
     )
