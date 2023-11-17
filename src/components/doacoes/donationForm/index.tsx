@@ -169,11 +169,11 @@ export function DonationForm({cycles, product}: DonationFormProps) {
                         <ModalBody px={16} pb={4}>
                             <Stepper size='sm' index={activeStep} gap='0' mt={6} colorScheme='yellow'>
                                 {steps.map((step, index) => (
-                                    <Step key={index} gap={0}>
+                                    <Step key={index}>
                                         <StepIndicator>
                                         <StepStatus complete={<StepIcon />} />
                                         </StepIndicator>
-                                        <StepSeparator _horizontal={{ ml: '0' }} />
+                                        <StepSeparator />
                                     </Step>
                                 ))}
                             </Stepper>
