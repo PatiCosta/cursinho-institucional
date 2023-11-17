@@ -160,7 +160,7 @@ export function DonationForm({cycles, product}: DonationFormProps) {
             <Modal isOpen={isOpen} onClose={onClose} size='3xl' isCentered>
                 <ModalOverlay />
                 {
-                    !donateSuccess
+                    donateSuccess
                     ? <Success onClose={onClose} />
                     : <ModalContent minH='750px' as='form' onSubmit={handleSubmit}>
                         <DonationFormHeader price={product.price} cycles={cycles} />
