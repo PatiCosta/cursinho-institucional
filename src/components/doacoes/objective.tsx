@@ -1,5 +1,5 @@
-import { Box, Flex, Highlight, Text } from "@chakra-ui/react";
-import { Bus, ChalkboardTeacher, Wallet } from "@phosphor-icons/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
+import { Bus, ChalkboardTeacher, Wallet } from "phosphor-react";
 
 export function Objective() {
     return (

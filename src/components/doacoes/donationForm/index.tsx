@@ -1,6 +1,6 @@
 import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalOverlay, Step, StepIcon, StepIndicator, Stepper, StepSeparator, StepStatus, Text, useDisclosure, useSteps } from "@chakra-ui/react";
-import { HandHeart } from "@phosphor-icons/react";
-import { format, getDate, getDay } from "date-fns";
+import {HeartStraight} from "phosphor-react";
+import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import Stripe from "stripe";
 import crypto from "crypto-js";
@@ -11,9 +11,8 @@ import { PaymentForm } from "./paymentForm";
 import { PersonalDataForm } from "./personalDataForm";
 import api from "@/services/api";
 import { formatCep } from "@/utils/cepUtils";
-import { formatCnpj } from "@/utils/cnpjUtils";
-import { formatCPF } from "@/utils/cpfUtils";
 import { Success } from "./success";
+
 
 interface Product {
     product_id: string
@@ -156,7 +155,7 @@ export function DonationForm({cycles, product}: DonationFormProps) {
                 isDisabled={!product}
             >
                 <Text>Doe agora</Text>
-                <HandHeart size={28} color="#023047" weight="duotone" />
+                <HeartStraight size={28} color="#023047" weight="duotone" />
             </Button>
             <Modal isOpen={isOpen} onClose={onClose} size='3xl' isCentered>
                 <ModalOverlay />
@@ -287,7 +286,7 @@ export function DonationForm({cycles, product}: DonationFormProps) {
                                         isLoading={isDonating}
                                     >
                                         <Text>Doar</Text>
-                                        <HandHeart size={28} color="#023047" weight="duotone" />
+                                        <HeartStraight size={28} color="#023047" weight="duotone" />
                                     </Button>
                                 </>
                             )}
