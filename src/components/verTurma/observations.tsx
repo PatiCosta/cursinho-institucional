@@ -56,7 +56,7 @@ export function Observations({color, observations, documents}: ObservationsProps
                     <Box zIndex={0} w='100%' h='100%' borderRadius={{base: '64px', lg: '64px 0px 0px 64px'}} bgColor={color} opacity={0.4} position='absolute' top='0' left='0' />
                 </Flex>
                 <Flex direction='column' fontSize={{base: 14, lg: 16}} fontWeight='light' pl={{base: 2, lg: 12}} pr={{base: 4, lg: 8}} textAlign={{base: 'center', lg: 'start'}}>
-                    {documents 
+                    {documents && documents.length > 0 
                         ? documents.map(document => 
                             <Flex 
                                 as={Link} 

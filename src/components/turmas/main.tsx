@@ -66,7 +66,7 @@ const Class = ({title, bgColor, iconColor, status, target, scheduleDates, schedu
                     <Clock size={28} color={iconColor} weight="duotone" />
                     <Text fontSize='14px'>{scheduleHours}</Text>
                 </Flex>
-                {documents && <Flex alignItems='center' justifyContent='start' gap={2} py={1} cursor='pointer' onClick={onToggle}>
+                {documents && documents.length > 0 &&  <Flex alignItems='center' justifyContent='start' gap={2} py={1} cursor='pointer' onClick={onToggle}>
                     <Book size={36} color={iconColor} weight="duotone" />
                     <Text fontWeight='semibold' fontSize='14px' textDecoration='underline'>Informações do processo seletivo →</Text>
                 </Flex>}
@@ -92,7 +92,7 @@ const Class = ({title, bgColor, iconColor, status, target, scheduleDates, schedu
                     <Text>Inscreva-se</Text>
                     <ArrowCircleUpRight size={28} color="#F7FAFC" weight="fill" />
                 </Button>
-                {documents && 
+                {documents && documents.length > 0 &&  
                     <Collapse in={isOpen} animateOpacity>
                         <Box
                             py={4} px={8}

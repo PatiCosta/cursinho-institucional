@@ -15,6 +15,7 @@ interface MainProps {
 
 export function Main({title, color, description, dateSchedule, hourSchedule, classContent, whoCanParticipate, subscriptionSchedule, price}: MainProps) {
     const isLg = useBreakpointValue({ base: false, sm: false, lg: true })
+    const formattedPrice = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL',}).format(price/100)
     
     return (
         <Box 
@@ -92,29 +93,66 @@ export function Main({title, color, description, dateSchedule, hourSchedule, cla
                     <Flex 
                         alignItems='center' 
                         justifyContent='space-between' 
-                        gap={4} 
+                        gap={2} 
                         mt={8} 
                         direction={{base: 'column', lg: 'row'}}
                         pr={{base: 8, lg: 0}}
+                         fontSize={{base: 12, lg: 14}}
                     >
-                        <Text fontSize={{base: 14, lg: 16}}>
+                        <Text>
                             <Highlight query='Período das inscrições:' styles={{bg: 'transparent', fontWeight: 'semibold', letterSpacing: '0.2px', color: 'gray.700' }}>
                             {`Período das inscrições: ${subscriptionSchedule}`}
                             </Highlight>
                         </Text>
                         <Tag size='lg' variant='subtle' colorScheme='green' mr={{base: 0, lg: 8}}>
-                        valor da inscrição: R${price}
+                            valor da inscrição: {formattedPrice}
                         </Tag>
                     </Flex>
                 </Box>
                 <Grid 
-                    templateColumns={{base: '1fr 1fr', lg: '1fr 1fr 1fr 1fr' }}
+                    templateColumns={{base: '1fr 1fr', lg: '1fr 1fr 1fr' }}
                     gap={{base: 2, lg: 4}} 
-                    mt={{base: 4, lg: 12}}
+                    mt={{base: 4, lg: 8}}
                     w={{base: '90vw', lg: '50vw'}}
                     textAlign='center'
                     mx={{base: 'auto', lg: 0}}
                 >
+                    <Flex 
+                        direction='column' 
+                        alignItems='center' 
+                        justifyContent='space-between' 
+                        bgColor='gray.50' 
+                        borderRadius='xl' 
+                        p={4} 
+                        boxShadow='md'
+                        position='relative'
+                        gridColumnStart={1}
+                        gridColumnEnd={4}
+                    >
+                        <Box 
+                            borderBottomRightRadius='100%' 
+                            borderTopLeftRadius='xl' 
+                            bgColor='gray.500' 
+                            opacity={0.3} 
+                            h='64px' 
+                            w='64px' 
+                            position='absolute' 
+                            top='0' 
+                            left='0' 
+                        >
+                        </Box>
+                        <Box borderTopLeftRadius='100%' borderBottomRightRadius='xl' bgColor='gray.500' opacity={0.3} h='64px' w='64px' position='absolute' bottom='0' right='0'>
+                        </Box>
+                        <Flex direction='column' gap={2} alignItems='center'>
+                        <UsersThree 
+                            size={isLg ? 40 : 28} 
+                            color="#2a255a" 
+                            weight="duotone" 
+                        />
+                            <Text fontWeight='bold' fontSize={{base: 14, lg: 16}}>Quem pode participar?</Text>
+                        </Flex>
+                        <Text fontWeight='medium' fontSize={14}>{whoCanParticipate}</Text>
+                    </Flex>
                     <Flex 
                         direction='column' 
                         alignItems='center' 
@@ -217,47 +255,9 @@ export function Main({title, color, description, dateSchedule, hourSchedule, cla
                         </Flex>
                         <Text fontWeight='medium' fontSize={14}>{classContent}</Text>
                     </Flex>
-                    <Flex 
-                        direction='column' 
-                        alignItems='center' 
-                        justifyContent='space-between' 
-                        bgColor='gray.50' 
-                        borderRadius='xl' 
-                        p={4} 
-                        boxShadow='md'
-                        position='relative'
-                    >
-                        <Box 
-                            borderBottomRightRadius='100%' 
-                            borderTopLeftRadius='xl' 
-                            bgColor='gray.500' 
-                            opacity={0.3} 
-                            h='64px' 
-                            w='64px' 
-                            position='absolute' 
-                            top='0' 
-                            left='0' 
-                        >
-                        </Box>
-                        <Box borderTopLeftRadius='100%' borderBottomRightRadius='xl' bgColor='gray.500' opacity={0.3} h='64px' w='64px' position='absolute' bottom='0' right='0'>
-                        </Box>
-                        <Flex direction='column' gap={2} alignItems='center'>
-                        <UsersThree 
-                            size={isLg ? 40 : 28} 
-                            color="#2a255a" 
-                            weight="duotone" 
-                        />
-                            <Text fontWeight='bold' fontSize={{base: 14, lg: 16}}>Quem pode participar?</Text>
-                        </Flex>
-                        <Text fontWeight='medium' fontSize={14}>{whoCanParticipate}</Text>
-                    </Flex>
                 </Grid>
             </Box>
             <Button 
-                // position='absolute' 
-                // bottom='0px'
-                // py={10}
-                // px={16} 
                 size='lg' 
                 bgColor='gray.50' 
                 display={{base: 'flex', lg: 'none' }}
