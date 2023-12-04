@@ -82,7 +82,7 @@ export function Donate({products}: DonateProps) {
                         color='gray.100'
                     >
                         {products.map(product => 
-                            <option key={product.product_id} value={product.product_id}>{new Intl.NumberFormat('pt-BR', {
+                            <option style={{color: 'black'}} key={product.product_id} value={product.product_id}>{new Intl.NumberFormat('pt-BR', {
                                 style: 'currency',
                                 currency: 'BRL',
                                 }).format(product.price)}</option>
@@ -95,18 +95,18 @@ export function Donate({products}: DonateProps) {
                 <Text fontWeight='bold' fontSize={{base: 10, lg: 12}} letterSpacing='1.2' textTransform='uppercase' color='gray.100'>Desejo doar por</Text>
                 <Flex alignItems='end' gap={4} mt={2}>
                     <Select color='gray.100' variant='flushed' fontSize={{base: 14, lg: 20}} w={{base: '75%', lg: '40%'}} onChange={(e) => setCycles(Number(e.target.value))}>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                        <option value={6}>6</option>
-                        <option value={7}>7</option>
-                        <option value={8}>8</option>
-                        <option value={9}>9</option>
-                        <option value={10}>10</option>
-                        <option value={11}>11</option>
-                        <option value={12}>12</option>
+                        <option style={{color: 'black'}} value={1}>1</option>
+                        <option style={{color: 'black'}} value={2}>2</option>
+                        <option style={{color: 'black'}} value={3}>3</option>
+                        <option style={{color: 'black'}} value={4}>4</option>
+                        <option style={{color: 'black'}} value={5}>5</option>
+                        <option style={{color: 'black'}} value={6}>6</option>
+                        <option style={{color: 'black'}} value={7}>7</option>
+                        <option style={{color: 'black'}} value={8}>8</option>
+                        <option style={{color: 'black'}} value={9}>9</option>
+                        <option style={{color: 'black'}} value={10}>10</option>
+                        <option style={{color: 'black'}} value={11}>11</option>
+                        <option style={{color: 'black'}} value={12}>12</option>
                     </Select>
                     <Text fontWeight='light' fontSize={{base: 10, lg: 12}} letterSpacing='1.2' textTransform='uppercase' color='gray.100'>meses</Text>
                 </Flex>
