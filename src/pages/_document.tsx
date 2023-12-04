@@ -11,15 +11,15 @@ export default function Document() {
         {/* <!-- Facebook Meta Tags --> */}
         <meta property="og:url" content="https://site-cursinho.vercel.app/" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Cuesinho FEAUSP" />
+        <meta property="og:title" content="Cursinho FEAUSP" />
         <meta property="og:description" content="Há mais de duas décadas trabalhando em prol da democratização do acesso ao ensino superior no Brasil" />
-        <meta property="og:image" content="https://site-cursinho.vercel.app/img/logo.png" />
+        <meta property="og:image:secure_url" content="https://site-cursinho.vercel.app/img/logo.png" />
 
         {/* <!-- Twitter Meta Tags --> */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content="https://site-cursinho.vercel.app/" />
         <meta property="twitter:url" content="https://site-cursinho.vercel.app/" />
-        <meta name="twitter:title" content="Cuesinho FEAUSP" />
+        <meta name="twitter:title" content="Cursinho FEAUSP" />
         <meta name="twitter:description" content="Há mais de duas décadas trabalhando em prol da democratização do acesso ao ensino superior no Brasil" />
         <meta name="twitter:image" content="https://site-cursinho.vercel.app/img/logo.png" />
       </Head>
