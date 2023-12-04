@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Grid, Highlight, Tag, Text, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Button, Flex, Grid, Highlight, Link, Tag, Text, useBreakpointValue } from "@chakra-ui/react";
 import { Calendar, Clock, PencilSimpleLine, Target, UsersThree } from "phosphor-react";
 
 interface MainProps {
@@ -45,10 +45,10 @@ export function Main({title, color, description, dateSchedule, hourSchedule, cla
                 >
                     {description}
                 </Text>
-                <Button 
+                <Link 
                     position='absolute' 
                     bottom='0px'
-                    py={10}
+                    py={12}
                     px={16} 
                     size='lg' 
                     bgColor='gray.50' 
@@ -57,10 +57,12 @@ export function Main({title, color, description, dateSchedule, hourSchedule, cla
                     fontSize={20}
                     borderRadius='2xl'
                     _hover={{bgColor: 'gray.100'}}
+                    target='_blank'
+                    href={title === 'Turma de Semana' ? 'https://www.sympla.com.br/turma-de-semana-tse---cursinho-feausp-2024__2252270' : title === 'Turma de Sábado' ? 'https://www.sympla.com.br/turma-de-sabado-tsa---cursinho-feausp-2024__2252261' : ''}
                 >
                     <Text fontWeight='bolder' letterSpacing={.5}>Quero me inscrever!</Text>
                     <Text>→</Text>
-                </Button>
+                </Link>
             </Box>
             <Box mt={{base: 6, lg: 0}}>
                 <Box 
@@ -110,7 +112,7 @@ export function Main({title, color, description, dateSchedule, hourSchedule, cla
                     </Flex>
                 </Box>
                 <Grid 
-                    templateColumns={{base: '1fr 1fr', lg: '1fr 1fr 1fr' }}
+                    templateColumns={{base: '1fr 1fr 1fr', lg: '1fr 1fr 1fr' }}
                     gap={{base: 2, lg: 4}} 
                     mt={{base: 4, lg: 8}}
                     w={{base: '90vw', lg: '50vw'}}
@@ -257,20 +259,24 @@ export function Main({title, color, description, dateSchedule, hourSchedule, cla
                     </Flex>
                 </Grid>
             </Box>
-            <Button 
+            <Link 
                 size='lg' 
                 bgColor='gray.50' 
                 display={{base: 'flex', lg: 'none' }}
                 gap={4}
                 fontSize={20}
+                py={12}
+                px={8}
                 borderRadius='2xl'
                 _hover={{bgColor: 'gray.100'}}
                 mt={8}
-                boxShadow='dark-lg'
+                boxShadow='2xl'
+                target='_blank'
+                href={title === 'Turma de Semana' ? 'https://www.sympla.com.br/turma-de-semana-tse---cursinho-feausp-2024__2252270' : title === 'Turma de Sábado' ? 'https://www.sympla.com.br/turma-de-sabado-tsa---cursinho-feausp-2024__2252261' : ''}
             >
                 <Text fontWeight='bolder' letterSpacing={.5}>Quero me inscrever!</Text>
                 <Text>→</Text>
-            </Button>
+            </Link>
         </Flex>
 
         

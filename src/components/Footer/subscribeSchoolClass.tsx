@@ -12,7 +12,7 @@ export function SubscribeSchoolClassFooter() {
             borderRadius='24px' 
             w={{base: '90vw', lg: '60vw'}}  
             position='absolute' 
-            top={{base: '-12%', lg: '-25%'}} 
+            top={{base: '-13%', lg: '-25%'}} 
             mx={{base: '5vw', lg: '20vw'}}  
             py={{base: 8, lg: 12}}
             px={{base: 4, lg: 12}} 
