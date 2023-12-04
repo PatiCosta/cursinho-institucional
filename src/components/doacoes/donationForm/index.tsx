@@ -165,20 +165,20 @@ export function DonationForm({cycles, product}: DonationFormProps) {
                     : <ModalContent minH='750px' as='form' onSubmit={handleSubmit}>
                         <DonationFormHeader price={product.price} cycles={cycles} />
                         <ModalCloseButton color='gray.50' />
-                        <ModalBody px={16} pb={4}>
+                        <ModalBody px={{base: 6, lg: 16}} pb={4}>
                             <Stepper size='sm' index={activeStep} gap='0' mt={6} colorScheme='yellow'>
                                 {steps.map((step, index) => (
-                                    <Step key={index}>
+                                    <Step key={index} style={{gap: '0'}}>
                                         <StepIndicator>
                                         <StepStatus complete={<StepIcon />} />
                                         </StepIndicator>
-                                        <StepSeparator />
+                                        <StepSeparator style={{marginLeft: 0}} />
                                     </Step>
                                 ))}
                             </Stepper>
                             <Text
                                 fontWeight='bold' 
-                                fontSize={{base: 10, lg: 16}} 
+                                fontSize={{base: 14, lg: 16}} 
                                 letterSpacing='1.2' 
                                 color='gray.600'
                                 mt={2}

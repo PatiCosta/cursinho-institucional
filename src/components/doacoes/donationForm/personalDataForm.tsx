@@ -40,15 +40,6 @@ export function PersonalDataForm({
 }: PersonalDataFormProps) {
     return (
         <FormControl mt={4}>
-            {/* <FormLabel 
-                fontWeight='bold' 
-                fontSize={{base: 10, lg: 16}} 
-                letterSpacing='1.2' 
-                textTransform='uppercase' 
-                color='gray.600'
-            >
-                Dados pessoais
-            </FormLabel> */}
             <Input 
                 type="text" 
                 name="name" 
@@ -59,7 +50,7 @@ export function PersonalDataForm({
                 borderBottomRadius='0'
                 isRequired
             />
-            <Grid templateColumns='1fr 1fr'>
+            <Grid templateColumns={{base: '1fr', lg: '1fr 1fr'}}>
                 <Input 
                     type="text" 
                     name="gender" 
@@ -67,6 +58,8 @@ export function PersonalDataForm({
                     value={gender} 
                     onChange={(e) => setGender(e.target.value)} 
                     borderRadius='0'
+                    borderBottom={{base: '0', lg: '1px'}}
+                    borderBottomColor={{base: 'none', lg: 'gray.200'}}
                 />
                 <FormControl position='relative'>
                     <FormLabel position='absolute' top={2} left={4} color='gray.500'>Data de nascimento</FormLabel>
@@ -77,7 +70,7 @@ export function PersonalDataForm({
                         value={birth} 
                         onChange={(e) => setBirth(e.target.value)} 
                         borderRadius='0'
-                        borderLeft='0'
+                        borderLeft={{base: '1', lg: '0'}}
                         pl={44}
                         isRequired
                     />   
@@ -91,6 +84,7 @@ export function PersonalDataForm({
                     borderTopRadius='0'
                     borderTop='0'
                     borderBottomRightRadius={0}
+                    borderBottomLeftRadius={{base: 0, lg: 'md'}}
                 />
                 <Select 
                     name="ufrg" 
@@ -98,16 +92,16 @@ export function PersonalDataForm({
                     value={ufrg} 
                     onChange={(e) => setUfrg(e.target.value === '' ? 'Não informado' : e.target.value)}
                     borderTopRadius='0'
-                    borderLeft='0'
+                    borderLeft={{base: '1', lg: '0'}}
                     borderTop='0'
-                    borderBottomLeftRadius={0}
+                    borderBottomLeftRadius={{base: 'md', lg: 0}}
                     isDisabled={rg === ''}
                 >
                     {stateOptions.map(state => <option key={state} value={state}>{state}</option>)}
                 </Select>   
             </Grid>
             <RadioGroup colorScheme='yellow' ml={1} mt={4} onChange={(value: 'cpf' | 'cnpj') => setDocumentType(value)} value={documentType}>
-                <Stack direction='row'>
+                <Stack direction={{base: 'column', lg: 'row'}}>
                     <Text>Qual tipo de documento você deseja informar?</Text>
                     <Radio value='cpf'>CPF</Radio>
                     <Radio value='cnpj'>CNPJ</Radio>

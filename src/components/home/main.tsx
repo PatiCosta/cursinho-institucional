@@ -23,7 +23,7 @@ export function Main() {
                         borderRadius='md'
                         >
                         <Image 
-                            src={'img/teste-img-1.png'} 
+                            src={'img/main1.png'} 
                             maxW={{base: '40vw', lg: '24vw'}}
                         />
                         </Box>
@@ -32,7 +32,7 @@ export function Main() {
                         borderRadius='md'
                         >
                         <Image 
-                            src={'img/teste-img-2.png'} 
+                            src={'img/main2.png'} 
                             maxW={{base: '40vw', lg: '24vw'}}
                         />
                         </Box>
@@ -43,7 +43,7 @@ export function Main() {
                         borderRadius='md'
                         >
                         <Image 
-                            src={'img/teste-img-2.png'} 
+                            src={'img/main3.png'} 
                             maxW={{base: '40vw', lg: '24vw'}}
                         />
                         </Box>
@@ -52,7 +52,7 @@ export function Main() {
                         borderRadius='md'
                         >
                         <Image 
-                            src={'img/teste-img-1.png'} 
+                            src={'img/main4.png'} 
                             maxW={{base: '40vw', lg: '24vw'}}
                         />
                         </Box>
@@ -134,7 +134,7 @@ export function Main() {
                     borderRadius='md'
                     >
                     <Image 
-                        src={'img/teste-img-1.png'} 
+                        src={'img/main1.png'} 
                         maxW={'24vw'}
                     />
                     </Box>
@@ -143,27 +143,27 @@ export function Main() {
                     borderRadius='md'
                     >
                     <Image 
-                        src={'img/teste-img-2.png'} 
+                        src={'img/main2.png'} 
                         maxW={'24vw'}
                     />
                     </Box>
                 </Flex>
                 <Flex direction='column' gap={4}>
-                <Box
-                    w='24vw'
-                    borderRadius='md'
-                    >
-                    <Image 
-                        src={'img/teste-img-2.png'} 
-                        maxW={'24vw'}
-                    />
+                    <Box
+                        w='24vw'
+                        borderRadius='md'
+                        >
+                        <Image 
+                            src={'img/main3.png'} 
+                            maxW={'24vw'}
+                        />
                     </Box>
                     <Box
                     w='24vw'
                     borderRadius='md'
                     >
                     <Image 
-                        src={'img/teste-img-1.png'} 
+                        src={'img/main4.png'} 
                         maxW={'24vw'}
                     />
                     </Box>

@@ -1,4 +1,4 @@
-import { Donate } from "@/components/doacoes/donate1";
+import { Donate } from "@/components/doacoes/donate";
 import { Main } from "@/components/doacoes/main";
 import { Objective } from "@/components/doacoes/objective";
 import Footer from "@/components/Footer";

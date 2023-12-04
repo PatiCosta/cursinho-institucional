@@ -21,16 +21,6 @@ export function ContactForm({
 }: ContactFormProps) {
     return (
         <FormControl mt={4}>
-            {/* <FormLabel 
-                fontWeight='bold' 
-                fontSize={{base: 10, lg: 16}} 
-                letterSpacing='1.2' 
-                textTransform='uppercase' 
-                color='gray.600'
-                mt={8}
-            >
-                Contato
-            </FormLabel> */}
             <Input 
                 type="email" 
                 name="email" 
@@ -41,7 +31,7 @@ export function ContactForm({
                 isRequired
                 isInvalid={!email?.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)}
             />
-            <Grid templateColumns='1fr 1fr'>
+            <Grid templateColumns={{base: '1fr', lg: '1fr 1fr'}}>
                 <Input 
                     type="text" 
                     name="phoneNumber" 
@@ -52,7 +42,7 @@ export function ContactForm({
                     borderTopRadius='0'
                     isRequired
                 />
-                <Flex alignItems='center' ml={4} gap={2}>
+                <Flex alignItems='center' ml={4} gap={2} mt={{base: 4, lg: 0}}>
                     <Text>
                         Este telefone é whatsapp?
                     </Text>

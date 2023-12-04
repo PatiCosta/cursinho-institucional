@@ -1,7 +1,7 @@
 import { formatCard } from "@/utils/formatCreditCard";
 import { formatNumeric } from "@/utils/formatNumeric";
 import { parseCard } from "@/utils/parseCreditCard";
-import { Flex, FormControl, Grid, Input, Text } from "@chakra-ui/react";
+import { Flex, FormControl, FormLabel, Grid, Input, Text } from "@chakra-ui/react";
 import { Dispatch, SetStateAction } from "react";
 
 interface PaymentFormProps {
@@ -27,7 +27,7 @@ export function PaymentForm({
 }: PaymentFormProps) {
     return (
         <FormControl mt={4}>
-            {/* <FormLabel 
+            <FormLabel 
                 fontWeight='bold' 
                 fontSize={{base: 10, lg: 16}} 
                 letterSpacing='1.2' 
@@ -35,7 +35,7 @@ export function PaymentForm({
                 color='gray.600'
             >
                 Dados do cartão
-            </FormLabel> */}
+            </FormLabel>
             <Grid templateColumns='1fr 1fr'>
                 <Input 
                     gridColumnStart={1} 

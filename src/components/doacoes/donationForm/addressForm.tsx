@@ -42,7 +42,6 @@ export function AddressForm({
 
     const handleSearchZipCode = useCallback(async () => {
         setLoadingZipCode(true)
-        console.log(zipCode)
 
         if(!zipCode) {
             setZipCodeError(true)
@@ -73,16 +72,6 @@ export function AddressForm({
 
     return (
         <FormControl mt={4}>
-            {/* <FormLabel 
-                fontWeight='bold' 
-                fontSize={{base: 10, lg: 16}} 
-                letterSpacing='1.2' 
-                textTransform='uppercase' 
-                color='gray.600'
-                mt={8}
-            >
-                Endereço
-            </FormLabel> */}
             <Grid templateColumns='1fr 1fr' gap={4}>
                 <Input 
                     type="text" 
@@ -94,7 +83,7 @@ export function AddressForm({
                 />
                 <Button 
                     bgColor='yellow.400' 
-                    size={{base: 'sm', lg: 'md'}} 
+                    size={{base: 'md', lg: 'md'}} 
                     display='flex' 
                     alignItems='center' 
                     gap={2} 
