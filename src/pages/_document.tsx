@@ -22,6 +22,9 @@ export default function Document() {
         <meta name="twitter:title" content="Cursinho FEAUSP" />
         <meta name="twitter:description" content="Há mais de duas décadas trabalhando em prol da democratização do acesso ao ensino superior no Brasil" />
         <meta name="twitter:image" content="https://site-cursinho.vercel.app/img/logo_vertical.png" />
+      
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+        <title>Cursinho FEAUSP</title>
       </Head>
       <body>
         <Main />
