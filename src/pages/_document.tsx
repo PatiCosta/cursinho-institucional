@@ -24,7 +24,6 @@ export default function Document() {
         <meta name="twitter:image" content="https://site-cursinho.vercel.app/img/logo_vertical.png" />
       
         <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
-        <title>Cursinho FEAUSP</title>
       </Head>
       <body>
         <Main />
