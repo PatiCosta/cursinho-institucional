@@ -56,7 +56,7 @@ export default function Footer({children, ...rest}: footerProps) {
                                 <Envelope size={isLg ? 32 : 24} color="#023047" weight="duotone" />
                                 <Text fontWeight='light' fontSize={{base: 14, lg: 16}}>captacao.cursinho@gmail.com</Text>
                             </Flex>
-                            <Text fontWeight='bold' fontSize='20px' mt={8}>Processos Seletivos de Novos Alunos</Text>
+                            <Text fontWeight='bold' fontSize='18px' mt={8}>Processos Seletivos de Novos Alunos</Text>
                             <Flex alignItems='center' justifyContent='start' gap={2} mt={1}>
                                 <Envelope size={isLg ? 32 : 24} color="#023047" weight="duotone" />
                                 <Text fontWeight='light' fontSize={{base: 14, lg: 16}}>ps.cfeausp@gmail.com</Text>

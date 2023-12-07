@@ -20,7 +20,7 @@ export function StudentsVideoFooter() {
             textAlign='center'
         >
             <Text fontSize={{base: 24, lg: 32}} color='gray.800' fontWeight='light'>
-                <Highlight query={['nossos alunos', 'dizer']} styles={{bg: 'transparent', color: 'gray.50', fontWeight: 'bold' }}>
+                <Highlight query={['nossos', 'alunos' , 'dizer']} styles={{bg: 'transparent', color: 'gray.50', fontWeight: 'bold' }}>
                     Veja o que nossos alunos tem a dizer:
                 </Highlight>
             </Text>

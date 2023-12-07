@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import { ApprovedStudentsFooter } from "@/components/Footer/approvedStudents";
+import { StudentsVideoFooter } from "@/components/Footer/studentsVideo";
 import Header from "@/components/Header";
 import { About } from "@/components/sobre/about";
 import { Main } from "@/components/sobre/main";
@@ -12,8 +12,8 @@ export default function Sobre() {
             <Main />
             <About />
             <Teachers />
-            <Footer mt={72}>
-                <ApprovedStudentsFooter />
+            <Footer  mt={{base: 40, lg: 72}}>
+                <StudentsVideoFooter />
             </Footer>
         </>
     )

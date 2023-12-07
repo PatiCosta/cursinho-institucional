@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Highlight, Image, Text, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Button, Flex, Highlight, Image, Text, useBreakpointValue, Link as ChakraLink } from "@chakra-ui/react";
 import Link from "next/link";
 import { ArrowCircleUpRight } from "phosphor-react";
 
@@ -12,9 +12,9 @@ export function SubscribeSchoolClassFooter() {
             borderRadius='24px' 
             w={{base: '90vw', lg: '60vw'}}  
             position='absolute' 
-            top={{base: '-13%', lg: '-25%'}} 
+            top={{base: '-12%', lg: '-30%'}} 
             mx={{base: '5vw', lg: '20vw'}}  
-            py={{base: 8, lg: 12}}
+            py={{base: 8, lg: 10}}
             px={{base: 4, lg: 12}} 
             gap={6}
         >
@@ -27,19 +27,23 @@ export function SubscribeSchoolClassFooter() {
                 </Text>
                 <Text fontSize={{base: 12, lg: 14}} mt={4}>
                     <Highlight query='#todospodemvoar' styles={{fontWeight: 'bold', color: 'gray.50' }}>
-                        Ao ingressar na nossa turma, você não está apenas se matriculando em um curso, mas se tornando parte de uma comunidade vibrante de aprendizes. Juntos, enfrentaremos desafios, celebraremos conquistas e construiremos laços que vão além da sala de aula. #todospodemvoar 
+                        Ao ingressar na nossa turma, você não está apenas se matriculando em um curso, mas se tornando parte de uma comunidade vibrante de aprendizes. #todospodemvoar 
                     </Highlight>
+                </Text>
+                <Text fontSize={{base: 12, lg: 14}} mt={4}>
+                    Venha conferir mais informações e descubra qual turma é a escolha perfeita para você
+                    <ChakraLink fontWeight='bold' color='gray.50' href='https://pscfeausp.beehiiv.com/subscribe' isExternal>{' '}clicando aqui!</ChakraLink>
                 </Text>
                 <Button 
                     as={Link}
                     href={`/turmas`}
                     w='fit-content'
-                    mt={{base: 4, lg: 8}}
+                    mt={{base: 2, lg: 6}}
                     mx={{base: 'auto', lg: 0}}
                     bgColor='gray.50' 
                     borderRadius='2xl' 
                     size={{base: 'md', lg: 'lg'}} 
-                    display='flex' 
+                    display={{base: 'none', lg: 'flex' }}
                     alignItems='center' 
                     gap={2} 
                     fontSize='24px' 
