@@ -1,18 +1,17 @@
 import { ExternalLinkIcon } from "@chakra-ui/icons";
-import { Box, Button, Flex, Grid, Highlight, Link, Text } from "@chakra-ui/react";
+import { Box, Flex, Highlight, Link, Text } from "@chakra-ui/react";
 import { Books, Calendar, ChalkboardTeacher, Laptop, Notebook, Users } from "phosphor-react";
-import { useState } from "react";
 import { ColumnInfoLabel } from "../InfoLabel/column";
 
 export function Diferentials() {
 
     return (
-        <Box mt={{base: 8, lg: 16}}>
+        <Box mt={{base: 8, lg: 12}}>
             <Flex gap={8} direction={{base: 'column', lg: 'row'}}>
                 <ColumnInfoLabel 
                     title='Nossos diferenciais'
                     info='Somos um cursinho pré-vestibular, sem mensalidades, fundado em 2000 e gerido pelos alunos da FEA-USP. O Cursinho foi fundado com a iniciativa de alunos da FEA, com o apoio do CAVC e da então diretoria da faculdade.'
-                    bgColor='blue.800'
+                    bgColor='yellow.400'
                 />
                 <Box bgColor='transparent' pl={8} py={8} boxShadow='md' mr={{base: 4, lg: 12}} ml={{base: 4, lg: 0}} flex='1.05' position='relative'>
                     <Box borderBottomRightRadius='100%' bgColor='yellow.100' h='96px' w='96px' position='absolute' top='0' left='0' zIndex='-1'>

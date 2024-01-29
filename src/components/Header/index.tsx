@@ -75,6 +75,7 @@ export default function Header() {
                         <MenuButton title='Início' link='home' />
                         <MenuButton title='Sobre' link='sobre' />
                         <MenuButton title='Turmas' link='turmas' />
+                        <MenuButton title='Tutorias' link='tutorias' />
                         <MenuButton title='Campanha' link='campanha' />
                         <MenuButton title='Eventos' link='eventos' />
                         <MenuButton title='Doações' link='doacoes' />

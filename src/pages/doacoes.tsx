@@ -43,10 +43,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
             price
         }
     })
-
-    // const default_prices = response.data.map(product => product.default_price) as unknown as Stripe.Price[]
-    // const prices = default_prices.map(price => price.unit_amount ? price.unit_amount/100 : 0)
-
     return {
         props: {
             products

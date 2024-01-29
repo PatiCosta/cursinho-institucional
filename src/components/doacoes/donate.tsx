@@ -1,6 +1,6 @@
 import { Box, Flex, Highlight, Image, Select, Text } from "@chakra-ui/react"
 import { useState } from "react"
-import { DonationForm } from "./donationForm"
+// import { DonationForm } from "./donationForm"
 
 interface Product {
     product_id: string

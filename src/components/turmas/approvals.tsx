@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 
 export function Approvals() {
     return (
@@ -7,7 +7,7 @@ export function Approvals() {
             w='100vw' 
             px={{base: 8, lg: 12}} 
             py={{base: 24, lg: 24}}
-            mt={12} 
+            mt={{base: 6, lg: 12}} 
             alignItems='center' 
             justifyContent='center' 
             gap={12}
