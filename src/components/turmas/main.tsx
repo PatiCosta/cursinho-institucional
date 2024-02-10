@@ -121,7 +121,7 @@ const Class = ({title, bgColor, iconColor, status, target, scheduleDates, schedu
                                     cursor='pointer'
                                     key={document.docsID}
                                 >
-                                    <Book size={20} color={iconColor} weight="duotone" />
+                                    <Book size={20} color={iconColor} weight="duotone" style={{flexShrink: '0'}} />
                                     <Text fontWeight='semibold' fontSize='14px' textDecoration='underline'>{document.title}</Text>
                                 </Flex>
                             )}
