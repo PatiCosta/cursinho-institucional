@@ -90,9 +90,10 @@ const Class = ({title, bgColor, iconColor, status, target, scheduleDates, schedu
                     style={{
                         pointerEvents: status !== 'Aberto' ? 'none' : 'auto'
                     }}
-                    isDisabled={status !== 'Aberto'}
-                    aria-disabled={status !== 'Aberto'} 
+                    // isDisabled={status !== 'Aberto'}
+                    // aria-disabled={status !== 'Aberto'} 
                     tabIndex={status !== 'Aberto' ? -1 : undefined}
+                    isDisabled
                 >
                     <Text>Inscreva-se</Text>
                     <ArrowCircleUpRight size={28} color="#F7FAFC" weight="fill" />
