@@ -87,13 +87,18 @@ const Class = ({title, bgColor, iconColor, status, target, scheduleDates, schedu
                     _hover={{
                         opacity: 0.9
                     }}
-                    style={{
-                        pointerEvents: status !== 'Aberto' ? 'none' : 'auto'
-                    }}
+                    // style={{
+                    //     pointerEvents: status !== 'Aberto' ? 'none' : 'auto'
+                    // }}
                     // isDisabled={status !== 'Aberto'}
                     // aria-disabled={status !== 'Aberto'} 
-                    tabIndex={status !== 'Aberto' ? -1 : undefined}
+                    // tabIndex={status !== 'Aberto' ? -1 : undefined}
                     isDisabled
+                    aria-disabled
+                    tabIndex={-1}
+                    style={{
+                        pointerEvents: 'none'
+                    }}
                 >
                     <Text>Inscreva-se</Text>
                     <ArrowCircleUpRight size={28} color="#F7FAFC" weight="fill" />
