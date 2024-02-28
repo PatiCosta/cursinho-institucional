@@ -33,7 +33,7 @@ export interface CourseDocument {
 export interface Course {
   id?: string
   title: string
-  stripeProductID?: string
+  stripeProductID: string
   status?: 'active' | 'inactive'
   informations: {
     description: string

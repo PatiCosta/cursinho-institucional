@@ -1,5 +1,6 @@
-import { Box, Button, Flex, Grid, Highlight, Link, Tag, Text, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Flex, Grid, Highlight, Link, Tag, Text, useBreakpointValue } from "@chakra-ui/react";
 import { Calendar, Clock, PencilSimpleLine, Target, UsersThree } from "phosphor-react";
+import { SubscribeForm } from "./subscribeForm";
 
 interface MainProps {
     title: string
@@ -11,9 +12,11 @@ interface MainProps {
     whoCanParticipate: string
     subscriptionSchedule: string
     price: number
+    id: string | undefined
+    stripeProductID: string
 }
 
-export function Main({title, color, description, dateSchedule, hourSchedule, classContent, whoCanParticipate, subscriptionSchedule, price}: MainProps) {
+export function Main({stripeProductID, id, title, color, description, dateSchedule, hourSchedule, classContent, whoCanParticipate, subscriptionSchedule, price}: MainProps) {
     const isLg = useBreakpointValue({ base: false, sm: false, lg: true })
     const formattedPrice = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL',}).format(price/100)
     
@@ -58,11 +61,20 @@ export function Main({title, color, description, dateSchedule, hourSchedule, cla
                     borderRadius='2xl'
                     _hover={{bgColor: 'gray.100'}}
                     target='_blank'
-                    href={title === 'Turma de Semana' ? 'https://www.sympla.com.br/turma-de-semana-tse---cursinho-feausp-2024__2252270' : title === 'Turma de Sábado' ? 'https://www.sympla.com.br/turma-de-sabado-tsa---cursinho-feausp-2024__2252261' : ''}
+                    href={
+                        title === 'Turma de Semana' 
+                        ? 'https://www.sympla.com.br/turma-de-semana-tse---cursinho-feausp-2024__2252270' 
+                        : title === 'Turma de Sábado' 
+                        ? 'https://www.sympla.com.br/turma-de-sabado-tsa---cursinho-feausp-2024__2252261' 
+                        : title === 'Turma de Sábado de Maio'
+                        ? 'https://www.sympla.com.br/evento/turma-de-sabado-de-maio-tsm-cursinho-feausp-2024/2359347?_gl=1*1420re5*_ga*OTM4NzEzMDA5LjE3MDg5OTExMDY.*_ga_KXH10SQTZF*MTcwOTA4NzU0MC40LjEuMTcwOTA4Nzc2Ny41NC4wLjEzNDUxNzQxNjE'
+                        : ''
+                    }
                 >
                     <Text fontWeight='bolder' letterSpacing={.5}>Quero me inscrever!</Text>
                     <Text>→</Text>
                 </Link>
+                {/* <SubscribeForm stripeProductID={stripeProductID} id={id} color={color} title={title} price={price/100} /> */}
             </Box>
             <Box mt={{base: 6, lg: 0}}>
                 <Box 
