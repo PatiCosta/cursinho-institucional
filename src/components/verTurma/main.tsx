@@ -284,7 +284,15 @@ export function Main({stripeProductID, id, title, color, description, dateSchedu
                 mt={8}
                 boxShadow='2xl'
                 target='_blank'
-                href={title === 'Turma de Semana' ? 'https://www.sympla.com.br/turma-de-semana-tse---cursinho-feausp-2024__2252270' : title === 'Turma de Sábado' ? 'https://www.sympla.com.br/turma-de-sabado-tsa---cursinho-feausp-2024__2252261' : ''}
+                href={
+                    title === 'Turma de Semana' 
+                    ? 'https://www.sympla.com.br/turma-de-semana-tse---cursinho-feausp-2024__2252270' 
+                    : title === 'Turma de Sábado' 
+                    ? 'https://www.sympla.com.br/turma-de-sabado-tsa---cursinho-feausp-2024__2252261' 
+                    : title === 'Turma de Sábado de Maio'
+                    ? 'https://www.sympla.com.br/evento/turma-de-sabado-de-maio-tsm-cursinho-feausp-2024/2359347?_gl=1*1420re5*_ga*OTM4NzEzMDA5LjE3MDg5OTExMDY.*_ga_KXH10SQTZF*MTcwOTA4NzU0MC40LjEuMTcwOTA4Nzc2Ny41NC4wLjEzNDUxNzQxNjE'
+                    : ''
+                }
             >
                 <Text fontWeight='bolder' letterSpacing={.5}>Quero me inscrever!</Text>
                 <Text>→</Text>

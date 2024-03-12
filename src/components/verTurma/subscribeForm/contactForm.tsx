@@ -28,7 +28,7 @@ export function ContactForm({
                 placeholder="E-mail para contato" 
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)} 
-                borderBottomLeftRadius='0'
+                borderBottomRadius='0'
                 isRequired
                 isInvalid={!email?.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)}
             />
@@ -39,6 +39,8 @@ export function ContactForm({
                 value={emailConfirmation} 
                 onChange={(e) => setEmailConfirmation(e.target.value)} 
                 borderBottomLeftRadius='0'
+                borderTopRadius='0'
+                borderTop='0'
                 isRequired
                 isInvalid={!emailConfirmation?.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g) || emailConfirmation !== email}
             />
