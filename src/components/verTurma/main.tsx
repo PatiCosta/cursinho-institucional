@@ -285,8 +285,8 @@ export function Main({stripeProductID, id, title, color, description, dateSchedu
                 boxShadow='2xl'
                 target='_blank'
                 href={
-                    title === 'Turma de Semana' 
-                    ? 'https://www.sympla.com.br/turma-de-semana-tse---cursinho-feausp-2024__2252270' 
+                    title === 'Turma de Semana Intensiva' 
+                    ? 'https://www.sympla.com.br/turma-de-semana-intensiva-tsi---cursinho-feausp-2024__2488754' 
                     : title === 'Turma de Sábado' 
                     ? 'https://www.sympla.com.br/turma-de-sabado-tsa---cursinho-feausp-2024__2252261' 
                     : title === 'Turma de Sábado de Maio'
