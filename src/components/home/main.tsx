@@ -2,6 +2,7 @@ import { Box, Button, Flex, Highlight, Image, Text, Icon } from "@chakra-ui/reac
 import { ArrowCircleUpRight } from "phosphor-react";
 import Link from 'next/link';
 import { useState } from "react";
+import api from "@/services/api";
 
 export function Main() {
     const [isButtonHovered, setIsButtonHovered] = useState(false)

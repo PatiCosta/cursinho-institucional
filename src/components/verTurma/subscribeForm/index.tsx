@@ -141,7 +141,6 @@ export function SubscribeForm({id, color, title, price, stripeProductID}: Subscr
             highSchoolPeriod: highSchoolPeriod,
             metUsMethod: metUsMethod,
             exStudent: exStudent,
-            purcharsedSubscriptions: [{schoolClassID: id}],
             token: encryptedPaymentMethod,
             productSelectedID: stripeProductID
           };
