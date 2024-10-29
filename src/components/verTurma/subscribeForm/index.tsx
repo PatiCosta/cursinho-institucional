@@ -110,10 +110,8 @@ export function SubscribeForm({id, color, title, price, stripeProductID}: Subscr
           },
         })
 
-        console.log(paymentMethod)
-
         // Encrypt the payment method with crypto-js
-        const encryptedPaymentMethod = crypto.AES.encrypt(paymentMethod.id, "vasco").toString();
+        // const encryptedPaymentMethod = crypto.AES.encrypt(paymentMethod.id, "vasco").toString();
     
         // Send payment details to your backend
         try {
@@ -141,12 +139,18 @@ export function SubscribeForm({id, color, title, price, stripeProductID}: Subscr
             highSchoolPeriod: highSchoolPeriod,
             metUsMethod: metUsMethod,
             exStudent: exStudent,
-            token: encryptedPaymentMethod,
-            productSelectedID: stripeProductID
+            purcharsedSubscriptions: {
+                schoolClassID: "d711de8d-0b0c-49a0-abed-e48535a9e5bb",
+                paymentMethod: "card",
+                currency: "brl"
+            },
           };
 
-          await api.post("https://cursinho-fea-usp-2bib7.ondigitalocean.app/students/create",
-            data);
+            const response = await api.post("cursinhofeauspserver.awer.co/students/create",
+                data).then(response => {
+                    return response
+                })
+
             setIsSubscribing(false)
             setSubscribeSuccess(true)
     
