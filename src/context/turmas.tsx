@@ -21,7 +21,7 @@ import api from '@/services/api'
     const list = useCallback(
       async () => {
         await api
-          .get(`http://cursinhofeauspserver.awer.co/schoolClass`, {params: {status: 'active'}})
+          .get(`https://cursinhofeauspserver.awer.co/schoolClass`, {params: {status: 'active'}})
           .then((response) => {
             setSchoolClassList(response.data.schoolClassResponse.schoolClassList)
           })
