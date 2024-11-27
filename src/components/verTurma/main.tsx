@@ -65,10 +65,12 @@ export function Main({stripeProductID, id, title, color, description, dateSchedu
                         title === 'Turma de Semana Intensiva' 
                         ? 'https://www.sympla.com.br/turma-de-semana-intensiva-tsi---cursinho-feausp-2024__2488754' 
                         : title === 'Turma de Sábado' 
-                        ? 'https://www.sympla.com.br/turma-de-sabado-tsa---cursinho-feausp-2024__2252261' 
+                        ? 'https://www.sympla.com.br/evento/turma-de-sabado-tsa-cursinho-feausp-2025/2747450' 
                         : title === 'Turma de Sábado de Maio'
                         ? 'https://www.sympla.com.br/evento/turma-de-sabado-de-maio-tsm-cursinho-feausp-2024/2359347?_gl=1*1420re5*_ga*OTM4NzEzMDA5LjE3MDg5OTExMDY.*_ga_KXH10SQTZF*MTcwOTA4NzU0MC40LjEuMTcwOTA4Nzc2Ny41NC4wLjEzNDUxNzQxNjE'
-                        : ''
+                        : title === 'Turma de Sábado de Maio'
+                        ? 'Turma de Semana'
+                        : 'https://www.sympla.com.br/evento/turma-de-semana-tse-cursinho-feausp-2025/2750729'
                     }
                 >
                     <Text fontWeight='bolder' letterSpacing={.5}>Quero me inscrever!</Text>
@@ -288,10 +290,12 @@ export function Main({stripeProductID, id, title, color, description, dateSchedu
                     title === 'Turma de Semana Intensiva' 
                     ? 'https://www.sympla.com.br/turma-de-semana-intensiva-tsi---cursinho-feausp-2024__2488754' 
                     : title === 'Turma de Sábado' 
-                    ? 'https://www.sympla.com.br/turma-de-sabado-tsa---cursinho-feausp-2024__2252261' 
+                    ? 'https://www.sympla.com.br/evento/turma-de-sabado-tsa-cursinho-feausp-2025/2747450' 
                     : title === 'Turma de Sábado de Maio'
                     ? 'https://www.sympla.com.br/evento/turma-de-sabado-de-maio-tsm-cursinho-feausp-2024/2359347?_gl=1*1420re5*_ga*OTM4NzEzMDA5LjE3MDg5OTExMDY.*_ga_KXH10SQTZF*MTcwOTA4NzU0MC40LjEuMTcwOTA4Nzc2Ny41NC4wLjEzNDUxNzQxNjE'
-                    : ''
+                    : title === 'Turma de Sábado de Maio'
+                    ? 'Turma de Semana'
+                    : 'https://www.sympla.com.br/evento/turma-de-semana-tse-cursinho-feausp-2025/2750729'
                 }
             >
                 <Text fontWeight='bolder' letterSpacing={.5}>Quero me inscrever!</Text>
