@@ -7,6 +7,7 @@ import { Comments } from "@/components/home/comments";
 import { Diferentials } from "@/components/home/diferentials";
 import { InfoBar } from "@/components/home/infoBar";
 import { Main } from "@/components/home/main";
+import { Container, Flex } from "@chakra-ui/react";
 
 
 export default function Home() {
