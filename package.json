@@ -32,5 +32,8 @@
     "sitemap": "^7.1.1",
     "stripe": "^14.2.0",
     "typescript": "4.9.5"
+  },
+  "engines": {
+    "node": ">=22.0.0"
   }
 }
