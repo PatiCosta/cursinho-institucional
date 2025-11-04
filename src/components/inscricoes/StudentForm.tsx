@@ -297,7 +297,6 @@ export function StudentForm({ selectedTurma, onBack, onSubmit }: StudentFormProp
         </VStack>
 
 
-        <Divider />
 
 
         <Divider />
