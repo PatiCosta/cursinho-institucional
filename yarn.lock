@@ -1595,12 +1595,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:^7.62.0":
-  version: 7.66.0
-  resolution: "react-hook-form@npm:7.66.0"
+"react-hook-form@npm:7.43.9":
+  version: 7.43.9
+  resolution: "react-hook-form@npm:7.43.9"
   peerDependencies:
-    react: ^16.8.0 || ^17 || ^18 || ^19
-  checksum: 10796a0c45fd94012fe0feb0b7186c5785c259b1bb6ca96f841e394f528b26442de7e2e5dbbe1a1d94429f2dd6f78c600cdadc2d6c78294e0d33d28ca3ad93f5
+    react: ^16.8.0 || ^17 || ^18
+  checksum: 65b94de625f2b7921c4e856bf0abbe142bfe06c052217bd1bcc3a842e2cc37fa3a3e03758119dc038bbcf5edb49e02c29206528b80b201f9a4d601471ef78153
   languageName: node
   linkType: hard
 
@@ -1795,7 +1795,7 @@ __metadata:
     qrcode.react: ^4.2.0
     react: 18.2.0
     react-dom: 18.2.0
-    react-hook-form: ^7.62.0
+    react-hook-form: 7.43.9
     sitemap: ^7.1.1
     stripe: ^14.2.0
     typescript: 4.9.5
