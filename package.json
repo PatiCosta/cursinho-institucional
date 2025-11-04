@@ -13,6 +13,7 @@
     "@chakra-ui/react": "^2.5.1",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@hookform/resolvers": "^5.2.2",
     "@phosphor-icons/react": "^2.0.13",
     "@stripe/react-stripe-js": "^2.3.1",
     "@stripe/stripe-js": "^2.1.10",
@@ -27,13 +28,19 @@
     "lottie-react": "^2.4.0",
     "next": "13.2.3",
     "phosphor-react": "^1.4.1",
+    "qrcode.react": "^4.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.62.0",
     "sitemap": "^7.1.1",
     "stripe": "^14.2.0",
-    "typescript": "4.9.5"
+    "typescript": "4.9.5",
+    "yup": "^1.7.0"
   },
   "engines": {
     "node": ">=22.0.0"
+  },
+  "devDependencies": {
+    "@types/qrcode.react": "^3.0.0"
   }
 }

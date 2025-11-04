@@ -146,7 +146,7 @@ export function SubscribeForm({id, color, title, price, stripeProductID}: Subscr
             },
           };
 
-            const response = await api.post("cursinhofeauspserver.awer.co/students/create",
+            const response = await api.post(`${process.env.NEXT_PUBLIC_API_URL}/students/create`,
                 data).then(response => {
                     return response
                 })

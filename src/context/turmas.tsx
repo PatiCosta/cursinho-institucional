@@ -17,11 +17,11 @@ import api from '@/services/api'
   
   export function SchoolClassProvider({ children }: { children: ReactNode }) {
     const [schoolClassList, setSchoolClassList] = useState()
-  
+
     const list = useCallback(
       async () => {
         await api
-          .get(`https://cursinhofeauspserver.awer.co/schoolClass`, {params: {status: 'active'}})
+          .get(`${process.env.NEXT_PUBLIC_API_URL}/schoolClass`, {params: {status: 'active'}})
           .then((response) => {
             setSchoolClassList(response.data.schoolClassResponse.schoolClassList)
           })

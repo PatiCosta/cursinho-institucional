@@ -24,7 +24,7 @@ export function Donate({products}: DonateProps) {
             py={{base: 8, lg: 16}} 
             borderRadius='2xl'
         >
-            {/* <Box 
+            <Box 
                 display={{base: 'none', lg: 'block'}} 
                 borderRadius='2xl' 
                 h='100%'
@@ -117,7 +117,7 @@ export function Donate({products}: DonateProps) {
             </Flex>
             <Text fontSize={{base: 28, lg: 40}} fontWeight="bold" color='gray.50' textAlign='center' my={8}>
                 ou
-            </Text> */}
+            </Text>
             <Flex 
                 textAlign='center'
                 gap={8}
