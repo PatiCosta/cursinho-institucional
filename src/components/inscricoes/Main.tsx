@@ -7,7 +7,18 @@ import {
   useColorModeValue,
   Button,
   useToast,
-  VStack
+  VStack,
+  Center,
+  Spinner,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay
 } from '@chakra-ui/react';
 import { ArrowForwardIcon, CalendarIcon, TimeIcon } from '@chakra-ui/icons';
 import { StudentForm } from '@/components/inscricoes/StudentForm';
@@ -39,6 +50,34 @@ export function Main({ schoolClassList }: MainProps) {
   const [isPixModalOpen, setIsPixModalOpen] = useState(false); // State para controlar o modal
   const toast = useToast();
   const router = useRouter();
+
+  // --- LÓGICA DO PORTÃO DE SENHA ---
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState('');
+  const [authError, setAuthError] = useState(false);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true); // Começa checando
+
+  // 1. Verifica no sessionStorage se já está autenticado
+  useEffect(() => {
+    const storedPass = sessionStorage.getItem('dev_pass');
+    if (storedPass === 'cursinho2025') {
+      setIsAuthenticated(true);
+    }
+    setIsCheckingAuth(false); // Termina a checagem
+  }, []);
+
+  // 2. Função para tentar autenticar
+  const handlePasswordSubmit = () => {
+    if (password === 'cursinho2025') {
+      sessionStorage.setItem('dev_pass', 'cursinho2025');
+      setIsAuthenticated(true);
+      setAuthError(false);
+    } else {
+      setAuthError(true);
+    }
+  };
+  // --- FIM DA LÓGICA DO PORTÃO ---
+
   // O estado do pagamento agora vive no componente PAI
   const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>('IDLE');
 
@@ -162,6 +201,46 @@ export function Main({ schoolClassList }: MainProps) {
   const cardBg = useColorModeValue('white', 'gray.800');
   const cardBorder = useColorModeValue('gray.200', 'gray.700');
 
+  // --- RENDERIZAÇÃO DO PORTÃO DE SENHA ---
+
+  // 3. Mostra um spinner enquanto verifica o sessionStorage
+  if (isCheckingAuth) {
+    return (
+      <Center h="80vh">
+        <Spinner boxSize="md" />
+      </Center>
+    );
+  }
+
+  // 4. Se não estiver autenticado, mostra o Modal de Senha
+  if (!isAuthenticated) {
+    return (
+      <Modal isOpen={true} onClose={() => { }} isCentered closeOnOverlayClick={false} closeOnEsc={false}>
+        <ModalOverlay />
+        <ModalContent p={4}>
+          <ModalHeader>Acesso Restrito</ModalHeader>
+          <ModalBody>
+            <VStack spacing={4}>
+              <Text>Esta é uma página de desenvolvimento. Por favor, insira a senha para continuar.</Text>
+              <FormControl isInvalid={authError}>
+                <FormLabel>Senha</FormLabel>
+                <Input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && handlePasswordSubmit()}
+                />
+                {authError && <FormErrorMessage>Senha incorreta.</FormErrorMessage>}
+              </FormControl>
+              <Button colorScheme="blue" onClick={handlePasswordSubmit} w="100%">
+                Entrar
+              </Button>
+            </VStack>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    );
+  }
   return (
     <Box py={12} px={6}>
       <Flex
