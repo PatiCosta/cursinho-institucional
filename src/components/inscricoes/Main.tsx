@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Box,
   Flex,
@@ -7,7 +7,18 @@ import {
   useColorModeValue,
   Button,
   useToast,
-  VStack
+  VStack,
+  Center,
+  Spinner,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay
 } from '@chakra-ui/react';
 import { ArrowForwardIcon, CalendarIcon, TimeIcon } from '@chakra-ui/icons';
 import { StudentForm } from '@/components/inscricoes/StudentForm';
@@ -15,6 +26,7 @@ import axios from 'axios';
 import { FieldValues } from 'react-hook-form';
 import { Turma } from '@/types';
 import { PixDisplayModal } from './PixDisplayModal'; // Importamos nosso novo modal
+import { useRouter } from 'next/router';
 
 interface MainProps {
   schoolClassList: Turma[];
@@ -28,6 +40,8 @@ interface PixData {
   valor: string;
 }
 
+type PaymentStatus = 'IDLE' | 'PENDENTE' | 'CONCLUIDA' | 'ERRO';
+
 
 export function Main({ schoolClassList }: MainProps) {
   const [selectedTurma, setSelectedTurma] = useState<Turma | null>(null);
@@ -35,6 +49,37 @@ export function Main({ schoolClassList }: MainProps) {
   const [pixData, setPixData] = useState<PixData | null>(null); // State para guardar os dados do PIX
   const [isPixModalOpen, setIsPixModalOpen] = useState(false); // State para controlar o modal
   const toast = useToast();
+  const router = useRouter();
+
+  // --- LÓGICA DO PORTÃO DE SENHA ---
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState('');
+  const [authError, setAuthError] = useState(false);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true); // Começa checando
+
+  // 1. Verifica no sessionStorage se já está autenticado
+  useEffect(() => {
+    const storedPass = sessionStorage.getItem('dev_pass');
+    if (storedPass === 'cursinho2025') {
+      setIsAuthenticated(true);
+    }
+    setIsCheckingAuth(false); // Termina a checagem
+  }, []);
+
+  // 2. Função para tentar autenticar
+  const handlePasswordSubmit = () => {
+    if (password === 'cursinho2025') {
+      sessionStorage.setItem('dev_pass', 'cursinho2025');
+      setIsAuthenticated(true);
+      setAuthError(false);
+    } else {
+      setAuthError(true);
+    }
+  };
+  // --- FIM DA LÓGICA DO PORTÃO ---
+
+  // O estado do pagamento agora vive no componente PAI
+  const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>('IDLE');
 
   const handleSelectTurma = (turma: Turma) => {
     setSelectedTurma(turma);
@@ -50,7 +95,7 @@ export function Main({ schoolClassList }: MainProps) {
     setIsSubmitting(true);
 
     try {
-   
+
       delete studentData.confirmacaoEmail
       const payload = {
         ...studentData,
@@ -94,10 +139,108 @@ export function Main({ schoolClassList }: MainProps) {
     }
   };
 
+  // **LÓGICA DE POLLING MOVIDA PARA CÁ**
+  useEffect(() => {
+    // Só roda o polling se tiver um txid e o status for PENDENTE
+    if (paymentStatus !== 'PENDENTE' || !pixData?.txid) {
+      return;
+    }
+
+    console.log(`Iniciando polling para o txid: ${pixData.txid}`);
+
+    const checkPaymentStatus = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/inscriptions/status/${pixData.txid}`
+        );
+
+        const newStatus: PaymentStatus = response.data.status;
+        console.log(`Status recebido: ${newStatus}`);
+
+        if (newStatus === 'CONCLUIDA') {
+          setPaymentStatus('CONCLUIDA');
+        }
+      } catch (error) {
+        console.error("Erro no polling:", error);
+      }
+    };
+
+    // Inicia o timer (Interval) para verificar a cada 5 segundos
+    const intervalId = setInterval(checkPaymentStatus, 5000);
+
+    // Função de "limpeza": para o timer se o status mudar (para CONCLUIDA) ou o componente for desmontado
+    return () => {
+      console.log("Parando polling.");
+      clearInterval(intervalId);
+    };
+
+  }, [paymentStatus, pixData?.txid]); // Depende do status e do txid
+
+
+  // **LÓGICA DE REDIRECIONAMENTO MOVIDA PARA CÁ**
+  useEffect(() => {
+    if (paymentStatus === 'CONCLUIDA') {
+      setIsPixModalOpen(true); // Garante que o modal esteja aberto para mostrar "sucesso"
+
+      toast({
+        title: 'Pagamento confirmado!',
+        description: 'Sua inscrição foi recebida com sucesso.',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      });
+
+      // Espera 2 segundos e redireciona
+      setTimeout(() => {
+        setIsPixModalOpen(false); // Fecha o modal
+        router.push('/inscricoes/sucesso'); // Redireciona
+      }, 2000);
+    }
+  }, [paymentStatus, router, toast]);
 
   const cardBg = useColorModeValue('white', 'gray.800');
   const cardBorder = useColorModeValue('gray.200', 'gray.700');
 
+  // --- RENDERIZAÇÃO DO PORTÃO DE SENHA ---
+
+  // 3. Mostra um spinner enquanto verifica o sessionStorage
+  if (isCheckingAuth) {
+    return (
+      <Center h="80vh">
+        <Spinner boxSize="md" />
+      </Center>
+    );
+  }
+
+  // 4. Se não estiver autenticado, mostra o Modal de Senha
+  if (!isAuthenticated) {
+    return (
+      <Modal isOpen={true} onClose={() => { }} isCentered closeOnOverlayClick={false} closeOnEsc={false}>
+        <ModalOverlay />
+        <ModalContent p={4}>
+          <ModalHeader>Acesso Restrito</ModalHeader>
+          <ModalBody>
+            <VStack spacing={4}>
+              <Text>Esta é uma página de desenvolvimento. Por favor, insira a senha para continuar.</Text>
+              <FormControl isInvalid={authError}>
+                <FormLabel>Senha</FormLabel>
+                <Input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && handlePasswordSubmit()}
+                />
+                {authError && <FormErrorMessage>Senha incorreta.</FormErrorMessage>}
+              </FormControl>
+              <Button colorScheme="blue" onClick={handlePasswordSubmit} w="100%">
+                Entrar
+              </Button>
+            </VStack>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    );
+  }
   return (
     <Box py={12} px={6}>
       <Flex
@@ -151,7 +294,7 @@ export function Main({ schoolClassList }: MainProps) {
                   <Box flex="1" />
                   <Flex justify="space-between" align="center" mt={4}>
                     <Text fontWeight="bold" fontSize="lg">
-                      {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(turma.subscriptions.price/100)}
+                      {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(turma.subscriptions.price / 100)}
                     </Text>
                     <Button
                       rightIcon={<ArrowForwardIcon />}
@@ -172,6 +315,7 @@ export function Main({ schoolClassList }: MainProps) {
         isOpen={isPixModalOpen}
         onClose={() => setIsPixModalOpen(false)}
         pixData={pixData}
+        status={paymentStatus} // Passamos o status como prop
       />
     </Box>
   );

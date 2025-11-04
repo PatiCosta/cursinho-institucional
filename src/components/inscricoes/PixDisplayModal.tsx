@@ -15,43 +15,30 @@ import {
   InputRightElement,
   Center,
   Spinner,
-  CircularProgress,
-  Collapse,
-  Heading,
+  Heading
 } from '@chakra-ui/react';
-import { QRCodeCanvas, QRCodeSVG } from 'qrcode.react';
-import { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
-import { CheckCircleIcon } from '@chakra-ui/icons';
-import { useRouter } from 'next/router';
+import { QRCodeSVG } from 'qrcode.react';
+
+// A lógica de polling e redirecionamento foi MOVIDA para o 'Main.tsx'
 
 interface PixData {
-  txid: string; // O txid é essencial para o polling
-  qrCodePayload: string;
+  qrCodePayload: string; // Este é o EMV (Copia e Cola)
   copiaECola: string;
   valor: string;
+  txid: string;
 }
+
+type PaymentStatus = 'IDLE' | 'PENDENTE' | 'CONCLUIDA' | 'ERRO';
 
 interface PixDisplayModalProps {
   isOpen: boolean;
   onClose: () => void;
   pixData: PixData | null;
+  status: PaymentStatus; // Recebe o status como prop
 }
 
-// Estados do modal
-enum PaymentStatus {
-  PENDING, // A aguardar pagamento
-  VERIFYING, // A verificar (o polling está ativo)
-  SUCCESS,   // Pagamento confirmado
-}
-
-export function PixDisplayModal({ isOpen, onClose, pixData }: PixDisplayModalProps) {
+export function PixDisplayModal({ isOpen, onClose, pixData, status }: PixDisplayModalProps) {
   const toast = useToast();
-  const [status, setStatus] = useState<PaymentStatus>(PaymentStatus.PENDING);
-  const router = useRouter()
-  
-  // Usamos useRef para guardar o ID do intervalo e podermos limpá-lo
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleCopy = () => {
     if (pixData?.copiaECola) {
@@ -65,121 +52,75 @@ export function PixDisplayModal({ isOpen, onClose, pixData }: PixDisplayModalPro
     }
   };
 
-  // Esta é a função que verifica o status do pagamento
-  const checkPaymentStatus = async () => {
-    if (!pixData) return;
-    
-    // Assim que começamos a verificar, mudamos o status
-    if (status === PaymentStatus.PENDING) {
-      setStatus(PaymentStatus.VERIFYING);
-    }
-    
-    try {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/inscriptions/status/${pixData.txid}`);
-      
-      if (response.data.status === 'CONCLUIDA') {
-        console.log('Pagamento confirmado!');
-        setStatus(PaymentStatus.SUCCESS);
-        if (intervalRef.current) {
-          clearInterval(intervalRef.current);
-        }
-        // Aguarda 3 segundos para o utilizador ver a mensagem de sucesso e fecha o modal
-        setTimeout(() => {
-          onClose();
-          router.push('/inscricoes/sucesso');
-        }, 3000);
-      } else {
-        // Se ainda estiver pendente, o loop continua...
-        console.log('Pagamento ainda pendente...');
-      }
-    } catch (error) {
-      console.error('Erro ao verificar status do PIX:', error);
-      // Mesmo se der erro na verificação, não paramos o loop
-    }
-  };
-
-  // Este useEffect controla o início e o fim do polling
-  useEffect(() => {
-    // Se o modal for aberto e tivermos os dados do PIX...
-    if (isOpen && pixData) {
-      // Começamos a verificar imediatamente...
-      checkPaymentStatus();
-      // ...e depois verificamos a cada 5 segundos.
-      intervalRef.current = setInterval(checkPaymentStatus, 5000);
-    }
-
-    // Função de limpeza: é chamada quando o modal é fechado
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current); // Para o loop
-      }
-      setStatus(PaymentStatus.PENDING); // Reseta o status para a próxima vez
-    };
-  }, [isOpen, pixData]); // O hook reage à abertura/fecho do modal
-
   if (!pixData) return null;
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} isCentered size="md">
+    <Modal 
+      isOpen={isOpen} 
+      onClose={onClose} 
+      isCentered 
+      size="md" 
+      closeOnOverlayClick={false} // Impede de fechar clicando fora
+      closeOnEsc={false} // Impede de fechar com a tecla ESC
+    >
       <ModalOverlay />
       <ModalContent p={4}>
         <ModalHeader textAlign="center">Finalize sua Inscrição</ModalHeader>
-        <ModalCloseButton />
+        {/* Só permite fechar se o pagamento ainda estiver pendente */}
+        <ModalCloseButton isDisabled={status !== 'PENDENTE'} />
         <ModalBody>
-          <VStack spacing={6}>
+          
+          {/* TELA DE SUCESSO */}
+          {status === 'CONCLUIDA' ? (
+            <VStack spacing={6} my={8}>
+                <Spinner size="xl" color="green.500" thickness="4px" />
+                <Heading as="h3" size="lg" color="green.500">Pagamento Confirmado!</Heading>
+                <Text textAlign="center">Sua inscrição foi recebida. Você será redirecionado em instantes...</Text>
+            </VStack>
+          ) : (
             
-            {/* Estado de Sucesso */}
-            <Collapse in={status === PaymentStatus.SUCCESS}>
-              <VStack spacing={4} py={10}>
-                <CheckCircleIcon w={20} h={20} color="green.500" />
-                <Heading size="lg">Pagamento Confirmado!</Heading>
-                <Text>Sua inscrição foi recebida. Você pode fechar esta janela.</Text>
+            /* TELA DE PAGAMENTO (PENDENTE) */
+            <VStack spacing={6}>
+              <Text textAlign="center">
+                Pague com PIX para confirmar. Aponte a câmera do seu celular para o QR Code ou use o código "copia e cola".
+              </Text>
+              
+              <Center>
+                <Box border="2px solid" borderColor="gray.300" borderRadius="md" p={2}>
+                  <QRCodeSVG value={pixData.qrCodePayload} size={256} />
+                </Box>
+              </Center>
+
+              <VStack w="100%" align="start">
+                  <Text fontSize="sm" fontWeight="bold">Copia e Cola:</Text>
+                  <InputGroup size="md">
+                      <Input
+                          isReadOnly
+                          value={pixData.copiaECola}
+                          pr="4.5rem"
+                          variant="filled"
+                      />
+                      <InputRightElement width="4.5rem">
+                          <Button h="1.75rem" size="sm" onClick={handleCopy}>
+                          Copiar
+                          </Button>
+                      </InputRightElement>
+                  </InputGroup>
               </VStack>
-            </Collapse>
 
-            {/* Estado de Pendente / Verificando */}
-            <Collapse in={status !== PaymentStatus.SUCCESS}>
-              <VStack spacing={6}>
-                <Text textAlign="center">
-                  Pague com PIX para confirmar. Aponte a câmera do seu celular para o QR Code ou use o código "copia e cola".
-                </Text>
-                
-                <Center>
-                  <Box border="2px solid" borderColor="gray.300" borderRadius="md" p={2}>
-                    <QRCodeSVG value={pixData.qrCodePayload} size={256} />
-                  </Box>
-                </Center>
-
-                <VStack w="100%" align="start">
-                    <Text fontSize="sm" fontWeight="bold">Copia e Cola:</Text>
-                    <InputGroup size="md">
-                        <Input
-                            isReadOnly
-                            value={pixData.copiaECola}
-                            pr="4.5rem"
-                            variant="filled"
-                        />
-                        <InputRightElement width="4.5rem">
-                            <Button h="1.75rem" size="sm" onClick={handleCopy}>
-                            Copiar
-                            </Button>
-                        </InputRightElement>
-                    </InputGroup>
-                </VStack>
-
-                {/* Feedback de verificação */}
-                {status === PaymentStatus.VERIFYING && (
-                  <VStack pt={4}>
-                    <CircularProgress isIndeterminate color="blue.300" size="24px" />
-                    <Text fontSize="sm" color="gray.500">
-                      Aguardando confirmação do pagamento...
-                    </Text>
-                  </VStack>
-                )}
+              <VStack w="100%" spacing={1} pt={4}>
+                 <Spinner size="sm" />
+                 <Text fontSize="sm" color="gray.500">
+                    Aguardando confirmação de pagamento...
+                 </Text>
+                 <Text fontSize="xs" color="gray.400" textAlign="center">
+                    (Você pode fechar esta janela, a confirmação continua em segundo plano)
+                 </Text>
               </VStack>
-            </Collapse>
 
-          </VStack>
+            </VStack>
+          )}
+
         </ModalBody>
       </ModalContent>
     </Modal>
