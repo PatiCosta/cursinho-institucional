@@ -1,3 +1,4 @@
+// src\components\inscricoes\PixDisplayModal.tsx
 import {
   Modal,
   ModalOverlay,
@@ -28,7 +29,7 @@ interface PixData {
   txid: string;
 }
 
-type PaymentStatus = 'IDLE' | 'PENDENTE' | 'CONCLUIDA' | 'ERRO';
+type PaymentStatus = 'PENDENTE' | 'CONCLUIDA' | 'ERRO';
 
 interface PixDisplayModalProps {
   isOpen: boolean;
