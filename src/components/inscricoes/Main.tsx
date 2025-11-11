@@ -1,3 +1,4 @@
+// src\components\inscricoes\Main.tsx
 import { useEffect, useState } from 'react';
 import {
   Box,
@@ -40,7 +41,7 @@ interface PixData {
   valor: string;
 }
 
-type PaymentStatus = 'IDLE' | 'PENDENTE' | 'CONCLUIDA' | 'ERRO';
+type PaymentStatus =  'PENDENTE' | 'CONCLUIDA' | 'ERRO';
 
 
 export function Main({ schoolClassList }: MainProps) {
@@ -79,7 +80,7 @@ export function Main({ schoolClassList }: MainProps) {
   // --- FIM DA LÓGICA DO PORTÃO ---
 
   // O estado do pagamento agora vive no componente PAI
-  const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>('IDLE');
+  const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>('PENDENTE');
 
   const handleSelectTurma = (turma: Turma) => {
     setSelectedTurma(turma);
