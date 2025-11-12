@@ -7,6 +7,11 @@ type Turma = {
     hourSchedule: string;
     color: string;
   };
+  documents? :{
+    docsID: string;
+    title: string;
+    downloadLink: string;
+  }[]
   subscriptions: {
     price: number;
     subscriptionSchedule: string;

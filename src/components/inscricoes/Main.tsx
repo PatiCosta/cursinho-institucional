@@ -1,4 +1,3 @@
-// src\components\inscricoes\Main.tsx
 import { useEffect, useState } from 'react';
 import {
   Box,
@@ -19,7 +18,12 @@ import {
   ModalBody,
   ModalContent,
   ModalHeader,
-  ModalOverlay
+  ModalOverlay,
+  // useDisclosure foi removido daqui
+  Link,
+  Collapse,
+  Image,
+  Highlight
 } from '@chakra-ui/react';
 import { ArrowForwardIcon, CalendarIcon, TimeIcon } from '@chakra-ui/icons';
 import { StudentForm } from '@/components/inscricoes/StudentForm';
@@ -28,6 +32,7 @@ import { FieldValues } from 'react-hook-form';
 import { Turma } from '@/types';
 import { PixDisplayModal } from './PixDisplayModal'; // Importamos nosso novo modal
 import { useRouter } from 'next/router';
+import { Book } from 'phosphor-react';
 
 interface MainProps {
   schoolClassList: Turma[];
@@ -41,10 +46,15 @@ interface PixData {
   valor: string;
 }
 
-type PaymentStatus =  'PENDENTE' | 'CONCLUIDA' | 'ERRO';
+type PaymentStatus = 'PENDENTE' | 'CONCLUIDA' | 'ERRO';
 
 
 export function Main({ schoolClassList }: MainProps) {
+  // const { isOpen, onToggle } = useDisclosure() // REMOVIDO: Este era o bug
+
+  // ADICIONADO: Estado para controlar qual card está aberto
+  const [openTurmaDocs, setOpenTurmaDocs] = useState<string | null>(null);
+
   const [selectedTurma, setSelectedTurma] = useState<Turma | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [pixData, setPixData] = useState<PixData | null>(null); // State para guardar os dados do PIX
@@ -90,6 +100,13 @@ export function Main({ schoolClassList }: MainProps) {
     setSelectedTurma(null);
   };
 
+  // ADICIONADO: Função de toggle específica para os documentos
+  const handleToggleDocs = (turmaId: string) => {
+    // Se o ID clicado for o mesmo que já está aberto, fecha (seta para null).
+    // Se for um ID diferente, abre o novo (seta para o turmaId).
+    setOpenTurmaDocs(prevId => (prevId === turmaId ? null : turmaId));
+  };
+
   const handleStudentSubmit = async (studentData: FieldValues) => {
     if (!selectedTurma) return;
 
@@ -113,6 +130,7 @@ export function Main({ schoolClassList }: MainProps) {
       // Em vez de redirecionar, guardamos os dados do PIX e abrimos o modal
       setPixData(response.data);
       setIsPixModalOpen(true);
+      setPaymentStatus('PENDENTE'); // CORRIGIDO: Inicia o polling
 
     } catch (error: any) {
       let errorMessage = "Não foi possível processar a inscrição. Tente novamente mais tarde.";
@@ -257,58 +275,122 @@ export function Main({ schoolClassList }: MainProps) {
             onSubmit={handleStudentSubmit}
           />
         ) : (
-          <>
-            <Heading as="h1" size="xl" textAlign="center" w="100%" mb={4}>
-              Turmas com Inscrições Abertas
-            </Heading>
-            {schoolClassList.map((turma) => (
-              <Box
-                key={turma.id}
-                borderWidth="1px"
-                borderColor={cardBorder}
-                borderRadius="lg"
-                overflow="hidden"
-                p={6}
-                bg={cardBg}
-                boxShadow="lg"
-                transition="all 0.2s"
-                _hover={{ transform: 'translateY(-5px)', boxShadow: 'xl' }}
-                width={{ base: '100%', sm: '400px' }}
-                display="flex"
-                flexDirection="column"
-              >
-                <VStack align="stretch" spacing={4} flex="1">
-                  <Box bg={turma.informations.color || 'blue.500'} p={4} borderRadius="md" color="white">
-                    <Heading as="h3" size="md">{turma.title}</Heading>
+          <Flex flexDir={'column'}>
+            <Image
+              src={'img/logos_turmas.png'}
+              maxW={80}
+              mx='auto'
+            />
+            <Text fontSize={{ base: 32, lg: 48 }} fontWeight="bold" textAlign="center">
+              <Highlight query='turmas' styles={{ bg: 'transparent', color: 'yellow.500' }}>
+                Nossas turmas
+              </Highlight>
+            </Text>
+            <Box bgColor='blue.800' h='2px' w={{ base: '300px', lg: '600px' }}></Box>
+            <Text fontSize={{ base: 14, lg: 16 }} w={{ base: '300px', lg: '800px' }} textAlign='center' mt={4}>
+              As aulas são ministradas na Faculdade de Economia, Administração, Contabilidade e Atuária da USP (FEA USP), onde também se encontra a nossa coordenação. Nosso ensino, porém, não é direcionado apenas para estes cursos. Preparamos nossos alunos para prestar os principais vestibulares paulistas e o ENEM, para qualquer curso que ele desejar.
+            </Text>
+
+            <Flex wrap="wrap" justifyContent="center" alignItems="stretch" gap={8} mt={8}>
+              {schoolClassList.map((turma) => {
+
+                if (turma.subscriptions.status !== 'Aberto') return null; // Apenas mostra turmas abertas
+                return (
+
+                  <Box
+                    key={turma.id}
+                    borderWidth="1px"
+                    borderColor={cardBorder}
+                    borderRadius="lg"
+                    overflow="hidden"
+                    p={6}
+                    bg={cardBg}
+                    boxShadow="lg"
+                    transition="all 0.2s"
+                    _hover={{ transform: 'translateY(-5px)', boxShadow: 'xl' }}
+                    width={{ base: '100%', sm: '400px' }}
+                    display="flex"
+                    flexDirection="column"
+                  >
+                    <VStack align="stretch" spacing={4} flex="1">
+                      <Box bg={turma.informations.color || 'blue.500'} p={4} borderRadius="md" color="white">
+                        <Heading as="h3" size="md">{turma.title}</Heading>
+                      </Box>
+                      <Text noOfLines={3}>{turma.informations.description}</Text>
+                      <VStack align="stretch" spacing={2}>
+                        <Flex align="center">
+                          <CalendarIcon mr={2} />
+                          <Text fontSize="sm">{turma.informations.dateSchedule}</Text>
+                        </Flex>
+                        <Flex align="center">
+                          <TimeIcon mr={2} />
+                          <Text fontSize="sm">{turma.informations.hourSchedule}</Text>
+                        </Flex>
+                        {/* {turma.documents && turma.documents.length > 0 &&
+                        <Flex
+                          alignItems='center'
+                          ml={-1}
+                          justifyContent='start'
+                          gap={2}
+                          py={1}
+                          cursor='pointer'
+                          onClick={() => handleToggleDocs(turma.id)} // CORRIGIDO
+                        >
+                          <Book size={24} color={'#3b3a65'} weight="duotone" />
+                          <Text fontWeight='semibold' fontSize='14px' textDecoration='underline'>Informações do processo seletivo:</Text>
+                        </Flex>
+                      } */}
+                      </VStack>
+                      {turma.documents && turma.documents.length > 0 &&
+                        // <Collapse in={openTurmaDocs === turma.id} animateOpacity> {/* CORRIGIDO */}
+                        <Box
+                          bg='gray.50'
+                          borderBottomRadius='2xl'
+                        >
+                          {/* CORRIGIDO */}
+                          {/* <Button size='sm' onClick={() => handleToggleDocs(turma.id)} marginLeft='88%'>x</Button> */}
+                          {turma.documents.map(document =>
+                            <Flex
+                              as={Link}
+                              href={document.downloadLink}
+                              alignItems='center'
+                              justifyContent='start'
+                              gap={2}
+                              py={2}
+                              cursor='pointer'
+                              key={document.docsID}
+                            >
+                              <Book size={20} color={'#3b3a65'} weight="duotone" style={{ flexShrink: '0' }} />
+                              <Text fontWeight='semibold' fontSize='14px' textDecoration='underline'>{document.title}</Text>
+                            </Flex>
+                          )}
+                        </Box>
+                        // </Collapse>
+                      }
+                      <Box flex="1" /> {/* Empurra o conteúdo abaixo para o fundo */}
+                      <Flex justify="space-between" align="center" flexDir={'column'} gap={4} mt={4}>
+                        <Text fontWeight="bold" fontSize="lg">
+                          Valor: {" "}
+                          {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(turma.subscriptions.price / 100)}
+                        </Text>
+
+                        <Button
+                          rightIcon={<ArrowForwardIcon />}
+                          colorScheme="blue"
+                          disabled={turma.subscriptions.status !== 'Aberto'}
+                          w='100%'
+                          onClick={() => handleSelectTurma(turma)}
+                        >
+                          Inscrever-se
+                        </Button>
+                      </Flex>
+
+                    </VStack>
                   </Box>
-                  <Text noOfLines={3}>{turma.informations.description}</Text>
-                  <VStack align="stretch" spacing={2}>
-                    <Flex align="center">
-                      <CalendarIcon mr={2} />
-                      <Text fontSize="sm">{turma.informations.dateSchedule}</Text>
-                    </Flex>
-                    <Flex align="center">
-                      <TimeIcon mr={2} />
-                      <Text fontSize="sm">{turma.informations.hourSchedule}</Text>
-                    </Flex>
-                  </VStack>
-                  <Box flex="1" />
-                  <Flex justify="space-between" align="center" mt={4}>
-                    <Text fontWeight="bold" fontSize="lg">
-                      {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(turma.subscriptions.price / 100)}
-                    </Text>
-                    <Button
-                      rightIcon={<ArrowForwardIcon />}
-                      colorScheme="blue"
-                      onClick={() => handleSelectTurma(turma)}
-                    >
-                      Inscrever-se
-                    </Button>
-                  </Flex>
-                </VStack>
-              </Box>
-            ))}
-          </>
+                )
+              })}
+            </Flex>
+          </Flex>
         )}
       </Flex>
       {/* Finalmente, renderizamos o modal aqui */}
@@ -321,4 +403,3 @@ export function Main({ schoolClassList }: MainProps) {
     </Box>
   );
 }
-

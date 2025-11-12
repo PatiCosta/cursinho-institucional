@@ -1,8 +1,21 @@
-import { Box, Button, Flex, Highlight, Image, Text, Icon } from "@chakra-ui/react";
-import { ArrowCircleUpRight } from "phosphor-react";
+import { 
+    Box, 
+    Button, 
+    Flex, 
+    Highlight, 
+    Image, 
+    Text, 
+    Menu,           // Novo
+    MenuButton,     // Novo
+    MenuList,       // Novo
+    MenuItem,       // Novo
+    Icon 
+} from "@chakra-ui/react";
+import { ArrowCircleUpRight, ArrowRight } from "phosphor-react";
+import { ChevronDownIcon } from "@chakra-ui/icons"; // Novo
 import Link from 'next/link';
 import { useState } from "react";
-import api from "@/services/api";
+// O import do 'api' não estava sendo usado, removi para limpar o código.
 
 export function Main() {
     const [isButtonHovered, setIsButtonHovered] = useState(false)
@@ -18,6 +31,7 @@ export function Main() {
 
                 <Flex 
                     w='100%' justifyContent='center' flex='1' mt={4} gap={4} display={{base: 'flex', sm: 'flex', lg: 'none'}}>
+                    {/* Imagens para mobile... */}
                     <Flex direction='column' gap={4}>
                         <Box
                         w={{base: '40vw', lg: '24vw'}}
@@ -74,21 +88,40 @@ export function Main() {
                 />
 
                 <Flex gap={4} direction={{base: 'column', sm: 'column', lg: 'row'}}>
-                    <Button 
-                        bgColor='blue.800' 
-                        color='gray.50' 
-                        borderRadius='xl' 
-                        size='lg' 
-                        transition='all .3s ease' 
-                        _hover={{
-                            color: 'yellow.500'
-                        }}
-                        as={Link}
-                        href={`/turmas`}
-                        display='flex' 
-                    >
-                        <Text>Inscrever-se</Text>
-                    </Button>
+                    
+                    {/* --- BOTÃO DE INSCRIÇÃO ATUALIZADO --- */}
+                    <Menu>
+                        <MenuButton
+                            as={Button} // Faz o MenuButton se parecer com um Button
+                            bgColor='blue.800' 
+                            color='gray.50' 
+                            borderRadius='xl' 
+                            size='lg' 
+                            transition='all .3s ease' 
+                            _hover={{
+                                color: 'yellow.500'
+                            }}
+                            _active={{ // Adiciona um feedback visual ao clicar
+                                bg: 'blue.900'
+                            }}
+                            // Adiciona o ícone de seta para baixo
+                            rightIcon={<ChevronDownIcon />} 
+                        >
+                            Inscrever-se
+                        </MenuButton>
+                        <MenuList bgColor={'blue.600'} p={2} >
+                            {/* Opção 1: Sympla (com taxa) */}
+                            <MenuItem as={Link} href="/turmas" bgColor={'blue.600'} color={'white'} fontWeight={'semibold'} _hover={{bgColor:'orange.500', transition:'300ms'}} borderRadius={2}>
+                                Inscrição via Sympla (com taxa)
+                            </MenuItem>
+                            {/* Opção 2: PIX (isenta) */}
+                            <MenuItem as={Link} href="/inscricoes" bgColor={'blue.600'} color={'white'} fontWeight={'semibold'} _hover={{bgColor:'orange.500', transition:'300ms'}} borderRadius={2}>
+                                Inscrição via PIX (sem taxa)
+                            </MenuItem>
+                        </MenuList>
+                    </Menu>
+                    {/* --- FIM DO BOTÃO ATUALIZADO --- */}
+
                     <Button 
                         as={Link}
                         href={`/doacoes`} 
@@ -104,7 +137,6 @@ export function Main() {
                         _hover={{
                             bgColor: 'gray.50'
                         }}
-
                     >
                         <Text>Nos ajude a voar 🚀</Text>
                         <ArrowCircleUpRight 
@@ -113,7 +145,6 @@ export function Main() {
                             weight="fill" 
                             style={{
                                 transition: 'all 0.2s ease'
-                                
                             }} 
                         />
                     </Button>
@@ -129,6 +160,7 @@ export function Main() {
 
             </Box>
             <Flex flex='1' h='100%' gap={4} display={{base: 'none', sm: 'none', lg: 'flex'}}>
+                {/* Imagens para desktop... */}
                 <Flex direction='column' gap={4}>
                     <Box
                     w='24vw'
