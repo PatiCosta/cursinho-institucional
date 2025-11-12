@@ -20,6 +20,7 @@ import {
 } from '@chakra-ui/react';
 import { Turma } from '@/types';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
+import { ArrowArcLeft, ArrowLeft } from 'phosphor-react';
 
 interface StudentFormProps {
   selectedTurma: Turma;
@@ -64,8 +65,12 @@ export function StudentForm({ selectedTurma, onBack, onSubmit }: StudentFormProp
       p={{ base: 4, md: 8 }}
       boxShadow="lg"
       bg="white"
+      position={'relative'}
     >
-      <VStack as="form" onSubmit={handleSubmit(onSubmit)} spacing={6} align="stretch">
+      <VStack as="form" onSubmit={handleSubmit(onSubmit)} spacing={6} align="stretch" >
+        <Button onClick={onBack} bgColor={'blue.600'} variant="outline" maxW={20} position={'absolute'} top={4} left={4} color={'white'}>
+          <ArrowLeft size={20}/>
+        </Button>
         <Heading as="h2" size="lg" textAlign="center">
           Formulário de Inscrição
         </Heading>
