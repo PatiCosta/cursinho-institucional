@@ -7,6 +7,8 @@ import { Main } from "@/components/inscricoes/Main";
 import { Center, Heading, Text, VStack } from "@chakra-ui/react";
 import { ApprovedStudentsFooter } from "@/components/Footer/approvedStudents";
 import { Turma } from "@/types";
+import { Approvals } from "@/components/turmas/approvals";
+import { Diferentials } from "@/components/turmas/diferentials";
 
 // A tipagem para os dados de cada turma.
 // É uma boa prática manter isso consistente com o componente filho.
@@ -41,9 +43,11 @@ const Inscricoes: NextPage<InscricoesPageProps> = ({ turmas, error }) => {
     <>
       <Header />
       {/* Aqui usamos o nosso novo componente Main, passando a lista de turmas para ele */}
-      <Main schoolClassList={turmas} /> 
-      <Footer>
-        {""}
+      <Main schoolClassList={turmas} />
+      <Approvals />
+      <Diferentials />
+      <Footer mt={80}>
+        <ApprovedStudentsFooter />
       </Footer>
     </>
   );
@@ -60,14 +64,14 @@ export const getStaticProps: GetStaticProps<InscricoesPageProps> = async () => {
     if (!Array.isArray(turmasData)) {
       throw new Error("Formato de dados inválido recebido da API.");
     }
-    
+
     return {
       props: {
         turmas: turmasData,
       },
       // Revalida (tenta recriar) a página no servidor a cada 60 segundos
       // para manter a lista de turmas atualizada.
-      revalidate: 60, 
+      revalidate: 60,
     };
   } catch (error) {
     console.error("Erro ao buscar turmas:", error);
