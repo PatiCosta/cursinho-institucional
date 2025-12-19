@@ -1,83 +1,91 @@
-import React from 'react';
-import { NextPage } from 'next';
-import NextLink from 'next/link';
-import { CheckCircleIcon } from '@chakra-ui/icons';
-import { useRouter } from 'next/router';
+import { Box, Button, Flex, Heading, Icon, Link, Text, VStack } from "@chakra-ui/react";
+import { CheckCircle, ArrowRight, Student } from "@phosphor-icons/react";
+import Header from "@/components/Header"; 
+import Footer from "@/components/Footer"; 
+import Head from "next/head";
 
-import {
-    Box,
-    Flex,
-    VStack,
-    Heading,
-    Text,
-    Button,
-    Icon,
-    Link,
-    useColorModeValue,
-} from '@chakra-ui/react';
-import { Clipboard } from '@phosphor-icons/react';
-import { House } from 'phosphor-react';
-
-const SucessoInscricao: NextPage = () => {
-    const router = useRouter();
-    const { nome, id } = router.query;
-
-    const bg = useColorModeValue('gray.50', 'gray.800');
-    const cardBg = useColorModeValue('white', 'gray.700');
-
+export default function InscricaoSucesso() {
     return (
-        <Flex minH="100vh" align="center" justify="center" bg={bg} p={4}>
-            <Box
-                maxW="720px"
-                w="full"
-                bg={cardBg}
-                rounded="lg"
-                shadow="lg"
-                p={{ base: 6, md: 10 }}
-                textAlign="center"
+        <>
+            <Head>
+                Inscrição Confirmada | Cursinho FEA USP
+            </Head>
+            
+            <Header />
+
+            <Flex 
+                minH="70vh" 
+                align="center" 
+                justify="center" 
+                bg="gray.50" 
+                px={4}
+                py={20}
             >
-                <VStack spacing={6}>
-                    <Icon
-                        as={CheckCircleIcon}
-                        boxSize={{ base: 16, md: 20 }}
-                        color="green.400"
-                        aria-hidden
-                    />
-
-                    <Heading as="h1" size="lg">
-                        Inscrição realizada com sucesso!
-                    </Heading>
-
-                    <Text fontSize="md" color="muted">
-                        {nome ? (
-                            <>
-                                Obrigado, <strong>{String(nome)}</strong>. Sua inscrição foi confirmada.
-                            </>
-                        ) : (
-                            'Sua inscrição foi processada com sucesso.'
-                        )}
-                    </Text>
-
-                    {id && (
-                        <Box>
-                            <Text fontSize="sm" color="gray.500">
-                                Código da inscrição:
+                <Box 
+                    bg="white" 
+                    p={{ base: 8, md: 12 }} 
+                    borderRadius="2xl" 
+                    boxShadow="xl" 
+                    textAlign="center"
+                    maxW="600px"
+                    w="100%"
+                    borderTop="8px solid"
+                    borderColor="green.500"
+                >
+                    <VStack spacing={6}>
+                        <Box position="relative">
+                            <Icon as={Student} w={24} h={24} color="blue.500" weight="duotone" />
+                            <Icon 
+                                as={CheckCircle} 
+                                w={10} h={10} 
+                                color="green.500" 
+                                weight="fill" 
+                                position="absolute" 
+                                bottom={0} 
+                                right={-2} 
+                                bg="white" 
+                                borderRadius="full" 
+                            />
+                        </Box>
+                        
+                        <Heading as="h1" size="xl" color="green.600">
+                            Inscrição Confirmada!
+                        </Heading>
+                        
+                        <Text fontSize="lg" fontWeight="medium" color="gray.700">
+                            Seu pagamento foi recebido com sucesso.
+                        </Text>
+                        
+                        <Text color="gray.500" fontSize="md">
+                            Você receberá um e-mail com o seu <strong>número de matrícula</strong> e as próximas instruções sobre o processo seletivo (entrevistas e documentos).
+                        </Text>
+                        
+                        <Box bg="green.50" p={4} borderRadius="lg" w="100%">
+                            <Text fontSize="sm" color="green.800" fontWeight="bold">
+                                Fique atento ao seu e-mail e WhatsApp!
                             </Text>
-                            <Text fontWeight="bold" mt={1}>
-                                {String(id)}
+                            <Text fontSize="xs" color="green.700" mt={1}>
+                                Nossa equipe entrará em contato em breve.
                             </Text>
                         </Box>
-                    )}
 
-                    <Text fontSize="sm" color="gray.500" mt={2}>
-                        Obrigado por se inscrever! Fique atento(a) ao seu e-mail, pois
-                        entraremos em contato por lá para agendar a entrevista e informar os
-                        próximos passos do processo seletivo.
-                    </Text>
-                </VStack>
-            </Box>
-        </Flex>
+                        <Box pt={4} w="100%">
+                            <Link href="/" style={{ textDecoration: 'none' }}>
+                                <Button 
+                                    colorScheme="blue" 
+                                    size="lg" 
+                                    rightIcon={<ArrowRight />}
+                                    w="full"
+                                    borderRadius="xl"
+                                >
+                                    Voltar para o Início
+                                </Button>
+                            </Link>
+                        </Box>
+                    </VStack>
+                </Box>
+            </Flex>
+
+        </>
     );
-};
-
-export default SucessoInscricao;
+}

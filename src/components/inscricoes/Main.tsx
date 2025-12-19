@@ -107,42 +107,57 @@ export function Main({ schoolClassList }: MainProps) {
     setOpenTurmaDocs(prevId => (prevId === turmaId ? null : turmaId));
   };
 
-  const handleStudentSubmit = async (studentData: FieldValues) => {
+ const handleStudentSubmit = async (studentData: FieldValues) => {
     if (!selectedTurma) return;
 
     setIsSubmitting(true);
-
+    
     try {
+      delete studentData.confirmacaoEmail;
+      const paymentMethod = studentData.paymentMethod;
 
-      delete studentData.confirmacaoEmail
       const payload = {
         ...studentData,
         schoolClassID: selectedTurma.id,
-        // Este campo 'price' é usado apenas para a lógica e será removido no backend
-        price: (selectedTurma.subscriptions.price / 100).toFixed(2),
+        price: (selectedTurma.subscriptions.price / 100).toFixed(2), 
       };
 
-      console.log("Enviando para o novo endpoint /inscriptions:", payload);
+      if (paymentMethod === 'credit_card') {
+          // --- FLUXO CARTÃO (STRIPE) ---
+          console.log("Iniciando checkout com cartão...");
+          const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/inscriptions/checkout`, {
+              ...payload,
+              // O Stripe espera 'value' em centavos e como número, não string fixa
+              value: selectedTurma.subscriptions.price, 
+              interval: 'one_time', // Inscrição é sempre one_time
+              cycles: 1
+          });
 
-      // Chamamos a nova rota do backend que usa o serviço do Santander
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/inscriptions`, payload);
+          if (response.data.url) {
+              // Redireciona para o Stripe
+              window.location.href = response.data.url;
+              return; // Encerra a função aqui para não abrir o modal de PIX
+          }
+          
+      } else {
+          // --- FLUXO PIX (SANTANDER) ---
+          console.log("Iniciando pagamento via PIX...");
+          const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/inscriptions`, payload);
 
-      // Em vez de redirecionar, guardamos os dados do PIX e abrimos o modal
-      setPixData(response.data);
-      setIsPixModalOpen(true);
-      setPaymentStatus('PENDENTE'); // CORRIGIDO: Inicia o polling
+          setPixData(response.data);
+          setIsPixModalOpen(true);
+          setPaymentStatus('PENDENTE');
+      }
 
     } catch (error: any) {
       let errorMessage = "Não foi possível processar a inscrição. Tente novamente mais tarde.";
       let errorTitle = 'Erro na Inscrição.';
 
-      // Verifica se o erro é o 409 (Conflict) que o backend agora envia
       if (error.response?.status === 409) {
-        errorTitle = 'Você já está inscrito';
-        errorMessage = error.response.data.details; // Pega a mensagem "Você já está inscrito..."
+          errorTitle = 'Inscrição Duplicada';
+          errorMessage = error.response.data.details || "Você já está inscrito para esta turma.";
       } else {
-        // Pega outras mensagens de erro genéricas
-        errorMessage = error.response?.data?.details || error.response?.data?.error || errorMessage;
+          errorMessage = error.response?.data?.details || error.response?.data?.error || errorMessage;
       }
 
       toast({
@@ -153,8 +168,10 @@ export function Main({ schoolClassList }: MainProps) {
         isClosable: true,
       });
     } finally {
-      // Garantimos que o estado de 'submitting' seja resetado mesmo se der erro
-      setIsSubmitting(false);
+      // Se não for redirecionamento de cartão, libera o botão
+      if (studentData.paymentMethod !== 'credit_card') {
+          setIsSubmitting(false);
+      }
     }
   };
 
@@ -273,6 +290,7 @@ export function Main({ schoolClassList }: MainProps) {
             selectedTurma={selectedTurma}
             onBack={handleBack}
             onSubmit={handleStudentSubmit}
+            isSubmitting={isSubmitting}
           />
         ) : (
           <Flex flexDir={'column'}>
