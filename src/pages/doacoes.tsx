@@ -30,7 +30,7 @@ export default function Doacoes(props: DonationsProps) {
             <Main />
             <Objective />
             <Donate products={props.products}  />
-            <Footer mt={{base: 64, lg: 64}}>
+            <Footer mt={{base: 60, lg: 64}}>
                 <DonationFooter />
             </Footer>
         </>
