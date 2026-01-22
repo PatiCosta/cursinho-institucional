@@ -44,11 +44,6 @@ const Inscricoes: NextPage<InscricoesPageProps> = ({ turmas, error }) => {
       <Header />
       {/* Aqui usamos o nosso novo componente Main, passando a lista de turmas para ele */}
       <Main schoolClassList={turmas} />
-      <Approvals />
-      <Diferentials />
-      <Footer mt={80}>
-        <ApprovedStudentsFooter />
-      </Footer>
     </>
   );
 };
