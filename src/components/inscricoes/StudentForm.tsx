@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react'; // Import useCallback
 import { useForm, FieldValues } from 'react-hook-form';
 import {
   Box,
@@ -24,6 +24,7 @@ import {
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { CreditCard, QrCode } from '@phosphor-icons/react';
 import { Turma } from '@/types';
+import axios from 'axios'; // Importar axios para a chamada do ViaCEP
 
 // Interface para tipar corretamente o formulário
 interface StudentFormData {
@@ -72,6 +73,7 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
     register,
     watch,
     setValue, 
+    setFocus, // Para focar no número após preencher
     formState: { errors, isValid },
   } = useForm<StudentFormData>({ 
     mode: 'onBlur',
@@ -84,6 +86,7 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
   const paymentMethod = watch('paymentMethod');
   
   const [isMinor, setIsMinor] = useState(false);
+  const [isLoadingCep, setIsLoadingCep] = useState(false); // Estado para loading do CEP
 
   const checkMinor = (dateString: string) => {
     if (!dateString) return false;
@@ -96,6 +99,33 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
     }
     return age < 18;
   };
+
+  // Função para buscar o CEP
+  const handleCepBlur = useCallback(async (e: React.FocusEvent<HTMLInputElement>) => {
+    const cep = e.target.value.replace(/\D/g, '');
+
+    if (cep.length === 8) {
+      setIsLoadingCep(true);
+      try {
+        const response = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
+        
+        if (!response.data.erro) {
+          setValue('street', response.data.logradouro);
+          setValue('district', response.data.bairro);
+          setValue('city', response.data.localidade);
+          setValue('state', response.data.uf);
+          setFocus('homeNumber'); // Move o foco para o número
+        } else {
+            // Opcional: Avisar que o CEP não foi encontrado
+            // toast({ ... }) 
+        }
+      } catch (error) {
+        console.error("Erro ao buscar CEP:", error);
+      } finally {
+        setIsLoadingCep(false);
+      }
+    }
+  }, [setValue, setFocus]);
 
   return (
     <Box
@@ -121,22 +151,22 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
           <FormControl isInvalid={!!errors.nome}>
             <FormLabel htmlFor="nome">Nome</FormLabel>
-            <Input id="nome" {...register('nome', { required: 'Nome é obrigatório' })} />
+            <Input bg='gray.50' border={'1px solid gray'} id="nome" {...register('nome', { required: 'Nome é obrigatório' })} />
             <FormErrorMessage>{errors.nome && String(errors.nome.message)}</FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={!!errors.sobrenome}>
             <FormLabel htmlFor="sobrenome">Sobrenome</FormLabel>
-            <Input id="sobrenome" {...register('sobrenome', { required: 'Sobrenome é obrigatório' })} />
+            <Input bg='gray.50' border={'1px solid gray'} id="sobrenome" {...register('sobrenome', { required: 'Sobrenome é obrigatório' })} />
             <FormErrorMessage>{errors.sobrenome && String(errors.sobrenome.message)}</FormErrorMessage>
           </FormControl>
            <FormControl isInvalid={!!errors.email}>
             <FormLabel htmlFor="email">Email</FormLabel>
-            <Input id="email" type="email" {...register('email', { required: 'Email é obrigatório' })} />
+            <Input bg='gray.50' border={'1px solid gray'} id="email" type="email" {...register('email', { required: 'Email é obrigatório' })} />
              <FormErrorMessage>{errors.email && String(errors.email.message)}</FormErrorMessage>
           </FormControl>
            <FormControl isInvalid={!!errors.confirmacaoEmail}>
             <FormLabel htmlFor="confirmacaoEmail">Confirme seu Email</FormLabel>
-            <Input 
+            <Input bg='gray.50' border={'1px solid gray'} 
               id="confirmacaoEmail" 
               type="email" 
               {...register('confirmacaoEmail', { 
@@ -149,7 +179,7 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
           </FormControl>
           <FormControl isInvalid={!!errors.birth}>
             <FormLabel htmlFor="birth">Data de Nascimento</FormLabel>
-            <Input 
+            <Input bg='gray.50' border={'1px solid gray'} 
               id="birth" 
               type="date" 
               {...register('birth', { 
@@ -174,7 +204,7 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
           {isMinor && (
             <FormControl isInvalid={!!errors.emailResponsavel} gridColumn="span 2">
               <FormLabel htmlFor="emailResponsavel">E-mail do Responsável (Obrigatório para menores de 18)</FormLabel>
-              <Input 
+              <Input bg='gray.50' border={'1px solid gray'} 
                 id="emailResponsavel" 
                 type="email" 
                 {...register('emailResponsavel', { 
@@ -187,17 +217,17 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
 
           <FormControl isInvalid={!!errors.cpf}>
             <FormLabel htmlFor="cpf">CPF</FormLabel>
-            <Input id="cpf" {...register('cpf', { required: 'CPF é obrigatório' })} />
+            <Input bg='gray.50' border={'1px solid gray'} id="cpf" {...register('cpf', { required: 'CPF é obrigatório' })} />
             <FormErrorMessage>{errors.cpf && String(errors.cpf.message)}</FormErrorMessage>
           </FormControl>
            <FormControl isInvalid={!!errors.rg}>
             <FormLabel htmlFor="rg">RG</FormLabel>
-            <Input id="rg" {...register('rg', { required: 'RG é obrigatório' })} />
+            <Input bg='gray.50' border={'1px solid gray'} id="rg" {...register('rg', { required: 'RG é obrigatório' })} />
             <FormErrorMessage>{errors.rg && String(errors.rg.message)}</FormErrorMessage>
           </FormControl>
            <FormControl isInvalid={!!errors.ufrg}>
             <FormLabel htmlFor="ufrg">UF do RG</FormLabel>
-            <Input id="ufrg" {...register('ufrg', { required: 'UF do RG é obrigatória' })} />
+            <Input bg='gray.50' border={'1px solid gray'} id="ufrg" {...register('ufrg', { required: 'UF do RG é obrigatória' })} />
             <FormErrorMessage>{errors.ufrg && String(errors.ufrg.message)}</FormErrorMessage>
           </FormControl>
         </SimpleGrid>
@@ -207,7 +237,7 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
             <FormControl isInvalid={!!errors.phoneNumber}>
                 <FormLabel htmlFor="phoneNumber">Celular (com DDD)</FormLabel>
-                <Input id="phoneNumber" type="tel" {...register('phoneNumber', { required: 'Celular é obrigatório' })} />
+                <Input bg='gray.50' border={'1px solid gray'} id="phoneNumber" type="tel" {...register('phoneNumber', { required: 'Celular é obrigatório' })} />
                 <FormErrorMessage>{errors.phoneNumber && String(errors.phoneNumber.message)}</FormErrorMessage>
             </FormControl>
              <FormControl pt={8}>
@@ -220,36 +250,44 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
         <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={4}>
             <FormControl isInvalid={!!errors.zipCode} gridColumn={{ base: 'span 1', sm: 'span 2', md: 'span 1' }}>
                 <FormLabel htmlFor="zipCode">CEP</FormLabel>
-                <Input id="zipCode" {...register('zipCode', { required: 'CEP é obrigatório' })} />
+                <Input bg='gray.50' border={'1px solid gray'} 
+                    id="zipCode" 
+                    {...register('zipCode', { 
+                        required: 'CEP é obrigatório',
+                        onBlur: handleCepBlur // Adicionado o handler de blur aqui
+                    })} 
+                    placeholder="00000-000"
+                />
+                {isLoadingCep && <Text fontSize="xs" color="blue.500">Buscando CEP...</Text>}
                 <FormErrorMessage>{errors.zipCode && String(errors.zipCode.message)}</FormErrorMessage>
             </FormControl>
              <FormControl isInvalid={!!errors.street} gridColumn={{ base: 'span 1', sm: 'span 2' }}>
                 <FormLabel htmlFor="street">Rua / Logradouro</FormLabel>
-                <Input id="street" {...register('street', { required: 'Rua é obrigatória' })} />
+                <Input bg='gray.50' border={'1px solid gray'} id="street" {...register('street', { required: 'Rua é obrigatória' })} />
                 <FormErrorMessage>{errors.street && String(errors.street.message)}</FormErrorMessage>
             </FormControl>
              <FormControl isInvalid={!!errors.homeNumber}>
                 <FormLabel htmlFor="homeNumber">Número</FormLabel>
-                <Input id="homeNumber" {...register('homeNumber', { required: 'Número é obrigatório' })} />
+                <Input bg='gray.50' border={'1px solid gray'} id="homeNumber" {...register('homeNumber', { required: 'Número é obrigatório' })} />
                 <FormErrorMessage>{errors.homeNumber && String(errors.homeNumber.message)}</FormErrorMessage>
             </FormControl>
             <FormControl>
                 <FormLabel htmlFor="complement">Complemento</FormLabel>
-                <Input id="complement" {...register('complement')} />
+                <Input bg='gray.50' border={'1px solid gray'} id="complement" {...register('complement')} />
             </FormControl>
              <FormControl isInvalid={!!errors.district}>
                 <FormLabel htmlFor="district">Bairro</FormLabel>
-                <Input id="district" {...register('district', { required: 'Bairro é obrigatório' })} />
+                <Input bg='gray.50' border={'1px solid gray'} id="district" {...register('district', { required: 'Bairro é obrigatório' })} />
                 <FormErrorMessage>{errors.district && String(errors.district.message)}</FormErrorMessage>
             </FormControl>
              <FormControl isInvalid={!!errors.city}>
                 <FormLabel htmlFor="city">Cidade</FormLabel>
-                <Input id="city" {...register('city', { required: 'Cidade é obrigatória' })} />
+                <Input bg='gray.50' border={'1px solid gray'} id="city" {...register('city', { required: 'Cidade é obrigatória' })} />
                 <FormErrorMessage>{errors.city && String(errors.city.message)}</FormErrorMessage>
             </FormControl>
              <FormControl isInvalid={!!errors.state}>
                 <FormLabel htmlFor="state">Estado</FormLabel>
-                <Input id="state" {...register('state', { required: 'Estado é obrigatório' })} />
+                <Input bg='gray.50' border={'1px solid gray'} id="state" {...register('state', { required: 'Estado é obrigatório' })} />
                 <FormErrorMessage>{errors.state && String(errors.state.message)}</FormErrorMessage>
             </FormControl>
         </SimpleGrid>
@@ -259,32 +297,32 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
           <FormControl isInvalid={!!errors.selfDeclaration}>
             <FormLabel htmlFor="selfDeclaration">Autodeclaração</FormLabel>
-            <Input id="selfDeclaration" {...register('selfDeclaration', { required: 'Campo obrigatório' })} />
+            <Input bg='gray.50' border={'1px solid gray'} id="selfDeclaration" {...register('selfDeclaration', { required: 'Campo obrigatório' })} />
             <FormErrorMessage>{errors.selfDeclaration && String(errors.selfDeclaration.message)}</FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={!!errors.oldSchool}>
             <FormLabel htmlFor="oldSchool">Escola em que cursou o Ensino Médio</FormLabel>
-            <Input id="oldSchool" {...register('oldSchool', { required: 'Campo obrigatório' })} />
+            <Input bg='gray.50' border={'1px solid gray'} id="oldSchool" {...register('oldSchool', { required: 'Campo obrigatório' })} />
             <FormErrorMessage>{errors.oldSchool && String(errors.oldSchool.message)}</FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={!!errors.oldSchoolAdress}>
             <FormLabel htmlFor="oldSchoolAdress">Endereço da Escola</FormLabel>
-            <Input id="oldSchoolAdress" {...register('oldSchoolAdress', { required: 'Campo obrigatório' })} />
+            <Input bg='gray.50' border={'1px solid gray'} id="oldSchoolAdress" {...register('oldSchoolAdress', { required: 'Campo obrigatório' })} />
             <FormErrorMessage>{errors.oldSchoolAdress && String(errors.oldSchoolAdress.message)}</FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={!!errors.highSchoolGraduationDate}>
             <FormLabel htmlFor="highSchoolGraduationDate">Data de Conclusão do E.M.</FormLabel>
-            <Input id="highSchoolGraduationDate" type="date" {...register('highSchoolGraduationDate', { required: 'Campo obrigatório' })} />
+            <Input bg='gray.50' border={'1px solid gray'} id="highSchoolGraduationDate" type="date" {...register('highSchoolGraduationDate', { required: 'Campo obrigatório' })} />
             <FormErrorMessage>{errors.highSchoolGraduationDate && String(errors.highSchoolGraduationDate.message)}</FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={!!errors.highSchoolPeriod}>
             <FormLabel htmlFor="highSchoolPeriod">Período do Ensino Médio</FormLabel>
-            <Input id="highSchoolPeriod" {...register('highSchoolPeriod', { required: 'Campo obrigatório' })} />
+            <Input bg='gray.50' border={'1px solid gray'} id="highSchoolPeriod" {...register('highSchoolPeriod', { required: 'Campo obrigatório' })} />
             <FormErrorMessage>{errors.highSchoolPeriod && String(errors.highSchoolPeriod.message)}</FormErrorMessage>
           </FormControl>
            <FormControl isInvalid={!!errors.metUsMethod}>
             <FormLabel htmlFor="metUsMethod">Como nos conheceu?</FormLabel>
-            <Input id="metUsMethod" {...register('metUsMethod', { required: 'Campo obrigatório' })} />
+            <Input bg='gray.50' border={'1px solid gray'} id="metUsMethod" {...register('metUsMethod', { required: 'Campo obrigatório' })} />
             <FormErrorMessage>{errors.metUsMethod && String(errors.metUsMethod.message)}</FormErrorMessage>
           </FormControl>
            <FormControl isInvalid={!!errors.exStudent}>
@@ -355,7 +393,7 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
 
          <FormControl isInvalid={!!errors.codigoDesconto}>
             <FormLabel htmlFor="codigoDesconto">Código de Desconto (Opcional)</FormLabel>
-            <Input id="codigoDesconto" {...register('codigoDesconto')} />
+            <Input bg='gray.50' border={'1px solid gray'} id="codigoDesconto" {...register('codigoDesconto')} />
             <FormErrorMessage>{errors.codigoDesconto && String(errors.codigoDesconto.message)}</FormErrorMessage>
           </FormControl>
 
