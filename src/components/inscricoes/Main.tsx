@@ -108,6 +108,7 @@ export function Main({ schoolClassList }: MainProps) {
   };
 
  const handleStudentSubmit = async (studentData: FieldValues) => {
+  
     if (!selectedTurma) return;
 
     setIsSubmitting(true);
