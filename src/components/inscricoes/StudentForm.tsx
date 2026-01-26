@@ -191,12 +191,14 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
           </FormControl>
           <FormControl isInvalid={!!errors.gender}>
             <FormLabel htmlFor="gender">Gênero</FormLabel>
-            <Select id="gender" {...register('gender', { required: 'Gênero é obrigatório' })}>
+            <Select bg='gray.50' border={'1px solid gray'} id="gender" {...register('gender', { required: 'Gênero é obrigatório' })}>
               <option value="">Selecione...</option>
-              <option value="Masculino">Masculino</option>
-              <option value="Feminino">Feminino</option>
+              <option value="Homem Cis">Homem Cis</option>
+              <option value="Mulher Cis">Mulher Cis</option>
+              <option value="Homem Trans">Homem Trans</option>
+              <option value="Mulher Trans">Mulher Trans</option>
+              <option value="Não binário">Não binário</option>
               <option value="Outro">Outro</option>
-              <option value="Prefiro não informar">Prefiro não informar</option>
             </Select>
             <FormErrorMessage>{errors.gender && String(errors.gender.message)}</FormErrorMessage>
           </FormControl>
@@ -225,11 +227,40 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
             <Input bg='gray.50' border={'1px solid gray'} id="rg" {...register('rg', { required: 'RG é obrigatório' })} />
             <FormErrorMessage>{errors.rg && String(errors.rg.message)}</FormErrorMessage>
           </FormControl>
-           <FormControl isInvalid={!!errors.ufrg}>
+            <FormControl isInvalid={!!errors.ufrg}>
             <FormLabel htmlFor="ufrg">UF do RG</FormLabel>
-            <Input bg='gray.50' border={'1px solid gray'} id="ufrg" {...register('ufrg', { required: 'UF do RG é obrigatória' })} />
+            <Select bg='gray.50' border={'1px solid gray'} id="ufrg" {...register('ufrg', { required: 'UF do RG é obrigatória' })}>
+              <option value="">Selecione a UF</option>
+              <option value="AC">Acre</option>
+              <option value="AL">Alagoas</option>
+              <option value="AP">Amapá</option>
+              <option value="AM">Amazonas</option>
+              <option value="BA">Bahia</option>
+              <option value="CE">Ceará</option>
+              <option value="DF">Distrito Federal</option>
+              <option value="ES">Espírito Santo</option>
+              <option value="GO">Goiás</option>
+              <option value="MA">Maranhão</option>
+              <option value="MT">Mato Grosso</option>
+              <option value="MS">Mato Grosso do Sul</option>
+              <option value="MG">Minas Gerais</option>
+              <option value="PA">Pará</option>
+              <option value="PB">Paraíba</option>
+              <option value="PR">Paraná</option>
+              <option value="PE">Pernambuco</option>
+              <option value="PI">Piauí</option>
+              <option value="RJ">Rio de Janeiro</option>
+              <option value="RN">Rio Grande do Norte</option>
+              <option value="RS">Rio Grande do Sul</option>
+              <option value="RO">Rondônia</option>
+              <option value="RR">Roraima</option>
+              <option value="SC">Santa Catarina</option>
+              <option value="SP">São Paulo</option>
+              <option value="SE">Sergipe</option>
+              <option value="TO">Tocantins</option>
+            </Select>
             <FormErrorMessage>{errors.ufrg && String(errors.ufrg.message)}</FormErrorMessage>
-          </FormControl>
+            </FormControl>
         </SimpleGrid>
 
         {/* --- Contato --- */}
@@ -295,12 +326,20 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
         {/* --- Informações Adicionais --- */}
         <Heading as="h3" size="md" pt={4}>Informações Adicionais</Heading>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-          <FormControl isInvalid={!!errors.selfDeclaration}>
+            <FormControl isInvalid={!!errors.selfDeclaration}>
             <FormLabel htmlFor="selfDeclaration">Autodeclaração</FormLabel>
-            <Input bg='gray.50' border={'1px solid gray'} id="selfDeclaration" {...register('selfDeclaration', { required: 'Campo obrigatório' })} />
+            <Select bg='gray.50' border={'1px solid gray'} id="selfDeclaration" {...register('selfDeclaration', { required: 'Campo obrigatório' })}>
+              <option value="">Selecione...</option>
+              <option value="Branco">Branco</option>
+              <option value="Preto">Preto</option>
+              <option value="Pardo">Pardo</option>
+              <option value="Indígena">Indígena</option>
+              <option value="Amarelo">Amarelo</option>
+              <option value="Outro">Outro</option>
+            </Select>
             <FormErrorMessage>{errors.selfDeclaration && String(errors.selfDeclaration.message)}</FormErrorMessage>
-          </FormControl>
-          <FormControl isInvalid={!!errors.oldSchool}>
+            </FormControl>
+          {/* <FormControl isInvalid={!!errors.oldSchool}>
             <FormLabel htmlFor="oldSchool">Escola em que cursou o Ensino Médio</FormLabel>
             <Input bg='gray.50' border={'1px solid gray'} id="oldSchool" {...register('oldSchool', { required: 'Campo obrigatório' })} />
             <FormErrorMessage>{errors.oldSchool && String(errors.oldSchool.message)}</FormErrorMessage>
@@ -309,17 +348,28 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
             <FormLabel htmlFor="oldSchoolAdress">Endereço da Escola</FormLabel>
             <Input bg='gray.50' border={'1px solid gray'} id="oldSchoolAdress" {...register('oldSchoolAdress', { required: 'Campo obrigatório' })} />
             <FormErrorMessage>{errors.oldSchoolAdress && String(errors.oldSchoolAdress.message)}</FormErrorMessage>
-          </FormControl>
+          </FormControl> */}
           <FormControl isInvalid={!!errors.highSchoolGraduationDate}>
-            <FormLabel htmlFor="highSchoolGraduationDate">Data de Conclusão do E.M.</FormLabel>
-            <Input bg='gray.50' border={'1px solid gray'} id="highSchoolGraduationDate" type="date" {...register('highSchoolGraduationDate', { required: 'Campo obrigatório' })} />
+            <FormLabel htmlFor="highSchoolGraduationDate">Ano de Conclusão do E.M.</FormLabel>
+            <Input bg='gray.50' border={'1px solid gray'} id="highSchoolGraduationDate" type="number" {...register('highSchoolGraduationDate', { required: 'Campo obrigatório' })} />
             <FormErrorMessage>{errors.highSchoolGraduationDate && String(errors.highSchoolGraduationDate.message)}</FormErrorMessage>
           </FormControl>
-          <FormControl isInvalid={!!errors.highSchoolPeriod}>
+            <FormControl isInvalid={!!errors.highSchoolPeriod}>
             <FormLabel htmlFor="highSchoolPeriod">Período do Ensino Médio</FormLabel>
-            <Input bg='gray.50' border={'1px solid gray'} id="highSchoolPeriod" {...register('highSchoolPeriod', { required: 'Campo obrigatório' })} />
+            <Select 
+              bg='gray.50' 
+              border={'1px solid gray'} 
+              id="highSchoolPeriod" 
+              placeholder="Selecione o período..."
+              {...register('highSchoolPeriod', { required: 'O período do Ensino Médio é obrigatório' })}
+            >
+              <option value="Manhã">Manhã</option>
+              <option value="Tarde">Tarde</option>
+              <option value="Noite">Noite</option>
+              <option value="Integral">Integral</option>
+            </Select>
             <FormErrorMessage>{errors.highSchoolPeriod && String(errors.highSchoolPeriod.message)}</FormErrorMessage>
-          </FormControl>
+            </FormControl>
            <FormControl isInvalid={!!errors.metUsMethod}>
             <FormLabel htmlFor="metUsMethod">Como nos conheceu?</FormLabel>
             <Input bg='gray.50' border={'1px solid gray'} id="metUsMethod" {...register('metUsMethod', { required: 'Campo obrigatório' })} />
