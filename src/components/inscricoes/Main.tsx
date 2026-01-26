@@ -23,7 +23,8 @@ import {
   Link,
   Collapse,
   Image,
-  Highlight
+  Highlight,
+  Tag
 } from '@chakra-ui/react';
 import { ArrowForwardIcon, CalendarIcon, TimeIcon } from '@chakra-ui/icons';
 import { StudentForm } from '@/components/inscricoes/StudentForm';
@@ -107,12 +108,12 @@ export function Main({ schoolClassList }: MainProps) {
     setOpenTurmaDocs(prevId => (prevId === turmaId ? null : turmaId));
   };
 
- const handleStudentSubmit = async (studentData: FieldValues) => {
-  
+  const handleStudentSubmit = async (studentData: FieldValues) => {
+
     if (!selectedTurma) return;
 
     setIsSubmitting(true);
-    
+
     try {
       delete studentData.confirmacaoEmail;
       const paymentMethod = studentData.paymentMethod;
@@ -120,34 +121,34 @@ export function Main({ schoolClassList }: MainProps) {
       const payload = {
         ...studentData,
         schoolClassID: selectedTurma.id,
-        price: (selectedTurma.subscriptions.price / 100).toFixed(2), 
+        price: (selectedTurma.subscriptions.price / 100).toFixed(2),
       };
 
       if (paymentMethod === 'credit_card') {
-          // --- FLUXO CARTÃO (STRIPE) ---
-          console.log("Iniciando checkout com cartão...");
-          const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/inscriptions/checkout`, {
-              ...payload,
-              // O Stripe espera 'value' em centavos e como número, não string fixa
-              value: selectedTurma.subscriptions.price, 
-              interval: 'one_time', // Inscrição é sempre one_time
-              cycles: 1
-          });
+        // --- FLUXO CARTÃO (STRIPE) ---
+        console.log("Iniciando checkout com cartão...");
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/inscriptions/checkout`, {
+          ...payload,
+          // O Stripe espera 'value' em centavos e como número, não string fixa
+          value: selectedTurma.subscriptions.price,
+          interval: 'one_time', // Inscrição é sempre one_time
+          cycles: 1
+        });
 
-          if (response.data.url) {
-              // Redireciona para o Stripe
-              window.location.href = response.data.url;
-              return; // Encerra a função aqui para não abrir o modal de PIX
-          }
-          
+        if (response.data.url) {
+          // Redireciona para o Stripe
+          window.location.href = response.data.url;
+          return; // Encerra a função aqui para não abrir o modal de PIX
+        }
+
       } else {
-          // --- FLUXO PIX (SANTANDER) ---
-          console.log("Iniciando pagamento via PIX...");
-          const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/inscriptions`, payload);
+        // --- FLUXO PIX (SANTANDER) ---
+        console.log("Iniciando pagamento via PIX...");
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/inscriptions`, payload);
 
-          setPixData(response.data);
-          setIsPixModalOpen(true);
-          setPaymentStatus('PENDENTE');
+        setPixData(response.data);
+        setIsPixModalOpen(true);
+        setPaymentStatus('PENDENTE');
       }
 
     } catch (error: any) {
@@ -155,10 +156,10 @@ export function Main({ schoolClassList }: MainProps) {
       let errorTitle = 'Erro na Inscrição.';
 
       if (error.response?.status === 409) {
-          errorTitle = 'Inscrição Duplicada';
-          errorMessage = error.response.data.details || "Você já está inscrito para esta turma.";
+        errorTitle = 'Inscrição Duplicada';
+        errorMessage = error.response.data.details || "Você já está inscrito para esta turma.";
       } else {
-          errorMessage = error.response?.data?.details || error.response?.data?.error || errorMessage;
+        errorMessage = error.response?.data?.details || error.response?.data?.error || errorMessage;
       }
 
       toast({
@@ -171,7 +172,7 @@ export function Main({ schoolClassList }: MainProps) {
     } finally {
       // Se não for redirecionamento de cartão, libera o botão
       if (studentData.paymentMethod !== 'credit_card') {
-          setIsSubmitting(false);
+        setIsSubmitting(false);
       }
     }
   };
@@ -335,6 +336,11 @@ export function Main({ schoolClassList }: MainProps) {
                       <Box bg={turma.informations.color || 'blue.500'} p={4} borderRadius="md" color="white">
                         <Heading as="h3" size="md">{turma.title}</Heading>
                       </Box>
+                      <Tag size='lg' variant='solid' colorScheme={
+                        status === 'Aberto' ? 'green' : status === 'Fechado' ? 'red' : 'gray'
+                      }>
+                        Inscrições {status === 'Aberto' ? 'abertas!' : status === 'Fechado' ? 'encerradas!' : 'em breve!'}
+                      </Tag>
                       <Text noOfLines={3}>{turma.informations.description}</Text>
                       <VStack align="stretch" spacing={2}>
                         <Flex align="center">
@@ -396,7 +402,7 @@ export function Main({ schoolClassList }: MainProps) {
                         <Button
                           rightIcon={<ArrowForwardIcon />}
                           colorScheme="blue"
-                          disabled={turma.subscriptions.status !== 'Aberto'}
+                          isDisabled={status !== 'Aberto'}
                           w='100%'
                           onClick={() => handleSelectTurma(turma)}
                         >
