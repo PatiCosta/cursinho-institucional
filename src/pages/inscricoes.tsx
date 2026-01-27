@@ -55,7 +55,6 @@ export const getStaticProps: GetStaticProps<InscricoesPageProps> = async () => {
     console.log("Dados de turmas recebidos da API:", apiUrl);
     const response = await axios.get(apiUrl);
     const turmasData = response.data?.schoolClassResponse?.schoolClassList;
-
     if (!Array.isArray(turmasData)) {
       throw new Error("Formato de dados inválido recebido da API.");
     }

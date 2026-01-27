@@ -337,9 +337,9 @@ export function Main({ schoolClassList }: MainProps) {
                         <Heading as="h3" size="md">{turma.title}</Heading>
                       </Box>
                       <Tag size='lg' variant='solid' colorScheme={
-                        status === 'Aberto' ? 'green' : status === 'Fechado' ? 'red' : 'gray'
+                        turma.subscriptions.status === 'Aberto' ? 'green' : turma.subscriptions.status === 'Fechado' ? 'red' : 'gray'
                       }>
-                        Inscrições {status === 'Aberto' ? 'abertas!' : status === 'Fechado' ? 'encerradas!' : 'em breve!'}
+                        Inscrições {turma.subscriptions.status} {turma.subscriptions.status === 'Aberto' ? 'abertas!' : turma.subscriptions.status === 'Fechado' ? 'encerradas!' : 'em breve!'}
                       </Tag>
                       <Text noOfLines={3}>{turma.informations.description}</Text>
                       <VStack align="stretch" spacing={2}>
@@ -402,7 +402,7 @@ export function Main({ schoolClassList }: MainProps) {
                         <Button
                           rightIcon={<ArrowForwardIcon />}
                           colorScheme="blue"
-                          isDisabled={status !== 'Aberto'}
+                          isDisabled={turma.subscriptions.status !== 'Aberto'}
                           w='100%'
                           onClick={() => handleSelectTurma(turma)}
                         >
