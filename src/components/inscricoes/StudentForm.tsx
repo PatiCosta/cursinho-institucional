@@ -455,7 +455,7 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
                     id="aceiteTermoCiencia"
                     {...register('aceiteTermoCiencia', { required: 'Você deve aceitar o Termo de Ciência' })}
                 >
-                    Eu li e aceito o <Text as="span" color="blue.500">Termo de Ciência</Text> (Obrigatório)
+                    Eu li e aceito o <Link href="https://drive.google.com/file/d/1uRIViYS0y9Ji1QvbPcN12_mOpcisjxD1/view?usp=sharing" isExternal color="blue.500">Termo de Ciência</Link> (Obrigatório)
                 </Checkbox>
                 <FormErrorMessage>{errors.aceiteTermoCiencia && String(errors.aceiteTermoCiencia.message)}</FormErrorMessage>
                 <Text fontSize="xs" color="gray.500" mt={1}>
@@ -468,7 +468,7 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
                     id="aceiteTermoInscricao"
                     {...register('aceiteTermoInscricao', { required: 'Você deve aceitar o Termo de Inscrição' })}
                 >
-                    Eu li e aceito o <Link href="#" isExternal color="blue.500">
+                    Eu li e aceito o <Link href="https://drive.google.com/file/d/1fHvtwtkWgH0RLD5lyw4TLRdQ9pEfGBui/view?usp=sharing" isExternal color="blue.500">
                         Termo de Inscrição <Icon as={ExternalLinkIcon} mx="2px" />
                     </Link> (Obrigatório)
                 </Checkbox>
