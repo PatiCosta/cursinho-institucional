@@ -342,7 +342,7 @@ export function Main({ schoolClassList }: MainProps) {
                         Inscrições {turma.subscriptions.status === 'Aberto' ? 'abertas!' : turma.subscriptions.status === 'Fechado' ? 'encerradas!' : 'em breve!'}
                       </Tag>
                       <Text noOfLines={3}>{turma.informations.description}</Text>
-                      <VStack align="stretch" spacing={2}>
+                      <VStack align="stretch" spacing={2} ml={40}>
                         <Flex align="center">
                           <CalendarIcon mr={2} />
                           <Text fontSize="sm">{turma.informations.dateSchedule}</Text>
@@ -374,20 +374,24 @@ export function Main({ schoolClassList }: MainProps) {
                         >
                           {/* CORRIGIDO */}
                           {/* <Button size='sm' onClick={() => handleToggleDocs(turma.id)} marginLeft='88%'>x</Button> */}
-                          {turma.documents.map(document =>
-                            <Flex
-                              as={Link}
-                              href={document.downloadLink}
-                              alignItems='center'
-                              justifyContent='start'
-                              gap={2}
-                              py={2}
-                              cursor='pointer'
-                              key={document.docsID}
-                            >
-                              <Book size={20} color={'#3b3a65'} weight="duotone" style={{ flexShrink: '0' }} />
-                              <Text fontWeight='semibold' fontSize='14px' textDecoration='underline'>{document.title}</Text>
-                            </Flex>
+                          {turma.documents.map(document => {
+                            if (document.title.toLowerCase().includes('entrevista')) { return '' }
+                            return (
+                              <Flex
+                                as={Link}
+                                href={document.downloadLink}
+                                alignItems='center'
+                                justifyContent='start'
+                                gap={2}
+                                py={2}
+                                cursor='pointer'
+                                key={document.docsID}
+                              >
+                                <Book size={20} color={'#3b3a65'} weight="duotone" style={{ flexShrink: '0' }} />
+                                <Text fontWeight='semibold' fontSize='14px' textDecoration='underline'>{document.title}</Text>
+                              </Flex>
+                            )
+                          }
                           )}
                         </Box>
                         // </Collapse>
@@ -425,6 +429,6 @@ export function Main({ schoolClassList }: MainProps) {
         pixData={pixData}
         status={paymentStatus} // Passamos o status como prop
       />
-    </Box>
+    </Box >
   );
 }

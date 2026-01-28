@@ -114,7 +114,7 @@ export function Main() {
                                 Inscrição via Sympla (com taxa)
                             </MenuItem>
                             <MenuItem as={Link} href="/inscricoes" bgColor={'blue.600'} color={'white'} fontWeight={'semibold'} _hover={{bgColor:'orange.500', transition:'300ms'}} borderRadius={2}>
-                                Inscrição via PIX (sem taxa)
+                                Inscrição via PIX ou Cartão (sem taxa)
                             </MenuItem>
                         </MenuList>
                     </Menu>
