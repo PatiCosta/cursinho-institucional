@@ -489,7 +489,7 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
             isLoading={isSubmitting}
             isDisabled={!isValid || isSubmitting}
           >
-            {paymentMethod === 'credit_card' ? 'Ir para Pagamento (Stripe)' : 'Gerar PIX'}
+            {paymentMethod === 'credit_card' ? 'Ir para Pagamento (Asaas)' : 'Gerar PIX'}
           </Button>
         </Flex>
       </VStack>
