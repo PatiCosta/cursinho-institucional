@@ -64,7 +64,7 @@ export function Main({ schoolClassList }: MainProps) {
   const router = useRouter();
 
   // --- LÓGICA DO PORTÃO DE SENHA ---
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [password, setPassword] = useState('');
   const [authError, setAuthError] = useState(false);
   const [isCheckingAuth, setIsCheckingAuth] = useState(true); // Começa checando
@@ -339,7 +339,7 @@ export function Main({ schoolClassList }: MainProps) {
                       <Tag size='lg' variant='solid' colorScheme={
                         turma.subscriptions.status === 'Aberto' ? 'green' : turma.subscriptions.status === 'Fechado' ? 'red' : 'gray'
                       }>
-                        Inscrições {turma.subscriptions.status} {turma.subscriptions.status === 'Aberto' ? 'abertas!' : turma.subscriptions.status === 'Fechado' ? 'encerradas!' : 'em breve!'}
+                        Inscrições {turma.subscriptions.status === 'Aberto' ? 'abertas!' : turma.subscriptions.status === 'Fechado' ? 'encerradas!' : 'em breve!'}
                       </Tag>
                       <Text noOfLines={3}>{turma.informations.description}</Text>
                       <VStack align="stretch" spacing={2}>
