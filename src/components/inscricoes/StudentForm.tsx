@@ -432,7 +432,7 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
                         <Icon as={CreditCard} boxSize={8} color="blue.500" />
                         <Box>
                             <Text fontWeight="bold" color="blue.800">Cartão de Crédito / Débito</Text>
-                            <Text fontSize="sm" color="blue.600">Pagamento seguro via Stripe</Text>
+                            <Text fontSize="sm" color="blue.600">Pagamento seguro via Asaas</Text>
                         </Box>
                     </Flex>
                     </Radio>
