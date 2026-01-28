@@ -342,7 +342,7 @@ export function Main({ schoolClassList }: MainProps) {
                         Inscrições {turma.subscriptions.status === 'Aberto' ? 'abertas!' : turma.subscriptions.status === 'Fechado' ? 'encerradas!' : 'em breve!'}
                       </Tag>
                       <Text noOfLines={3}>{turma.informations.description}</Text>
-                      <VStack align="stretch" spacing={2} ml={40}>
+                      <VStack align="stretch" spacing={2}>
                         <Flex align="center">
                           <CalendarIcon mr={2} />
                           <Text fontSize="sm">{turma.informations.dateSchedule}</Text>
