@@ -90,7 +90,7 @@ export function Main() {
                 <Flex gap={4} direction={{ base: 'column', sm: 'column', lg: 'row' }}>
 
                     {/* --- BOTÃO DE INSCRIÇÃO ATUALIZADO --- */}
-                    {/* <Menu>
+                    <Menu>
                         <MenuButton
                             as={Button} // Faz o MenuButton se parecer com um Button
                             bgColor='blue.800' 
@@ -117,7 +117,7 @@ export function Main() {
                                 Inscrição via PIX (sem taxa)
                             </MenuItem>
                         </MenuList>
-                    </Menu> */}
+                    </Menu>
                     {/* --- FIM DO BOTÃO ATUALIZADO --- */}
                     <Button
                         bgColor='blue.800'
