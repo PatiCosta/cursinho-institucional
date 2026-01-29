@@ -36,7 +36,7 @@ export function Main() {
                     fontSize={{base: 14, sm: 14, lg: 18}} 
                     mt={{base: 4, sm: 4, lg: 8}} 
                 >
-                    Você sabia que a sua doação fará a diferença na vida de nossos alunos diretamente? Toda a renda advinda desta aba constituirá um Fundo para financiar o Auxílio Transporte dos nossos alunos. Atualmente, beneficiamos um número pequeno de estudantes, porém, a demanda chega a ser 5x maior. E aí, bora ajudar quem sonha em entrar em uma universidade?
+                    Você sabia que a sua doação fará a diferença na vida de nossos alunos diretamente? Toda renda advinda desta aba constituirá em um fundo para auxiliar financeiramente o processos de vestibular dos nossos alunos. Atualmente, beneficiamos um número pequeno de estudantes, porém, a demanda chega a ser 5x maior. E aí, bora ajudar quem sonha em entrar em uma universidade?
                 </Text>
             </Box>
         </Box>
