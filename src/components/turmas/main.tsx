@@ -140,6 +140,7 @@ const Class = ({ title, bgColor, iconColor, status, target, scheduleDates, sched
 }
 
 export function Main({ schoolClassList }: MainProps) {
+
     return (
         <Flex px={{ base: 4, lg: 12 }} py={{ base: 4, lg: 0 }} direction='column' alignItems='center' justifyContent='center'>
             <Image
@@ -167,7 +168,7 @@ export function Main({ schoolClassList }: MainProps) {
                             target={schoolClass.informations.classContent}
                             scheduleDates={schoolClass.informations.dateSchedule}
                             scheduleHours={schoolClass.informations.hourSchedule}
-                            documents={schoolClass.documents}
+                            documents={schoolClass.documents?.filter(doc => !doc.title.toLowerCase().includes('entrevista'))}
                             id={schoolClass.id}
                         />
                     )
