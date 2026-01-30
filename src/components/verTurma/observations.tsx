@@ -57,7 +57,8 @@ export function Observations({color, observations, documents}: ObservationsProps
                 </Flex>
                 <Flex direction='column' fontSize={{base: 14, lg: 16}} fontWeight='light' pl={{base: 2, lg: 12}} pr={{base: 4, lg: 8}} textAlign={{base: 'center', lg: 'start'}}>
                     {documents && documents.length > 0 
-                        ? documents.map(document => 
+                        ? documents.filter(doc => !doc.title.toLowerCase().includes('entrevista')).map(document =>
+                             
                             <Flex 
                                 as={Link} 
                                 href={document.downloadLink} 
