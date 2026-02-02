@@ -57,20 +57,23 @@ export function Observations({color, observations, documents}: ObservationsProps
                 </Flex>
                 <Flex direction='column' fontSize={{base: 14, lg: 16}} fontWeight='light' pl={{base: 2, lg: 12}} pr={{base: 4, lg: 8}} textAlign={{base: 'center', lg: 'start'}}>
                     {documents && documents.length > 0 
-                        ? documents.map(document => 
-                            <Flex 
-                                as={Link} 
-                                href={document.downloadLink} 
-                                alignItems='center' 
-                                justifyContent='start' 
-                                gap={2} 
-                                py={2} 
-                                cursor='pointer'
-                                key={document.docsID}
-                            >
-                                <Text fontWeight='semibold' fontSize={16} textDecoration='underline'>{document.title}</Text>
-                                <ArrowSquareOut size={20} color="#023047" weight="duotone" />
-                            </Flex>
+
+                        ? documents
+                            .filter(document => !document.title.toLowerCase().includes('entrevista'))
+                            .map(document => 
+                                <Flex 
+                                    as={Link} 
+                                    href={document.downloadLink} 
+                                    alignItems='center' 
+                                    justifyContent='start' 
+                                    gap={2} 
+                                    py={2} 
+                                    cursor='pointer'
+                                    key={document.docsID}
+                                >
+                                    <Text fontWeight='semibold' fontSize={16} textDecoration='underline'>{document.title}</Text>
+                                    <ArrowSquareOut size={20} color="#023047" weight="duotone" />
+                                </Flex>
                             ) 
                         : 'Ainda não há documentos para esta turma'}
                 </Flex>
