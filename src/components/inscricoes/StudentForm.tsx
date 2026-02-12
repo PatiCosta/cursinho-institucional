@@ -72,21 +72,33 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
     handleSubmit,
     register,
     watch,
-    setValue, 
+    setValue,
     setFocus, // Para focar no número após preencher
     formState: { errors, isValid },
-  } = useForm<StudentFormData>({ 
+  } = useForm<StudentFormData>({
     mode: 'onBlur',
     defaultValues: {
-      paymentMethod: 'pix' 
+      paymentMethod: 'pix'
     }
   });
 
   const emailValue = watch('email');
   const paymentMethod = watch('paymentMethod');
-  
+
   const [isMinor, setIsMinor] = useState(false);
   const [isLoadingCep, setIsLoadingCep] = useState(false); // Estado para loading do CEP
+
+  // --- MÁSCARA DE CPF ---
+  const cpfMask = (value: string) => {
+    return value
+      .replace(/\D/g, '') // Substitui qualquer caracter que não seja numero por nada
+      .replace(/(\d{3})(\d)/, '$1.$2') // Coloca um ponto entre o terceiro e o quarto dígitos
+      .replace(/(\d{3})(\d)/, '$1.$2') // Coloca um ponto entre o terceiro e o quarto dígitos
+      // de novo (para o segundo bloco de números)
+      .replace(/(\d{3})(\d{1,2})/, '$1-$2') // Coloca um hífen entre o terceiro e o quarto dígitos
+      .replace(/(-\d{2})\d+?$/, '$1'); // Impede que sejam digitados mais de 11 dígitos
+  };
+  // ---------------------
 
   const checkMinor = (dateString: string) => {
     if (!dateString) return false;
@@ -95,7 +107,7 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
     let age = today.getFullYear() - birth.getFullYear();
     const m = today.getMonth() - birth.getMonth();
     if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
-        age--;
+      age--;
     }
     return age < 18;
   };
@@ -108,7 +120,7 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
       setIsLoadingCep(true);
       try {
         const response = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
-        
+
         if (!response.data.erro) {
           setValue('street', response.data.logradouro);
           setValue('district', response.data.bairro);
@@ -116,8 +128,8 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
           setValue('state', response.data.uf);
           setFocus('homeNumber'); // Move o foco para o número
         } else {
-            // Opcional: Avisar que o CEP não foi encontrado
-            // toast({ ... }) 
+          // Opcional: Avisar que o CEP não foi encontrado
+          // toast({ ... }) 
         }
       } catch (error) {
         console.error("Erro ao buscar CEP:", error);
@@ -159,35 +171,35 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
             <Input bg='gray.50' border={'1px solid gray'} id="sobrenome" {...register('sobrenome', { required: 'Sobrenome é obrigatório' })} />
             <FormErrorMessage>{errors.sobrenome && String(errors.sobrenome.message)}</FormErrorMessage>
           </FormControl>
-           <FormControl isInvalid={!!errors.email}>
+          <FormControl isInvalid={!!errors.email}>
             <FormLabel htmlFor="email">Email</FormLabel>
             <Input bg='gray.50' border={'1px solid gray'} id="email" type="email" {...register('email', { required: 'Email é obrigatório' })} />
-             <FormErrorMessage>{errors.email && String(errors.email.message)}</FormErrorMessage>
+            <FormErrorMessage>{errors.email && String(errors.email.message)}</FormErrorMessage>
           </FormControl>
-           <FormControl isInvalid={!!errors.confirmacaoEmail}>
+          <FormControl isInvalid={!!errors.confirmacaoEmail}>
             <FormLabel htmlFor="confirmacaoEmail">Confirme seu Email</FormLabel>
-            <Input bg='gray.50' border={'1px solid gray'} 
-              id="confirmacaoEmail" 
-              type="email" 
-              {...register('confirmacaoEmail', { 
+            <Input bg='gray.50' border={'1px solid gray'}
+              id="confirmacaoEmail"
+              type="email"
+              {...register('confirmacaoEmail', {
                 required: 'Confirmação de email é obrigatória',
                 validate: (value) =>
                   value === emailValue || 'Os e-mails não conferem.'
-              })} 
+              })}
             />
-             <FormErrorMessage>{errors.confirmacaoEmail && String(errors.confirmacaoEmail.message)}</FormErrorMessage>
+            <FormErrorMessage>{errors.confirmacaoEmail && String(errors.confirmacaoEmail.message)}</FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={!!errors.birth}>
             <FormLabel htmlFor="birth">Data de Nascimento</FormLabel>
-            <Input bg='gray.50' border={'1px solid gray'} 
-              id="birth" 
-              type="date" 
-              {...register('birth', { 
+            <Input bg='gray.50' border={'1px solid gray'}
+              id="birth"
+              type="date"
+              {...register('birth', {
                 required: 'Data de nascimento é obrigatória',
                 onChange: (e) => setIsMinor(checkMinor(e.target.value))
-              })} 
+              })}
             />
-             <FormErrorMessage>{errors.birth && String(errors.birth.message)}</FormErrorMessage>
+            <FormErrorMessage>{errors.birth && String(errors.birth.message)}</FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={!!errors.gender}>
             <FormLabel htmlFor="gender">Gênero</FormLabel>
@@ -206,28 +218,40 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
           {isMinor && (
             <FormControl isInvalid={!!errors.emailResponsavel} gridColumn="span 2">
               <FormLabel htmlFor="emailResponsavel">E-mail do Responsável (Obrigatório para menores de 18)</FormLabel>
-              <Input bg='gray.50' border={'1px solid gray'} 
-                id="emailResponsavel" 
-                type="email" 
-                {...register('emailResponsavel', { 
+              <Input bg='gray.50' border={'1px solid gray'}
+                id="emailResponsavel"
+                type="email"
+                {...register('emailResponsavel', {
                   required: isMinor ? 'Email do responsável é obrigatório.' : false
-                })} 
+                })}
               />
               <FormErrorMessage>{errors.emailResponsavel && String(errors.emailResponsavel.message)}</FormErrorMessage>
             </FormControl>
           )}
 
+          {/* INPUT DE CPF ATUALIZADO */}
           <FormControl isInvalid={!!errors.cpf}>
             <FormLabel htmlFor="cpf">CPF</FormLabel>
-            <Input bg='gray.50' border={'1px solid gray'} id="cpf" {...register('cpf', { required: 'CPF é obrigatório' })} />
+            <Input
+              id="cpf"
+              {...register('cpf', {
+                required: 'CPF é obrigatório',
+                minLength: { value: 14, message: 'CPF incompleto' },
+                onChange: (e) => {
+                  e.target.value = cpfMask(e.target.value);
+                }
+              })}
+              maxLength={14}
+              placeholder="000.000.000-00"
+            />
             <FormErrorMessage>{errors.cpf && String(errors.cpf.message)}</FormErrorMessage>
           </FormControl>
-           <FormControl isInvalid={!!errors.rg}>
+          <FormControl isInvalid={!!errors.rg}>
             <FormLabel htmlFor="rg">RG</FormLabel>
             <Input bg='gray.50' border={'1px solid gray'} id="rg" {...register('rg', { required: 'RG é obrigatório' })} />
             <FormErrorMessage>{errors.rg && String(errors.rg.message)}</FormErrorMessage>
           </FormControl>
-            <FormControl isInvalid={!!errors.ufrg}>
+          <FormControl isInvalid={!!errors.ufrg}>
             <FormLabel htmlFor="ufrg">UF do RG</FormLabel>
             <Select bg='gray.50' border={'1px solid gray'} id="ufrg" {...register('ufrg', { required: 'UF do RG é obrigatória' })}>
               <option value="">Selecione a UF</option>
@@ -260,73 +284,73 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
               <option value="TO">Tocantins</option>
             </Select>
             <FormErrorMessage>{errors.ufrg && String(errors.ufrg.message)}</FormErrorMessage>
-            </FormControl>
+          </FormControl>
         </SimpleGrid>
 
         {/* --- Contato --- */}
         <Heading as="h3" size="md" pt={4}>Contato</Heading>
-         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-            <FormControl isInvalid={!!errors.phoneNumber}>
-                <FormLabel htmlFor="phoneNumber">Celular (com DDD)</FormLabel>
-                <Input bg='gray.50' border={'1px solid gray'} id="phoneNumber" type="tel" {...register('phoneNumber', { required: 'Celular é obrigatório' })} />
-                <FormErrorMessage>{errors.phoneNumber && String(errors.phoneNumber.message)}</FormErrorMessage>
-            </FormControl>
-             <FormControl pt={8}>
-                <Checkbox id="isPhoneWhatsapp" {...register('isPhoneWhatsapp')}>Este número é WhatsApp</Checkbox>
-            </FormControl>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+          <FormControl isInvalid={!!errors.phoneNumber}>
+            <FormLabel htmlFor="phoneNumber">Celular (com DDD)</FormLabel>
+            <Input bg='gray.50' border={'1px solid gray'} id="phoneNumber" type="tel" {...register('phoneNumber', { required: 'Celular é obrigatório' })} />
+            <FormErrorMessage>{errors.phoneNumber && String(errors.phoneNumber.message)}</FormErrorMessage>
+          </FormControl>
+          <FormControl pt={8}>
+            <Checkbox id="isPhoneWhatsapp" {...register('isPhoneWhatsapp')}>Este número é WhatsApp</Checkbox>
+          </FormControl>
         </SimpleGrid>
 
         {/* --- Endereço --- */}
         <Heading as="h3" size="md" pt={4}>Endereço</Heading>
         <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={4}>
-            <FormControl isInvalid={!!errors.zipCode} gridColumn={{ base: 'span 1', sm: 'span 2', md: 'span 1' }}>
-                <FormLabel htmlFor="zipCode">CEP</FormLabel>
-                <Input bg='gray.50' border={'1px solid gray'} 
-                    id="zipCode" 
-                    {...register('zipCode', { 
-                        required: 'CEP é obrigatório',
-                        onBlur: handleCepBlur // Adicionado o handler de blur aqui
-                    })} 
-                    placeholder="00000-000"
-                />
-                {isLoadingCep && <Text fontSize="xs" color="blue.500">Buscando CEP...</Text>}
-                <FormErrorMessage>{errors.zipCode && String(errors.zipCode.message)}</FormErrorMessage>
-            </FormControl>
-             <FormControl isInvalid={!!errors.street} gridColumn={{ base: 'span 1', sm: 'span 2' }}>
-                <FormLabel htmlFor="street">Rua / Logradouro</FormLabel>
-                <Input bg='gray.50' border={'1px solid gray'} id="street" {...register('street', { required: 'Rua é obrigatória' })} />
-                <FormErrorMessage>{errors.street && String(errors.street.message)}</FormErrorMessage>
-            </FormControl>
-             <FormControl isInvalid={!!errors.homeNumber}>
-                <FormLabel htmlFor="homeNumber">Número</FormLabel>
-                <Input bg='gray.50' border={'1px solid gray'} id="homeNumber" {...register('homeNumber', { required: 'Número é obrigatório' })} />
-                <FormErrorMessage>{errors.homeNumber && String(errors.homeNumber.message)}</FormErrorMessage>
-            </FormControl>
-            <FormControl>
-                <FormLabel htmlFor="complement">Complemento</FormLabel>
-                <Input bg='gray.50' border={'1px solid gray'} id="complement" {...register('complement')} />
-            </FormControl>
-             <FormControl isInvalid={!!errors.district}>
-                <FormLabel htmlFor="district">Bairro</FormLabel>
-                <Input bg='gray.50' border={'1px solid gray'} id="district" {...register('district', { required: 'Bairro é obrigatório' })} />
-                <FormErrorMessage>{errors.district && String(errors.district.message)}</FormErrorMessage>
-            </FormControl>
-             <FormControl isInvalid={!!errors.city}>
-                <FormLabel htmlFor="city">Cidade</FormLabel>
-                <Input bg='gray.50' border={'1px solid gray'} id="city" {...register('city', { required: 'Cidade é obrigatória' })} />
-                <FormErrorMessage>{errors.city && String(errors.city.message)}</FormErrorMessage>
-            </FormControl>
-             <FormControl isInvalid={!!errors.state}>
-                <FormLabel htmlFor="state">Estado</FormLabel>
-                <Input bg='gray.50' border={'1px solid gray'} id="state" {...register('state', { required: 'Estado é obrigatório' })} />
-                <FormErrorMessage>{errors.state && String(errors.state.message)}</FormErrorMessage>
-            </FormControl>
+          <FormControl isInvalid={!!errors.zipCode} gridColumn={{ base: 'span 1', sm: 'span 2', md: 'span 1' }}>
+            <FormLabel htmlFor="zipCode">CEP</FormLabel>
+            <Input bg='gray.50' border={'1px solid gray'}
+              id="zipCode"
+              {...register('zipCode', {
+                required: 'CEP é obrigatório',
+                onBlur: handleCepBlur // Adicionado o handler de blur aqui
+              })}
+              placeholder="00000-000"
+            />
+            {isLoadingCep && <Text fontSize="xs" color="blue.500">Buscando CEP...</Text>}
+            <FormErrorMessage>{errors.zipCode && String(errors.zipCode.message)}</FormErrorMessage>
+          </FormControl>
+          <FormControl isInvalid={!!errors.street} gridColumn={{ base: 'span 1', sm: 'span 2' }}>
+            <FormLabel htmlFor="street">Rua / Logradouro</FormLabel>
+            <Input bg='gray.50' border={'1px solid gray'} id="street" {...register('street', { required: 'Rua é obrigatória' })} />
+            <FormErrorMessage>{errors.street && String(errors.street.message)}</FormErrorMessage>
+          </FormControl>
+          <FormControl isInvalid={!!errors.homeNumber}>
+            <FormLabel htmlFor="homeNumber">Número</FormLabel>
+            <Input bg='gray.50' border={'1px solid gray'} id="homeNumber" {...register('homeNumber', { required: 'Número é obrigatório' })} />
+            <FormErrorMessage>{errors.homeNumber && String(errors.homeNumber.message)}</FormErrorMessage>
+          </FormControl>
+          <FormControl>
+            <FormLabel htmlFor="complement">Complemento</FormLabel>
+            <Input bg='gray.50' border={'1px solid gray'} id="complement" {...register('complement')} />
+          </FormControl>
+          <FormControl isInvalid={!!errors.district}>
+            <FormLabel htmlFor="district">Bairro</FormLabel>
+            <Input bg='gray.50' border={'1px solid gray'} id="district" {...register('district', { required: 'Bairro é obrigatório' })} />
+            <FormErrorMessage>{errors.district && String(errors.district.message)}</FormErrorMessage>
+          </FormControl>
+          <FormControl isInvalid={!!errors.city}>
+            <FormLabel htmlFor="city">Cidade</FormLabel>
+            <Input bg='gray.50' border={'1px solid gray'} id="city" {...register('city', { required: 'Cidade é obrigatória' })} />
+            <FormErrorMessage>{errors.city && String(errors.city.message)}</FormErrorMessage>
+          </FormControl>
+          <FormControl isInvalid={!!errors.state}>
+            <FormLabel htmlFor="state">Estado</FormLabel>
+            <Input bg='gray.50' border={'1px solid gray'} id="state" {...register('state', { required: 'Estado é obrigatório' })} />
+            <FormErrorMessage>{errors.state && String(errors.state.message)}</FormErrorMessage>
+          </FormControl>
         </SimpleGrid>
 
         {/* --- Informações Adicionais --- */}
         <Heading as="h3" size="md" pt={4}>Informações Adicionais</Heading>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-            <FormControl isInvalid={!!errors.selfDeclaration}>
+          <FormControl isInvalid={!!errors.selfDeclaration}>
             <FormLabel htmlFor="selfDeclaration">Autodeclaração</FormLabel>
             <Select bg='gray.50' border={'1px solid gray'} id="selfDeclaration" {...register('selfDeclaration', { required: 'Campo obrigatório' })}>
               <option value="">Selecione...</option>
@@ -338,7 +362,7 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
               <option value="Outro">Outro</option>
             </Select>
             <FormErrorMessage>{errors.selfDeclaration && String(errors.selfDeclaration.message)}</FormErrorMessage>
-            </FormControl>
+          </FormControl>
           {/* <FormControl isInvalid={!!errors.oldSchool}>
             <FormLabel htmlFor="oldSchool">Escola em que cursou o Ensino Médio</FormLabel>
             <Input bg='gray.50' border={'1px solid gray'} id="oldSchool" {...register('oldSchool', { required: 'Campo obrigatório' })} />
@@ -354,12 +378,12 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
             <Input bg='gray.50' border={'1px solid gray'} id="highSchoolGraduationDate" type="number" {...register('highSchoolGraduationDate', { required: 'Campo obrigatório' })} />
             <FormErrorMessage>{errors.highSchoolGraduationDate && String(errors.highSchoolGraduationDate.message)}</FormErrorMessage>
           </FormControl>
-            <FormControl isInvalid={!!errors.highSchoolPeriod}>
+          <FormControl isInvalid={!!errors.highSchoolPeriod}>
             <FormLabel htmlFor="highSchoolPeriod">Período do Ensino Médio</FormLabel>
-            <Select 
-              bg='gray.50' 
-              border={'1px solid gray'} 
-              id="highSchoolPeriod" 
+            <Select
+              bg='gray.50'
+              border={'1px solid gray'}
+              id="highSchoolPeriod"
               placeholder="Selecione o período..."
               {...register('highSchoolPeriod', { required: 'O período do Ensino Médio é obrigatório' })}
             >
@@ -369,15 +393,15 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
               <option value="Integral">Integral</option>
             </Select>
             <FormErrorMessage>{errors.highSchoolPeriod && String(errors.highSchoolPeriod.message)}</FormErrorMessage>
-            </FormControl>
-           <FormControl isInvalid={!!errors.metUsMethod}>
+          </FormControl>
+          <FormControl isInvalid={!!errors.metUsMethod}>
             <FormLabel htmlFor="metUsMethod">Como nos conheceu?</FormLabel>
             <Input bg='gray.50' border={'1px solid gray'} id="metUsMethod" {...register('metUsMethod', { required: 'Campo obrigatório' })} />
             <FormErrorMessage>{errors.metUsMethod && String(errors.metUsMethod.message)}</FormErrorMessage>
           </FormControl>
-           <FormControl isInvalid={!!errors.exStudent}>
+          <FormControl isInvalid={!!errors.exStudent}>
             <FormLabel htmlFor="exStudent">Já foi nosso aluno?</FormLabel>
-             <Select id="exStudent" {...register('exStudent', { required: 'Campo obrigatório' })}>
+            <Select id="exStudent" {...register('exStudent', { required: 'Campo obrigatório' })}>
               <option value="">Selecione...</option>
               <option value="Sim">Sim</option>
               <option value="Não">Não</option>
@@ -388,97 +412,97 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
 
         {/* --- Pagamento --- */}
         <Heading as="h3" size="md" pt={4}>Pagamento</Heading>
-        
+
         {/* SELEÇÃO DE MÉTODO DE PAGAMENTO (ATUALIZADA PARA INCLUIR DÉBITO) */}
         <FormControl isInvalid={!!errors.paymentMethod} mb={4}>
-            <FormLabel>Forma de Pagamento</FormLabel>
-            <RadioGroup defaultValue="pix" value={paymentMethod}>
-                <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-                <Box 
-                    borderWidth="2px" 
-                    borderColor={paymentMethod === 'pix' ? 'green.400' : 'gray.200'}
-                    borderRadius="lg" 
-                    p={4} 
-                    cursor="pointer"
-                    bg={paymentMethod === 'pix' ? 'green.50' : 'transparent'}
-                    _hover={{ borderColor: 'green.300', bg: 'green.50' }}
-                    onClick={() => setValue('paymentMethod', 'pix')}
-                    w="100%"
-                >
-                    <Radio value="pix" {...register('paymentMethod')}>
-                    <Flex alignItems="center" gap={3}>
-                        <Icon as={QrCode} boxSize={8} color="green.500" />
-                        <Box>
-                            <Text fontWeight="bold" color="green.800">PIX</Text>
-                            <Text fontSize="sm" color="green.600">Aprovação imediata</Text>
-                        </Box>
-                    </Flex>
-                    </Radio>
-                </Box>
+          <FormLabel>Forma de Pagamento</FormLabel>
+          <RadioGroup defaultValue="pix" value={paymentMethod}>
+            <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
+              <Box
+                borderWidth="2px"
+                borderColor={paymentMethod === 'pix' ? 'green.400' : 'gray.200'}
+                borderRadius="lg"
+                p={4}
+                cursor="pointer"
+                bg={paymentMethod === 'pix' ? 'green.50' : 'transparent'}
+                _hover={{ borderColor: 'green.300', bg: 'green.50' }}
+                onClick={() => setValue('paymentMethod', 'pix')}
+                w="100%"
+              >
+                <Radio value="pix" {...register('paymentMethod')}>
+                  <Flex alignItems="center" gap={3}>
+                    <Icon as={QrCode} boxSize={8} color="green.500" />
+                    <Box>
+                      <Text fontWeight="bold" color="green.800">PIX</Text>
+                      <Text fontSize="sm" color="green.600">Aprovação imediata</Text>
+                    </Box>
+                  </Flex>
+                </Radio>
+              </Box>
 
-                <Box 
-                    borderWidth="2px" 
-                    borderColor={paymentMethod === 'credit_card' ? 'blue.400' : 'gray.200'}
-                    borderRadius="lg" 
-                    p={4} 
-                    cursor="pointer"
-                    bg={paymentMethod === 'credit_card' ? 'blue.50' : 'transparent'}
-                    _hover={{ borderColor: 'blue.300', bg: 'blue.50' }}
-                    onClick={() => setValue('paymentMethod', 'credit_card')}
-                    w="100%"
-                >
-                    <Radio value="credit_card" {...register('paymentMethod')}>
-                    <Flex alignItems="center" gap={3}>
-                        <Icon as={CreditCard} boxSize={8} color="blue.500" />
-                        <Box>
-                            <Text fontWeight="bold" color="blue.800">Cartão de Crédito / Débito</Text>
-                            <Text fontSize="sm" color="blue.600">Pagamento seguro via Asaas</Text>
-                        </Box>
-                    </Flex>
-                    </Radio>
-                </Box>
-                </Stack>
-            </RadioGroup>
+              <Box
+                borderWidth="2px"
+                borderColor={paymentMethod === 'credit_card' ? 'blue.400' : 'gray.200'}
+                borderRadius="lg"
+                p={4}
+                cursor="pointer"
+                bg={paymentMethod === 'credit_card' ? 'blue.50' : 'transparent'}
+                _hover={{ borderColor: 'blue.300', bg: 'blue.50' }}
+                onClick={() => setValue('paymentMethod', 'credit_card')}
+                w="100%"
+              >
+                <Radio value="credit_card" {...register('paymentMethod')}>
+                  <Flex alignItems="center" gap={3}>
+                    <Icon as={CreditCard} boxSize={8} color="blue.500" />
+                    <Box>
+                      <Text fontWeight="bold" color="blue.800">Cartão de Crédito / Débito</Text>
+                      <Text fontSize="sm" color="blue.600">Pagamento seguro via Asaas</Text>
+                    </Box>
+                  </Flex>
+                </Radio>
+              </Box>
+            </Stack>
+          </RadioGroup>
         </FormControl>
 
-         <FormControl isInvalid={!!errors.codigoDesconto}>
-            <FormLabel htmlFor="codigoDesconto">Código de Desconto (Opcional)</FormLabel>
-            <Input bg='gray.50' border={'1px solid gray'} id="codigoDesconto" {...register('codigoDesconto')} />
-            <FormErrorMessage>{errors.codigoDesconto && String(errors.codigoDesconto.message)}</FormErrorMessage>
-          </FormControl>
+        <FormControl isInvalid={!!errors.codigoDesconto}>
+          <FormLabel htmlFor="codigoDesconto">Código de Desconto (Opcional)</FormLabel>
+          <Input bg='gray.50' border={'1px solid gray'} id="codigoDesconto" {...register('codigoDesconto')} />
+          <FormErrorMessage>{errors.codigoDesconto && String(errors.codigoDesconto.message)}</FormErrorMessage>
+        </FormControl>
 
         {/* --- Termos de Aceite --- */}
         <Heading as="h3" size="md" pt={4}>Termos de Aceite</Heading>
         <VStack spacing={4} align="flex-start">
-            <FormControl isInvalid={!!errors.aceiteTermoCiencia}>
-                <Checkbox 
-                    id="aceiteTermoCiencia"
-                    {...register('aceiteTermoCiencia', { required: 'Você deve aceitar o Termo de Ciência' })}
-                >
-                    Eu li e aceito o <Link href="https://drive.google.com/file/d/1uRIViYS0y9Ji1QvbPcN12_mOpcisjxD1/view?usp=sharing" isExternal color="blue.500">Termo de Ciência</Link> (Obrigatório)
-                </Checkbox>
-                <FormErrorMessage>{errors.aceiteTermoCiencia && String(errors.aceiteTermoCiencia.message)}</FormErrorMessage>
-                <Text fontSize="xs" color="gray.500" mt={1}>
-                    Refere-se ao questionário e veracidade das informações.
-                </Text>
-            </FormControl>
-            
-            <FormControl isInvalid={!!errors.aceiteTermoInscricao}>
-                <Checkbox 
-                    id="aceiteTermoInscricao"
-                    {...register('aceiteTermoInscricao', { required: 'Você deve aceitar o Termo de Inscrição' })}
-                >
-                    Eu li e aceito o <Link href="https://drive.google.com/file/d/1fHvtwtkWgH0RLD5lyw4TLRdQ9pEfGBui/view?usp=sharing" isExternal color="blue.500">
-                        Termo de Inscrição <Icon as={ExternalLinkIcon} mx="2px" />
-                    </Link> (Obrigatório)
-                </Checkbox>
-                <FormErrorMessage>{errors.aceiteTermoInscricao && String(errors.aceiteTermoInscricao.message)}</FormErrorMessage>
-            </FormControl>
+          <FormControl isInvalid={!!errors.aceiteTermoCiencia}>
+            <Checkbox
+              id="aceiteTermoCiencia"
+              {...register('aceiteTermoCiencia', { required: 'Você deve aceitar o Termo de Ciência' })}
+            >
+              Eu li e aceito o <Link href="https://drive.google.com/file/d/1uRIViYS0y9Ji1QvbPcN12_mOpcisjxD1/view?usp=sharing" isExternal color="blue.500">Termo de Ciência</Link> (Obrigatório)
+            </Checkbox>
+            <FormErrorMessage>{errors.aceiteTermoCiencia && String(errors.aceiteTermoCiencia.message)}</FormErrorMessage>
+            <Text fontSize="xs" color="gray.500" mt={1}>
+              Refere-se ao questionário e veracidade das informações.
+            </Text>
+          </FormControl>
+
+          <FormControl isInvalid={!!errors.aceiteTermoInscricao}>
+            <Checkbox
+              id="aceiteTermoInscricao"
+              {...register('aceiteTermoInscricao', { required: 'Você deve aceitar o Termo de Inscrição' })}
+            >
+              Eu li e aceito o <Link href="https://drive.google.com/file/d/1fHvtwtkWgH0RLD5lyw4TLRdQ9pEfGBui/view?usp=sharing" isExternal color="blue.500">
+                Termo de Inscrição <Icon as={ExternalLinkIcon} mx="2px" />
+              </Link> (Obrigatório)
+            </Checkbox>
+            <FormErrorMessage>{errors.aceiteTermoInscricao && String(errors.aceiteTermoInscricao.message)}</FormErrorMessage>
+          </FormControl>
         </VStack>
 
 
         <Divider />
-        
+
         <Flex justify="space-between" pt={4}>
           <Button onClick={onBack} variant="outline" isDisabled={isSubmitting}>
             Voltar
