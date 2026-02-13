@@ -67,7 +67,7 @@ export function PixDisplayModal({ isOpen, onClose, pixData, status }: PixDisplay
       <ModalOverlay />
       <ModalContent p={4}>
         <ModalHeader textAlign="center">Finalize sua Inscrição</ModalHeader>
-        {/* Só permite fechar se o pagamento ainda estiver pendente */}
+        {/* Só permite fechar se o pagamento ainda estiver pendente testesststst */}
         <ModalCloseButton isDisabled={status !== 'PENDENTE'} />
         <ModalBody>
           
