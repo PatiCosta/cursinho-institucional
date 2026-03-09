@@ -9,11 +9,11 @@ import {
     MenuButton,     // Novo
     MenuList,       // Novo
     MenuItem,       // Novo
-    Icon,
-    Alert,
-    AlertDescription,
-    AlertIcon,
-    AlertTitle
+    Icon
+
+
+
+
 } from "@chakra-ui/react";
 import { ArrowCircleUpRight, ArrowRight } from "phosphor-react";
 import { ChevronDownIcon } from "@chakra-ui/icons"; // Novo
@@ -84,29 +84,29 @@ export function Main() {
                     Cursinho FEAUSP está em constante aperfeiçoamento para proporcionar o melhor ensino e também a melhor experiência a todos os envolvidos no projeto.
                 </Text>
 
-                {/* --- AVISO DE SUSPENSÃO TEMPORÁRIA --- */}
-                <Alert
-                    status='warning'
-                    variant='subtle'
-                    flexDirection='column'
-                    alignItems='center'
-                    justifyContent='center'
-                    textAlign='center'
-                    borderRadius='md'
-                    mt={6}
-                    border="1px solid"
-                    borderColor="orange.200"
-                    maxW={{base:'sm', lg:'90%'}}
-                >
-                    <AlertIcon boxSize='40px' mr={0} />
-                    <AlertTitle mt={4} mb={1} fontSize='lg'>
-                        Atenção: Inscrições via PIX e Cartão no site temporariamente suspensas
-                    </AlertTitle>
-                    <AlertDescription >
-                        <br></br>
-                        No momento, as inscrições estão sendo realizadas <strong>apenas via Sympla</strong>. No entanto, quem já realizou a inscrição pelo site <strong>não será prejudicado de forma alguma</strong> e sua vaga está garantida.
-                    </AlertDescription>
-                </Alert>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 <Image
                     src={'img/up-arrow.png'}

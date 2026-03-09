@@ -69,9 +69,9 @@ export function Main({ stripeProductID, id, title, color, description, dateSched
 
                         </MenuButton>
                         <MenuList bgColor='gray.50' p={2} >
-                            {/* <MenuItem as={Link} href="/inscricoes" bgColor='gray.50' fontWeight={'semibold'} _hover={{ textDecor: 'none', bgColor: 'blue.600', color: 'gray.50', transition: '300ms' }} borderRadius={8}>
+                            <MenuItem as={Link} href="/inscricoes" bgColor='gray.50' fontWeight={'semibold'} _hover={{ textDecor: 'none', bgColor: 'blue.600', color: 'gray.50', transition: '300ms' }} borderRadius={8}>
                                 <Flex alignItems={'center'} gap={2} justifyContent={'center'} fontWeight='bold' letterSpacing={.5}>Inscrição via PIX ou Cartão (sem taxa)</Flex>
-                            </MenuItem> */}
+                            </MenuItem>
                             <MenuItem as={Link}
                                 href={
                                     title === 'Turma de Semana Intensiva'
@@ -345,9 +345,9 @@ export function Main({ stripeProductID, id, title, color, description, dateSched
 
                         </MenuButton>
                         <MenuList bgColor='gray.50' p={2} fontSize={16}>
-                            {/* <MenuItem as={Link} href="/inscricoes" bgColor='gray.50' fontWeight={'semibold'} _hover={{ textDecor: 'none', bgColor: 'blue.600', color: 'gray.50', transition: '300ms' }} borderRadius={8}>
+                            <MenuItem as={Link} href="/inscricoes" bgColor='gray.50' fontWeight={'semibold'} _hover={{ textDecor: 'none', bgColor: 'blue.600', color: 'gray.50', transition: '300ms' }} borderRadius={8}>
                                 <Flex alignItems={'center'} gap={2} justifyContent={'center'} fontWeight='bold' letterSpacing={.5}>Inscrição via PIX ou Cartão (sem taxa)</Flex>
-                            </MenuItem> */}
+                            </MenuItem>
                             <MenuItem as={Link}
                                 href={
                                     title === 'Turma de Semana Intensiva'
@@ -371,5 +371,4 @@ export function Main({ stripeProductID, id, title, color, description, dateSched
 
 
         </Box>
-    )
-}
+    )}

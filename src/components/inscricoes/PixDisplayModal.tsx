@@ -67,10 +67,10 @@ export function PixDisplayModal({ isOpen, onClose, pixData, status }: PixDisplay
       <ModalOverlay />
       <ModalContent p={4}>
         <ModalHeader textAlign="center">Finalize sua Inscrição</ModalHeader>
-        {/* Só permite fechar se o pagamento ainda estiver pendente testesststst */}
+        {/* Só permite fechar se o pagamento ainda estiver pendente */}
         <ModalCloseButton isDisabled={status !== 'PENDENTE'} />
         <ModalBody>
-          
+
           {/* TELA DE SUCESSO */}
           {status === 'CONCLUIDA' ? (
             <VStack spacing={6} my={8}>
@@ -79,13 +79,13 @@ export function PixDisplayModal({ isOpen, onClose, pixData, status }: PixDisplay
                 <Text textAlign="center">Sua inscrição foi recebida. Você será redirecionado em instantes...</Text>
             </VStack>
           ) : (
-            
+
             /* TELA DE PAGAMENTO (PENDENTE) */
             <VStack spacing={6}>
               <Text textAlign="center">
                 Pague com PIX para confirmar. Aponte a câmera do seu celular para o QR Code ou use o código "copia e cola".
               </Text>
-              
+
               <Center>
                 <Box border="2px solid" borderColor="gray.300" borderRadius="md" p={2}>
                   <QRCodeSVG value={pixData.qrCodePayload} size={256} />
@@ -127,4 +127,3 @@ export function PixDisplayModal({ isOpen, onClose, pixData, status }: PixDisplay
     </Modal>
   );
 }
-
