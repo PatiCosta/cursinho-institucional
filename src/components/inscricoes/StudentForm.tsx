@@ -492,10 +492,9 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
               id="aceiteTermoInscricao"
               {...register('aceiteTermoInscricao', { required: 'Você deve aceitar o Termo de Inscrição' })}
             >
-              Eu li e aceito o <Link href={selectedTurma.documents?.find(doc => doc.title === 'Termo de Inscrição')?.downloadLink} isExternal color="blue.500">
-                
+              <Link href={selectedTurma.documents?.find(doc => doc.title.includes('Inscrição'))?.downloadLink} isExternal color="blue.500">
                 Termo de Inscrição <Icon as={ExternalLinkIcon} mx="2px" />
-              </Link> (Obrigatório)
+              </Link>(Obrigatório)
             </Checkbox>
             <FormErrorMessage>{errors.aceiteTermoInscricao && String(errors.aceiteTermoInscricao.message)}</FormErrorMessage>
           </FormControl>
