@@ -41,13 +41,19 @@ interface MainProps {
 
 // Interface para os dados do PIX que esperamos receber do backend
 interface PixData {
-  txid: string; // O txid é essencial para o polling
+  txid: string;
   qrCodePayload: string;
   copiaECola: string;
   valor: string;
 }
 
+interface StoredPix extends PixData {
+  expiresAt: number;
+}
+
 type PaymentStatus = 'PENDENTE' | 'CONCLUIDA' | 'ERRO';
+
+const PENDING_PIX_KEY = 'cursinho_pending_pix';
 
 
 export function Main({ schoolClassList }: MainProps) {
@@ -75,8 +81,41 @@ export function Main({ schoolClassList }: MainProps) {
     if (storedPass === 'cursinho2025') {
       setIsAuthenticated(true);
     }
-    setIsCheckingAuth(false); // Termina a checagem
+    setIsCheckingAuth(false);
   }, []);
+
+  // 2. Ao terminar a checagem de auth, verifica se existe um PIX pendente no localStorage
+  useEffect(() => {
+    if (isCheckingAuth) return;
+    try {
+      const stored = localStorage.getItem(PENDING_PIX_KEY);
+      if (!stored) return;
+      const data: StoredPix = JSON.parse(stored);
+      if (data.expiresAt < Date.now()) {
+        localStorage.removeItem(PENDING_PIX_KEY);
+        return;
+      }
+      // Verifica status atual antes de exibir o modal
+      axios.get(`${process.env.NEXT_PUBLIC_API_URL}/inscriptions/status/${data.txid}`)
+        .then(response => {
+          if (response.data.status === 'CONCLUIDA') {
+            localStorage.removeItem(PENDING_PIX_KEY);
+          } else {
+            setPixData(data);
+            setIsPixModalOpen(true);
+            setPaymentStatus('PENDENTE');
+          }
+        })
+        .catch(() => {
+          // Se falhar a checagem, exibe o modal mesmo assim (melhor que sumir com o PIX)
+          setPixData(data);
+          setIsPixModalOpen(true);
+          setPaymentStatus('PENDENTE');
+        });
+    } catch {
+      localStorage.removeItem(PENDING_PIX_KEY);
+    }
+  }, [isCheckingAuth]);
 
   // 2. Função para tentar autenticar
   const handlePasswordSubmit = () => {
@@ -143,8 +182,11 @@ export function Main({ schoolClassList }: MainProps) {
 
       } else {
         // --- FLUXO PIX (SANTANDER) ---
-        console.log("Iniciando pagamento via PIX...");
         const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/inscriptions`, payload);
+
+        // Persiste no localStorage para sobreviver a F5 (expira em 24h igual ao PIX)
+        const storedPix: StoredPix = { ...response.data, expiresAt: Date.now() + 24 * 60 * 60 * 1000 };
+        localStorage.setItem(PENDING_PIX_KEY, JSON.stringify(storedPix));
 
         setPixData(response.data);
         setIsPixModalOpen(true);
@@ -156,6 +198,19 @@ export function Main({ schoolClassList }: MainProps) {
       let errorTitle = 'Erro na Inscrição.';
 
       if (error.response?.status === 409) {
+        // Se há um PIX pendente salvo, retoma ele em vez de mostrar erro
+        try {
+          const stored = localStorage.getItem(PENDING_PIX_KEY);
+          if (stored) {
+            const data: StoredPix = JSON.parse(stored);
+            if (data.expiresAt > Date.now()) {
+              setPixData(data);
+              setIsPixModalOpen(true);
+              setPaymentStatus('PENDENTE');
+              return;
+            }
+          }
+        } catch {}
         errorTitle = 'Inscrição Duplicada';
         errorMessage = error.response.data.details || "Você já está inscrito para esta turma.";
       } else {
@@ -218,7 +273,8 @@ export function Main({ schoolClassList }: MainProps) {
   // **LÓGICA DE REDIRECIONAMENTO MOVIDA PARA CÁ**
   useEffect(() => {
     if (paymentStatus === 'CONCLUIDA') {
-      setIsPixModalOpen(true); // Garante que o modal esteja aberto para mostrar "sucesso"
+      localStorage.removeItem(PENDING_PIX_KEY);
+      setIsPixModalOpen(true);
 
       toast({
         title: 'Pagamento confirmado!',
