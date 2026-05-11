@@ -46,8 +46,6 @@ export function SubscribeForm({id, color, title, price, stripeProductID}: Subscr
     const [name, setName] = useState<string>()
     const [gender, setGender] = useState<string | undefined>()
     const [birth, setBirth] = useState<string>(format(new Date, 'yyyy-MM-dd'))
-    const [rg, setRg] = useState<string | undefined>()
-    const [ufrg, setUfrg] = useState<string>("Não informado")
     const [cpf, setCpf] = useState<string>("")
     const [selfDeclaration, setSelfDeclaration] = useState<string | undefined>()
     const [metUsMethod, setMetUsMethod] = useState<string | undefined>()
@@ -118,8 +116,6 @@ export function SubscribeForm({id, color, title, price, stripeProductID}: Subscr
           const data = {
             name: name,
             email: email,
-            rg: rg === undefined ? null : rg,
-            ufrg: ufrg,
             phoneNumber: phoneNumber,
             gender: gender,
             birth: format(new Date(birth.replaceAll('-', '/')), 'dd/MM/yyyy'),
@@ -216,10 +212,6 @@ export function SubscribeForm({id, color, title, price, stripeProductID}: Subscr
                                     setBirth={setBirth}
                                     gender={gender}
                                     setGender={setGender}
-                                    rg={rg}
-                                    setRg={setRg}
-                                    ufrg={ufrg}
-                                    setUfrg={setUfrg}
                                     cpf={cpf}
                                     exStudent={exStudent}
                                     metUsMethod={metUsMethod}

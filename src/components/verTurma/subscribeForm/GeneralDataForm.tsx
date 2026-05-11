@@ -1,6 +1,4 @@
 import { formatCPF, parseCPF } from "@/utils/cpfUtils";
-import { formatNumeric } from "@/utils/formatNumeric";
-import { stateOptions } from "@/utils/stateOptions";
 import { FormControl, FormLabel, Grid, Input, Radio, RadioGroup, Select, Stack, Text, Textarea } from "@chakra-ui/react";
 import { Dispatch, SetStateAction } from "react";
 
@@ -11,10 +9,6 @@ interface GeneralDataFormProps {
     setGender: Dispatch<SetStateAction<string | undefined>>
     birth: string
     setBirth: Dispatch<SetStateAction<string>>
-    rg: string | undefined
-    setRg: Dispatch<SetStateAction<string | undefined>>
-    ufrg: string
-    setUfrg: Dispatch<SetStateAction<string>>
     cpf: string
     setCpf: Dispatch<SetStateAction<string>>
     selfDeclaration: string | undefined
@@ -32,10 +26,6 @@ export function GeneralDataForm({
     setGender,
     birth,
     setBirth,
-    rg,
-    setRg,
-    ufrg,
-    setUfrg,
     cpf,
     setCpf,
     selfDeclaration,
@@ -90,28 +80,7 @@ export function GeneralDataForm({
                         isRequired
                     />   
                 </FormControl>
-                <Input 
-                    type="text" 
-                    name="rg" 
-                    placeholder="RG (opcional)" 
-                    value={rg ? formatNumeric(rg) : rg}
-                    onChange={(e) => setRg(formatNumeric(e.target.value))} 
-                    borderTop='0'
-                    borderRadius='0'
-                />
-                <Select 
-                    name="ufrg" 
-                    placeholder="Estado de emissão do RG" 
-                    value={ufrg} 
-                    onChange={(e) => setUfrg(e.target.value === '' ? 'Não informado' : e.target.value)}
-                    borderLeft={{base: '1', lg: '0'}}
-                    borderTop='0'
-                    isDisabled={rg === ''}
-                    borderRadius='0'
-                >
-                    {stateOptions.map(state => <option key={state} value={state}>{state}</option>)}
-                </Select>   
-                <Input 
+                <Input
                     type="text" 
                     name="cpf" 
                     placeholder="CPF" 

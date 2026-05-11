@@ -36,8 +36,6 @@ interface StudentFormData {
   gender: string;
   emailResponsavel?: string;
   cpf: string;
-  rg: string;
-  ufrg: string;
   phoneNumber: string;
   isPhoneWhatsapp: boolean;
   zipCode: string;
@@ -245,45 +243,6 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
               placeholder="000.000.000-00"
             />
             <FormErrorMessage>{errors.cpf && String(errors.cpf.message)}</FormErrorMessage>
-          </FormControl>
-          <FormControl isInvalid={!!errors.rg}>
-            <FormLabel htmlFor="rg">RG</FormLabel>
-            <Input bg='gray.50' border={'1px solid gray'} id="rg" {...register('rg', { required: 'RG é obrigatório' })} />
-            <FormErrorMessage>{errors.rg && String(errors.rg.message)}</FormErrorMessage>
-          </FormControl>
-          <FormControl isInvalid={!!errors.ufrg}>
-            <FormLabel htmlFor="ufrg">UF do RG</FormLabel>
-            <Select bg='gray.50' border={'1px solid gray'} id="ufrg" {...register('ufrg', { required: 'UF do RG é obrigatória' })}>
-              <option value="">Selecione a UF</option>
-              <option value="AC">Acre</option>
-              <option value="AL">Alagoas</option>
-              <option value="AP">Amapá</option>
-              <option value="AM">Amazonas</option>
-              <option value="BA">Bahia</option>
-              <option value="CE">Ceará</option>
-              <option value="DF">Distrito Federal</option>
-              <option value="ES">Espírito Santo</option>
-              <option value="GO">Goiás</option>
-              <option value="MA">Maranhão</option>
-              <option value="MT">Mato Grosso</option>
-              <option value="MS">Mato Grosso do Sul</option>
-              <option value="MG">Minas Gerais</option>
-              <option value="PA">Pará</option>
-              <option value="PB">Paraíba</option>
-              <option value="PR">Paraná</option>
-              <option value="PE">Pernambuco</option>
-              <option value="PI">Piauí</option>
-              <option value="RJ">Rio de Janeiro</option>
-              <option value="RN">Rio Grande do Norte</option>
-              <option value="RS">Rio Grande do Sul</option>
-              <option value="RO">Rondônia</option>
-              <option value="RR">Roraima</option>
-              <option value="SC">Santa Catarina</option>
-              <option value="SP">São Paulo</option>
-              <option value="SE">Sergipe</option>
-              <option value="TO">Tocantins</option>
-            </Select>
-            <FormErrorMessage>{errors.ufrg && String(errors.ufrg.message)}</FormErrorMessage>
           </FormControl>
         </SimpleGrid>
 

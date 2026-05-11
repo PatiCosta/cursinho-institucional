@@ -26,8 +26,6 @@ export interface Student {
   zipCode: string // ok
 
   cpf: string // ok
-  rg?: string // ok
-  ufrg?: string // ok
   selfDeclaration: string // ok
   oldSchool: string // ok
   oldSchoolAdress: string // ok
