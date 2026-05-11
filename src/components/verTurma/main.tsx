@@ -51,45 +51,23 @@ export function Main({ stripeProductID, id, title, color, description, dateSched
                         {description}
                     </Text>
 
-                    <Menu>
-                        <MenuButton
-                            position='absolute'
-                            bottom='0px'
-                            py={12}
-                            px={16}
-                            bgColor='gray.50'
-                            display={{ base: 'none', lg: 'flex' }}
-                            gap={4}
-                            fontSize={20}
-                            borderRadius='2xl'
-                            _hover={{ bgColor: 'gray.100' }}
-
-                        >
-                            <Text fontWeight='bolder' letterSpacing={.5}>Quero me inscrever!</Text>
-
-                        </MenuButton>
-                        <MenuList bgColor='gray.50' p={2} >
-                            <MenuItem as={Link} href="/inscricoes" bgColor='gray.50' fontWeight={'semibold'} _hover={{ textDecor: 'none', bgColor: 'blue.600', color: 'gray.50', transition: '300ms' }} borderRadius={8}>
-                                <Flex alignItems={'center'} gap={2} justifyContent={'center'} fontWeight='bold' letterSpacing={.5}>Inscrição via PIX ou Cartão (sem taxa)</Flex>
-                            </MenuItem>
-                            <MenuItem as={Link}
-                                href={
-                                    title === 'Turma de Semana Intensiva'
-                                        ? 'https://www.sympla.com.br/turma-de-semana-intensiva-tsi---cursinho-feausp-2024__2488754'
-                                        : title === 'Turma de Sábado'
-                                            ? 'https://www.sympla.com.br/evento/turma-de-sabado-tsa-cursinho-feausp-2026/3211815'
-                                            : title === 'Turma de Sábado de Maio'
-                                                ? 'https://www.sympla.com.br/evento/turma-de-sabado-de-maio-tsm-cursinho-feausp-2026/3283819'
-                                                // ? 'https://www.sympla.com.br/evento/turma-de-sabado-de-maio-tsm-cursinho-feausp-2024/2359347?_gl=1*1420re5*_ga*OTM4NzEzMDA5LjE3MDg5OTExMDY.*_ga_KXH10SQTZF*MTcwOTA4NzU0MC40LjEuMTcwOTA4Nzc2Ny41NC4wLjEzNDUxNzQxNjE'
-                                                : title === 'Turma de Sábado de Maio'
-                                                    ? 'Turma de Semana'
-                                                    : 'https://www.sympla.com.br/evento/turma-de-sabado-de-maio-tsm-cursinho-feausp-2026/3283819'
-                                }
-                                bgColor='gray.50' fontWeight={'semibold'} _hover={{ textDecor: 'none', bgColor: 'blue.600', color: 'gray.50', transition: '300ms' }} borderRadius={8}>
-                                <Flex alignItems={'center'} gap={2} justifyContent={'center'} fontWeight='bold' letterSpacing={.5}> Inscrição via Sympla (com taxa)</Flex>
-                            </MenuItem>
-                        </MenuList>
-                    </Menu>
+                    <Link
+                        href="/inscricoes"
+                        position='absolute'
+                        bottom='0px'
+                        py={12}
+                        px={16}
+                        bgColor='gray.50'
+                        display={{ base: 'none', lg: 'flex' }}
+                        gap={4}
+                        fontSize={20}
+                        borderRadius='2xl'
+                        fontWeight='bolder'
+                        letterSpacing={.5}
+                        _hover={{ bgColor: 'gray.100', textDecor: 'none' }}
+                    >
+                        Quero me inscrever!
+                    </Link>
                     {/* <Link
                         position='absolute'
                         bottom='0px'
@@ -330,42 +308,17 @@ export function Main({ stripeProductID, id, title, color, description, dateSched
                     boxShadow='2xl'
 
                 >
-                    <Menu>
-                        <MenuButton
-                            bgColor='gray.50'
-                            gap={4}
-                            fontSize={20}
-                            borderRadius='2xl'
-                            _hover={{ bgColor: 'gray.100' }}
-                            alignItems={'center'}
-
-
-                        >
-                            <Text fontWeight='bolder' w='100%' textAlign={'center'} letterSpacing={.5} mx='auto'>Quero me inscrever!</Text>
-
-                        </MenuButton>
-                        <MenuList bgColor='gray.50' p={2} fontSize={16}>
-                            <MenuItem as={Link} href="/inscricoes" bgColor='gray.50' fontWeight={'semibold'} _hover={{ textDecor: 'none', bgColor: 'blue.600', color: 'gray.50', transition: '300ms' }} borderRadius={8}>
-                                <Flex alignItems={'center'} gap={2} justifyContent={'center'} fontWeight='bold' letterSpacing={.5}>Inscrição via PIX ou Cartão (sem taxa)</Flex>
-                            </MenuItem>
-                            <MenuItem as={Link}
-                                href={
-                                    title === 'Turma de Semana Intensiva'
-                                        ? 'https://www.sympla.com.br/turma-de-semana-intensiva-tsi---cursinho-feausp-2024__2488754'
-                                        : title === 'Turma de Sábado'
-                                            ? 'https://www.sympla.com.br/evento/turma-de-sabado-tsa-cursinho-feausp-2026/3211815'
-                                            : title === 'Turma de Sábado de Maio'
-                                                ? 'https://www.sympla.com.br/evento/turma-de-sabado-de-maio-tsm-cursinho-feausp-2026/3283819'
-                                                // ? 'https://www.sympla.com.br/evento/turma-de-sabado-de-maio-tsm-cursinho-feausp-2024/2359347?_gl=1*1420re5*_ga*OTM4NzEzMDA5LjE3MDg5OTExMDY.*_ga_KXH10SQTZF*MTcwOTA4NzU0MC40LjEuMTcwOTA4Nzc2Ny41NC4wLjEzNDUxNzQxNjE'
-                                                : title === 'Turma de Sábado de Maio'
-                                                    ? 'Turma de Semana'
-                                                    : 'https://www.sympla.com.br/evento/turma-de-sabado-de-maio-tsm-cursinho-feausp-2026/3283819'
-                                }
-                                bgColor='gray.50' fontWeight={'semibold'} _hover={{ textDecor: 'none', bgColor: 'blue.600', color: 'gray.50', transition: '300ms' }} borderRadius={8}>
-                                <Flex alignItems={'center'} gap={2} justifyContent={'center'} fontWeight='bold' letterSpacing={.5}> Inscrição via Sympla (com taxa)</Flex>
-                            </MenuItem>
-                        </MenuList>
-                    </Menu>
+                    <Link
+                        href="/inscricoes"
+                        w='100%'
+                        textAlign='center'
+                        fontWeight='bolder'
+                        fontSize={20}
+                        letterSpacing={.5}
+                        _hover={{ textDecor: 'none', opacity: 0.85 }}
+                    >
+                        Quero me inscrever!
+                    </Link>
                 </Flex>
             </Flex>
 

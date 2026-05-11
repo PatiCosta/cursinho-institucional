@@ -37,56 +37,25 @@ export function SubscribeSchoolClassFooter() {
                 </Text>
 
 
-                <Menu>
-                    <MenuButton
-
-                    >
-                        <Button
-                            as={Link}
-                            href={`/turmas`}
-                            w='fit-content'
-                            mt={{ base: 2, lg: 6 }}
-                            mx={{ base: 'auto', lg: 0 }}
-                            bgColor='gray.50'
-                            borderRadius='2xl'
-                            size={{ base: 'md', lg: 'lg' }}
-                            display={{ base: 'none', lg: 'flex' }}
-                            alignItems='center'
-                            gap={2}
-                            fontSize='24px'
-                            fontWeight='regular'
-                            _hover={{
-                                opacity: 0.9
-                            }}
-                            onClick={() => window.location.pathname === '/turmas' ? window.scrollTo({ top: 60, behavior: 'smooth' }) : window.location.pathname = '/turmas'}
-                        >
-                            <Text>Inscreva-se agora!</Text>
-                            <ArrowCircleUpRight size={28} color="#023047" weight="fill" />
-                        </Button>
-
-                    </MenuButton>
-                    <MenuList bgColor='gray.50' p={2} >
-                        <MenuItem as={Link} href="/inscricoes" bgColor='gray.50' fontWeight={'semibold'} _hover={{ textDecor: 'none', bgColor: 'blue.600', color: 'gray.50', transition: '300ms' }} borderRadius={8}>
-                            <Flex alignItems={'center'} gap={2} justifyContent={'center'} fontWeight='bold' letterSpacing={.5}>Inscrição via PIX ou Cartão (sem taxa)</Flex>
-                        </MenuItem>
-                        <MenuItem as={Link}
-                            href={
-                                title === 'Turma de Semana Intensiva'
-                                    ? 'https://www.sympla.com.br/turma-de-semana-intensiva-tsi---cursinho-feausp-2024__2488754'
-                                    : title === 'Turma de Sábado'
-                                        ? 'https://www.sympla.com.br/evento/turma-de-sabado-tsa-cursinho-feausp-2026/3211815'
-                                        : title === 'Turma de Sábado de Maio'
-                                            ? 'https://www.sympla.com.br/evento/turma-de-sabado-de-maio-tsm-cursinho-feausp-2026/3283819'
-                                            // ? 'https://www.sympla.com.br/evento/turma-de-sabado-de-maio-tsm-cursinho-feausp-2024/2359347?_gl=1*1420re5*_ga*OTM4NzEzMDA5LjE3MDg5OTExMDY.*_ga_KXH10SQTZF*MTcwOTA4NzU0MC40LjEuMTcwOTA4Nzc2Ny41NC4wLjEzNDUxNzQxNjE'
-                                            : title === 'Turma de Sábado de Maio'
-                                                ? 'Turma de Semana'
-                                                : 'https://www.sympla.com.br/evento/turma-de-sabado-de-maio-tsm-cursinho-feausp-2026/3283819'
-                            }
-                            bgColor='gray.50' fontWeight={'semibold'} _hover={{ textDecor: 'none', bgColor: 'blue.600', color: 'gray.50', transition: '300ms' }} borderRadius={8}>
-                            <Flex alignItems={'center'} gap={2} justifyContent={'center'} fontWeight='bold' letterSpacing={.5}> Inscrição via Sympla (com taxa)</Flex>
-                        </MenuItem>
-                    </MenuList>
-                </Menu>
+                <Button
+                    as={Link}
+                    href='/inscricoes'
+                    w='fit-content'
+                    mt={{ base: 2, lg: 6 }}
+                    mx={{ base: 'auto', lg: 0 }}
+                    bgColor='gray.50'
+                    borderRadius='2xl'
+                    size={{ base: 'md', lg: 'lg' }}
+                    display={{ base: 'none', lg: 'flex' }}
+                    alignItems='center'
+                    gap={2}
+                    fontSize='24px'
+                    fontWeight='regular'
+                    _hover={{ opacity: 0.9, textDecor: 'none' }}
+                >
+                    <Text>Inscreva-se agora!</Text>
+                    <ArrowCircleUpRight size={28} color="#023047" weight="fill" />
+                </Button>
             </Box>
         </Flex>
     )
