@@ -19,12 +19,12 @@ export function InfoBar() {
         bgColor='yellow.300'
       >
         <Box textAlign='center'>
-          <Text fontWeight='bold' fontSize='40px'>46</Text>
+          <Text fontWeight='bold' fontSize='40px'>49</Text>
           <Text fontSize='18px'>professores</Text>
         </Box>
         <Box bgColor='blue.800' w='12px' h='12px' borderRadius='100%' />
         <Box textAlign='center'>
-          <Text fontWeight='bold' fontSize='40px'>8</Text>
+          <Text fontWeight='bold' fontSize='40px'>5</Text>
           <Text fontSize='18px'>plantonistas</Text>
         </Box>
         <Box bgColor='blue.800' w='12px' h='12px' borderRadius='100%' />
@@ -34,7 +34,7 @@ export function InfoBar() {
         </Box>
         <Box bgColor='blue.800' w='12px' h='12px' borderRadius='100%' />
         <Box textAlign='center'>
-          <Text fontWeight='bold' fontSize='40px'>480</Text>
+          <Text fontWeight='bold' fontSize='40px'>420</Text>
           <Text fontSize='18px'>alunos</Text>
         </Box>
         <Box bgColor='transparent' w='12px' h='12px' borderRadius='100%' />
@@ -83,12 +83,12 @@ export function InfoBar() {
         justifyItems='center'
       >
         <Box textAlign='center'>
-          <Text fontWeight='bold' fontSize={32}>32</Text>
+          <Text fontWeight='bold' fontSize={32}>49</Text>
           <Text fontSize={14}>professores</Text>
         </Box>
         <Box bgColor='blue.800' w='12px' h='12px' borderRadius='100%' alignSelf='center' />
         <Box textAlign='center'>
-          <Text fontWeight='bold' fontSize={32}>12</Text>
+          <Text fontWeight='bold' fontSize={32}>5</Text>
           <Text fontSize={14}>plantonistas</Text>
         </Box>
       </Grid>
@@ -104,7 +104,7 @@ export function InfoBar() {
         </Box>
         <Box bgColor='blue.800' w='12px' h='12px' borderRadius='100%' />
         <Box textAlign='center'>
-          <Text fontWeight='bold' fontSize={32}>480</Text>
+          <Text fontWeight='bold' fontSize={32}>420</Text>
           <Text fontSize={14}>alunos</Text>
         </Box>
       </Grid>

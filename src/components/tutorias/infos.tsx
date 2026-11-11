@@ -30,9 +30,9 @@ export function Infos() {
                         Se você já for aluno do Cursinho, comunique a Coordenação, para que você seja alocado. Caso você seja graduando da USP, ou ex-aluno do Cursinho estudando em qualquer universidade, pode se tornar um tutor e impactar a vida dos alunos!
                     </Text>
                     <Text fontSize={{base: 14, lg: 16}} mt={8}>
-                        Inscreva-se no Processo Seletivo de Novos Tutores{' '}
-                        <Link href='https://forms.gle/1p5zxwVtddx36oqg6https://forms.gle/1p5zxwVtddx36oqg6' isExternal fontWeight='bold'>
-                            aqui <ExternalLinkIcon mx='2px' />
+                        Acompanhe o Processo Seletivo de Novos Tutores no Instagram{' '}
+                        <Link href='https://www.instagram.com/psnt.cursinhofeausp' isExternal fontWeight='bold'>
+                            @psnt.cursinhofeausp <ExternalLinkIcon mx='2px' />
                         </Link>
                     </Text>
                 </Box>

@@ -4,11 +4,11 @@ import { Carousel } from "../Carousel";
 import { ColumnInfoLabel } from "../InfoLabel/column";
 import { RowInfoLabel } from "../InfoLabel/row";
 
-const img1 = 'img/semana_do_cursinho_1.png'
-const img2 = 'img/semana_do_cursinho_2.png'
-const img3 = 'img/semana_do_cursinho_3.png'
-const img4 = 'img/semana_do_cursinho_4.png'
-const img5 = 'img/semana_do_cursinho_5.png'
+const img1 = 'img/semana_do_cursinho_1.jpg'
+const img2 = 'img/semana_do_cursinho_2.jpg'
+const img3 = 'img/semana_do_cursinho_3.jpg'
+const img4 = 'img/semana_do_cursinho_4.jpg'
+const img5 = 'img/semana_do_cursinho_5.jpg'
 
 
 export function SemanaDoCursinho() {
@@ -32,7 +32,8 @@ export function SemanaDoCursinho() {
                             <>
                                 <Text>A Semana do Cursinho ocorre ao longo de uma Semana de Setembro e nosso intuito com essa semana é criar eventos em dias diferentes com o intuito de arrecadar dinheiro para pagar as taxas de inscrição dos vestibulares dos alunos.</Text>
                                 <Text>Vendemos comidas, organizamos bingos com prêmios e nosso público alvo são os alunos da graduação e quem quiser contribuir para nosso propósito.</Text>
-                                <Text>Ano passado a Semana se encerrou com uma palestra com o cantor Rincon Sapiência e, com todo dinheiro arrecadado, fomos capazes de abarcar todos os pedidos de ajuda com as taxas.</Text>
+                                <Text>Na edição de 2025, o evento reuniu a palestra de Mario Sergio Cortella ("A Coragem Segue a Vida"), a presença das influenciadoras de Relações Internacionais Fernanda Concon e Martina Giovanetti, e a realização de uma corrida solidária. Em 2026, a programação destacou-se pela realização de uma aula de yoga e pela palestra com Olívia Sensata.</Text>
+                                <Text>Com todo o dinheiro arrecadado, fomos capazes de abarcar todos os pedidos de ajuda com as taxas.</Text>
                             </>
                         }
                         alignItems='flex-start'
@@ -43,7 +44,8 @@ export function SemanaDoCursinho() {
                             <>
                                 <Text>A Semana do Cursinho ocorre ao longo de uma Semana de Setembro e nosso intuito com essa semana é criar eventos em dias diferentes com o intuito de arrecadar dinheiro para pagar as taxas de inscrição dos vestibulares dos alunos.</Text>
                                 <Text>Vendemos comidas, organizamos bingos com prêmios e nosso público alvo são os alunos da graduação e quem quiser contribuir para nosso propósito.</Text>
-                                <Text>Ano passado a Semana se encerrou com uma palestra com o cantor Rincon Sapiência e, com todo dinheiro arrecadado, fomos capazes de abarcar todos os pedidos de ajuda com as taxas.</Text>
+                                <Text>Na edição de 2025, o evento reuniu a palestra de Mario Sergio Cortella ("A Coragem Segue a Vida"), a presença das influenciadoras de Relações Internacionais Fernanda Concon e Martina Giovanetti, e a realização de uma corrida solidária. Em 2026, a programação destacou-se pela realização de uma aula de yoga e pela palestra com Olívia Sensata.</Text>
+                                <Text>Com todo o dinheiro arrecadado, fomos capazes de abarcar todos os pedidos de ajuda com as taxas.</Text>
                             </>
                         }
                         bgColor='yellow.400'

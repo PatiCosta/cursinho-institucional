@@ -112,7 +112,7 @@ export function CampaignChart() {
                     beneficiados
                 </Text>
                 <Text fontSize={{base: 12, lg: 14}} maxW='220px' fontWeight="light" color='gray.50'>
-                    *Por conta da pandemia, apenas 2 turmas foram abertas em 2020
+                    *Em especial, em 2025, houve uma redução no número de turmas.
                 </Text>
             </Box>
             <Grid
@@ -123,45 +123,6 @@ export function CampaignChart() {
                 gap={{base: 4, lg: 8}}
             >
                 <Box textAlign='center' bgColor='gray.50' px={{base: 8, lg: 12}} py={{base: 2, lg: 8}} h='100%'>
-                    <Box>
-                        <Text fontWeight='bold' fontSize={{base: 28, lg: 28}} color='blue.800'>2019</Text>
-                    </Box>
-                    <Stat mt={8}>
-                        <StatLabel>Fuvest</StatLabel>
-                        <StatNumber>51</StatNumber>
-                    </Stat>
-                </Box>
-                <Box textAlign='center' bgColor='gray.50' px={{base: 8, lg: 12}} py={{base: 2, lg: 8}} h='100%'>
-                    <Box>
-                        <Text fontWeight='bold' fontSize={{base: 28, lg: 28}} color='blue.800'>2020</Text>
-                    </Box>
-                    <Stat mt={8}>
-                        <StatLabel>Fuvest</StatLabel>
-                        <StatNumber>29</StatNumber>
-                    </Stat>
-                    <Stat mt={4}>
-                        <StatLabel>Unicamp</StatLabel>
-                        <StatNumber>7</StatNumber>
-                    </Stat>
-                </Box>
-                <Box textAlign='center' bgColor='gray.50' px={{base: 8, lg: 12}} py={{base: 2, lg: 8}}>
-                    <Box>
-                        <Text fontWeight='bold' fontSize={{base: 28, lg: 28}} color='blue.800'>2021</Text>
-                    </Box>
-                    <Stat mt={8}>
-                        <StatLabel>Fuvest</StatLabel>
-                        <StatNumber>59</StatNumber>
-                    </Stat>
-                    <Stat mt={4}>
-                        <StatLabel>Unicamp</StatLabel>
-                        <StatNumber>17</StatNumber>
-                    </Stat>
-                    <Stat mt={4}>
-                        <StatLabel>Enem</StatLabel>
-                        <StatNumber>14</StatNumber>
-                    </Stat>
-                </Box>
-                <Box textAlign='center' bgColor='gray.50' px={{base: 8, lg: 12}} py={{base: 2, lg: 8}}>
                     <Box>
                         <Text fontWeight='bold' fontSize={{base: 28, lg: 28}} color='blue.800'>2022</Text>
                     </Box>
@@ -176,6 +137,57 @@ export function CampaignChart() {
                     <Stat mt={4}>
                         <StatLabel>Enem</StatLabel>
                         <StatNumber>10</StatNumber>
+                    </Stat>
+                </Box>
+                <Box textAlign='center' bgColor='gray.50' px={{base: 8, lg: 12}} py={{base: 2, lg: 8}} h='100%'>
+                    <Box>
+                        <Text fontWeight='bold' fontSize={{base: 28, lg: 28}} color='blue.800'>2023</Text>
+                    </Box>
+                    <Stat mt={8}>
+                        <StatLabel>Fuvest</StatLabel>
+                        <StatNumber>78</StatNumber>
+                    </Stat>
+                    <Stat mt={4}>
+                        <StatLabel>Unicamp</StatLabel>
+                        <StatNumber>14</StatNumber>
+                    </Stat>
+                    <Stat mt={4}>
+                        <StatLabel>Enem</StatLabel>
+                        <StatNumber>3</StatNumber>
+                    </Stat>
+                </Box>
+                <Box textAlign='center' bgColor='gray.50' px={{base: 8, lg: 12}} py={{base: 2, lg: 8}} h='100%'>
+                    <Box>
+                        <Text fontWeight='bold' fontSize={{base: 28, lg: 28}} color='blue.800'>2024</Text>
+                    </Box>
+                    <Stat mt={8}>
+                        <StatLabel>Fuvest</StatLabel>
+                        <StatNumber>81</StatNumber>
+                    </Stat>
+                    <Stat mt={4}>
+                        <StatLabel>Unicamp</StatLabel>
+                        <StatNumber>11</StatNumber>
+                    </Stat>
+                    <Stat mt={4}>
+                        <StatLabel>Enem</StatLabel>
+                        <StatNumber>6</StatNumber>
+                    </Stat>
+                </Box>
+                <Box textAlign='center' bgColor='gray.50' px={{base: 8, lg: 12}} py={{base: 2, lg: 8}} h='100%'>
+                    <Box>
+                        <Text fontWeight='bold' fontSize={{base: 28, lg: 28}} color='blue.800'>2025*</Text>
+                    </Box>
+                    <Stat mt={8}>
+                        <StatLabel>Fuvest</StatLabel>
+                        <StatNumber>31</StatNumber>
+                    </Stat>
+                    <Stat mt={4}>
+                        <StatLabel>Unicamp</StatLabel>
+                        <StatNumber>6</StatNumber>
+                    </Stat>
+                    <Stat mt={4}>
+                        <StatLabel>Enem</StatLabel>
+                        <StatNumber>5</StatNumber>
                     </Stat>
                 </Box>
             </Grid>

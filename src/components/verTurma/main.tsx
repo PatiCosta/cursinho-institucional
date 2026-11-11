@@ -14,13 +14,17 @@ interface MainProps {
     whoCanParticipate: string
     subscriptionSchedule: string
     price: number
+    subscriptionStatus?: string
     id: string | undefined
     stripeProductID: string
 }
 
-export function Main({ stripeProductID, id, title, color, description, dateSchedule, hourSchedule, classContent, whoCanParticipate, subscriptionSchedule, price }: MainProps) {
+export function Main({ stripeProductID, id, title, color, description, dateSchedule, hourSchedule, classContent, whoCanParticipate, subscriptionSchedule, price, subscriptionStatus }: MainProps) {
     const isLg = useBreakpointValue({ base: false, sm: false, lg: true })
     const formattedPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', }).format(price / 100)
+    const isOpen = subscriptionStatus === undefined || subscriptionStatus === 'Aberto'
+    const statusText = isOpen ? 'abertas!' : subscriptionStatus === 'Fechado' ? 'encerradas!' : 'em breve!'
+    const priceText = price > 0 ? formattedPrice : 'a definir'
 
     return (
         <Box
@@ -58,7 +62,7 @@ export function Main({ stripeProductID, id, title, color, description, dateSched
                         py={12}
                         px={16}
                         bgColor='gray.50'
-                        display={{ base: 'none', lg: 'flex' }}
+                        display={isOpen ? { base: 'none', lg: 'flex' } : 'none'}
                         gap={4}
                         fontSize={20}
                         borderRadius='2xl'
@@ -118,8 +122,8 @@ export function Main({ stripeProductID, id, title, color, description, dateSched
                         <Flex alignItems='center' gap={4}>
                             <PencilSimpleLine size={48} color="#023047" weight="duotone" />
                             <Text fontSize={{ base: 20, lg: 24 }} fontWeight="bold">
-                                <Highlight query='abertas!' styles={{ bg: 'transparent', color: color }}>
-                                    Inscrições abertas!
+                                <Highlight query={statusText} styles={{ bg: 'transparent', color: color }}>
+                                    {`Inscrições ${statusText}`}
                                 </Highlight>
                             </Text>
                             <Box flex='1' h='2px' bgColor='blue.800'></Box>
@@ -142,7 +146,7 @@ export function Main({ stripeProductID, id, title, color, description, dateSched
                                 </Highlight>
                             </Text>
                             <Tag size='lg' variant='subtle' colorScheme='green' mr={{ base: 0, lg: 8 }}>
-                                valor da inscrição: {formattedPrice}
+                                valor da inscrição: {priceText}
                             </Tag>
                         </Flex>
                     </Box>
@@ -297,7 +301,7 @@ export function Main({ stripeProductID, id, title, color, description, dateSched
                 <Flex
                     position={'relative'}
                     bgColor='gray.50'
-                    display={{ base: 'flex', lg: 'none' }}
+                    display={isOpen ? { base: 'flex', lg: 'none' } : 'none'}
                     gap={4}
                     fontSize={20}
                     py={8}

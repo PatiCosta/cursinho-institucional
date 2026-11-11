@@ -250,8 +250,8 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
         <Heading as="h3" size="md" pt={4}>Contato</Heading>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
           <FormControl isInvalid={!!errors.phoneNumber}>
-            <FormLabel htmlFor="phoneNumber">Celular (com DDD)</FormLabel>
-            <Input bg='gray.50' border={'1px solid gray'} id="phoneNumber" type="tel" {...register('phoneNumber', { required: 'Celular é obrigatório' })} />
+            <FormLabel htmlFor="phoneNumber">Celular (com DDD, só números)</FormLabel>
+            <Input bg='gray.50' border={'1px solid gray'} id="phoneNumber" type="tel" inputMode="numeric" maxLength={11} placeholder="11987654321" {...register('phoneNumber', { required: 'Celular é obrigatório', pattern: { value: /^\d{10,11}$/, message: 'Digite só os números com DDD, sem +55, parênteses, espaço ou traço. Ex.: 11987654321' } })} />
             <FormErrorMessage>{errors.phoneNumber && String(errors.phoneNumber.message)}</FormErrorMessage>
           </FormControl>
           <FormControl pt={8}>

@@ -4,11 +4,11 @@ import { Carousel } from "../Carousel";
 import { ColumnInfoLabel } from "../InfoLabel/column";
 import { RowInfoLabel } from "../InfoLabel/row";
 
-const img1 = 'img/feira_de_profissoes_1.png'
-const img2 = 'img/feira_de_profissoes_2.png'
-const img3 = 'img/feira_de_profissoes_3.png'
-const img4 = 'img/feira_de_profissoes_4.png'
-const img5 = 'img/feira_de_profissoes_5.png'
+const img1 = 'img/feira_de_profissoes_1.jpg'
+const img2 = 'img/feira_de_profissoes_2.jpg'
+const img3 = 'img/feira_de_profissoes_3.jpg'
+const img4 = 'img/feira_de_profissoes_4.jpg'
+const img5 = 'img/feira_de_profissoes_5.jpg'
 
 
 export function FeiraDeProfissoes() {

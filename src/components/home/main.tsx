@@ -44,7 +44,7 @@ export function Main() {
                             borderRadius='md'
                         >
                             <Image
-                                src={'img/main1.png'}
+                                src={'img/main1.jpg'}
                                 maxW={{ base: '40vw', lg: '24vw' }}
                             />
                         </Box>
@@ -53,7 +53,7 @@ export function Main() {
                             borderRadius='md'
                         >
                             <Image
-                                src={'img/main2.png'}
+                                src={'img/main2.jpg'}
                                 maxW={{ base: '40vw', lg: '24vw' }}
                             />
                         </Box>
@@ -64,7 +64,7 @@ export function Main() {
                             borderRadius='md'
                         >
                             <Image
-                                src={'img/main3.png'}
+                                src={'img/main3.jpg'}
                                 maxW={{ base: '40vw', lg: '24vw' }}
                             />
                         </Box>
@@ -73,7 +73,7 @@ export function Main() {
                             borderRadius='md'
                         >
                             <Image
-                                src={'img/main4.png'}
+                                src={'img/main4.jpg'}
                                 maxW={{ base: '40vw', lg: '24vw' }}
                             />
                         </Box>
@@ -209,7 +209,7 @@ export function Main() {
                         borderRadius='md'
                     >
                         <Image
-                            src={'img/main1.png'}
+                            src={'img/main1.jpg'}
                             maxW={'24vw'}
                         />
                     </Box>
@@ -218,7 +218,7 @@ export function Main() {
                         borderRadius='md'
                     >
                         <Image
-                            src={'img/main2.png'}
+                            src={'img/main2.jpg'}
                             maxW={'24vw'}
                         />
                     </Box>
@@ -229,7 +229,7 @@ export function Main() {
                         borderRadius='md'
                     >
                         <Image
-                            src={'img/main3.png'}
+                            src={'img/main3.jpg'}
                             maxW={'24vw'}
                         />
                     </Box>
@@ -238,7 +238,7 @@ export function Main() {
                         borderRadius='md'
                     >
                         <Image
-                            src={'img/main4.png'}
+                            src={'img/main4.jpg'}
                             maxW={'24vw'}
                         />
                     </Box>

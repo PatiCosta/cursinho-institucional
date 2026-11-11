@@ -43,29 +43,29 @@ export function ApprovedStudentsFooter() {
                     <Divider />
                 </Flex>
                 <Flex position='absolute' bottom='0' left='0' w='80vw' px={{base: 12, lg: 32}} gap={{base: 6, lg: 14}} alignItems='end'>
-                    <Grid templateRows='1.3fr .7fr' templateColumns={{base: '40px', lg: '120px'}} h={24} borderRadius='16px 16px 0 0' position='relative'>
-                        <Box bgColor='gray.50' borderRadius='16px 16px 0 0'></Box>
-                        <Box bgColor='yellow.400'></Box>
-                        <Text color='gray.50' fontWeight='light' fontSize={{base: 12, lg: 16}} position='absolute' bottom='-25px' left={{base: '16%', lg: '35%'}}>2019</Text>
-                    </Grid>
-                    <Grid templateRows='1.6fr .4fr' templateColumns={{base: '40px', lg: '120px'}} h={48} borderRadius='16px 16px 0 0' position='relative'>
-                        <Box bgColor='gray.50' borderRadius='16px 16px 0 0'></Box>
-                        <Box bgColor='yellow.400'></Box>
-                        <Text color='gray.50' fontWeight='light' fontSize={{base: 12, lg: 16}} position='absolute' bottom='-25px' left={{base: '16%', lg: '35%'}}>2020</Text>
-                    </Grid>
-                    <Grid templateRows='1.3fr .7fr' templateColumns={{base: '40px', lg: '120px'}} h={20} borderRadius='16px 16px 0 0' position='relative'>
-                        <Box bgColor='gray.50' borderRadius='16px 16px 0 0'></Box>
-                        <Box bgColor='yellow.400'></Box>
-                        <Text color='gray.50' fontWeight='light' fontSize={{base: 12, lg: 16}} position='absolute' bottom='-25px' left={{base: '16%', lg: '35%'}}>2021</Text>
-                    </Grid>
                     <Grid templateRows='1.52fr .48fr' templateColumns={{base: '40px', lg: '120px'}} h={32} borderRadius='16px 16px 0 0' position='relative'>
                         <Box bgColor='gray.50' borderRadius='16px 16px 0 0'></Box>
                         <Box bgColor='yellow.400'></Box>
                         <Text color='gray.50' fontWeight='light' fontSize={{base: 12, lg: 16}} position='absolute' bottom='-25px' left={{base: '16%', lg: '35%'}}>2022</Text>
                     </Grid>
+                    <Grid templateRows='1fr' templateColumns={{base: '40px', lg: '120px'}} h={{base: '105px', lg: '118px'}} borderRadius='16px 16px 0 0' position='relative'>
+                        <Box bgColor='gray.300' borderRadius='16px 16px 0 0'></Box>
+                        <Text color='gray.50' fontWeight='bold' fontSize={{base: 12, lg: 16}} position='absolute' top={{base: '-20px', lg: '-26px'}} w='100%' textAlign='center'>105</Text>
+                        <Text color='gray.50' fontWeight='light' fontSize={{base: 12, lg: 16}} position='absolute' bottom='-25px' left={{base: '16%', lg: '35%'}}>2023</Text>
+                    </Grid>
+                    <Grid templateRows='1fr' templateColumns={{base: '40px', lg: '120px'}} h={{base: '69px', lg: '77px'}} borderRadius='16px 16px 0 0' position='relative'>
+                        <Box bgColor='gray.300' borderRadius='16px 16px 0 0'></Box>
+                        <Text color='gray.50' fontWeight='bold' fontSize={{base: 12, lg: 16}} position='absolute' top={{base: '-20px', lg: '-26px'}} w='100%' textAlign='center'>69</Text>
+                        <Text color='gray.50' fontWeight='light' fontSize={{base: 12, lg: 16}} position='absolute' bottom='-25px' left={{base: '16%', lg: '35%'}}>2024</Text>
+                    </Grid>
+                    <Grid templateRows='1fr' templateColumns={{base: '40px', lg: '120px'}} h={{base: '80px', lg: '90px'}} borderRadius='16px 16px 0 0' position='relative'>
+                        <Box bgColor='gray.300' borderRadius='16px 16px 0 0'></Box>
+                        <Text color='gray.50' fontWeight='bold' fontSize={{base: 12, lg: 16}} position='absolute' top={{base: '-20px', lg: '-26px'}} w='100%' textAlign='center'>80</Text>
+                        <Text color='gray.50' fontWeight='light' fontSize={{base: 12, lg: 16}} position='absolute' bottom='-25px' left={{base: '16%', lg: '35%'}}>2025</Text>
+                    </Grid>
                 </Flex>
             </Flex>
-            <Flex alignItems='center' gap={4} justifyContent='center' mt={8}>
+            <Flex alignItems='center' gap={4} justifyContent='center' mt={8} flexWrap='wrap'>
                 <Flex alignItems='center' gap={2}>
                     <Box h='12px' w='12px' bgColor='yellow.400' borderRadius='100%'></Box>
                     <Text color='gray.50' fontWeight='light' fontSize={16}>USP</Text>
@@ -73,6 +73,10 @@ export function ApprovedStudentsFooter() {
                 <Flex alignItems='center' gap={2}>
                     <Box h='12px' w='12px' bgColor='gray.50' borderRadius='100%'></Box>
                     <Text color='gray.50' fontWeight='light' fontSize={16}>Públicas e PROUNI</Text>
+                </Flex>
+                <Flex alignItems='center' gap={2}>
+                    <Box h='12px' w='12px' bgColor='gray.300' borderRadius='100%'></Box>
+                    <Text color='gray.50' fontWeight='light' fontSize={16}>Total do ano</Text>
                 </Flex>
             </Flex>
         </Box>

@@ -10,7 +10,7 @@ export function Diferentials() {
             <Flex gap={8} direction={{base: 'column', lg: 'row'}}>
                 <ColumnInfoLabel 
                     title='Nossos diferenciais'
-                    info='Somos um cursinho pré-vestibular, sem mensalidades, fundado em 2000 e gerido pelos alunos da FEA-USP. O Cursinho foi fundado com a iniciativa de alunos da FEA, com o apoio do CAVC e da então diretoria da faculdade.'
+                    info='Somos um cursinho pré-vestibular, sem mensalidades, fundado em 2000 e gerido pelos alunos da FEA-USP. O Cursinho foi fundado com a iniciativa de alunos da FEA, com o apoio do Centro Acadêmico Visconde de Cairu e da então diretoria da faculdade.'
                     bgColor='yellow.400'
                 />
                 <Box bgColor='transparent' pl={8} py={8} boxShadow='md' mr={{base: 4, lg: 12}} ml={{base: 4, lg: 0}} flex='1.05' position='relative'>
