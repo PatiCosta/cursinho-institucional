@@ -95,7 +95,7 @@ export function CampaignChart() {
         // </Box>
         <Flex 
             bgColor='blue.800' 
-            w='100vw' 
+            w='100%' 
             px={{base: 8, lg: 12}} 
             py={{base: 14, lg: 14}}
             mt={12} 

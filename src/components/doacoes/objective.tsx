@@ -4,7 +4,7 @@ import { Bus, ChalkboardTeacher, Wallet } from "phosphor-react";
 export function Objective() {
     return (
     <Flex 
-        w='100vw' 
+        w='100%' 
         px={{base: 6, lg: 12}} 
         py={{base: 12, lg: 24}}
         alignItems='center' 

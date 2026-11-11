@@ -72,6 +72,7 @@ export const Carousel = (
         position='relative' 
         h={{base: '200px', lg: '400px'}}
         w={{base: '90vw', lg: '100%'}}
+        maxW='100%'
         boxShadow='2xl'
       >
         <AnimatePresence initial={false} custom={direction}>

@@ -56,7 +56,7 @@ export default function Header() {
     const { isOpen, onToggle } = useDisclosure()
 
     return (
-        <Box px={{ base: 8, lg: 12 }} w='100vw'>
+        <Box px={{ base: 8, lg: 12 }} w='100%'>
             <Box
                 borderBottom={{ base: '1px solid', lg: 'none' }}
                 borderColor='gray.400'

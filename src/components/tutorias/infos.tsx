@@ -56,7 +56,7 @@ export function Infos() {
                 >
                     <Image 
                         src={'img/tutoria.png'} 
-                        w='100vw'
+                        w='100%'
                         h='40vh'
                         objectFit='cover'
                         borderRadius='xl'

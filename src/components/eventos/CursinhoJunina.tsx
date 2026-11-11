@@ -15,7 +15,7 @@ export function CursinhoJunina() {
     const isLg = useBreakpointValue({base: false, lg: true})
 
     return (
-        <Box pb={8} w='100vw'>
+        <Box pb={8} w='100%'>
             <Flex alignItems='center' w='100%' px={12} justifyContent='center' gap={4}>
                 <Box h='2px' bgColor='blue.800' flex='1' />
                 <Text fontSize={{base: 32, lg: 40}}  fontWeight='semibold' textAlign='center'>
@@ -26,7 +26,7 @@ export function CursinhoJunina() {
                 <Box h='2px' bgColor='blue.800' flex='1' />
             </Flex>
             <Flex py={8} alignItems='start' gap={8} direction={{base: 'column', lg: 'row'}}>
-                <Box flex='1.05' pl={{base: 4, lg: 12}} pr={{base: 4, lg: 0}} borderRadius='2xl'>
+                <Box flex='1.05' w='100%' pl={{base: 4, lg: 12}} pr={{base: 4, lg: 0}} borderRadius='2xl'>
                     <Carousel 
                         images={[
                             img1,

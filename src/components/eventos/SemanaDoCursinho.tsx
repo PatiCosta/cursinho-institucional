@@ -14,8 +14,8 @@ const img5 = 'img/semana_do_cursinho_5.jpg'
 export function SemanaDoCursinho() {
     const isLg = useBreakpointValue({base: false, lg: true})
     return (
-        <Box pb={8} pt={4} w='100vw'>
-            <Flex alignItems='center' w='100vw' px={{base: 4, lg: 12}} justifyContent='center' gap={4}>
+        <Box pb={8} pt={4} w='100%'>
+            <Flex alignItems='center' w='100%' px={{base: 4, lg: 12}} justifyContent='center' gap={4}>
                 <Box h='2px' bgColor='blue.800' flex='1' />
                 <Text fontSize={{base: 32, lg: 40}}  fontWeight='semibold' textAlign='center'>
                     <Highlight query='Cursinho' styles={{bg: 'transparent', color: 'yellow.500', fontWeight: 'bold' }}>
@@ -71,7 +71,7 @@ export function SemanaDoCursinho() {
                         </Flex>
                     </Grid>
                 </Box>
-                <Box flex='1.05' pr={{base: 4, lg: 12}} pl={{base: 4, lg: 0}} borderRadius='2xl'>
+                <Box flex='1.05' w='100%' pr={{base: 4, lg: 12}} pl={{base: 4, lg: 0}} borderRadius='2xl'>
                     <Carousel 
                         images={[
                             img1,
