@@ -101,6 +101,7 @@ export default function Turma() {
         title={schoolClass.title}
         subscriptionSchedule={schoolClass.subscriptions.subscriptionSchedule}
         price={schoolClass.subscriptions.price}
+        subscriptionStatus={schoolClass.subscriptions.status}
         id={schoolClass.id}
         stripeProductID={schoolClass.stripeProductID}
       />

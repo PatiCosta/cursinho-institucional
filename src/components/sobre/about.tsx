@@ -14,7 +14,7 @@ export function About() {
                 </Text>
                 <RowInfoLabel 
                     title='QUEM SOMOS?' 
-                    info='Somos um cursinho pré-vestibular, sem mensalidades, fundado em 2000 e gerido pelos alunos da FEA-USP. O Cursinho foi fundado com a iniciativa de alunos da FEA, com o apoio do CAVC e da então diretoria da faculdade.' 
+                    info='Somos um cursinho pré-vestibular, sem mensalidades, fundado em 2000 e gerido pelos alunos da FEA-USP. O Cursinho foi fundado com a iniciativa de alunos da FEA, com o apoio do Centro Acadêmico Visconde de Cairu e da então diretoria da faculdade.' 
                     mt={8}
                     alignItems='flex-start'
                     bgColor='yellow.400'

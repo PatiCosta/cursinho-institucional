@@ -4,11 +4,11 @@ import { Carousel } from "../Carousel";
 import { ColumnInfoLabel } from "../InfoLabel/column";
 import { ReverseRowInfoLabel } from "../InfoLabel/row";
 
-const img1 = 'img/estudantada_1.png'
-const img2 = 'img/estudantada_2.png'
-const img3 = 'img/estudantada_3.png'
-const img4 = 'img/estudantada_4.png'
-const img5 = 'img/estudantada_5.png'
+const img1 = 'img/estudantada_1.jpg'
+const img2 = 'img/estudantada_2.jpg'
+const img3 = 'img/estudantada_3.jpg'
+const img4 = 'img/estudantada_4.jpg'
+const img5 = 'img/estudantada_5.jpg'
 
 
 export function Estudantada() {
@@ -66,7 +66,7 @@ export function Estudantada() {
                                 weight="duotone" 
                             />
                             <Text fontWeight='bold' fontSize={{base: 14, lg: 16}}>QUANDO?</Text>
-                            <Text fontWeight='light' fontSize={14} mt={{base: 2, lg: 4}}>Novembro</Text>
+                            <Text fontWeight='light' fontSize={14} mt={{base: 2, lg: 4}}>Outubro</Text>
                         </Flex>
                         <Flex direction='column' alignItems='center' bgColor='gray.100' borderRadius='xl' p={4}>
                             <Money 

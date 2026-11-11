@@ -95,7 +95,7 @@ export function Donate({products}: DonateProps) {
                         >
                             {products.map(product => 
                                 <option style={{color: 'white', backgroundColor:'#3b3a65', cursor: 'pointer'}} key={product.product_id} value={product.product_id}>
-                                    {product.name} — {new Intl.NumberFormat('pt-BR', {
+                                    {product.name} · {new Intl.NumberFormat('pt-BR', {
                                         style: 'currency',
                                         currency: 'BRL',
                                     }).format(product.price)}

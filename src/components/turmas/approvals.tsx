@@ -18,7 +18,7 @@ export function Approvals() {
                     Aprovações
                 </Text>
                 <Text fontSize={{base: 28, lg: 32}} fontWeight="bold" color='gray.50'>
-                    em 2022
+                    em 2026
                 </Text>
             </Box>
             <Box
@@ -30,12 +30,12 @@ export function Approvals() {
                 gap={{base: 4, lg: 12}}
             >
                 <Box textAlign='center' color='gray.50'>
-                    <Text fontWeight='bold' fontSize={{base: 28, lg: 40}}>40</Text>
+                    <Text fontWeight='bold' fontSize={{base: 28, lg: 40}}>47</Text>
                     <Text fontSize={{base: 16, lg: 20}}>USP</Text>
                 </Box>
                 <Box bgColor='gray.50' w='8px' h='8px' borderRadius='100%' />
                 <Box textAlign='center' color='gray.50'>
-                    <Text fontWeight='bold' fontSize={{base: 28, lg: 40}}>15</Text>
+                    <Text fontWeight='bold' fontSize={{base: 28, lg: 40}}>6</Text>
                     <Text fontSize={{base: 16, lg: 20}}>UNICAMP</Text>
                 </Box>
             </Box>
@@ -49,12 +49,12 @@ export function Approvals() {
             >
                 <Box bgColor='gray.50' w='8px' h='8px' borderRadius='100%' display={{base: 'none', lg: 'block'}} />
                 <Box textAlign='center' color='gray.50'>
-                    <Text fontWeight='bold' fontSize={{base: 28, lg: 40}}>21</Text>
+                    <Text fontWeight='bold' fontSize={{base: 28, lg: 40}}>30</Text>
                     <Text fontSize={{base: 16, lg: 20}}>UNESP</Text>
                 </Box>
                 <Box bgColor='gray.50' w='8px' h='8px' borderRadius='100%' />
                 <Box textAlign='center' color='gray.50'>
-                    <Text fontWeight='bold' fontSize={{base: 28, lg: 40}}>52</Text>
+                    <Text fontWeight='bold' fontSize={{base: 28, lg: 40}}>24</Text>
                     <Text fontSize={{base: 16, lg: 20}}>Federais e Estaduais</Text>
                 </Box>
             </Box>

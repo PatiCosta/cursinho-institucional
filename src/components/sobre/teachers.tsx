@@ -47,7 +47,7 @@ export function Teachers() {
             <ReverseColumnInfoLabel 
                 title='Nossos professores'
                 bgColor='blue.800'
-                info='Contamos atualmente com 32 professores formados em sua área de atuação, que trabalham diariamente para garantir o aprendizado dos alunos! Somos muito criteriosos quanto à escolha deles e, uma vez que ingressam na entidade, somos muito gratos pelo trabalho que realizam.'
+                info='Contamos atualmente com 49 professores formados em sua área de atuação, que trabalham diariamente para garantir o aprendizado dos alunos! Somos muito criteriosos quanto à escolha deles e, uma vez que ingressam na entidade, somos muito gratos pelo trabalho que realizam.'
             />
             <Box 
                 bgColor='transparent' 

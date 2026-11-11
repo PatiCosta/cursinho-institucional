@@ -4,11 +4,11 @@ import { Carousel } from "../Carousel";
 import { ColumnInfoLabel } from "../InfoLabel/column";
 import { ReverseRowInfoLabel } from "../InfoLabel/row";
 
-const img1 = 'img/cursinho_junina_1.jpeg'
-const img2 = 'img/cursinho_junina_2.jpeg'
-const img3 = 'img/cursinho_junina_3.jpeg'
-const img4 = 'img/cursinho_junina_4.png'
-const img5 = 'img/cursinho_junina_5.png'
+const img1 = 'img/cursinho_junino_1.jpg'
+const img2 = 'img/cursinho_junino_2.jpg'
+const img3 = 'img/cursinho_junino_3.jpg'
+const img4 = 'img/cursinho_junino_4.jpg'
+const img5 = 'img/cursinho_junino_5.jpg'
 
 
 export function CursinhoJunina() {
@@ -19,8 +19,8 @@ export function CursinhoJunina() {
             <Flex alignItems='center' w='100%' px={12} justifyContent='center' gap={4}>
                 <Box h='2px' bgColor='blue.800' flex='1' />
                 <Text fontSize={{base: 32, lg: 40}}  fontWeight='semibold' textAlign='center'>
-                    <Highlight query='Junina' styles={{bg: 'transparent', color: 'yellow.500', fontWeight: 'bold' }}>
-                        Cursinho Junina
+                    <Highlight query='Junino' styles={{bg: 'transparent', color: 'yellow.500', fontWeight: 'bold' }}>
+                        Cursinho Junino
                     </Highlight>
                 </Text>
                 <Box h='2px' bgColor='blue.800' flex='1' />
