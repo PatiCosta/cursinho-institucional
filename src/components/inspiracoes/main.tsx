@@ -20,7 +20,7 @@ function Review({
             alignItems={{base: 'start', lg: 'center'}} 
             justifyContent='space-between' 
             position='relative' 
-            w='100vw' 
+            w='100%' 
             gap={{base: 8, lg: 12}}
             direction={{base: 'column', lg: 'row'}}
         >
@@ -70,7 +70,7 @@ function InvertedReview({
             alignItems={{base: 'end', lg: 'center'}}
             justifyContent='space-between' 
             position='relative' 
-            w='100vw' 
+            w='100%' 
             gap={{base: 8, lg: 12}}
             direction={{base: 'column', lg: 'row'}}
         >
@@ -109,10 +109,10 @@ function InvertedReview({
 
 function Divider() {
     return (
-        <Flex alignItems='center' gap={4}>
-            <Box w='45vw' mx='auto' h='.5px' bgColor='gray.500' />
+        <Flex alignItems='center' gap={4} w='calc(90vw + 36px)' maxW='100%'>
+            <Box flex='1' h='.5px' bgColor='gray.500' />
             <Box w='4px' h='4px' bgColor='gray.500' borderRadius='full' />
-            <Box w='45vw' mx='auto' h='.5px' bgColor='gray.500' />
+            <Box flex='1' h='.5px' bgColor='gray.500' />
         </Flex>
     )
 }

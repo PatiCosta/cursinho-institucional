@@ -9,7 +9,7 @@ interface SelectiveStagesProps {
 
 export function SelectiveStages({color, stages}: SelectiveStagesProps) {
     return (
-        <Box bgColor={color} w='100vw' pt={8} pb={4} px={12} mt={-1}>
+        <Box bgColor={color} w='100%' pt={8} pb={4} px={12} mt={-1}>
             <Text fontSize={{base: 28, lg: 40}} fontWeight="bold" color='gray.50' textAlign='center'>
                 <Highlight query='processo seletivo' styles={{bg: 'transparent', textDecoration: 'underline', color: 'gray.50' }}>
                     Etapas do processo seletivo

@@ -36,7 +36,7 @@ export function Main({ stripeProductID, id, title, color, description, dateSched
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style={{ position: 'absolute', bottom: '0', transform: 'scaleX(-1)', zIndex: '-100' }}>
                 <path fill={color} fill-opacity="1" d="M0,96L34.3,117.3C68.6,139,137,181,206,202.7C274.3,224,343,224,411,224C480,224,549,224,617,197.3C685.7,171,754,117,823,101.3C891.4,85,960,107,1029,101.3C1097.1,96,1166,64,1234,64C1302.9,64,1371,96,1406,112L1440,128L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
             </svg>
-            <Flex px={{ base: 4, lg: 12 }} w='100vw' justifyContent='space-between' pb={4} direction={{ base: 'column', lg: 'row' }}>
+            <Flex px={{ base: 4, lg: 12 }} w='100%' justifyContent='space-between' pb={4} direction={{ base: 'column', lg: 'row' }}>
                 <Box h='inherit' position='relative'>
                     <Text
                         fontWeight='bold'

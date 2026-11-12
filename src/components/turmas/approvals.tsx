@@ -4,7 +4,7 @@ export function Approvals() {
     return (
         <Flex 
             bgColor='blue.800' 
-            w='100vw' 
+            w='100%' 
             px={{base: 8, lg: 12}} 
             py={{base: 24, lg: 24}}
             mt={{base: 6, lg: 12}} 
