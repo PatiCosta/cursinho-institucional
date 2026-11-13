@@ -48,18 +48,24 @@ export function ApprovedStudentsFooter() {
                         <Box bgColor='yellow.400'></Box>
                         <Text color='gray.50' fontWeight='light' fontSize={{base: 12, lg: 16}} position='absolute' bottom='-25px' left={{base: '16%', lg: '35%'}}>2022</Text>
                     </Grid>
-                    <Grid templateRows='1fr' templateColumns={{base: '40px', lg: '120px'}} h={{base: '105px', lg: '118px'}} borderRadius='16px 16px 0 0' position='relative'>
-                        <Box bgColor='gray.300' borderRadius='16px 16px 0 0'></Box>
+                    {/* 2023: 105 aprovados, 78 na USP e 27 em outras públicas e PROUNI */}
+                    <Grid templateRows='27fr 78fr' templateColumns={{base: '40px', lg: '120px'}} h={{base: '105px', lg: '118px'}} borderRadius='16px 16px 0 0' position='relative'>
+                        <Box bgColor='gray.50' borderRadius='16px 16px 0 0'></Box>
+                        <Box bgColor='yellow.400'></Box>
                         <Text color='gray.50' fontWeight='bold' fontSize={{base: 12, lg: 16}} position='absolute' top={{base: '-20px', lg: '-26px'}} w='100%' textAlign='center'>105</Text>
                         <Text color='gray.50' fontWeight='light' fontSize={{base: 12, lg: 16}} position='absolute' bottom='-25px' left={{base: '16%', lg: '35%'}}>2023</Text>
                     </Grid>
-                    <Grid templateRows='1fr' templateColumns={{base: '40px', lg: '120px'}} h={{base: '69px', lg: '77px'}} borderRadius='16px 16px 0 0' position='relative'>
-                        <Box bgColor='gray.300' borderRadius='16px 16px 0 0'></Box>
-                        <Text color='gray.50' fontWeight='bold' fontSize={{base: 12, lg: 16}} position='absolute' top={{base: '-20px', lg: '-26px'}} w='100%' textAlign='center'>69</Text>
+                    {/* 2024: 98 aprovados, 81 na USP e 17 em outras públicas e PROUNI */}
+                    <Grid templateRows='17fr 81fr' templateColumns={{base: '40px', lg: '120px'}} h={{base: '98px', lg: '110px'}} borderRadius='16px 16px 0 0' position='relative'>
+                        <Box bgColor='gray.50' borderRadius='16px 16px 0 0'></Box>
+                        <Box bgColor='yellow.400'></Box>
+                        <Text color='gray.50' fontWeight='bold' fontSize={{base: 12, lg: 16}} position='absolute' top={{base: '-20px', lg: '-26px'}} w='100%' textAlign='center'>98</Text>
                         <Text color='gray.50' fontWeight='light' fontSize={{base: 12, lg: 16}} position='absolute' bottom='-25px' left={{base: '16%', lg: '35%'}}>2024</Text>
                     </Grid>
-                    <Grid templateRows='1fr' templateColumns={{base: '40px', lg: '120px'}} h={{base: '80px', lg: '90px'}} borderRadius='16px 16px 0 0' position='relative'>
-                        <Box bgColor='gray.300' borderRadius='16px 16px 0 0'></Box>
+                    {/* 2025: 80 aprovados, 31 na USP e 49 em outras públicas e PROUNI */}
+                    <Grid templateRows='49fr 31fr' templateColumns={{base: '40px', lg: '120px'}} h={{base: '80px', lg: '90px'}} borderRadius='16px 16px 0 0' position='relative'>
+                        <Box bgColor='gray.50' borderRadius='16px 16px 0 0'></Box>
+                        <Box bgColor='yellow.400'></Box>
                         <Text color='gray.50' fontWeight='bold' fontSize={{base: 12, lg: 16}} position='absolute' top={{base: '-20px', lg: '-26px'}} w='100%' textAlign='center'>80</Text>
                         <Text color='gray.50' fontWeight='light' fontSize={{base: 12, lg: 16}} position='absolute' bottom='-25px' left={{base: '16%', lg: '35%'}}>2025</Text>
                     </Grid>
@@ -73,10 +79,6 @@ export function ApprovedStudentsFooter() {
                 <Flex alignItems='center' gap={2}>
                     <Box h='12px' w='12px' bgColor='gray.50' borderRadius='100%'></Box>
                     <Text color='gray.50' fontWeight='light' fontSize={16}>Públicas e PROUNI</Text>
-                </Flex>
-                <Flex alignItems='center' gap={2}>
-                    <Box h='12px' w='12px' bgColor='gray.300' borderRadius='100%'></Box>
-                    <Text color='gray.50' fontWeight='light' fontSize={16}>Total do ano</Text>
                 </Flex>
             </Flex>
         </Box>

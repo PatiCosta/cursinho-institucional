@@ -19,8 +19,8 @@ export function Campaign() {
             <Image src='img/climb.png' maxH={96} />
             <Flex direction='column' gap={4} alignItems={{base: 'center', lg: 'start'}}>
                 <Text fontWeight='bold' color='gray.50' fontSize={{base: 20, sm: 20, lg: 40}} textAlign={{base: 'center', sm: 'center', lg: 'start'}}>
-                    <Highlight query={['sua', 'vidas' , '480!']} styles={{bg: 'transparent', color: 'yellow.500' }}>
-                        Sua doação muda vidas! Juntos mudamos 480!
+                    <Highlight query={['sua', 'vidas' , '420!']} styles={{bg: 'transparent', color: 'yellow.500' }}>
+                        Sua doação muda vidas! Juntos mudamos 420!
                     </Highlight>
                 </Text>
                 <Text fontWeight='light' color='gray.50' fontSize='sm' textAlign={{base: 'center', sm: 'center', lg: 'start'}}>

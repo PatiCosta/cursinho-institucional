@@ -33,8 +33,8 @@ export function About() {
                 <Flex alignItems='center' justifyContent='start' ml='6px' gap={8}>
                     <Box bgColor='yellow.400' w='36px' h='36px' borderRadius='100%'></Box>
                     <Box fontSize={{base: 40, lg: 48}} fontWeight='semibold' position='relative' flex='1'>
-                        480
-                        <Text fontSize={{base: 14, lg: 16}} fontWeight='regular' position='absolute' bottom='-12px'>alunos em 2022</Text>
+                        420
+                        <Text fontSize={{base: 14, lg: 16}} fontWeight='regular' position='absolute' bottom='-12px'>alunos em 2026</Text>
                     </Box>
                 </Flex>
                 <Flex alignItems='center' justifyContent='start' ml='6px' gap={8} flex='1'>
@@ -54,8 +54,8 @@ export function About() {
                 <Flex alignItems='center' justifyContent='start' ml='6px' gap={8} flex='1'>
                     <Box bgColor='yellow.400' w='36px' h='36px' borderRadius='100%'></Box>
                     <Box fontSize={{base: 40, lg: 48}} fontWeight='semibold' position='relative' flex='1'>
-                        80%
-                        <Text fontSize={{base: 14, lg: 16}} fontWeight='regular' position='absolute' bottom='-12px'>aprovados no vestibular em 2022</Text>
+                        60%
+                        <Text fontSize={{base: 14, lg: 16}} fontWeight='regular' position='absolute' bottom='-12px'>aprovados no vestibular em 2026</Text>
                     </Box>
                 </Flex>
             </Flex>
