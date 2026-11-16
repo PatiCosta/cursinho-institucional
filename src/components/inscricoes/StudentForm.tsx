@@ -25,6 +25,7 @@ import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { CreditCard, QrCode } from '@phosphor-icons/react';
 import { Turma } from '@/types';
 import axios from 'axios'; // Importar axios para a chamada do ViaCEP
+import { isValidCPF } from '@/utils/cpfUtils';
 
 // Interface para tipar corretamente o formulário
 interface StudentFormData {
@@ -35,6 +36,8 @@ interface StudentFormData {
   birth: string;
   gender: string;
   emailResponsavel?: string;
+  nomeResponsavel?: string;
+  cpfResponsavel?: string;
   cpf: string;
   phoneNumber: string;
   isPhoneWhatsapp: boolean;
@@ -81,6 +84,7 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
   });
 
   const emailValue = watch('email');
+  const cpfValue = watch('cpf');
   const paymentMethod = watch('paymentMethod');
 
   const [isMinor, setIsMinor] = useState(false);
@@ -108,6 +112,13 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
       age--;
     }
     return age < 18;
+  };
+
+  // Maior de idade não envia dados de responsável, mesmo que tenha preenchido antes de corrigir a data.
+  const handleValidSubmit = (data: FieldValues) => {
+    if (isMinor) return onSubmit(data);
+    const { emailResponsavel, nomeResponsavel, cpfResponsavel, ...rest } = data;
+    return onSubmit(rest);
   };
 
   // Função para buscar o CEP
@@ -147,7 +158,7 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
       boxShadow="lg"
       bg="white"
     >
-      <VStack as="form" onSubmit={handleSubmit(onSubmit)} spacing={6} align="stretch">
+      <VStack as="form" onSubmit={handleSubmit(handleValidSubmit)} spacing={6} align="stretch">
         <Heading as="h2" size="lg" textAlign="center">
           Formulário de Inscrição
         </Heading>
@@ -224,6 +235,52 @@ export function StudentForm({ selectedTurma, onBack, onSubmit, isSubmitting }: S
                 })}
               />
               <FormErrorMessage>{errors.emailResponsavel && String(errors.emailResponsavel.message)}</FormErrorMessage>
+            </FormControl>
+          )}
+
+          {isMinor && (
+            <FormControl isInvalid={!!errors.nomeResponsavel}>
+              <FormLabel htmlFor="nomeResponsavel">Nome completo do responsável legal</FormLabel>
+              <Input bg='gray.50' border={'1px solid gray'}
+                id="nomeResponsavel"
+                autoComplete="off"
+                {...register('nomeResponsavel', {
+                  required: isMinor ? 'Nome do responsável é obrigatório.' : false,
+                  validate: (value) =>
+                    !isMinor ||
+                    (value || '').trim().split(/\s+/).length >= 2 ||
+                    'Informe o nome e o sobrenome do responsável.'
+                })}
+              />
+              <FormErrorMessage>{errors.nomeResponsavel && String(errors.nomeResponsavel.message)}</FormErrorMessage>
+            </FormControl>
+          )}
+
+          {isMinor && (
+            <FormControl isInvalid={!!errors.cpfResponsavel}>
+              <FormLabel htmlFor="cpfResponsavel">CPF do responsável legal</FormLabel>
+              <Input bg='gray.50' border={'1px solid gray'}
+                id="cpfResponsavel"
+                autoComplete="off"
+                {...register('cpfResponsavel', {
+                  required: isMinor ? 'CPF do responsável é obrigatório.' : false,
+                  minLength: { value: 14, message: 'CPF incompleto' },
+                  validate: (value) => {
+                    if (!isMinor) return true;
+                    if (!isValidCPF(value || '')) return 'CPF inválido.';
+                    if ((value || '').replace(/\D/g, '') === (cpfValue || '').replace(/\D/g, '')) {
+                      return 'O CPF do responsável precisa ser diferente do CPF do aluno.';
+                    }
+                    return true;
+                  },
+                  onChange: (e) => {
+                    e.target.value = cpfMask(e.target.value);
+                  }
+                })}
+                maxLength={14}
+                placeholder="000.000.000-00"
+              />
+              <FormErrorMessage>{errors.cpfResponsavel && String(errors.cpfResponsavel.message)}</FormErrorMessage>
             </FormControl>
           )}
 
