@@ -57,7 +57,7 @@ export default function InscricaoSucesso() {
                         </Text>
                         
                         <Text color="gray.500" fontSize="md">
-                            Você receberá um e-mail com o seu <strong>número de matrícula</strong> e as próximas instruções sobre o processo seletivo (entrevistas e documentos).
+                            Você receberá um e-mail com o seu <strong>número do pedido</strong> e as próximas instruções sobre o processo seletivo (entrevistas e documentos).
                         </Text>
                         
                         <Box bg="green.50" p={4} borderRadius="lg" w="100%">
