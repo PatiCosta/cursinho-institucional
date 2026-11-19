@@ -7,6 +7,14 @@ interface SelectiveStagesProps {
     stages?: CourseStage[]
 }
 
+// Rótulo da data em cada etapa: a primeira convoca para a próxima fase,
+// a última divulga os aprovados (pedido do Cursinho, 19/11/2026).
+function rotuloResultado(index: number, total: number): string {
+    if (total > 1 && index === total - 1) return "Divulgação dos aprovados"
+    if (total > 1 && index === 0) return "Convocação para segunda fase"
+    return "Data dos resultados"
+}
+
 export function SelectiveStages({color, stages}: SelectiveStagesProps) {
     return (
         <Box bgColor={color} w='100%' pt={8} pb={4} px={12} mt={-1}>
@@ -42,7 +50,7 @@ export function SelectiveStages({color, stages}: SelectiveStagesProps) {
                         <Box w='100%' h='1px' bgColor='gray.400' my={2}></Box>
                         <Text fontSize={14}>{stage.description}</Text>
                         <Flex alignItems='center' gap={2} justifyContent='center' mt={6}>
-                            <Text fontWeight='bolder' letterSpacing='1' textTransform='uppercase' fontSize={12}>Data dos resultados:</Text>
+                            <Text fontWeight='bolder' letterSpacing='1' textTransform='uppercase' fontSize={12}>{rotuloResultado(index, stages.length)}:</Text>
                             <Text fontSize={14}>
                                 {stage.resultsDate 
                                     ? new Intl.DateTimeFormat('pt-BR').format(new Date(stage.resultsDate)) : 'Não informado'
