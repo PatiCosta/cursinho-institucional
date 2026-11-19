@@ -76,16 +76,22 @@ import { SubscribeSchoolClassFooter } from '@/components/Footer/subscribeSchoolC
  
 export default function Turma() {
   const router = useRouter()
-  const {schoolClassList} = useSchoolClass()
+  const {schoolClassList, list} = useSchoolClass()
   // const isLg = useBreakpointValue({ base: false, sm: false, lg: true })
 
   const schoolClass = schoolClassList?.find(schoolClass => schoolClass.id === router.query.id)
 
+  // Link direto: a lista ainda não foi carregada (só a página /turmas carregava).
   useEffect(() => {
-    if (schoolClassList === undefined || schoolClass === undefined) {
+    if (schoolClassList === undefined) list()
+  }, [schoolClassList, list])
+
+  // Só volta para a lista quando ela já carregou e a turma não existe.
+  useEffect(() => {
+    if (router.isReady && schoolClassList !== undefined && schoolClass === undefined) {
       router.push('/turmas')
     }
-  })
+  }, [router, router.isReady, schoolClassList, schoolClass])
 
   
   if (schoolClass) return (
